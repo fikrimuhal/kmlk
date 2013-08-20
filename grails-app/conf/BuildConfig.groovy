@@ -2,8 +2,8 @@ grails.servlet.version = "2.5" // Change depending on target container complianc
 grails.project.class.dir = "target/classes"
 grails.project.test.class.dir = "target/test-classes"
 grails.project.test.reports.dir = "target/test-reports"
-grails.project.target.level = 1.6
-grails.project.source.level = 1.6
+grails.project.target.level = 1.7
+grails.project.source.level = 1.7
 //grails.project.war.file = "target/${appName}-${appVersion}.war"
 
 // uncomment (and adjust settings) to fork the JVM to isolate classpaths
@@ -42,22 +42,29 @@ grails.project.dependency.resolution = {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes e.g.
 
         // runtime 'mysql:mysql-connector-java:5.1.22'
+        compile('org.codehaus.groovy.modules.http-builder:http-builder:0.5.2') {
+            excludes "commons-logging", "xml-apis", "groovy"
+        }
+
     }
 
     plugins {
-//        runtime ":hibernate:$grailsVersion"
+        compile ":mongodb:1.3.0"
+
         runtime ":jquery:1.8.3"
         runtime ":resources:1.2"
 
-        // Uncomment these (or add new ones) to enable additional resources capabilities
-        //runtime ":zipped-resources:1.0"
-        //runtime ":cached-resources:1.0"
-        //runtime ":yui-minify-resources:0.1.5"
 
         build ":tomcat:$grailsVersion"
 
-//        runtime ":database-migration:1.3.2"
-
         compile ':cache:1.0.1'
+
+//        compile ":quartz2:2.1.6.2"
+//        compile ":mail:1.0.1"
+
+        runtime ":cached-resources:1.0"
+        compile ":cache-headers:1.1.5"
+
+        compile ":grails-melody:1.45" // /monitoring todo: AA ekle filter olabilir simdilik
     }
 }
