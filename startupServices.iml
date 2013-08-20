@@ -143,6 +143,7 @@
     </orderEntry>
     <orderEntry type="library" name="Grails 2.2.4" level="project" />
     <orderEntry type="module" module-name="startupServices-grailsPlugins" />
+    <orderEntry type="library" scope="PROVIDED" name="sass-stdlib" level="application" />
   </component>
 </module>
 
