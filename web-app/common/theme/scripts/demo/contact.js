@@ -44,7 +44,8 @@ function initializeMaps()
 				}]
 			}, {
 				elementType: "labels.text.fill",
-				stylers: [{ color: "#444444" }]
+				stylers: [{ color: "#804444" }]
+                //#804444
 			    //stylers: [{ color: primaryColor }]
 			}]
 	};
@@ -69,10 +70,10 @@ function initializeMaps()
 			coord: [1, 1, 1, 52, 42, 52, 42 , 1],
 			type: 'poly'
 	};
-	
 	// Contact Page Google Maps
     if ($('#contact_gmap').size() > 0 && typeof google.maps.Map != 'undefined')
     {
+        console.log(map_options)
     	map_options.zoom = 13;
     	initializeMap('contact_gmap', map_options);
     }

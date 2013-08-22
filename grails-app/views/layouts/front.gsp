@@ -41,9 +41,5 @@
 %{--<g:render template="/shared/flat/themer"/>--}%
 <g:render template="/shared/flat/modal-gallery"/>
 <g:render template="/shared/flat/javascipts"/>
-
-
-
-
 </body>
 </html>

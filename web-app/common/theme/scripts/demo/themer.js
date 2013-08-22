@@ -286,7 +286,7 @@ function updateTheme(themeSelect)
 	// gmaps colored support
 	if (typeof map_options != 'undefined')
 		map_options.styles[0].stylers[1].hue = themerPrimaryColor;
-	
+
 	if ($('#contact_gmap').size() > 0 && typeof google != 'undefined')
     {
     	map_options.zoom = 13;

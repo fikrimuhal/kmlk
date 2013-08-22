@@ -94,16 +94,16 @@
 <script src="/common/theme/scripts/plugins/other/jquery.ba-resize.js"></script>
 
 
-<!--  Flot Charts Plugin -->
-<script src="/common/theme/scripts/plugins/charts/flot/jquery.flot.js"></script>
-<script src="/common/theme/scripts/plugins/charts/flot/jquery.flot.pie.js"></script>
-<script src="/common/theme/scripts/plugins/charts/flot/jquery.flot.tooltip.js"></script>
-<script src="/common/theme/scripts/plugins/charts/flot/jquery.flot.selection.js"></script>
-<script src="/common/theme/scripts/plugins/charts/flot/jquery.flot.resize.js"></script>
-<script src="/common/theme/scripts/plugins/charts/flot/jquery.flot.orderBars.js"></script>
+%{--<!--  Flot Charts Plugin -->--}%
+%{--<script src="/common/theme/scripts/plugins/charts/flot/jquery.flot.js"></script>--}%
+%{--<script src="/common/theme/scripts/plugins/charts/flot/jquery.flot.pie.js"></script>--}%
+%{--<script src="/common/theme/scripts/plugins/charts/flot/jquery.flot.tooltip.js"></script>--}%
+%{--<script src="/common/theme/scripts/plugins/charts/flot/jquery.flot.selection.js"></script>--}%
+%{--<script src="/common/theme/scripts/plugins/charts/flot/jquery.flot.resize.js"></script>--}%
+%{--<script src="/common/theme/scripts/plugins/charts/flot/jquery.flot.orderBars.js"></script>--}%
 
-<!-- Charts Helper Demo Script -->
-<script src="/common/theme/scripts/demo/charts.helper.js?1374506511"></script>
+%{--<!-- Charts Helper Demo Script -->--}%
+%{--<script src="/common/theme/scripts/demo/charts.helper.js"></script>--}%
 
 
 <!-- Bootstrap Image Gallery -->
@@ -111,7 +111,7 @@
 <script src="/common/bootstrap/extend/bootstrap-image-gallery/js/bootstrap-image-gallery.min.js" type="text/javascript"></script>
 
 <!-- Dashboard Demo Script -->
-<script src="/common/theme/scripts/demo/index.js?1374506511"></script>
+<script src="/common/theme/scripts/demo/index.js"></script>
 
 <!-- Common Demo Script -->
-<script src="/common/theme/scripts/demo/common.js?1374506511"></script>
+<script src="/common/theme/scripts/demo/common.js"></script>

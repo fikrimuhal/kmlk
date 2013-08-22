@@ -1,122 +1,75 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta name="layout" content="main"/>
-		<title>Welcome to Grails</title>
-		<style type="text/css" media="screen">
-			#status {
-				background-color: #eee;
-				border: .2em solid #fff;
-				margin: 2em 2em 1em;
-				padding: 1em;
-				width: 12em;
-				float: left;
-				-moz-box-shadow: 0px 0px 1.25em #ccc;
-				-webkit-box-shadow: 0px 0px 1.25em #ccc;
-				box-shadow: 0px 0px 1.25em #ccc;
-				-moz-border-radius: 0.6em;
-				-webkit-border-radius: 0.6em;
-				border-radius: 0.6em;
-			}
+<head>
+    <meta name="layout" content="main"/>
+</head>
 
-			.ie6 #status {
-				display: inline; /* float double margin fix http://www.positioniseverything.net/explorer/doubled-margin.html */
-			}
+<body>
 
-			#status ul {
-				font-size: 0.9em;
-				list-style-type: none;
-				margin-bottom: 0.6em;
-				padding: 0;
-			}
+<g:render template="/shared/comps/innerSearch"/>
 
-			#status li {
-				line-height: 1.3;
-			}
 
-			#status h1 {
-				text-transform: uppercase;
-				font-size: 1.1em;
-				margin: 0 0 0.3em;
-			}
+<h1>Dashboard</h1>
 
-			#page-body {
-				margin: 2em 1em 1.25em 18em;
-			}
+<g:render template="/shared/comps/statsWidget"/>
 
-			h2 {
-				margin-top: 1em;
-				margin-bottom: 0.3em;
-				font-size: 1em;
-			}
+<g:render template="/shared/comps/3divRow"/>
+<g:render template="/shared/comps/webSiteTraffic"/>
 
-			p {
-				line-height: 1.5;
-				margin: 0.25em 0;
-			}
 
-			#controller-list ul {
-				list-style-position: inside;
-			}
+<p class="separator text-center"><i class="icon-ellipsis-horizontal icon-3x"></i></p>
 
-			#controller-list li {
-				line-height: 1.3;
-				list-style-position: inside;
-				margin: 0.25em 0;
-			}
+<div class="innerLR innerB">
 
-			@media screen and (max-width: 480px) {
-				#status {
-					display: none;
-				}
+    <div class="row-fluid">
+        <div class="span9 tablet-column-reset">
 
-				#page-body {
-					margin: 0 1em 1em;
-				}
+            <g:render template="/shared/comps/span9/timeline"/>
+            <p class="separator text-center"><i class="icon-ellipsis-horizontal icon-3x"></i></p>
 
-				#page-body h1 {
-					margin-top: 0;
-				}
-			}
-		</style>
-	</head>
-	<body>
-		<a href="#page-body" class="skip"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
-		<div id="status" role="complementary">
-			<h1>Application Status</h1>
-			<ul>
-				<li>App version: <g:meta name="app.version"/></li>
-				<li>Grails version: <g:meta name="app.grails.version"/></li>
-				<li>Groovy version: ${GroovySystem.getVersion()}</li>
-				<li>JVM version: ${System.getProperty('java.version')}</li>
-				<li>Reloading active: ${grails.util.Environment.reloadingAgentEnabled}</li>
-				<li>Controllers: ${grailsApplication.controllerClasses.size()}</li>
-				<li>Domains: ${grailsApplication.domainClasses.size()}</li>
-				<li>Services: ${grailsApplication.serviceClasses.size()}</li>
-				<li>Tag Libraries: ${grailsApplication.tagLibClasses.size()}</li>
-			</ul>
-			<h1>Installed Plugins</h1>
-			<ul>
-				<g:each var="plugin" in="${applicationContext.getBean('pluginManager').allPlugins}">
-					<li>${plugin.name} - ${plugin.version}</li>
-				</g:each>
-			</ul>
-		</div>
-		<div id="page-body" role="main">
-			<h1>Welcome to Grails</h1>
-			<p>Congratulations, you have successfully started your first Grails application! At the moment
-			   this is the default page, feel free to modify it to either redirect to a controller or display whatever
-			   content you may choose. Below is a list of controllers that are currently deployed in this application,
-			   click on each to execute its default action:</p>
+            <g:render template="/shared/comps/span9/employee-directory"/>
+            <p class="separator text-center"><i class="icon-ellipsis-horizontal icon-3x"></i></p>
 
-			<div id="controller-list" role="navigation">
-				<h2>Available Controllers:</h2>
-				<ul>
-					<g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">
-						<li class="controller"><g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link></li>
-					</g:each>
-				</ul>
-			</div>
-		</div>
-	</body>
+            <g:render template="/shared/comps/span9/recent-activity"/>
+            <p class="separator text-center"><i class="icon-ellipsis-horizontal icon-3x"></i></p>
+
+            <g:render template="/shared/comps/span9/carousel"/>
+
+            <g:render template="/shared/comps/span9/special-offers"/>
+            <p class="separator text-center"><i class="icon-ellipsis-horizontal icon-3x"></i></p>
+
+            <g:render template="/shared/comps/span9/chat"/>
+
+        </div>
+
+        <div class="span3 tablet-column-reset">
+
+            <h2 class="margin-none separator bottom"><i
+                    class="icon-external-link-sign icon-fixed-width text-primary"></i>Statistics</h2>
+
+            <g:render template="/shared/comps/span3/roi"/>
+            <div class="separator bottom"></div>
+
+            <g:render template="/shared/comps/span3/serverWorkLoad"/>
+            <div class="separator bottom"></div>
+
+            <g:render template="/shared/comps/span3/visits"/>
+            <p class="separator text-center"><i class="icon-ellipsis-horizontal icon-3x"></i></p>
+
+            <g:render template="/shared/comps/span3/activity"/>
+
+            <g:render template="/shared/comps/span3/last-orders"/>
+
+            <g:render template="/shared/comps/span3/notes"/>
+
+            <g:render template="/shared/comps/span3/alert"/>
+
+            <g:render template="/shared/comps/span3/twitter"/>
+        </div>
+
+    </div>
+
+</div>
+
+</body>
 </html>
