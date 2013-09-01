@@ -4,9 +4,9 @@
     </a>
 
     <ul class="dropdown-menu pull-left">
-        <li class=""><a href="/company">Genel</a></li>
-        <li class=""><a href="/projects">Projeler</a></li>
-        <li class=""><a href="/people">Çalısanlar / Yetenek yönetimi</a></li>
+        <li class="active"><a href="/company">Genel</a></li>
+        <li class="active"><a href="/projects">Projeler</a></li>
+        <li class=""><a href="/people">Butun profiller</a></li>
     </ul>
 
 </li>

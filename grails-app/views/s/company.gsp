@@ -91,7 +91,7 @@
 <p class="separator text-center"><i class="icon-ellipsis-horizontal icon-3x"></i></p>
 
 
-<h3 class="glyphicons circle_info margin-none"><i></i>Kim? <span>Fikrimuhal Teknoloji ltd. sti.</span></h3>
+<h3 class="glyphicons circle_info margin-none"><i></i>Kim? <span><a href="/company/people">Hepsini göster</a></span></h3>
 
 <div class="separator bottom"></div>
 
@@ -103,23 +103,12 @@
     <ul class="thumbnails">
 
         <!-- Column -->
-        <li class="span4">
-            <style type="text/css">
-            .crop{
-                width: 350px;
-                height: 200px;
-                overflow: hidden;
-            }
+        <li class="span4" >
 
-            .crop img {
-                width: 350px;
-                height: 500px;
-                margin: -100px 0 0 -0px;
-            }
-            </style>
             <!-- Thumbnail -->
-            <div class="thumbnail widget-thumbnail">
-                    <img src="/images/photos/ilgaz2.jpg" alt="100%x200 Image Holder" style="height: 200px;"/>
+            <div class="thumbnail widget-thumbnail" onclick="document.location.href = '/company/people/ilgaz'"
+                 style="cursor: hand;">
+                <img src="/images/photos/ilgaz2.jpg" alt="100%x200 Image Holder" style="height: 200px;"/>
 
                 <div class="caption">
                     <h4>Ilgaz Şumnulu</h4>
@@ -144,13 +133,13 @@
         <li class="span4">
 
             <!-- Thumbnail -->
-            <div class="thumbnail widget-thumbnail">
-    <img src="/images/photos/ilgaz3.jpg" alt="100%x200 Image Holder" style="height: 200px;"/>
+            <div class="thumbnail widget-thumbnail" onclick="document.location.href = '/company/people/ilgaz'" style="cursor: hand;">
+                <img src="/images/photos/ilgaz3.jpg" alt="100%x200 Image Holder" style="height: 200px;"/>
 
                 <div class="caption">
                     <h4>Sami Can Tandoğdu</h4>
 
-                    <p>Bilkent İşletme mezunu. Bir süre finans sektöründe çalıştı. Rakamları pek bir seviyor.                    </p>
+                    <p>Bilkent İşletme mezunu. Bir süre finans sektöründe çalıştı. Rakamları pek bir seviyor.</p>
 
                     <!-- Social Icons -->
                     <a href="" class="glyphicons standard primary facebook"><i></i></a>
@@ -170,8 +159,9 @@
         <li class="span4">
 
             <!-- Thumbnail -->
-            <div class="thumbnail widget-thumbnail">
-    <img src="/images/photos/ilgaz4.jpg" alt="100%x200 Image Holder" style="height: 200px;"/>
+            <div class="thumbnail widget-thumbnail" onclick="document.location.href = '/company/people/ilgaz'"
+                 style="cursor: hand;">
+                <img src="/images/photos/ilgaz4.jpg" alt="100%x200 Image Holder" style="height: 200px;"/>
 
                 <div class="caption">
                     <h4>Jose Gonzales</h4>
@@ -220,7 +210,7 @@
                         <h4>Sentel Medya cozumleme</h4>
 
                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an <br/> <a
-                                href="">learn more</a></p>
+                                href="/project/makalepazari">learn more</a></p>
                     </div>
 
                     <div class="separator bottom"></div>
@@ -230,7 +220,7 @@
                         <h4>SirketGurusu</h4>
 
                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an <br/> <a
-                                href="">learn more</a></p>
+                                href="/project/makalepazari">learn more</a></p>
                     </div>
                 </div>
             </div>
@@ -250,7 +240,7 @@
                     <h4>Acikdemokrasi</h4>
 
                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an <br/> <a
-                            href="">learn more</a></p>
+                            href="/project/makalepazari">learn more</a></p>
                 </div>
 
                 <div class="separator bottom"></div>
@@ -260,7 +250,7 @@
                     <h4>Makale pazari</h4>
 
                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an <br/> <a
-                            href="">learn more</a></p>
+                            href="/project/makalepazari">learn more</a></p>
                 </div>
 
             </div>
@@ -287,7 +277,6 @@
             <p class="separator text-center"><i class="icon-ellipsis-horizontal icon-3x"></i></p>
 
             <g:render template="/shared/comps/span9/chat"/>
-            <p class="separator text-center"><i class="icon-ellipsis-horizontal icon-3x"></i></p>
 
 
 
@@ -362,7 +351,7 @@
                                     </div>
 
                                     <div class="span7">
-                                        <img src="../../../common/theme/images/gallery-2/9.jpg" alt=""/>
+                                        <img src="/common/theme/images/gallery-2/9.jpg" alt=""/>
                                     </div>
                                 </div>
                             </div>
@@ -437,6 +426,7 @@
         </div>
     </div>
 </div>
+<p class="separator text-center"><i class="icon-ellipsis-horizontal icon-3x"></i></p>
 
 
 <div class="innerLR widget widget-heading-simple widget-body-white">
@@ -452,6 +442,18 @@
                     <li>Is yaptigi sirketler / Referanslar </li>
                     <li>Insan kaynaklari / Staj / Fulltime basvuru </li>
                     <li>Gelir / Gider ?</li>
+                    <li>Logo</li>
+                    <li>Cover Picture?</li>
+                    <li>Daha buyuk fontlar ile yukarida sirket adi yazacak.</li>
+                    <li>Takip et / Star / address defterime ekle gibi bisey olacak. </li>
+                    <li>Bu sayfa Sirketin public sayfasi</li>
+                    <li>domain cname ile yonelendirile bilir olmali. sirketAdi.pano.io gibi ---> www.sirketadi.com, cname ile yonlendirildiginde top menu gozukmemeli yada daha kucuk olmali, branding az olmali, ama yinede olmali...</li>
+                    <li>Is yapmak istiyorum, yatirim yapmak istiyorum, gibi actionlar olabilir</li>
+                    <li>Facebook, google plus, etc linkleri</li>
+                    <li>Verdigi hizmetler (Tasarim, muhendislik, danismanlik, creative , etc.)</li>
+                    <li>Hakkimizda, vizyon, misyon yazilari</li>
+                    <li>Bu sayfadan, gosterilen sirkete puan verilebilinecek.</li>
+                    <li>Sayfayi goren kisi, bu sirketi calismak istedigi sirket ler listesine ekliye bilmeli.</li>
                 </ul>
             </div>
         </div>

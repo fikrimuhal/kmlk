@@ -51,7 +51,7 @@
             <tr>
                 <td width="80" class="center"><span class="thumb"><img
                         src="http://2.s3.envato.com/files/50444644/80-avatar.jpg" alt=""/></span></td>
-                <td class="important">Acikdemokrasi.org</td>
+                <td class="important"><a href="/project/makalepazari">Acikdemokrasi.org</a></td>
                 <td class="center stats"><span>Baslangic (Gün)</span><span class="count">65</span></td>
                 <td class="center stats"><span>Harcanan</span><span class="count">1,365 TL</span></td>
                 <td class="center stats"><span>Kazanç</span><span class="count">0</span></td>
@@ -60,7 +60,7 @@
             <tr>
                 <td width="80" class="center"><span class="thumb"><img
                         src="http://0.s3.envato.com/files/52347478/admin-avatar-12.jpg" alt=""/></span></td>
-                <td class="important">Makale Pazarı</td>
+                <td class="important"><a href="/project/makalepazari">Makale Pazarı</a></td>
                 <td class="center stats"><span>Baslangic (Gün)</span><span class="count">97</span></td>
                 <td class="center stats"><span>Harcanan</span><span class="count">400 TL</span></td>
                 <td class="center stats"><span>Kazanç</span><span class="count">0</span></td>
@@ -69,7 +69,7 @@
             <tr>
                 <td width="80" class="center"><span class="thumb"><img
                         src="http://2.s3.envato.com/files/50868169/avatar80.jpg" alt=""></span></td>
-                <td class="important">Startup Services</td>
+                <td class="important"><a href="/project/makalepazari">Startup Services</a></td>
                 <td class="center stats"><span>Baslangic (Gün)</span><span class="count">8</span></td>
                 <td class="center stats"><span>Harcanan</span><span class="count">0 TL</span></td>
                 <td class="center stats"><span>Kazanç</span><span class="count">0</span></td>
@@ -89,10 +89,10 @@
         <div class="row-fluid">
             <div class="span9">
                 <ul>
-                    <li>aaa</li>
-                    <li>aaa</li>
-                    <li>aaa</li>
-                    <li>aaa</li>
+                    <li>Grid view (list yerine)</li>
+                    <li>Projenin sahibi gosterilecek buyuk buyuk(sirket yada kisi)</li>
+                    <li></li>
+                    <li></li>
                 </ul>
             </div>
         </div>

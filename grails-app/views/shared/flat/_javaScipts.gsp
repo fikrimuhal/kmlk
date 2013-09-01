@@ -6,14 +6,14 @@
 <!-- jQuery Event Swipe -->
 <script src="/common/theme/scripts/plugins/system/jquery.event.swipe/js/jquery.event.swipe.js"></script>
 
-<!-- jQuery ScrollTo Plugin -->
-<!--[if gt IE 8]><!--><script src="http://balupton.github.io/jquery-scrollto/lib/jquery-scrollto.js"></script><!--<![endif]-->
+%{--<!-- jQuery ScrollTo Plugin -->--}%
+%{--<!--[if gt IE 8]><!--><script src="http://balupton.github.io/jquery-scrollto/lib/jquery-scrollto.js"></script><!--<![endif]-->--}%
 
-<!-- History.js -->
-<!--[if gt IE 8]><!--><script src="http://browserstate.github.io/history.js/scripts/bundled/html4+html5/jquery.history.js"></script><!--<![endif]-->
+%{--<!-- History.js -->--}%
+%{--<!--[if gt IE 8]><!--><script src="http://browserstate.github.io/history.js/scripts/bundled/html4+html5/jquery.history.js"></script><!--<![endif]-->--}%
 
-<!-- jQuery Ajaxify -->
-<!--[if gt IE 8]><!--><script src="/common/theme/scripts/plugins/system/jquery-ajaxify/ajaxify-html5.js"></script><!--<![endif]-->
+%{--<!-- jQuery Ajaxify -->--}%
+%{--<!--[if gt IE 8]><!--><script src="/common/theme/scripts/plugins/system/jquery-ajaxify/ajaxify-html5.js"></script><!--<![endif]-->--}%
 
 
 <!-- Code Beautify -->
@@ -32,6 +32,7 @@
 
 
 <!-- Modernizr -->
+
 <script src="/common/theme/scripts/plugins/system/modernizr.js"></script>
 
 <!-- Bootstrap -->
@@ -43,11 +44,11 @@
 <!-- Holder Plugin -->
 <script src="/common/theme/scripts/plugins/other/holder/holder.js?1374506511"></script>
 
-<!-- Uniform Forms Plugin -->
-<script src="/common/theme/scripts/plugins/forms/pixelmatrix-uniform/jquery.uniform.min.js"></script>
+%{--<!-- Uniform Forms Plugin -->--}%
+%{--<script src="/common/theme/scripts/plugins/forms/pixelmatrix-uniform/jquery.uniform.min.js"></script>--}%
 
-<!-- MegaMenu -->
-<script src="/common/theme/scripts/demo/megamenu.js?1374506511"></script>
+%{--<!-- MegaMenu -->--}%
+%{--<script src="/common/theme/scripts/demo/megamenu.js?1374506511"></script>--}%
 
 <!-- Bootstrap Extended -->
 <script src="/common/bootstrap/extend/bootstrap-select/bootstrap-select.js"></script>
@@ -79,10 +80,10 @@
 <script src="/common/theme/scripts/plugins/forms/select2/select2.js"></script>
 
 <!-- Themer -->
-<script src="/common/theme/scripts/demo/themer.js"></script>
+%{--<script src="/common/theme/scripts/demo/themer.js"></script>--}%
 
 <!-- Twitter Feed -->
-<script src="/common/theme/scripts/demo/twitter.js"></script>
+%{--<script src="/common/theme/scripts/demo/twitter.js"></script>--}%
 
 <!-- Easy-pie Plugin -->
 <script src="/common/theme/scripts/plugins/charts/easy-pie/jquery.easy-pie-chart.js"></script>

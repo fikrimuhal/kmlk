@@ -13,8 +13,15 @@
 </head>
 <body>
 
+<ul class="breadcrumb">
+    <li>Bulunduğunuz sayfa</li>
+    <li><a href="/" class="glyphicons home"><i></i>Ana sayfa</a></li>
+    <li class="divider"><i class="icon-caret-right"></i></li>
+    <li><a href="/people">Profiller</a></li>
+</ul>
+
 <h3>Kişiler</h3>
-<p>Sirket calisanlari, eski calisnalar, yetenek havuzu</p>
+<p>Sisteme kayitli olan herkes</p>
 
 
 
@@ -27,16 +34,9 @@
         <div class="row-fluid">
             <div class="span9">
                 <ul>
-                    <li>Sirket de calisanlarin listesi</li>
-                    <li>Kisilerin yetenekleri</li>
-                    <li>Kisilerin contact bilgileri</li>
-                    <li>Yetenek yonetimi, calisanlarin suanda neyi ogrendigi, ileride neyi ogrenmek istedigi</li>
-                    <li>Pozisyon</li>
-                    <li>Maasi</li>
-                    <li>Ozgecmis</li>
-                    <li>Freelance / Fulltime / PArt time</li>
-                    <li></li>
-                    <li></li>
+                    <li>box view olabilir</li>
+                    <li>List + search(filter)</li>
+                    <li>Categoriler (owner, grafik desginer, java, front end developer, backend, video)</li>
                 </ul>
             </div>
         </div>

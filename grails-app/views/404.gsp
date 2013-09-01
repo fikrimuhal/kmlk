@@ -118,15 +118,6 @@
 <!-- jQuery Event Swipe -->
 <script src="/common/theme/scripts/plugins/system/jquery.event.swipe/js/jquery.event.swipe.js"></script>
 
-<!-- jQuery ScrollTo Plugin -->
-<!--[if gt IE 8]><!--><script src="http://balupton.github.io/jquery-scrollto/lib/jquery-scrollto.js"></script><!--<![endif]-->
-
-<!-- History.js -->
-<!--[if gt IE 8]><!--><script src="http://browserstate.github.io/history.js/scripts/bundled/html4+html5/jquery.history.js"></script><!--<![endif]-->
-
-<!-- jQuery Ajaxify -->
-<!--[if gt IE 8]><!--><script src="/common/theme/scripts/plugins/system/jquery-ajaxify/ajaxify-html5.js"></script><!--<![endif]-->
-
 
 <!-- Code Beautify -->
 <script src="/common/theme/scripts/plugins/other/js-beautify/beautify.js"></script>
@@ -141,18 +132,6 @@
 
 <!-- Bootstrap -->
 <script src="/common/bootstrap/js/bootstrap.min.js"></script>
-
-<!-- SlimScroll Plugin -->
-<script src="/common/theme/scripts/plugins/other/jquery-slimScroll/jquery.slimscroll.js"></script>
-
-<!-- Holder Plugin -->
-<script src="/common/theme/scripts/plugins/other/holder/holder.js?1374506528"></script>
-
-<!-- Uniform Forms Plugin -->
-<script src="/common/theme/scripts/plugins/forms/pixelmatrix-uniform/jquery.uniform.min.js"></script>
-
-<!-- MegaMenu -->
-<script src="/common/theme/scripts/demo/megamenu.js"></script>
 
 
 

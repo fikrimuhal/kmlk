@@ -2,7 +2,8 @@
     <a href="" data-toggle="dropdown" class="glyphicons notes"><i></i>Hizmetler <span class="caret"></span></a>
     <ul class="dropdown-menu pull-left">
 
-        <li><a href="muasebe" class="glyphicons "><i></i>Muasebe</a></li>
+        <li class="active"><a href="muasebe" class="glyphicons "><i></i>Muasebe</a></li>
+        <li><a href="avukat" class="glyphicons "><i></i>Avukat</a></li>
         <li><a href="matbaa" class="glyphicons "><i></i>Matbaa / Baskı</a></li>
         <li><a href="finans" class="glyphicons "><i></i>Finans</a></li>
         <li><a href="yazilimGelistirme" class="glyphicons "><i></i>Yazilim geliştirme</a></li>

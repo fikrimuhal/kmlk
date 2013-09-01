@@ -16,13 +16,13 @@
 
 <ul class="breadcrumb">
     <li>Bulunduğunuz sayfa</li>
-    <li><a href="/projects">Servisler</a></li>
+    <li><a href="/">Servisler</a></li>
     <li class="divider"><i class="icon-caret-right"></i></li>
-    <li><a href="/company/projects/makalepazari">Muasebeci</a></li>
+    <li><a href="/avukat">Avukatlar</a></li>
 </ul>
 
 <div class="heading-buttons">
-    <h1>Muasebeci<span>listesi</span></h1>
+    <h1>Avukat<span>listesi</span></h1>
 
     <div class="buttons pull-right">
         <a href="" class="btn btn-primary btn-icon glyphicons circle_edit"><i></i>Değistir</a>
@@ -37,15 +37,15 @@
 <div class="innerLR  innerB widget widget-heading-simple widget-body-white">
     <div class="row-fluid">
         <div class="span9">
-            <g:render template="/s/muasebe/list"/>
+            <g:render template="/s/avukat/list"/>
         </div>
 
         <div class="span3">
 
             <div class="separator bottom"></div>
 
-            <g:render template="/s/muasebe/filter"/>
-            <g:render template="/s/muasebe/sideNote"/>
+            <g:render template="/s/avukat/filter"/>
+            <g:render template="/s/avukat/sideNote"/>
         </div>
     </div>
 </div>
@@ -61,7 +61,7 @@
             <div class="span9">
                 <ul>
 
-                    <li>Muasebecilere gosterilmek uzere benide bu listeye ekle linki (contact formuna gidecek)</li>
+                    <li></li>
                 </ul>
             </div>
         </div>
