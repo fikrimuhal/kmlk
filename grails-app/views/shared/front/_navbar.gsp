@@ -24,10 +24,9 @@
                     <a href="" class="icon-linkedin"></a>
                     <a href="" class="icon-google-plus"></a>
                 </li>
-                <li class="inverse"><a href="login.html?lang=en&amp;style=style-default-menus-dark"
-                                       class="glyphicons unlock no-ajaxify"><i></i> Sign in</a></li>
-                <li class="primary"><a href="signup.html?lang=en&amp;style=style-default-menus-dark"
-                                       class="glyphicons user_add no-ajaxify"><i></i> Sign up</a></li>
+                <li class="inverse"><a href="login" class="glyphicons unlock"><i></i> Giriş yap</a></li>
+                <li class="primary " ><a href="register" class="glyphicons user_add"><i></i> Kayit ol</a></li>
+                %{--<li class="primary active" ><a href="register" class="glyphicons user_add"><i></i> Kayit ol</a></li>--}%
             </ul>
 
             <div class="clearfix"></div>
@@ -45,29 +44,9 @@
         <ul class="topnav pull-right">
 
             <li><a href="/landing">Kisaca</a></li>
-            <li><a href="/landing">Bize Ulasin</a></li>
-            <li><a href="about.html?lang=en&amp;style=style-default-menus-dark">About</a></li>
-            <li><a href="pricing.html?lang=en&amp;style=style-default-menus-dark">Pricing</a></li>
-            <li class="dropdown dd-1">
-                <a href="" data-toggle="dropdown">Shop <span class="caret"></span></a>
-                <ul class="dropdown-menu pull-left">
-                    <li class=""><a href="shop.html?lang=en&amp;style=style-default-menus-dark">Catalog</a></li>
-                    <li class=""><a href="shop_product.html?lang=en&amp;style=style-default-menus-dark">Product page</a>
-                    </li>
-                    <li class=""><a href="shop_cart.html?lang=en&amp;style=style-default-menus-dark">Shopping Cart</a>
-                    </li>
-                </ul>
-            </li>
-            <li class="dropdown dd-1">
-                <a href="" data-toggle="dropdown">Blog <span class="caret"></span></a>
-                <ul class="dropdown-menu pull-right">
-                    <li class=""><a href="blog.html?lang=en&amp;style=style-default-menus-dark">Blog Posts</a></li>
-                    <li class=""><a
-                            href="blog_timeline.html?lang=en&amp;style=style-default-menus-dark">Blog Timeline</a></li>
-                </ul>
-            </li>
-            <li><a href="contact.html?lang=en&amp;style=style-default-menus-dark">Contact</a></li>
-
+            <li><a href="/contact">Bize Ulasin</a></li>
+            <li><a href="">Hakkımızda</a></li>
+            <li><a href="">Ücretler</a></li>
         </ul>
 
         <div class="clearfix"></div>

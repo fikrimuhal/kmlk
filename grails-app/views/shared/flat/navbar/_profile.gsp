@@ -27,7 +27,7 @@
         <li>
             <span>
                 <a class="btn btn-default btn-mini pull-right"
-                   href="/profile">Sign Out</a>
+                   href="/landing">Sign Out</a>
             </span>
         </li>
     </ul>
