@@ -7,7 +7,12 @@ class UrlMappings {
 			}
 		}
 
+		"/kimlik/kimlik"(view:"/kimlik")
+
+
+
 		"/"(view:"/landing")
+
 		"/landing"(view:"/landing")
 		"/login"(view:"/login")
 		"/register"(view:"/register")
