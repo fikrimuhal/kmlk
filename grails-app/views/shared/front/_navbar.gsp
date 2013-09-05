@@ -45,8 +45,8 @@
 
             <li><a href="/landing">Kisaca</a></li>
             <li><a href="/contact">Bize Ulasin</a></li>
-            <li><a href="">Hakkımızda</a></li>
-            <li><a href="">Ücretler</a></li>
+            <li><a href="/about">Hakkımızda</a></li>
+            <li><a href="/pricing">Ücretler</a></li>
         </ul>
 
         <div class="clearfix"></div>

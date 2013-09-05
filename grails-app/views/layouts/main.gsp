@@ -5,7 +5,7 @@
 <!--[if gt IE 8]> <html class="animations ie gt-ie8 fluid top-full menuh-top"> <![endif]-->
 <!--[if !IE]><!--><html class="animations fluid top-full menuh-top"><!-- <![endif]-->
 <head>
-    <title>FLAT KIT (v1.2.0)</title>
+    <title>Kurumsal.io</title>
 
     <!-- Meta -->
     <meta charset="UTF-8"/>
@@ -31,8 +31,9 @@
         <g:layoutBody></g:layoutBody>
     </div>
     <!-- // Content END -->
-
     <g:render template="/shared/flat/footer"/>
+    %{--<g:render template="/shared/front/footerBig"/>--}%
+
 
 </div>
 <!-- // Main Container Fluid END -->

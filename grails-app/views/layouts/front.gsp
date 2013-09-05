@@ -5,7 +5,7 @@
 <!--[if gt IE 8]> <html class="animations front ie gt-ie8 fluid top-full menuh-top sticky-top"> <![endif]-->
 <!--[if !IE]><!--><html class="animations front fluid top-full menuh-top sticky-top"><!-- <![endif]-->
 <head>
-    <title>FLAT KIT Template (v1.2.0)</title>
+    <title>Kurumsal.io</title>
 
     <!-- Meta -->
     <meta charset="UTF-8"/>

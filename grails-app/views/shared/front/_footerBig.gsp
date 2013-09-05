@@ -5,10 +5,11 @@
             <div class="span2">
                 <h4>Linkler</h4>
                 <ul>
-                    <li><a href="/">Ksaca</a></li>
-                    <li><a href="/">Hakkmızda</a></li>
-                    <li><a href="/">Bize erişin</a></li>
-                    <li><a href="/">Ücretler</a></li>
+                    <li><a href="/">Nedir?</a></li>
+                    <li><a href="/help">SSS</a></li>
+                    <li><a href="/about">Hakkmızda</a></li>
+                    <li><a href="/contact">Bize erişin</a></li>
+                    <li><a href="/pricing">Ücretler</a></li>
                 </ul>
             </div>
             <div class="span4">
@@ -56,3 +57,64 @@
 
 </div>
 <!-- // Footer END -->
+
+%{--<style type="text/css">--}%
+%{--html #footer {--}%
+    %{--height: auto;--}%
+    %{--line-height: 20px;--}%
+    %{--background: #1f2123;--}%
+    %{--color: #919192;--}%
+%{--}--}%
+%{--html #footer a {--}%
+    %{--color: #e5412d;--}%
+    %{--text-decoration: none;--}%
+%{--}--}%
+%{--html #footer .copy {--}%
+    %{--color: #efefef;--}%
+    %{--text-align: left;--}%
+%{--}--}%
+%{--html #footer .copy .appbrand {--}%
+    %{--position: absolute;--}%
+    %{--right: 10px;--}%
+    %{--text-transform: uppercase;--}%
+    %{--font-size: 15px;--}%
+    %{--font-weight: 700;--}%
+%{--}--}%
+%{--html #footer .box-generic {--}%
+    %{--background: #191a1c;--}%
+    %{--border: none;--}%
+%{--}--}%
+%{--html #footer h4 {--}%
+    %{--text-transform: uppercase;--}%
+    %{--font-size: 15px;--}%
+    %{--font-weight: 700;--}%
+    %{--text-shadow: none;--}%
+    %{--color: #fff;--}%
+    %{--margin: 0 0 8px;--}%
+%{--}--}%
+%{--html #footer ul {--}%
+    %{--list-style: none;--}%
+    %{--margin: 0 0 15px;--}%
+    %{--padding: 0;--}%
+%{--}--}%
+%{--html #footer ul li {--}%
+    %{--display: block;--}%
+    %{--background: #191a1c;--}%
+    %{--margin: 0 0 1px;--}%
+    %{--line-height: 30px;--}%
+    %{--height: 30px;--}%
+%{--}--}%
+%{--html #footer ul li a {--}%
+    %{--line-height: 30px;--}%
+    %{--height: 30px;--}%
+    %{--display: block;--}%
+    %{--padding: 0 10px;--}%
+%{--}--}%
+%{--html #footer ul.icons li {--}%
+    %{--padding: 0 10px 0 35px;--}%
+%{--}--}%
+%{--html #footer ul.icons li i:before {--}%
+    %{--top: 7px;--}%
+    %{--left: 10px;--}%
+%{--}--}%
+%{--</style>--}%

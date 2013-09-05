@@ -7,11 +7,19 @@ class UrlMappings {
 			}
 		}
 
-		"/"(view:"/index")
+		"/"(view:"/landing")
 		"/landing"(view:"/landing")
 		"/login"(view:"/login")
 		"/register"(view:"/register")
+
+		"/emailConfirm"(view:"/emailConfirm") //email ile yollanan confirm link
+		"/passForgot"(view:"/passForgot")     //parolami unuttum sayfasi
+		"/passForgot"(view:"/passForgot")
+
 		"/contact"(view:"/contact")
+		"/about"(view:"/about")
+		"/pricing"(view:"/pricing")
+		"/help"(view:"/help")
 
 		"/dashboard"(view:"/index")
 		"/profile"(view:"/s/profile")
@@ -19,6 +27,10 @@ class UrlMappings {
 		"/company"(view:"/s/company")
 		"/company/people"(view:"/s/companyPeople")
 		"/company/people/ilgaz"(view:"/s/companyPerson")
+		"/profile/ilgaz"(view:"/s/companyPerson")
+		"/profile/ilgaz/skills"(view:"/s/profile/profileSkills")
+		"/profile/ilgaz/certificates"(view:"/s/profile/profileCertificates")
+
         "/people"(view:"/s/people")
         "/projects"(view:"/s/projects")
         "/project/makalepazari"(view:"/s/project")

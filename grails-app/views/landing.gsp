@@ -12,8 +12,9 @@
 
     <div class="container-960 innerT">
         <div class="widget widget-heading-simple widget-body-gray">
-            <div class="widget-body"><p class="margin-none">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley. of.type and scrambled it to</p></div>
+            <div class="widget-body"><p class="margin-none">Sirketinizi kurduktan sonra yada once uye olmaniz gereken en onemli platform <strong> Kurumsal.IO</strong> Bizde bir startup'ız, karsilasacaginiz zorluklardan bizde nasibimizi aldik ve bir sirket kurmak ve yonetmek nasil daha kolay olur dedik ve ortaya Kurumsal.IO cikti. </p></div>
         </div>
+
 
         <div class="row-fluid">
             <div class="span3">
@@ -22,7 +23,7 @@
                         <div class="glyphicons glyphicon-xlarge glyphicon-top building">
                             <i></i>
                             <h4>Sirket kur</h4>
-                            <p class="margin-none">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an <br/> <a href="">learn more</a></p>
+                            <p class="margin-none">Var olan sirketini/toplulugunu database'e ekle. Yeni bir sirket mi kuracaksin? Yardim edelim. Hem de ucretsiz. Muasebeci, avukat, calisan yada ortak bulmana yardimci olalim.</p>
                         </div>
                     </div>
                 </div>
@@ -33,7 +34,7 @@
                         <div class="glyphicons glyphicon-xlarge glyphicon-top cloud">
                             <i></i>
                             <h4>Hizmetlere eriş</h4>
-                            <p class="margin-none">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an <br/> <a href="">learn more</a></p>
+                            <p class="margin-none">Iyi bir muasebeci, frontend developer, backend developer, tasarimci, avukat, backend developer, big data dan anlayan birilerini bulmak zordur. <br><br> Yada sirketini kurduk diyelim ne yiyecek icecek bu insanlar? Kurumsal.IO size bu konulari cozmenize yardim edecek araclar saglayacaktir. <br><br><br> </p>
                         </div>
                     </div>
                 </div>
@@ -44,7 +45,7 @@
                         <div class="glyphicons glyphicon-xlarge glyphicon-top settings">
                             <i></i>
                             <h4>Sirketini Yönet</h4>
-                            <p class="margin-none">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an <br/> <a href="">learn more</a></p>
+                            <p class="margin-none">Starup larin en guzel yani sevdiginiz, heyecan duydugunuz isi yapmaktir. Ama size soylenmeyen sikici bir yanida vardir, sirketin muasebesiyle ugrasirsiniz, yeni birilerini ise almaya calisirsiniz, ilan veririsiniz, mulakat yaparsiniz, kararsiz kalirsiniz, sosyal medya yonetmeye calisirsiniz ve bir bakmissiniz esas yapmaniz gereken isi yapacak vakit kalamamistir.  </p>
                         </div>
                     </div>
                 </div>
@@ -55,7 +56,7 @@
                         <div class="glyphicons glyphicon-xlarge glyphicon-top group glyphicon-primary">
                             <i></i>
                             <h4>Sosyal network</h4>
-                            <p class="margin-none">Kurumsal.IO bir sirketler icin bir sosyal networktür. Sirketinizin ve sizin internetteki gorunurlugunuzu arttirir. Yeni yetenekler bulmanizi saglar. <br/> <br/> <a href="">daha fazla bilgi</a></p>
+                            <p class="margin-none">Kurumsal.IO bir sirketler icin bir sosyal networktür. Sirketinizin ve sizin internetteki gorunurlugunuzu arttirir. Yeni yetenekler bulmanizi saglar. <br/> <br/> <a href="/help">daha fazla bilgi</a></p>
                         </div>
                     </div>
                 </div>
