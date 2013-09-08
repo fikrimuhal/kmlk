@@ -62,10 +62,12 @@
 
 <body data-spy="scroll" data-target="#menu">
 
+
 <!-- Start Content -->
 <div class="container left-menu">
 
     <div id="wrapper">
+
 
         <g:render template="/kimlik/leftMenu"></g:render>
 
@@ -78,6 +80,7 @@
 
             <div class="separator"></div>
 
+        <g:render template="/kimlik/alerts"></g:render>
             <div class="heading-buttons">
                 <h2 class="glyphicons user"><i></i>Mr. Awesome<span class="visible-desktop">| Marketing director</span>
                 </h2>

@@ -197,7 +197,7 @@
         </li>
     </ul>
 </div>
-<div class="separator line" id="blog"></div>
+<div class="separator line" id="blog"></div>   rm`
 
 <div id="blog-listing">
     <div class="ajax-loading center"><img src="/kimlik/images/ajax-loader.gif" alt="Ajax loading" /></div>

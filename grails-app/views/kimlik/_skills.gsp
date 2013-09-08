@@ -3,7 +3,7 @@
 
 
 <div class="heading-buttons">
-    <h3 class="glyphicons settings"><i></i> Skills<span> <a href="/kimlik/ilgaz/skills">hepsini goster</a></span></h3>
+    <h3 class="glyphicons settings"><i></i> BECERILER<span> <a href="/kimlik/ilgaz/skills">hepsini goster</a></span></h3>
     <div class="buttons pull-right">
         <a href="/kimlik/ilgaz/skills">düzenle</a>
     </div>
@@ -57,12 +57,9 @@
         </table>
     </div>
     <div class="span6">
+
         <table class="table table-condensed">
             <tbody>
-            <tr>
-                <td class="right muted">Front Dev.</td>
-                <td class="w-70"><span class="label label-important">HTML</span> <span class="label label-important">CSS</span> <span class="label label-important">JavaScript</span> <span class="label label-important">jQuery</span></td>
-            </tr>
             <tr>
                 <td class="right muted">CMS</td>
                 <td><span class="label label-important">WordPress</span> <span class="label label-important">Joomla</span> <span class="label label-important">Drupal</span></td>
@@ -70,6 +67,22 @@
             <tr>
                 <td class="right muted">Other</td>
                 <td class="w-70">
+                    <span class="label label-important">PHP</span>
+                    <span class="label label-important">MySQL</span>
+                    <span class="label label-important">Linux</span>
+                    <span class="label label-important">PHP</span>
+                    <span class="label label-important">PHP</span>
+                    <span class="label label-important">PHP</span>
+                    <span class="label label-important">PHP</span>
+                    <span class="label label-important">PHP</span>
+                    <span class="label label-important">MySQL</span>
+                    <span class="label label-important">Linux</span>  <span class="label label-important">PHP</span>
+                    <span class="label label-important">MySQL</span>
+                    <span class="label label-important">Linux</span>
+                    <span class="label label-important">PHP</span>
+                    <span class="label label-important">PHP</span>
+                    <span class="label label-important">PHP</span>
+                    <span class="label label-important">PHP</span>
                     <span class="label label-important">PHP</span>
                     <span class="label label-important">MySQL</span>
                     <span class="label label-important">Linux</span>
@@ -92,5 +105,5 @@
             </tr>
             </tbody>
         </table>
-    </div>
-</div>
+    </div>  %{--span 6--}%
+</div> %{--row--}%

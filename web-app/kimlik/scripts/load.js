@@ -126,7 +126,7 @@ $(function()
 	    offset : 150
 	});
 	
-	$('#menu a').not('[data-toggle]').click(function(e)
+	$('#menu a').not('[data-toggle]').not('[data-defaultLink]').click(function(e)
 	{
 		e.preventDefault();
 		scrollTo($(this).attr('href'));
