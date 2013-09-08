@@ -15,12 +15,15 @@ class UrlMappings {
 
 
 
-        "/"(view: "/landing")
-        "/terms"(view: "/terms")
+        "/"(view: "/register")
+        "/help/terms"(view: "/help_terms")
+        "/help/ik"(view: "/help_ik")
+        "/help/register"(view: "/help")
 
-        "/landing"(view: "/landing")
         "/login"(view: "/login")
         "/register"(view: "/register")
+
+        "/landing"(view: "/landing")
 
         "/emailConfirm"(view: "/emailConfirm") //email ile yollanan confirm link
         "/passForgot"(view: "/passForgot")     //parolami unuttum sayfasi

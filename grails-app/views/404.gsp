@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-    <title>FLAT KIT (v1.2.0)</title>
+    <title>Kimlik.IO</title>
 
     <!-- Meta -->
     <meta charset="UTF-8" />
