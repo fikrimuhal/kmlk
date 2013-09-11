@@ -7,21 +7,23 @@ class UrlMappings {
             }
         }
 
-        "/kimlik/$user?/follow"(view: "/kimlik/followPage")
-        "/kimlik/$user?/education"(view: "/kimlik/educationPage")
-        "/kimlik/$user?/employment"(view: "/kimlik/employmentPage")
-        "/kimlik/$user?/skills"(view: "/kimlik/skills")
-        "/kimlik/$user?"(view: "/kimlik/kimlik")
+        "/kimlik/$username?/$action?"(controller: 'kimlik')
+//
+//        "/kimlik/$user?/follow"(view: "/kimlik/followPage")
+//        "/kimlik/$user?/education"(view: "/kimlik/educationPage")
+//        "/kimlik/$user?/employment"(view: "/kimlik/employmentPage")
+//        "/kimlik/$user?/skills"(view: "/kimlik/skills")
+//        "/kimlik/$user?"(view: "/kimlik/kimlik")
 
 
 
-        "/"(view: "/register")
+        "/"(controller: "register" ,action: 'index')
         "/help/terms"(view: "/help_terms")
         "/help/ik"(view: "/help_ik")
         "/help/register"(view: "/help")
+        "/help"(view: "/help")
 
         "/login"(view: "/login")
-        "/register"(view: "/register")
 
         "/landing"(view: "/landing")
 
@@ -32,7 +34,6 @@ class UrlMappings {
         "/contact"(view: "/contact")
         "/about"(view: "/about")
         "/pricing"(view: "/pricing")
-        "/help"(view: "/help")
 
         "/dashboard"(view: "/index")
         "/profile"(view: "/s/profile")
@@ -64,7 +65,7 @@ class UrlMappings {
         "/etkinlik"(view: "/s/etkinlik")
         "/projeFinans"(view: "/s/projeFinans")
 
-        "500"(view: '/error')
+       // "500"(view: '/error')
         "404"(view: '/404')
     }
 }

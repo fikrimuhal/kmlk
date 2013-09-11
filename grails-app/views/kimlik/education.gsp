@@ -5,7 +5,7 @@
 </head>
 
 <body>
-<g:render template="/kimlik/employmentEditable"></g:render>
+<g:render template="/kimlik/educationEditable" model="[profile:profile]"></g:render>
 
 
 </body>

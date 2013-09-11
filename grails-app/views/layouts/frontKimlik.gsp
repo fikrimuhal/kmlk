@@ -34,9 +34,14 @@
 
     <!-- LESS.js Library -->
     <script src="/common/theme/scripts/plugins/system/less.min.js"></script>
+
+    %{--<r:require modules=" fresh,freshServices,freshControllers"/>--}%
+
+    <g:layoutHead/>
+    <r:layoutResources/>
 </head>
 
-<body class="login">
+<body class="login " ng-app='kimlikFront'>
 
 <!-- Main Container Fluid -->
 <div class="container-fluid menu-hidden">
@@ -99,6 +104,7 @@
 
 %{--<!-- Common Demo Script -->--}%
 %{--<script src="/common/theme/scripts/demo/common.js?1374506533"></script>--}%
+<r:layoutResources/>
 
 </body>
 </html>

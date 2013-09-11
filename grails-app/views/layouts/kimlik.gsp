@@ -4,7 +4,7 @@
 <!--[if IE 8]>    <html class="lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html><!--<![endif]-->
 <head>
-    <title>AIR Business Card - Responsive vCard &amp; Portfolio (v1.1)</title>
+    <title>Kimlik.io</title>
 
     <!-- Meta -->
     <meta charset="UTF-8"/>
@@ -62,17 +62,15 @@
 
 <body data-spy="scroll" data-target="#menu">
 
-
 <!-- Start Content -->
 <div class="container left-menu">
 
     <div id="wrapper">
 
-
         <g:render template="/kimlik/leftMenu"></g:render>
 
         <div id="content">
-        <!-- Menu Toggle on mobile -->
+            <!-- Menu Toggle on mobile -->
             <button type="button" class="btn btn-navbar main" data-spy="affix" data-offset-top="50">
                 <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
 
@@ -80,9 +78,10 @@
 
             <div class="separator"></div>
 
-        <g:render template="/kimlik/alerts"></g:render>
+            %{--<g:render template="/kimlik/alerts"></g:render>--}%
             <div class="heading-buttons">
-                <h2 class="glyphicons user"><i></i>Mr. Awesome<span class="visible-desktop">| Marketing director</span>
+                <h2 class="glyphicons user"><i></i>${profile.name}<span
+                        class="visible-desktop">| ${profile.workHistory.lastEntity.position}</span>
                 </h2>
 
                 <div class="buttons pull-right">

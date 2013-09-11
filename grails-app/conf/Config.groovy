@@ -15,18 +15,18 @@ grails.project.groupId = appName // change this to alter the default package nam
 grails.mime.file.extensions = true // enables the parsing of file extensions from URLs into the request format
 grails.mime.use.accept.header = false
 grails.mime.types = [
-    all:           '*/*',
-    atom:          'application/atom+xml',
-    css:           'text/css',
-    csv:           'text/csv',
-    form:          'application/x-www-form-urlencoded',
-    html:          ['text/html','application/xhtml+xml'],
-    js:            'text/javascript',
-    json:          ['application/json', 'text/json'],
-    multipartForm: 'multipart/form-data',
-    rss:           'application/rss+xml',
-    text:          'text/plain',
-    xml:           ['text/xml', 'application/xml']
+        all: '*/*',
+        atom: 'application/atom+xml',
+        css: 'text/css',
+        csv: 'text/csv',
+        form: 'application/x-www-form-urlencoded',
+        html: ['text/html', 'application/xhtml+xml'],
+        js: 'text/javascript',
+        json: ['application/json', 'text/json'],
+        multipartForm: 'multipart/form-data',
+        rss: 'application/rss+xml',
+        text: 'text/plain',
+        xml: ['text/xml', 'application/xml']
 ]
 
 // URL Mapping Cache Max Size, defaults to 5000
@@ -51,7 +51,7 @@ grails.enable.native2ascii = true
 // packages to include in Spring bean scanning
 grails.spring.bean.packages = []
 // whether to disable processing of multi part requests
-grails.web.disable.multipart=false
+grails.web.disable.multipart = false
 
 // request parameters to mask when logging exceptions
 grails.exceptionresolver.params.exclude = ['password']
@@ -59,16 +59,43 @@ grails.exceptionresolver.params.exclude = ['password']
 // configure auto-caching of queries by default (if false you can cache individual queries with 'cache: true')
 grails.hibernate.cache.queries = false
 
+
+
+grails.resources.debug = false
+grails.cache.clearAtStartup = true
+
+grails.gorm.default.constraints = {
+    '*'(nullable: true)
+}
+
 environments {
     development {
         grails.logging.jul.usebridge = true
+        //ipfw add 10 fwd 127.0.0.1,8080 tcp from any to me 80
+        grails.serverURL = "http://localhost.kimlik.io"
         grails.app.context = "/"
         grails.resources.debug = true
-        cache.headers.enabled = true
+        cache.headers.enabled = false
+
+
     }
     production {
         grails.logging.jul.usebridge = false
-        // TODO: grails.serverURL = "http://www.changeme.com"
+        grails.serverURL = "http://kimlik.io"
+        grails.app.context = "/"
+        grails.resources.debug = true
+        cache.headers.enabled = true
+
+    }
+
+    test {
+        grails.logging.jul.usebridge = false
+        grails.serverURL = "http://localhost.kimlik.io:8080"
+        grails.app.context = "/"
+        grails.resources.debug = false
+        cache.headers.enabled = false
+
+
     }
 }
 
@@ -80,15 +107,102 @@ log4j = {
     //    console name:'stdout', layout:pattern(conversionPattern: '%c{2} %m%n')
     //}
 
-    error  'org.codehaus.groovy.grails.web.servlet',        // controllers
-           'org.codehaus.groovy.grails.web.pages',          // GSP
-           'org.codehaus.groovy.grails.web.sitemesh',       // layouts
-           'org.codehaus.groovy.grails.web.mapping.filter', // URL mapping
-           'org.codehaus.groovy.grails.web.mapping',        // URL mapping
-           'org.codehaus.groovy.grails.commons',            // core / classloading
-           'org.codehaus.groovy.grails.plugins',            // plugins
-           'org.codehaus.groovy.grails.orm.hibernate',      // hibernate integration
-           'org.springframework',
-           'org.hibernate',
-           'net.sf.ehcache.hibernate'
+    error 'org.codehaus.groovy.grails.web.servlet',        // controllers
+            'org.codehaus.groovy.grails.web.pages',          // GSP
+            'org.codehaus.groovy.grails.web.sitemesh',       // layouts
+            'org.codehaus.groovy.grails.web.mapping.filter', // URL mapping
+            'org.codehaus.groovy.grails.web.mapping',        // URL mapping
+            'org.codehaus.groovy.grails.commons',            // core / classloading
+            'org.codehaus.groovy.grails.plugins',            // plugins
+            'org.codehaus.groovy.grails.orm.hibernate',      // hibernate integration
+            'org.springframework',
+            'org.hibernate',
+            'net.sf.ehcache.hibernate'
+
+    debug 'grails.app.controllers',
+            'grails.app.services',
+            'grails.app.domain',
+            'grails.app.filters'
+//            'org.apache.http.headers',
+//            'org.apache.http.wire'
 }
+
+oauth {
+    providers {
+        twitter { //todo Bu sental yeni app kaydet
+            api = org.scribe.builder.api.TwitterApi
+            key = '***REMOVED***'
+            secret = '***REMOVED***'
+            callback = "${grails.serverURL}/oauth/twitter/callback"
+            successUri = '/register/success/twitter'
+            failureUri = '/register/failure/twitter'
+        }
+        facebook {
+            api = org.scribe.builder.api.FacebookApi
+            key = '***REMOVED***'
+            secret = '***REMOVED***'
+            callback = "${grails.serverURL}/oauth/facebook/callback"
+            successUri = '/register/success/facebook'
+            failureUri = '/register/failure/facebook'
+            scope="email"
+        }
+        linkedin {//todo bu partical app yeni app kaydet
+            api = org.scribe.builder.api.LinkedInApi
+            key = '***REMOVED***'
+            secret = '***REMOVED***'
+            callback = "${grails.serverURL}/oauth/linkedin/callback"
+            successUri = '/register/success/linkedin'
+            failureUri = '/register/failure/linkedin'
+        }
+        google {//todo bu partical app yeni app kaydet
+            api = org.scribe.builder.api.GoogleApi
+            key = '***REMOVED***'
+            secret = '***REMOVED***'
+            callback = "${grails.serverURL}/oauth/google/callback"
+            successUri = '/register/success/google'
+            failureUri = '/register/failure/google'
+        }
+    }
+    debug = true
+
+}
+
+
+
+cache.headers.presets = [
+        nocache: false,
+        static_html_template: [shared: true, validFor: 60 * 60 * 24],
+        public_3600: [shared: true, validFor: 3600],
+        public_60: [shared: true, validFor: 60],
+        public_10: [shared: true, validFor: 10],
+        private_300: [shared: false, validFor: 300],
+        private_5: [shared: false, validFor: 5]
+]
+
+
+grails.mail.host = "email-smtp.us-east-1.amazonaws.com"
+grails.mail.port = "587"
+grails.mail.username = "***REMOVED***"
+grails.mail.password = "***REMOVED***"
+grails.mail.props = ["mail.smtp.auth": "true",
+        "mail.smtp.socketFactory.port": "465",
+        "mail.smtp.socketFactory.class": "javax.net.ssl.SSLSocketFactory",
+        "mail.smtp.socketFactory.fallback": "false"
+]
+
+
+
+tomcat.deploy.username = "bamboo"
+tomcat.deploy.password = "***REMOVED***"
+tomcat.deploy.url = "http://localhost:8080/manager"
+
+
+
+
+
+
+
+
+
+
+

@@ -3,8 +3,8 @@
     <div class="span6">
         <h4 class="glyphicons share"><i></i>takip et <small> <a href="/kimlik/ilgaz/follow">düzenle</a></small></h4>
 
-        <button class="btn btn-action btn-inverse btn-large glyphicons facebook"><i></i></button>
-        <button class="btn btn-action btn-inverse btn-large glyphicons twitter"><i></i></button>
+        <a href="${profile.accounts.facebook.remoteId}" class="btn btn-action btn-inverse btn-large glyphicons facebook"><i></i></a>
+        <a class="btn btn-action btn-inverse btn-large glyphicons twitter"><i></i></a>
         <button class="btn btn-action btn-primary btn-large glyphicons google_plus"><i></i></button>
         <button class="btn btn-action btn-primary btn-large glyphicons picasa"><i></i></button>
         <button class="btn btn-action btn-primary btn-large glyphicons tumblr"><i></i></button>

@@ -27,7 +27,7 @@
     <!-- Content -->
     <div id="content">
 
-    <g:render template="/shared/flat/navbar"/>
+    %{--<g:render template="/shared/flat/navbar"/>--}%
         <g:layoutBody></g:layoutBody>
     </div>
     <!-- // Content END -->

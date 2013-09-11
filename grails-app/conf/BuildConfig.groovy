@@ -46,9 +46,16 @@ grails.project.dependency.resolution = {
             excludes "commons-logging", "xml-apis", "groovy"
         }
 
+       compile 'oauth.signpost:signpost-core:1.2.1.2'
+       compile 'oauth.signpost:signpost-commonshttp4:1.2.1.2'
+
+
+
     }
 
     plugins {
+        runtime ':oauth:2.0.1'
+
         compile ":mongodb:1.3.0"
 
         runtime ":jquery:1.8.3"

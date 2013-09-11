@@ -1,34 +1,28 @@
-
 <div class="separator line"></div>
 
-
 <div class="heading-buttons">
-    <h3 class="glyphicons certificate"><i></i> EĞİTİM<span> <a href="/kimlik/ilgaz/education">hepsini goster</a></span></h3>
+    <h3 class="glyphicons share_alt"><i></i>  Eğitim Geçmişi<span><g:link action="education"
+                                                                          params="[username: params.username]">hepsini goster</g:link>
+    </span></h3>
+
     <div class="buttons pull-right">
-        <a href="/kimlik/ilgaz/education">düzenle</a>
+        <g:link action="education" params="[username: params.username]">düzenle</g:link>
     </div>
 </div>
 <ul class="history">
-    <li class="row-fluid">
-        <span class="date span3">
-            <span class="label label-important">2004 - 2008</span>
-            <span class="glyphicons hidden-tablet calendar pull-right color-primary"><i></i></span>
-        </span>
-        <div class="body span9">
-            <h4>Marketing University</h4>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tincidunt diam ac lectus tristique scelerisque. Quisque vitae libero sit amet turpis faucibus auctor eget vitae tortor. Aenean metus erat, ultricies non mattis quis, molestie ac massa. Sed sollicitudin erat ac dui viverra a posuere eros adipiscing. Phasellus nisi lectus, imperdiet sed hendrerit ac, dictum quis sem. Phasellus vel nisi non massa elementum porta. Aliquam erat volutpat.
-        </div>
-        <div class="clearfix"></div>
-    </li>
-    <li class="row-fluid">
-        <span class="date span3">
-            <span class="label label-important">2002 - 2004</span>
-            <span class="glyphicons hidden-tablet calendar pull-right color-primary"><i></i></span>
-        </span>
-        <div class="body span9">
-            <h4>Marketing School</h4>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin tincidunt diam ac lectus tristique scelerisque. Quisque vitae libero sit amet turpis faucibus auctor eget vitae tortor. Aenean metus erat, ultricies non mattis quis, molestie ac massa. Sed sollicitudin erat ac dui viverra a posuere eros adipiscing. Phasellus nisi lectus, imperdiet sed hendrerit ac, dictum quis sem. Phasellus vel nisi non massa elementum porta. Aliquam erat volutpat.
-        </div>
-        <div class="clearfix"></div>
-    </li>
+    <g:each in="${profile.educationHistory.history}">
+        <li class="row-fluid">
+            <span class="date span3">
+                <span class="label label-important">${it.startDate?.year} - ${it.endDate?.year}</span>
+                <span class="glyphicons hidden-tablet calendar pull-right"><i></i></span>
+            </span>
+
+            <div class="body span9">
+                <h4>${it.position} @${it.entity}</h4>
+                ${it.note}
+            </div>
+
+            <div class="clearfix"></div>
+        </li>
+    </g:each>
 </ul>

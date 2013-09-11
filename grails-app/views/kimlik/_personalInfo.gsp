@@ -13,6 +13,10 @@
     cursor: text;
 }
 
+    .private{
+        /*-webkit-filter: blur(3px);*/
+
+    }
 </style>
 
 <div class="row-fluid">
@@ -22,27 +26,27 @@
             <tbody>
             <tr>
                 <td class="right muted">Dogum Tarihi</td>
-                <td><span contenteditable="true">February 25th, 1980</span></td>
+                <td class="private"><span contenteditable="true">${profile.birthDate.format("MMM d, ''yy")}</span></td>
             </tr>
             <tr>
                 <td class="right muted">Adres</td>
-                <td contenteditable="true">1st, Lorem ipsum dolor Street,<br/>Los Angeles,<br/>California</td>
+                <td  class="private" contenteditable="true">${profile.contactInfo.address.fullAddress}</td>
             </tr>
             <tr>
                 <td class="right muted">E-mail</td>
-                <td contenteditable="true">mr.awesome@email-address.com</td>
+                <td  class="private" contenteditable="true">${profile.contactInfo.publicEmail}</td>
             </tr>
             <tr>
                 <td class="right muted">Tel</td>
-                <td contenteditable="true">01 23456789</td>
+                <td  class="private" contenteditable="true">${profile.contactInfo.publicTel}</td>
             </tr>
             <tr>
                 <td class="right muted">Website</td>
-                <td contenteditable="true">awesome-website.com</td>
+                <td contenteditable="true">${profile.contactInfo.webSite}</td>
             </tr>
             <tr>
                 <td class="right muted">Enson sirketim</td>
-                <td contenteditable="true">Famous Company, Inc.</td>
+                <td contenteditable="true">${profile.workHistory.lastEntity.entity}</td>
             </tr>
             </tbody>
         </table>
@@ -51,7 +55,7 @@
     </div>
 
     <div class="span6">
-        <h4 class="glyphicons cardio"><i></i>marketing director at <a>Company, Inc.</a></h4>
+        <h4 class="glyphicons cardio"><i></i>${profile.workHistory.lastEntity.position} at <a>${profile.workHistory.lastEntity.entity}</a></h4>
 
         <div class="row-fluid about">
             <div class="span6">
@@ -77,7 +81,7 @@
             </div>
 
             <div class="span6">
-                <p contenteditable="true">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque auctor blandit eros vel scelerisque. Donec mi eros, eleifend et ornare tempus, bibendum a metus. Proin nec nisi et augue sodales gravida. Sed fermentum molestie tortor sit amet pulvinar.</p>
+                <p contenteditable="true">${profile.aboutText}</p>
             </div>
         </div>
 

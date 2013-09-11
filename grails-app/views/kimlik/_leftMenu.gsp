@@ -1,6 +1,6 @@
 <div id="menu" class="hidden-phone">
 
-    <h1>Mr. Awesome</h1>
+    <h1>${profile.name}</h1>
     <span class="profile">
         <span class="img"><img src="http://dummyimage.com/74x74/232323/ffffff&amp;text=photo"
                                alt="Mr. Awesome"/></span>
