@@ -11,7 +11,7 @@ class PersonalSkill {
     Skill skill
     String name
     Double percent // calculated score from other data
-    Double self_score
+    Double self_score //1,2,3,4
 
     Set<Profile> betterThanMe = new HashSet<Profile>()
     Set<Profile> sameAsMe = new HashSet<Profile>()

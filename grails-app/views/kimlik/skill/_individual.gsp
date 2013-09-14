@@ -17,9 +17,9 @@
             <a ng-click="rateSelf(skill.name,1)" ng-class="{'selected': skill.self_score==1}" class="rateLink"
                href="">Adını duydum</a> |
             <a ng-click="rateSelf(skill.name,2)" ng-class="{'selected': skill.self_score==2}" class="rateLink "
-               href="">Öğrenmekteyim</a> |
+               href="">Yeni / Öğrenmekteyim</a> |
             <a ng-click="rateSelf(skill.name,3)" ng-class="{'selected': skill.self_score==3}" class="rateLink"
-               href="">Orta seviye</a> |
+               href="">Orta/İyi Seviyedeyim</a> |
             <a ng-click="rateSelf(skill.name,4)" ng-class="{'selected': skill.self_score==4}" class="rateLink"
                href="">Uzman</a>
         </div>

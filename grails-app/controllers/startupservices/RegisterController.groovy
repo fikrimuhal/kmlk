@@ -17,7 +17,7 @@ import org.scribe.model.Response
 
 class RegisterController {
     final String FACEBOOK_GRAPH_URL = 'https://graph.facebook.com/'
-
+    def random = new Random()
     def index() {
     }
 
@@ -103,7 +103,7 @@ class RegisterController {
                         ]),
                 aboutText: ' About tetxtim dir budur..Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque auctor blandit eros vel scelerisque. Donec mi eros, eleifend et ornare tempus, bibendum a metus. Proin nec nisi et augue sodales gravida. Sed fermentum molestie tortor sit amet pulvinar.',
                 birthDate: new Date(year: 1985, month: 9, date: 16),
-                skills: [
+                skills: [ //todo mock change me
                         new PersonalSkill(percent: random.nextDouble() * 100, name: 'Java'),
                         new PersonalSkill(percent: random.nextDouble() * 100, name: 'Web Tasarim'),
                         new PersonalSkill(percent: random.nextDouble() * 100, name: 'CSS'),
@@ -118,44 +118,8 @@ class RegisterController {
                         new PersonalSkill(percent: random.nextDouble() * 100, name: 'SQL'),
                         new PersonalSkill(percent: random.nextDouble() * 100, name: 'NoSql'),
                 ].sort { -it.percent },
-                friends: [
-                        new Profile(first_name: 'Ardaa', middle_name: 'Yigithan', last_name: 'Orhan', accounts: new Accounts(facebook: new Facebook(remoteId: '4811236'))),
-                        new Profile(first_name: 'Nilay', last_name: 'Karamollaoğlu', accounts: new Accounts(facebook: new Facebook(remoteId: '8118513'))),
-                        new Profile(first_name: 'Ant', last_name: 'Ekşiler', accounts: new Accounts(facebook: new Facebook(remoteId: '9305732'))),
-                        new Profile(first_name: 'Ayca', last_name: 'Ozkn', accounts: new Accounts(facebook: new Facebook(remoteId: '500497458'))),
-                        new Profile(first_name: 'Iris', last_name: 'Aydin', accounts: new Accounts(facebook: new Facebook(remoteId: '501080824'))),
-                        new Profile(first_name: 'Bilgun', last_name: 'Yildirim', accounts: new Accounts(facebook: new Facebook(remoteId: '503965392'))),
-                        new Profile(first_name: 'Samican', last_name: 'Çapuldoğdu', accounts: new Accounts(facebook: new Facebook(remoteId: '504732688')))
-                ]
+                friends: []
         )
-        p.friends.each { it.setId(new ObjectId()) }
-        p.setId(new ObjectId())
-        def php = new PersonalSkill(percent: random.nextDouble() * 100, name: 'PHP', sameAsMe: [
-                Profile.list()[11],
-                Profile.list()[12],
-                Profile.list()[13],
-                Profile.list()[14],
-                Profile.list()[15],
-                Profile.list()[16]
-        ], worstThanMe: [
-                Profile.list()[21],
-                Profile.list()[22],
-                Profile.list()[23],
-                Profile.list()[24],
-                Profile.list()[25],
-                Profile.list()[26]
-        ], betterThanMe: [
-                Profile.list()[31],
-                Profile.list()[32],
-                Profile.list()[33],
-                Profile.list()[34],
-                Profile.list()[35],
-                Profile.list()[36]
-        ])
-
-        p.skills << php
-
-        return p
 
         //===============================
 
