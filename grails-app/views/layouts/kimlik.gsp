@@ -58,9 +58,12 @@
     <!-- LESS 2 CSS -->
     <script src="/kimlik/scripts/less-1.3.3.min.js"></script>
     <!--[if lt IE 8]><script type="text/javascript" src="/kimlik/scripts/json2.js"></script><![endif]-->
+
+    <g:layoutHead/>
+    <r:layoutResources/>
 </head>
 
-<body data-spy="scroll" data-target="#menu">
+<body data-spy="scroll" data-target="#menu" ng-app="kimlik">
 
 <!-- Start Content -->
 <div class="container left-menu">
@@ -186,6 +189,7 @@
 
 %{--<!-- Twitter -->--}%
 %{--<script src="/kimlik/scripts/twitter.js"></script>--}%
+<r:layoutResources/>
 
 </body>
 </html>

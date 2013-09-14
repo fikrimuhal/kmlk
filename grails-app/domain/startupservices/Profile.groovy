@@ -6,7 +6,7 @@ import kimlik.account.history.GeneralisedHistory
 import org.bson.types.ObjectId
 
 class Profile {
-    static embedded = ['accounts', 'contactInfo']
+    static embedded = ['accounts', 'contactInfo','workHistory','educationHistory', 'skills']
     ObjectId id
 
     /**
@@ -21,6 +21,11 @@ class Profile {
     GeneralisedHistory workHistory
     GeneralisedHistory educationHistory
 
+    List<PersonalSkill> skills  = new ArrayList<PersonalSkill>()
+
+    List<Profile> friends  = new ArrayList<Profile>()
+    List<ProfileMerge> contactMerges = new ArrayList<ProfileMerge>()
+
     String username
     String aboutText
 
@@ -29,10 +34,15 @@ class Profile {
     String middle_name
     Date birthDate
 
+    static hasMany = [
+            friends : Profile,
+            contactMerges:ProfileMerge
+    ]
+
     static constraints = {
 //        accounts nullable: true
 //        registered nullable: true
-        username(unique: true, minSize: 4)
+        username(unique: false, minSize: 4)
 
     }
 
