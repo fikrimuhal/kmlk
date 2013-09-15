@@ -103,21 +103,7 @@ class RegisterController {
                         ]),
                 aboutText: ' About tetxtim dir budur..Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque auctor blandit eros vel scelerisque. Donec mi eros, eleifend et ornare tempus, bibendum a metus. Proin nec nisi et augue sodales gravida. Sed fermentum molestie tortor sit amet pulvinar.',
                 birthDate: new Date(year: 1985, month: 9, date: 16),
-                skills: [ //todo mock change me
-                        new PersonalSkill(percent: random.nextDouble() * 100, name: 'Java'),
-                        new PersonalSkill(percent: random.nextDouble() * 100, name: 'Web Tasarim'),
-                        new PersonalSkill(percent: random.nextDouble() * 100, name: 'CSS'),
-                        new PersonalSkill(percent: random.nextDouble() * 100, name: 'HTML'),
-                        new PersonalSkill(percent: random.nextDouble() * 100, name: 'javascript'),
-                        new PersonalSkill(percent: random.nextDouble() * 100, name: 'Groovy'),
-                        new PersonalSkill(percent: random.nextDouble() * 100, name: 'Grails'),
-                        new PersonalSkill(percent: random.nextDouble() * 100, name: 'Object oriented Programming'),
-                        new PersonalSkill(percent: random.nextDouble() * 100, name: 'Functional Programming'),
-                        new PersonalSkill(percent: random.nextDouble() * 100, name: 'Web Services'),
-                        new PersonalSkill(percent: random.nextDouble() * 100, name: 'MongoDB'),
-                        new PersonalSkill(percent: random.nextDouble() * 100, name: 'SQL'),
-                        new PersonalSkill(percent: random.nextDouble() * 100, name: 'NoSql'),
-                ].sort { -it.percent },
+                skills: [],
                 friends: []
         )
 

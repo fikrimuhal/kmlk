@@ -17,6 +17,12 @@ class PersonalSkill {
     Set<Profile> sameAsMe = new HashSet<Profile>()
     Set<Profile> worstThanMe = new HashSet<Profile>()
 
+    static hasMany = [
+            betterThanMe : Profile,
+            sameAsMe : Profile,
+            worstThanMe : Profile,
+    ]
+
     static constraints = {
         skill nullable: true
         name nullable: true

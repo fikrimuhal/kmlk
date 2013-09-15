@@ -12,6 +12,7 @@ import org.bson.types.ObjectId
 class Skill {
     ObjectId id
     String name
+    String nameLower
     int numberOfUsersHas = 0
     Set<String> skillSets = new HashSet<String>()
 

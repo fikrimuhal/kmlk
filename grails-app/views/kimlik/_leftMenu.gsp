@@ -5,7 +5,7 @@
         <span class="img"><img src="http://dummyimage.com/74x74/232323/ffffff&amp;text=photo"
                                alt="Mr. Awesome"/></span>
         <span>
-            <a data-defaultLink class="glyphicons user" href="/kimlik/ilgaz"><i></i>About me</a>
+            <a data-defaultLink class="glyphicons user" href="/kimlik/${profile.username}"><i></i>About me</a>
             <a class="glyphicons notes_2" href="#resume"><i></i>Resume</a>
             <a class="glyphicons iphone_shake" href="#contact"><i></i>Contact</a>
         </span>

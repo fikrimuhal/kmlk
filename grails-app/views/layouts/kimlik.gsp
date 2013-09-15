@@ -121,7 +121,7 @@
     var themerPrimaryColor = '#71c39a';
 </script>
 <script src="/kimlik/scripts/jquery.cookie.js"></script>
-<script src="/kimlik/scripts/themer.js"></script>
+%{--<script src="/kimlik/scripts/themer.js"></script>--}%
 
 <!-- Resize Script -->
 <script src="/kimlik/scripts/jquery.ba-resize.js"></script>
@@ -135,9 +135,11 @@
 <!-- Bootstrap Extended -->
 <script src="/bootstrap/extend/bootstrap-select/bootstrap-select.js"></script>
 <script src="/bootstrap/extend/bootstrap-toggle-buttons/static/js/jquery.toggle.buttons.js"></script>
-<script src="/bootstrap/extend/jasny-bootstrap/js/jasny-bootstrap.min.js" type="text/javascript"></script>
+%{--<script src="/bootstrap/extend/jasny-bootstrap/js/jasny-bootstrap.min.js" type="text/javascript"></script>--}%
 <script src="/bootstrap/extend/jasny-bootstrap/js/bootstrap-fileupload.js" type="text/javascript"></script>
-<script src="/bootstrap/extend/bootbox.js" type="text/javascript"></script>
+
+%{--Alert box's--}%
+%{--<script src="/bootstrap/extend/bootbox.js" type="text/javascript"></script>--}%
 
 <!-- JQuery Quicksand -->
 <script src="/kimlik/scripts/jquery-animate-css-rotate-scale/jquery-css-transform/jquery-css-transform.js"></script>

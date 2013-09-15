@@ -1,9 +1,11 @@
-
 <div class="separator line"></div>
 
 
 <div class="heading-buttons">
-    <h3 class="glyphicons settings"><i></i> Bilgi ve Beceriler<span>  <g:link action="skills" params="[username: params.username]">hepsini goster</g:link></span></h3>
+    <h3 class="glyphicons settings"><i></i> Bilgi ve Beceriler<span><g:link action="skills"
+                                                                            params="[username: params.username]">hepsini goster</g:link></span>
+    </h3>
+
     <div class="buttons pull-right">
         <g:link action="skills" params="[username: params.username]">düzenle</g:link>
     </div>
@@ -13,7 +15,7 @@
     <div class="span6">
         <table class="table table-condensed">
             <tbody>
-            <  <g:each in="${profile.skills}">
+            <g:each in="${profile.skills.sort {it.percent?-1*it.percent:0}}">
                 <tr>
                     <td class="right muted">${it.name}</td>
                     <td class="w-70">
@@ -26,13 +28,14 @@
             </tbody>
         </table>
     </div>
+
     <div class="span6">
 
         <table class="table table-condensed">
             <tbody>
 
             <tr>
-                <td class="right muted">Bilgi ve beceriler </td>
+                <td class="right muted">Bilgi ve beceriler</td>
                 <td class="w-70">
                     <g:each in="${profile.skills}">
                         <span class="label label-important">${it.name}</span>

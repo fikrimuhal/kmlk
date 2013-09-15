@@ -8,7 +8,8 @@ class UrlMappings {
         }
 
         "/kimlik/$username?/$action?"(controller: 'kimlik')
-//
+        "/api/skill/$action"(controller: 'skill')
+
 //        "/kimlik/$user?/follow"(view: "/kimlik/followPage")
 //        "/kimlik/$user?/education"(view: "/kimlik/educationPage")
 //        "/kimlik/$user?/employment"(view: "/kimlik/employmentPage")
@@ -16,8 +17,7 @@ class UrlMappings {
 //        "/kimlik/$user?"(view: "/kimlik/kimlik")
 
 
-
-        "/"(controller: "register" ,action: 'index')
+        "/"(controller: "register", action: 'index')
         "/help/terms"(view: "/help_terms")
         "/help/ik"(view: "/help_ik")
         "/help/register"(view: "/help")
@@ -29,7 +29,6 @@ class UrlMappings {
 
         "/emailConfirm"(view: "/emailConfirm") //email ile yollanan confirm link
         "/passForgot"(view: "/passForgot")     //parolami unuttum sayfasi
-        "/passForgot"(view: "/passForgot")
 
         "/contact"(view: "/contact")
         "/about"(view: "/about")
@@ -65,7 +64,7 @@ class UrlMappings {
         "/etkinlik"(view: "/s/etkinlik")
         "/projeFinans"(view: "/s/projeFinans")
 
-       // "500"(view: '/error')
+        // "500"(view: '/error')
         "404"(view: '/404')
     }
 }
