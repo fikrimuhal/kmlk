@@ -5,14 +5,14 @@ class SocialMeta {
 
     String upstreamId
 
-    Date upstreamFetchDate
+    Date upstreamFetchDate = new Date()
 
     boolean editedByUser
 
     static constraints = {
     }
 
-    boolean updateFromUpStreamAllowed() {
+    boolean isUpdateFromUpStreamAllowed() {
         return !editedByUser
     }
 }

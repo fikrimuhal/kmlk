@@ -12,7 +12,7 @@ import org.bson.types.ObjectId
  */
 class HistoryEntity {
     static embedded = ['socialMeta']
-    ObjectId id
+    ObjectId id = new ObjectId()
     Date startDate
     Date endDate
 
@@ -20,7 +20,7 @@ class HistoryEntity {
     String position
     String note
 
-    SocialMeta socialMeta  = new SocialMeta()
+    SocialMeta socialMeta = new SocialMeta()
 
     static constraints = {
         startDate nullable: true
@@ -39,5 +39,15 @@ class HistoryEntity {
 
         return true
     }
+
+    def copyFieldsFrom(HistoryEntity o) {
+        startDate = o.startDate
+        endDate = o.endDate
+        entity = o.entity
+        position = o.position
+        note = o.note
+        return this
+    }
+
 
 }

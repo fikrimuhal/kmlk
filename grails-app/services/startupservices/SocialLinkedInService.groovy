@@ -2,6 +2,7 @@ package startupservices
 
 import groovy.json.JsonSlurper
 import kimlik.account.SocialAccount
+import kimlik.account.SocialMeta
 import kimlik.account.history.HistoryEntity
 import org.scribe.model.Token
 import uk.co.desirableobjects.oauth.scribe.OauthService
@@ -71,6 +72,7 @@ class SocialLinkedInService {
             def w = new HistoryEntity(
                     entity: it.company.name,
                     position: it.title,
+                    socialMeta: new SocialMeta(source: 'linkedin',upstreamId: it.id),
                     startDate: new Date(month: it.startDate.month, year: it.startDate.year),
                     endDate: (it.isCurrent) ? null : new Date(month: it.endDate.month, year: it.endDate.year)
             )
@@ -84,6 +86,9 @@ class SocialLinkedInService {
             def e = new HistoryEntity(
                     entity: it.schoolName,
                     position: it.fieldOfStudy,
+                    note: it.notes,
+                    socialMeta: new SocialMeta(source: 'linkedin',upstreamId: it.id),
+
                     // startDate: new Date(month: it.startDate.month, year: it.startDate.year),
                     //endDate: (it.isCurrent) ? null: new Date(month: it.endDate.month, year: it.endDate.year)
             )

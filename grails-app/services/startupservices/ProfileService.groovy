@@ -4,6 +4,7 @@ import com.mongodb.DBCollection
 import com.mongodb.WriteConcern
 import kimlik.account.Accounts
 import kimlik.account.SocialAccount
+import kimlik.account.SocialMeta
 import kimlik.account.history.HistoryEntity
 import org.bson.types.ObjectId
 
@@ -12,23 +13,19 @@ class ProfileService {
 
     def addWorkHistory(ObjectId profileId, HistoryEntity historyEntity) {
         log.debug("Work eklenecek profileId:${profileId}, work:${historyEntity.entity}")
+
         def p = Profile.get(profileId)
 
-        if (!p.workHistory.history.find { it.weakEquals(historyEntity) }) {
-            //cok benzer entity yok ekleyebiliriz...
-            p.workHistory.history.add(historyEntity)
-        }
-        p.save()
+        if (p.workHistory.updateOrAdd(historyEntity)) p.save()
     }
 
     def addEducationHistory(ObjectId profileId, HistoryEntity historyEntity) {
-        log.debug("Education eklenecek profileId:${profileId}, education:${historyEntity}")
+        log.debug("Education eklenecek profileId:${profileId}, education:${historyEntity.socialMeta?.dump()}")
+
         def p = Profile.get(profileId)
-        if (!p.educationHistory.history.find { it.weakEquals(historyEntity) }) {
-            //cok benzer entity yok ekleyebiliriz...
-            p.educationHistory.history.add(historyEntity)
-        }
-        p.save()
+
+        if (p.educationHistory.updateOrAdd(historyEntity)) p.save()
+
     }
 
     def rateSelfSkill(ObjectId profileId, String skillName, int value) {
