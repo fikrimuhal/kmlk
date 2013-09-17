@@ -11,6 +11,6 @@ class GeneralisedHistory {
 
     HistoryEntity getLastEntity() {
         if (history.size())
-            history.sort { -(it.startDate.time) }[0]
+            history.sort { -(it.startDate?.time?:0) }[0]
     }
 }

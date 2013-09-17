@@ -174,14 +174,25 @@
     <dictionary name="sumnulu">
       <words>
         <w>adres</w>
+        <w>anasayfaya</w>
         <w>avukat</w>
         <w>avukatlar</w>
+        <w>eklendi</w>
+        <w>ekleyelim</w>
+        <w>hesaba</w>
+        <w>hesap</w>
+        <w>kayıt</w>
         <w>kimlik</w>
+        <w>kullanıcı</w>
         <w>linkedin</w>
         <w>navbar</w>
         <w>nullable</w>
+        <w>olmuş</w>
+        <w>oluşturalım</w>
         <w>themer</w>
         <w>timeline</w>
+        <w>yeni</w>
+        <w>yolla</w>
       </words>
     </dictionary>
   </component>

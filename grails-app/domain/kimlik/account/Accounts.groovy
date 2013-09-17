@@ -1,7 +1,5 @@
 package kimlik.account
 
-import kimlik.account.Facebook
-
 /**
  * Created with IntelliJ IDEA.
  * User: sumnulu
@@ -10,15 +8,32 @@ import kimlik.account.Facebook
  * To change this template use File | Settings | File Templates.
  */
 class Accounts {
-    static embedded = ['facebook']
+    static embedded = ['facebook', 'linkedin']
 
-    Facebook facebook
-//    Linkedin linkedin
+    SocialAccount facebook
+    SocialAccount linkedin
 //    Twitter twitter
 //    Google google
 
 
     static constraints = {
         facebook(nullable: true)
+        linkedin(nullable: true)
+    }
+
+    Boolean hasFacebook() {
+        facebook?.remoteId
+    }
+
+    Boolean hasGoogle() {
+        false //facebook.remoteId
+    }
+
+    Boolean hasTwitter() {
+        false //facebook.remoteId
+    }
+
+    Boolean hasLinkedin() {
+        linkedin?.remoteId
     }
 }

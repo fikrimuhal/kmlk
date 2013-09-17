@@ -7,9 +7,10 @@ package kimlik.account
  * Time: 8:20 PM
  * To change this template use File | Settings | File Templates.
  */
-class Facebook {
+class SocialAccount {
     String remoteId   //facebookId
-    String secret
+    String token_secret
+    String token
     String first_name
     String last_name
     String middle_name
@@ -17,9 +18,11 @@ class Facebook {
     String name_format
     String gender
     String username
+    String picture_url
 
     static constraints = {
-        secret(nullable: true)
+        token_secret(nullable: true)
+        token(nullable: true)
         first_name(nullable: true)
         last_name(nullable: true)
         middle_name(nullable: true)
@@ -27,6 +30,7 @@ class Facebook {
         name_format(nullable: true)
         gender(nullable: true)
         username(nullable: true)
+        picture_url(nullable: true)
     }
 }
 

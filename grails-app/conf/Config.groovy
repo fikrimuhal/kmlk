@@ -163,7 +163,7 @@ oauth {
             failureUri = '/register/failure/google'
         }
     }
-    debug = true
+//    debug = true
 
 }
 

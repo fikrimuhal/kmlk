@@ -26,7 +26,7 @@
             <tbody>
             <tr>
                 <td class="right muted">Dogum Tarihi</td>
-                <td class="private"><span contenteditable="true">${profile.birthDate.format("MMM d, ''yy")}</span></td>
+                <td class="private"><span contenteditable="true">${profile.birthDate?.format("MMM d, ''yy")}</span></td>
             </tr>
             <tr>
                 <td class="right muted">Adres</td>
@@ -46,7 +46,7 @@
             </tr>
             <tr>
                 <td class="right muted">Enson sirketim</td>
-                <td contenteditable="true">${profile.workHistory.lastEntity.entity}</td>
+                <td contenteditable="true">${profile.workHistory?.lastEntity?.entity}</td>
             </tr>
             </tbody>
         </table>
@@ -55,7 +55,7 @@
     </div>
 
     <div class="span6">
-        <h4 class="glyphicons cardio"><i></i>${profile.workHistory.lastEntity.position} at <a>${profile.workHistory.lastEntity.entity}</a></h4>
+        <h4 class="glyphicons cardio"><i></i>${profile.workHistory?.lastEntity?.position} at <a>${profile.workHistory?.lastEntity?.entity}</a></h4>
 
         <div class="row-fluid about">
             <div class="span6">

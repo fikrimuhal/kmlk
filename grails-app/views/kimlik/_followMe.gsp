@@ -2,18 +2,18 @@
     <div class="span6">
         <h4 class="glyphicons share"><i></i>takip et <small><a href="/kimlik/${profile.username}/follow">düzenle</a>
         </small></h4>
-        <g:if test="${profile?.accounts?.facebook?.remoteId}">
+        <g:if test="${profile?.accounts?.hasFacebook()}">
             <a href="http://facebook.com/${profile.accounts.facebook.remoteId}"
                class="btn btn-action btn-primary btn-large glyphicons facebook"><i></i></a>
         </g:if>
-        <g:if test="${profile?.accounts?.twitter?.remoteId}">
+        <g:if test="${profile?.accounts?.hasTwitter()}">
             <a class="btn btn-action btn-inverse btn-large glyphicons twitter"><i></i></a>
         </g:if>
-        <g:if test="${profile?.accounts?.google?.remoteId}">
+        <g:if test="${profile?.accounts?.hasGoogle()}">
             <button class="btn btn-action btn-primary btn-large glyphicons google_plus"><i></i></button>
         </g:if>
-        <g:if test="${profile?.accounts?.linkedin?.remoteId}">
-            <button class="btn btn-action btn-primary btn-large glyphicons linked_in"><i></i></button>
+        <g:if test="${profile?.accounts?.hasLinkedin()}">
+            <a href="http://www.linkedin.com/profile/view?id=${profile.accounts.linkedin.remoteId}" class="btn btn-action btn-primary btn-large glyphicons linked_in"><i></i></a>
         </g:if>
 
     %{--<button class="btn btn-action btn-primary btn-large glyphicons tumblr"><i></i></button>--}%

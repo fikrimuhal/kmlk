@@ -6,13 +6,14 @@ import grails.converters.JSON
 import kimlik.account.Accounts
 import kimlik.account.Address
 import kimlik.account.ContactInfo
-import kimlik.account.Facebook
 import kimlik.account.MapCoordinates
 import kimlik.account.history.GeneralisedHistory
 import kimlik.account.history.HistoryEntity
 import org.bson.types.ObjectId
 
 class KimlikController {
+    def profileService
+    def skillService
 
     def ajaxFriends() {
 
@@ -50,32 +51,7 @@ class KimlikController {
         def skillName = params.skillName
         def currentUsersId = ObjectId.massageToObjectId(session.loggedinProfileId)
 
-        DBCollection col = Profile.collection
-        def percent
-        switch (value) {
-            case 1:
-                percent = 5
-                break
-            case 2:
-                percent = 25
-                break
-            case 3:
-                percent = 50
-                break
-            case 4:
-                percent = 70
-                break
-            case 5:
-                percent = 90
-                break
-            default:
-                percent = 0
-        }
-
-        col.update([_id: currentUsersId, 'skills.name': skillName], [$set: ['skills.$.self_score': value]], false, false, WriteConcern.NONE)
-
-        //todo percentler burada hesaplanmayacak   , ornek olsun diye koydum
-        col.update([_id: currentUsersId, 'skills.name': skillName], [$set: ['skills.$.percent': percent]], false, false, WriteConcern.NONE)
+        profileService.rateSelfSkill(currentUsersId, skillName, value)
 
         def result = [result: 'success']
         render result as JSON
@@ -122,7 +98,7 @@ class KimlikController {
                 col.update(_QUERY, [$addToSet: ['skills.$.betterThanMe': friendId]], false, false, WriteConcern.NONE)
                 break
             default:
-                render (status: 404)
+                render(status: 404)
                 return
         }
 
@@ -138,6 +114,7 @@ class KimlikController {
     }
 
     def follow() {
+        skillService.serviceMethod()
         [profile: fetchProfile()]
     }
 
@@ -168,7 +145,7 @@ class KimlikController {
             data << [
                     id: it.id?.toStringMongod(),
                     name: it.name,
-                    pictureUrl: "http://graph.facebook.com/${it.accounts.facebook.remoteId}/picture"
+                    pictureUrl: it.profilePictureUrl
             ]
         }
         return data

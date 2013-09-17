@@ -84,7 +84,7 @@
             %{--<g:render template="/kimlik/alerts"></g:render>--}%
             <div class="heading-buttons">
                 <h2 class="glyphicons user"><i></i>${profile.name}<span
-                        class="visible-desktop">| ${profile.workHistory.lastEntity.position}</span>
+                        class="visible-desktop">| ${profile.workHistory?.lastEntity?.position}</span>
                 </h2>
 
                 <div class="buttons pull-right">

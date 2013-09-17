@@ -6,7 +6,7 @@ import kimlik.account.history.GeneralisedHistory
 import org.bson.types.ObjectId
 
 class Profile {
-    static embedded = ['accounts', 'contactInfo','workHistory','educationHistory', 'skills']
+    static embedded = ['accounts', 'contactInfo', 'workHistory', 'educationHistory', 'skills']
     ObjectId id
 
     /**
@@ -21,9 +21,9 @@ class Profile {
     GeneralisedHistory workHistory
     GeneralisedHistory educationHistory
 
-    List<PersonalSkill> skills  = new ArrayList<PersonalSkill>()
+    List<PersonalSkill> skills = new ArrayList<PersonalSkill>()
 
-    List<Profile> friends  = new ArrayList<Profile>()
+    List<Profile> friends = new ArrayList<Profile>()
     List<ProfileMerge> contactMerges = new ArrayList<ProfileMerge>()
 
     String username
@@ -35,8 +35,8 @@ class Profile {
     Date birthDate
 
     static hasMany = [
-            friends : Profile,
-            contactMerges:ProfileMerge
+            friends: Profile,
+            contactMerges: ProfileMerge
     ]
 
     static constraints = {
@@ -59,5 +59,14 @@ class Profile {
         if (last_name)
             r += ' ' + last_name
         return r
+    }
+
+    String getProfilePictureUrl() {
+        if (accounts.hasFacebook()) {
+            return "http://graph.facebook.com/${accounts.facebook.remoteId}/picture"
+        } else if (accounts.hasLinkedin()) {
+            return accounts.linkedin.picture_url
+        }
+
     }
 }
