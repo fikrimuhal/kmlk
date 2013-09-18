@@ -7,6 +7,8 @@ import kimlik.account.history.HistoryEntity
 import org.scribe.model.Token
 import uk.co.desirableobjects.oauth.scribe.OauthService
 
+import java.text.SimpleDateFormat
+
 class SocialLinkedInService {
     OauthService oauthService // or new OauthService() would work if you're not in a spring-managed class.
     def profileService
@@ -45,7 +47,7 @@ class SocialLinkedInService {
                     id: it.id,
                     first_name: it.firstName,
                     first_name: it.firstName,
-                    picture_url:it.pictureUrl,
+                    picture_url: it.pictureUrl,
                     last_name: it.lastName
             ]
             profileService.addFriend(profile.id, friendsData, 'linkedin')
@@ -68,14 +70,24 @@ class SocialLinkedInService {
 
     private updateWork(Profile profile, def data) {
         log.debug('updating updateContactInfo')
+
         data.positions.values.each {
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM");
+            Date sd
+            if (it.startDate?.year != null) {
+                sd = formatter.parse(it.startDate?.year  + "/" + it.startDate?.month);
+            }
+            Date ed
+            if (!it.isCurrent) {
+                sd = formatter.parse(it.endDate.year + "/" + it.endDate.month);
+            }
+
             def w = new HistoryEntity(
                     entity: it.company.name,
                     position: it.title,
-                    socialMeta: new SocialMeta(source: 'linkedin',upstreamId: it.id),
-                    startDate: new Date(month: it.startDate.month, year: it.startDate.year),
-                    endDate: (it.isCurrent) ? null : new Date(month: it.endDate.month, year: it.endDate.year)
-            )
+                    socialMeta: new SocialMeta(source: 'linkedin', upstreamId: it.id),
+                    startDate: sd,
+                    endDate: ed)
             profileService.addWorkHistory(profile.id, w)
         }
     }
@@ -87,7 +99,7 @@ class SocialLinkedInService {
                     entity: it.schoolName,
                     position: it.fieldOfStudy,
                     note: it.notes,
-                    socialMeta: new SocialMeta(source: 'linkedin',upstreamId: it.id),
+                    socialMeta: new SocialMeta(source: 'linkedin', upstreamId: it.id),
 
                     // startDate: new Date(month: it.startDate.month, year: it.startDate.year),
                     //endDate: (it.isCurrent) ? null: new Date(month: it.endDate.month, year: it.endDate.year)

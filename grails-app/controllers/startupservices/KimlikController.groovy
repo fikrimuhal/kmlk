@@ -114,7 +114,6 @@ class KimlikController {
     }
 
     def follow() {
-        skillService.serviceMethod()
         [profile: fetchProfile()]
     }
 

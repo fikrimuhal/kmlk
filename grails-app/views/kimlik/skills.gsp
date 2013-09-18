@@ -17,7 +17,7 @@ function TypeaheadCtrl($scope, $http, filterFilter, $resource, skillService) {
 
 
     $scope.getFriends = function (input) { //todo : bunun yerine friends den search yapalim
-        var promise = $http.get("/kimlik/sumnulu/ajaxFriends", {cache: true}).then(function (response) {
+        var promise = $http.get("/kimlik/${params.username}/ajaxFriends", {cache: true}).then(function (response) {
             return filterFilter(response.data, input)
         });
         promise.$$v = promise;
@@ -37,7 +37,7 @@ function TypeaheadCtrl($scope, $http, filterFilter, $resource, skillService) {
                 skills[idx].self_score = value;
             }
         }
-        var api = $resource('/kimlik/sumnulu/ajaxRateSelf');
+        var api = $resource('/kimlik/${params.username}/ajaxRateSelf');
         api.get({skillName: skillName, value: value})
 
     }
@@ -67,7 +67,7 @@ function TypeaheadCtrl($scope, $http, filterFilter, $resource, skillService) {
 
         if (jQuery.inArray(friendId, bucket) === -1) {
             bucket.push(friendId)
-            var api = $resource('/kimlik/sumnulu/ajaxRateFriend')
+            var api = $resource('/kimlik/${params.username}/ajaxRateFriend')
             api.get({skillName: skillName, value: value, friendId: friendId});
         }
 
@@ -87,7 +87,7 @@ function TypeaheadCtrl($scope, $http, filterFilter, $resource, skillService) {
                 _bucket.splice(profileIDX, 1)
             }
         }
-        var api = $resource('/kimlik/sumnulu/ajaxRateFriend')
+        var api = $resource('/kimlik/${params.username}/ajaxRateFriend')
         api.get({skillName: skillName, value: 'delete', friendId: friendId});
 
     }
@@ -99,7 +99,7 @@ function TypeaheadCtrl($scope, $http, filterFilter, $resource, skillService) {
     }
 
     function fetchFriends() {
-        var apiFriends = $resource('/kimlik/sumnulu/ajaxFriends')
+        var apiFriends = $resource('/kimlik/${params.username}/ajaxFriends')
         apiFriends.query({}, {}, function (r) {
             for (var idx in r) {
 //                    angular.extend(friends[r[idx].id] , r[idx] );
@@ -165,7 +165,7 @@ kimlik.factory('skillService', function ($resource, $rootScope) {
     $rootScope.allSkills = undefined  //all skills
 
     function fetchSkills() {
-        var apiSkills = $resource('/kimlik/sumnulu/ajaxSkills');
+        var apiSkills = $resource('/kimlik/${params.username}/ajaxSkills');
         $rootScope.skills = apiSkills.query({}, {}, function (r) {
         });
     }

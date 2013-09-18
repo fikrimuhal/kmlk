@@ -1,9 +1,13 @@
+import grails.converters.JSON
+import org.bson.types.ObjectId
 import startupservices.PersonalSkill
 import startupservices.Skill
 
 class BootStrap {
 
     def init = { servletContext ->
+        configure()
+
         //todo mock change me
         if (!Skill.count) {
             [
@@ -22,11 +26,17 @@ class BootStrap {
                     new Skill(name: 'NoSql')
             ].each {
                 it.nameLower = it.name.toLowerCase()
-                it.save() }
+                it.save()
+            }
 
         }
     }
 
     def destroy = {
     }
+
+    private configure() {
+    }
 }
+
+

@@ -12,34 +12,41 @@
 </div>
 <ul class="history">
     <li class="row-fluid">
-        <span class="date span3">
-            <button class="btn  btn-primary btn-small">Yeni ekle</button>
-            <span class="glyphicons hidden-tablet calendar pull-right"><i></i></span>
-        </span>
-
-        <div class="body span9">
-            <h4><input type="text" placeholder="Gorev / Pozisyon"/> @ <input type="text" placeholder="Sirket"/></h4>
-
-            <textarea placeholder="Aciklama"></textarea>    <br>
-            <label>Baslangic</label><input type="date" class="input-full"/>    <br>
-            <label>Bitis</label><input type="date" class="input-full"/>    <br>
-        </div>
-
-        <div class="clearfix"></div>
-    </li>
-    <g:each in="${profile.workHistory.history}">
-        <li class="row-fluid">
+        <form novalidate >
             <span class="date span3">
-                <span class="label label-inverse">${it.startDate?.year} - ${it.endDate?.year}</span>
+                <button class="btn  btn-primary btn-small" ng-click="addWork(newWork)">Yeni ekle</button>
                 <span class="glyphicons hidden-tablet calendar pull-right"><i></i></span>
             </span>
 
             <div class="body span9">
-                <h4>${it.position} @${it.entity}</h4>
-                ${it.note}
+                <h4><input type="text" placeholder="Gorev / Pozisyon" ng-model="newWork.position"/> @ <input type="text" placeholder="Sirket" ng-model="newWork.entity"/></h4>
+
+                <textarea placeholder="Aciklama" ng-model="newWork.note"></textarea>    <br>
+                <label>Baslangic</label><input type="date" class="input-full" ng-model="newWork.startDate"/>    <br>
+                <label>Bitis</label><input type="date" class="input-full" ng-model="newWork.endDate"/>    <br>
             </div>
 
-            <div class="clearfix"></div>
-        </li>
-    </g:each>
+        </form>
+        <div class="clearfix"></div>
+    </li>
+    <li class="row-fluid" ng-repeat="elm in getEmploymentHistory()">
+        <span class="date span3">
+            <span class="label label-inverse">{{elm.startDate.year}} - {{elm.endDate.year}}</span>
+            <span class="glyphicons hidden-tablet calendar pull-right"><i></i></span>
+        </span>
+
+        <div class="body span9">
+            <h4>{{elm.position}} @ {{elm.entity}}</h4>
+            {{elm.note}}
+        </div>
+
+        <div class="clearfix"></div>
+    </li>
 </ul>
+<pre>
+    {{newWork | json}}
+</pre>
+
+%{--<pre>--}%
+%{--{{getEmploymentHistory() | json}}--}%
+%{--</pre>--}%

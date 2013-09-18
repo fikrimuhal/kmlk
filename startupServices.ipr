@@ -246,7 +246,9 @@
         <root url="jar:///usr/local/Cellar/grails/2.2.4/libexec/dist/grails-wrapper-support-2.2.4.jar!/" />
       </CLASSES>
       <JAVADOC />
-      <SOURCES />
+      <SOURCES>
+        <root url="jar:///usr/local/Cellar/grails/2.2.4/libexec/src/grails-plugin-converters-2.2.4-sources.jar!/" />
+      </SOURCES>
     </library>
   </component>
 </project>
