@@ -47,9 +47,7 @@ class EmploymentController {
 
     def list() {
         def data = fetchProfile().workHistory.history
-        data.each {
-            println it.endDate?.getYear()
-        }
+
         JSON.registerObjectMarshaller(ObjectId) { return it.toStringMongod() }
         JSON.registerObjectMarshaller(Date) { return [year: it?.year+1900, month: it?.month, day: it?.day] }
 
