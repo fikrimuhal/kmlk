@@ -1,6 +1,57 @@
 import org.codehaus.groovy.grails.web.context.ServletContextHolder
 
 modules = {
+    kimlik {
+        dependsOn(['theme'])
+        resource url: 'https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.2/angular.min.js', disposition: 'head'
+        resource url: 'http://code.angularjs.org/1.2.0-rc.2/angular-animate.min.js', disposition: 'head'
+        resource url: 'http://code.angularjs.org/1.0.8/angular-resource.min.js', disposition: 'head'
+        resource url: 'http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.6.0.js', disposition: 'head'
+
+    }
+
+    theme {
+        //  <!-- Bootstrap -->
+        resource url: '/bootstrap/css/bootstrap.min.css'
+        //    <!-- Bootstrap Extended -->
+        resource url: '/bootstrap/extend/jasny-bootstrap/css/jasny-bootstrap.min.css'
+        resource url: '/bootstrap/extend/jasny-bootstrap/css/jasny-bootstrap-responsive.min.css'
+        //    <!-- JQueryUI v1.9.2 -->
+
+        resource url: '/kimlik/scripts/jquery-ui-1.9.2.custom/css/smoothness/jquery-ui-1.9.2.custom.min.css'
+        resource url: '/kimlik/css/glyphicons.css'
+        resource url: '/bootstrap/extend/bootstrap-select/bootstrap-select.css'
+        resource url: '/bootstrap/extend/bootstrap-toggle-buttons/static/stylesheets/bootstrap-toggle-buttons.css'
+        resource url: '/kimlik/scripts/pixelmatrix-uniform/css/uniform.default.css'
+        resource url: '/kimlik/scripts/jquery-1.8.2.min.js', disposition: 'head'
+        resource url: '/kimlik/scripts/modernizr.custom.76094.js', disposition: 'head'
+        resource url: '/kimlik/scripts/jquery-miniColors/jquery.miniColors.css'
+        resource url: '/kimlik/scripts/jquery-lightbox/js/jquery.lightbox-0.5.js'
+        resource url: '/kimlik/scripts/prettyphoto/js/jquery.prettyPhoto.js'
+        resource url: '/kimlik/scripts/jquery-lightbox/css/jquery.lightbox-0.5.css'
+        resource url: '/kimlik/scripts/prettyphoto/css/prettyPhoto.css'
+        resource url: '/kimlik/css/style.min.css?1363976729'
+        resource url: '/kimlik/scripts/prettyphoto/css/prettyPhoto.css'
+
+        resource url: '/kimlik/scripts/jquery-ui-1.9.2.custom/js/jquery-ui-1.9.2.custom.min.js' 
+        resource url: '/kimlik/scripts/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js' 
+        resource url: '/kimlik/scripts/jquery-miniColors/jquery.miniColors.js' 
+        resource url: '/kimlik/scripts/jquery.cookie.js' 
+        resource url: '/kimlik/scripts/jquery.ba-resize.js' 
+        resource url: '/kimlik/scripts/pixelmatrix-uniform/jquery.uniform.min.js' 
+        resource url: '/bootstrap/js/bootstrap.min.js' 
+        resource url: '/bootstrap/extend/bootstrap-select/bootstrap-select.js' 
+        resource url: '/bootstrap/extend/bootstrap-toggle-buttons/static/js/jquery.toggle.buttons.js' 
+        resource url: '/bootstrap/extend/jasny-bootstrap/js/bootstrap-fileupload.js' 
+        resource url: '/kimlik/scripts/jquery-animate-css-rotate-scale/jquery-css-transform/jquery-css-transform.js' 
+        resource url: '/kimlik/scripts/jquery-animate-css-rotate-scale/jquery-animate-css-rotate-scale.js' 
+        resource url: '/kimlik/scripts/jquery.quicksand.js' 
+        resource url: '/kimlik/scripts/jquery.easing.1.3.js' 
+        resource url: '/kimlik/scripts/load.js' 
+        resource url: '/kimlik/scripts/jquery.masonry.min.js' 
+    }
+
+    ////////////////////
     application {
         resource url: 'js/application.js'
     }

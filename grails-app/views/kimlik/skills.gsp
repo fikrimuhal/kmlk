@@ -2,16 +2,13 @@
 <html>
 <head>
     <meta name="layout" content="kimlik"/>
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.2/angular.min.js"></script>
-    <script src="http://code.angularjs.org/1.2.0-rc.2/angular-animate.min.js"></script>
-    <script src="http://code.angularjs.org/1.0.8/angular-resource.min.js"></script>
-    <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.6.0.js"></script>
+
 </head>
 
 <body>
 <g:render template="/kimlik/skillsEditable" model="[profile: profile]"></g:render>
 
-<r:script>var kimlik = angular.module('kimlik', ['ui.bootstrap', 'ngResource']);
+<r:script>
 function TypeaheadCtrl($scope, $http, filterFilter, $resource, skillService) {
     var friends = {}
 

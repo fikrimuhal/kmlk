@@ -6,6 +6,7 @@
     outline: 3px dashed #0090D2;
     cursor: pointer;
 }
+
     /*#example-one { margin-bottom: 10px; }*/
 [contenteditable]:focus {
     background: rgb(197, 240, 255);
@@ -13,10 +14,10 @@
     cursor: text;
 }
 
-    .private{
-        /*-webkit-filter: blur(3px);*/
+.private {
+    /*-webkit-filter: blur(3px);*/
 
-    }
+}
 </style>
 
 <div class="row-fluid">
@@ -30,15 +31,15 @@
             </tr>
             <tr>
                 <td class="right muted">Adres</td>
-                <td  class="private" contenteditable="true">${profile.contactInfo.address.fullAddress}</td>
+                <td class="private" contenteditable="true">${profile.contactInfo.address.fullAddress}</td>
             </tr>
             <tr>
                 <td class="right muted">E-mail</td>
-                <td  class="private" contenteditable="true">${profile.contactInfo.publicEmail}</td>
+                <td class="private" contenteditable="true">${profile.contactInfo.publicEmail}</td>
             </tr>
             <tr>
                 <td class="right muted">Tel</td>
-                <td  class="private" contenteditable="true">${profile.contactInfo.publicTel}</td>
+                <td class="private" contenteditable="true">${profile.contactInfo.publicTel}</td>
             </tr>
             <tr>
                 <td class="right muted">Website</td>
@@ -55,29 +56,12 @@
     </div>
 
     <div class="span6">
-        <h4 class="glyphicons cardio"><i></i>${profile.workHistory?.lastEntity?.position} at <a>${profile.workHistory?.lastEntity?.entity}</a></h4>
+        <h4 class="glyphicons cardio"><i></i>${profile.workHistory?.lastEntity?.position} at <a>${profile.workHistory?.lastEntity?.entity}</a>
+        </h4>
 
         <div class="row-fluid about">
             <div class="span6">
-                <div id="myCarousel" class="carousel slide">
-                    <!-- Carousel items -->
-                    <div class="carousel-inner">
-                        <div class="item active">
-                            <img src="http://dummyimage.com/590x388/232323/ffffff&amp;text=photo" alt="Nerd 1"/>
-                        </div>
-
-                        <div class="item">
-                            <img src="http://dummyimage.com/590x388/232323/ffffff&amp;text=photo" alt="Nerd 2"/>
-                        </div>
-
-                        <div class="item">
-                            <img src="http://dummyimage.com/590x388/232323/ffffff&amp;text=photo" alt="Nerd 3"/>
-                        </div>
-                    </div>
-                    <!-- Carousel nav -->
-                    <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-                    <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
-                </div>
+                xxxxxx
             </div>
 
             <div class="span6">

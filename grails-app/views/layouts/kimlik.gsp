@@ -13,58 +13,52 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
-    <!-- Bootstrap -->
-    <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
 
-    <!-- Bootstrap Extended -->
-    <link href="/bootstrap/extend/jasny-bootstrap/css/jasny-bootstrap.min.css" rel="stylesheet">
-    <link href="/bootstrap/extend/jasny-bootstrap/css/jasny-bootstrap-responsive.min.css" rel="stylesheet">
-
-    <!-- JQueryUI v1.9.2 -->
-    <link rel="stylesheet" href="/kimlik/scripts/jquery-ui-1.9.2.custom/css/smoothness/jquery-ui-1.9.2.custom.min.css"/>
-
-    <!-- Glyphicons -->
-    <link rel="stylesheet" href="/kimlik/css/glyphicons.css"/>
-
-    <!-- Bootstrap Extended -->
-    <link rel="stylesheet" href="/bootstrap/extend/bootstrap-select/bootstrap-select.css"/>
-    <link rel="stylesheet"
-          href="/bootstrap/extend/bootstrap-toggle-buttons/static/stylesheets/bootstrap-toggle-buttons.css"/>
-
-    <!-- Uniform -->
-    <link rel="stylesheet" media="screen" href="/kimlik/scripts/pixelmatrix-uniform/css/uniform.default.css"/>
-
-    <!-- JQuery v1.8.2 -->
-    <script src="/kimlik/scripts/jquery-1.8.2.min.js"></script>
-
-    <!-- Modernizr -->
-    <script src="/kimlik/scripts/modernizr.custom.76094.js"></script>
-
-    <!-- MiniColors -->
-    <link rel="stylesheet" media="screen" href="/kimlik/scripts/jquery-miniColors/jquery.miniColors.css"/>
-
-    <!-- JQuery Lightbox -->
-    <script type="text/javascript" src="/kimlik/scripts/jquery-lightbox/js/jquery.lightbox-0.5.js"></script>
-    <link rel="stylesheet" type="text/css" href="/kimlik/scripts/jquery-lightbox/css/jquery.lightbox-0.5.css"
-          media="screen"/>
-
-    <!-- PrettyPhoto -->
-    <script type="text/javascript" src="/kimlik/scripts/prettyphoto/js/jquery.prettyPhoto.js"></script>
-    <link rel="stylesheet" type="text/css" href="/kimlik/scripts/prettyphoto/css/prettyPhoto.css" media="screen"/>
-
-    <!-- Theme -->
-    <link rel="stylesheet" href="/kimlik/css/style.min.css?1363976729"/>
-
-    <!-- LESS 2 CSS -->
-    <script src="/kimlik/scripts/less-1.3.3.min.js"></script>
-    <!--[if lt IE 8]><script type="text/javascript" src="/kimlik/scripts/json2.js"></script><![endif]-->
+    <r:require modules="kimlik"/>
 
     <g:layoutHead/>
     <r:layoutResources/>
+
+    <style type="text/css">
+    #currentUser {
+        position: fixed;
+        top: 5px;
+        float: right;
+        right: 0px;
+        z-index: 9999;
+        padding: 5px;
+        width: 200px;
+        background-color: rgba(188, 188, 188, 0.69);;
+    }
+    </style>
+
 </head>
 
 <body data-spy="scroll" data-target="#menu" ng-app="kimlik">
 
+<r:script>
+    var kimlik = angular.module('kimlik', ['ui.bootstrap', 'ngResource']);
+    alert('eloo')
+    function UserController($scope, $http, filterFilter, $resource, skillService) {
+
+    }
+</r:script>
+<div id="currentUser">
+    <span class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+            <div>
+                <span class="text-info" style="margin-left: 5px">Ilgaz Şumnulu</span>
+
+                <b class="caret pull-left"></b>
+            </div>
+        </a>
+        <ul class="dropdown-menu">
+            <li><a href="/kimlik/sumnulu">Profilime git</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Oturumu kapat</a></li>
+        </ul>
+    </span>
+</div>
 <!-- Start Content -->
 <div class="container left-menu">
 
@@ -102,60 +96,12 @@
     </div> <!-- wrapper END-->
 
 </div> <!-- container END-->
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?v=3.5&amp;sensor=false"></script>
 
-%{--<g:render template="/kimlik/themer"/>--}%
-
-
-<!-- JQueryUI v1.9.2 -->
-<script src="/kimlik/scripts/jquery-ui-1.9.2.custom/js/jquery-ui-1.9.2.custom.min.js"></script>
-
-<!-- JQueryUI Touch Punch -->
-<!-- small hack that enables the use of touch events on sites using the jQuery UI user interface library -->
-<script src="/kimlik/scripts/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js"></script>
-
-<!-- MiniColors -->
-<script src="/kimlik/scripts/jquery-miniColors/jquery.miniColors.js"></script>
-
-<!-- Themer -->
 <script>
     var themerPrimaryColor = '#71c39a';
 </script>
-<script src="/kimlik/scripts/jquery.cookie.js"></script>
-%{--<script src="/kimlik/scripts/themer.js"></script>--}%
 
-<!-- Resize Script -->
-<script src="/kimlik/scripts/jquery.ba-resize.js"></script>
-
-<!-- Uniform -->
-<script src="/kimlik/scripts/pixelmatrix-uniform/jquery.uniform.min.js"></script>
-
-<!-- Bootstrap Script -->
-<script src="/bootstrap/js/bootstrap.min.js"></script>
-
-<!-- Bootstrap Extended -->
-<script src="/bootstrap/extend/bootstrap-select/bootstrap-select.js"></script>
-<script src="/bootstrap/extend/bootstrap-toggle-buttons/static/js/jquery.toggle.buttons.js"></script>
-%{--<script src="/bootstrap/extend/jasny-bootstrap/js/jasny-bootstrap.min.js" type="text/javascript"></script>--}%
-<script src="/bootstrap/extend/jasny-bootstrap/js/bootstrap-fileupload.js" type="text/javascript"></script>
-
-%{--Alert box's--}%
-%{--<script src="/bootstrap/extend/bootbox.js" type="text/javascript"></script>--}%
-
-<!-- JQuery Quicksand -->
-<script src="/kimlik/scripts/jquery-animate-css-rotate-scale/jquery-css-transform/jquery-css-transform.js"></script>
-<script src="/kimlik/scripts/jquery-animate-css-rotate-scale/jquery-animate-css-rotate-scale.js"></script>
-<script src="/kimlik/scripts/jquery.quicksand.js"></script>
-<script src="/kimlik/scripts/jquery.easing.1.3.js"></script>
-
-<!-- Google Maps API -->
-<script type="text/javascript" src="http://maps.google.com/maps/api/js?v=3.5&amp;sensor=false"></script>
-
-<!-- Custom Onload Script -->
-<script src="/kimlik/scripts/load.js"></script>
-
-
-<!-- Masonry -->
-<script src="/kimlik/scripts/jquery.masonry.min.js"></script>
 <script>
     function masonryGallery() {
         var $container = $('.quicksand-gallery ul');
@@ -188,9 +134,6 @@
         });
     });
 </script>
-
-%{--<!-- Twitter -->--}%
-%{--<script src="/kimlik/scripts/twitter.js"></script>--}%
 <r:layoutResources/>
 
 </body>
