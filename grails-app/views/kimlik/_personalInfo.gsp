@@ -22,10 +22,19 @@
 
 <div class="row-fluid">
     <div class="span6">
-        <h4 class="glyphicons notes"><i></i>Kişisel bilgilerim</h4>
+        <div class="heading-buttons">
+
+            <h4 class="glyphicons notes"><i></i>Kişisel bilgilerim</h4>
+
+            <div class="buttons pull-right">
+                <g:link action="personalInfo" params="[username: params.username]"><span ng-if="isLoggedIn()"
+                                                                                       ng-cloak>düzenle</span></g:link>
+            </div>
+        </div>
+
         <table class="table table-condensed">
             <tbody>
-            <tr>
+            %{--<tr>
                 <td class="right muted">Dogum Tarihi</td>
                 <td class="private"><span contenteditable="true">${profile.birthDate?.format("MMM d, ''yy")}</span></td>
             </tr>
@@ -40,7 +49,7 @@
             <tr>
                 <td class="right muted">Tel</td>
                 <td class="private" contenteditable="true">${profile.contactInfo.publicTel}</td>
-            </tr>
+            </tr>--}%
             <tr>
                 <td class="right muted">Website</td>
                 <td contenteditable="true">${profile.contactInfo.webSite}</td>

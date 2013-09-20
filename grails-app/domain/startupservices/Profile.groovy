@@ -15,11 +15,11 @@ class Profile {
      */
     Boolean registered
 
-    Accounts accounts
-    ContactInfo contactInfo
+    Accounts accounts = new Accounts()
+    ContactInfo contactInfo  = new ContactInfo()
 
-    GeneralisedHistory workHistory
-    GeneralisedHistory educationHistory
+    GeneralisedHistory workHistory  = new GeneralisedHistory()
+    GeneralisedHistory educationHistory   = new GeneralisedHistory()
 
     List<PersonalSkill> skills = new ArrayList<PersonalSkill>()
 

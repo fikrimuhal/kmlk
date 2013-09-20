@@ -14,7 +14,7 @@ class Address {
     String city
     String other // country ve city disindaki bolum
 
-    MapCoordinates googleMapsCoordinates
+    MapCoordinates googleMapsCoordinates = new MapCoordinates()
 
     static constraints = {
         country nullable: true

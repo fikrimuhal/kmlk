@@ -14,8 +14,7 @@ class SocialLinkedInService {
     def profileService
 
     def addToProfile(def profile, Token token) {
-        //todo: addTo profile.accounts
-        //todo: fill missing profile info with new data
+
         log.debug('addLinkedInToProfile to existing profile')
 
         def data = fetchUpStream(token)
@@ -23,7 +22,7 @@ class SocialLinkedInService {
         updateAccounts(profile, token, data)
         updateEducation(profile, data)
         updateWork(profile, data)
-        updateContactInfo(profile, data)
+//        updateContactInfo(profile, data)
         updateBasicInfo(profile, data)
         updateFriends(profile, data)
         updateSkills(profile, data)
@@ -56,10 +55,11 @@ class SocialLinkedInService {
 
     private updateBasicInfo(Profile profile, def data) {
         log.debug('updating updateBasicInfo')
-        profile
-        println data.lastName
-        println data.firstName
 
+        profile.first_name = profile.first_name ?: data.firstName
+        profile.last_name = profile.last_name ?: data.lastName
+        profile.contactInfo.primaryEmail = profile.contactInfo.primaryEmail ?: data.emailAddress
+        profile.save()
     }
 
     private updateContactInfo(Profile profile, def data) {
@@ -75,7 +75,7 @@ class SocialLinkedInService {
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM");
             Date sd
             if (it.startDate?.year != null) {
-                sd = formatter.parse(it.startDate?.year  + "/" + it.startDate?.month);
+                sd = formatter.parse(it.startDate?.year + "/" + it.startDate?.month);
             }
             Date ed
             if (!it.isCurrent) {
@@ -123,7 +123,8 @@ class SocialLinkedInService {
                 last_name: data.lastName,
                 token: token.token,
                 token_secret: token.secret
-        ).save()
+        )
+        profile.save(failOnError: true)
 
 
     }

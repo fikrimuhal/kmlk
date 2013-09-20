@@ -2,11 +2,31 @@ import org.codehaus.groovy.grails.web.context.ServletContextHolder
 
 modules = {
     kimlik {
-        dependsOn(['theme'])
+        dependsOn(['theme', 'lodash', 'angularjs'])
+
+
+        resource url: 'js/app.js'
+        resource url: 'js/controllers.js'
+        resource url: 'js/services.js'
+        resource url: 'js/filters.js'
+        resource url: 'js/directives.js'
+    }
+
+    kimlik_register {
+        dependsOn(['angularjs'])
+        resource url: 'js/app.js'
+        resource url: 'js/controllers.js'
+        resource url: 'js/services.js'
+        resource url: 'js/filters.js'
+        resource url: 'js/directives.js'
+    }
+
+    angularjs {
         resource url: 'https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.2/angular.min.js', disposition: 'head'
         resource url: 'http://code.angularjs.org/1.2.0-rc.2/angular-animate.min.js', disposition: 'head'
         resource url: 'http://code.angularjs.org/1.0.8/angular-resource.min.js', disposition: 'head'
         resource url: 'http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.6.0.js', disposition: 'head'
+
 
     }
 
@@ -33,22 +53,22 @@ modules = {
         resource url: '/kimlik/css/style.min.css?1363976729'
         resource url: '/kimlik/scripts/prettyphoto/css/prettyPhoto.css'
 
-        resource url: '/kimlik/scripts/jquery-ui-1.9.2.custom/js/jquery-ui-1.9.2.custom.min.js' 
-        resource url: '/kimlik/scripts/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js' 
-        resource url: '/kimlik/scripts/jquery-miniColors/jquery.miniColors.js' 
-        resource url: '/kimlik/scripts/jquery.cookie.js' 
-        resource url: '/kimlik/scripts/jquery.ba-resize.js' 
-        resource url: '/kimlik/scripts/pixelmatrix-uniform/jquery.uniform.min.js' 
-        resource url: '/bootstrap/js/bootstrap.min.js' 
-        resource url: '/bootstrap/extend/bootstrap-select/bootstrap-select.js' 
-        resource url: '/bootstrap/extend/bootstrap-toggle-buttons/static/js/jquery.toggle.buttons.js' 
-        resource url: '/bootstrap/extend/jasny-bootstrap/js/bootstrap-fileupload.js' 
-        resource url: '/kimlik/scripts/jquery-animate-css-rotate-scale/jquery-css-transform/jquery-css-transform.js' 
-        resource url: '/kimlik/scripts/jquery-animate-css-rotate-scale/jquery-animate-css-rotate-scale.js' 
-        resource url: '/kimlik/scripts/jquery.quicksand.js' 
-        resource url: '/kimlik/scripts/jquery.easing.1.3.js' 
-        resource url: '/kimlik/scripts/load.js' 
-        resource url: '/kimlik/scripts/jquery.masonry.min.js' 
+        resource url: '/kimlik/scripts/jquery-ui-1.9.2.custom/js/jquery-ui-1.9.2.custom.min.js'
+        resource url: '/kimlik/scripts/jquery-ui-touch-punch/jquery.ui.touch-punch.min.js'
+        resource url: '/kimlik/scripts/jquery-miniColors/jquery.miniColors.js'
+        resource url: '/kimlik/scripts/jquery.cookie.js'
+        resource url: '/kimlik/scripts/jquery.ba-resize.js'
+        resource url: '/kimlik/scripts/pixelmatrix-uniform/jquery.uniform.min.js'
+        resource url: '/bootstrap/js/bootstrap.min.js'
+        resource url: '/bootstrap/extend/bootstrap-select/bootstrap-select.js'
+        resource url: '/bootstrap/extend/bootstrap-toggle-buttons/static/js/jquery.toggle.buttons.js'
+        resource url: '/bootstrap/extend/jasny-bootstrap/js/bootstrap-fileupload.js'
+        resource url: '/kimlik/scripts/jquery-animate-css-rotate-scale/jquery-css-transform/jquery-css-transform.js'
+        resource url: '/kimlik/scripts/jquery-animate-css-rotate-scale/jquery-animate-css-rotate-scale.js'
+        resource url: '/kimlik/scripts/jquery.quicksand.js'
+        resource url: '/kimlik/scripts/jquery.easing.1.3.js'
+        resource url: '/kimlik/scripts/load.js'
+        resource url: '/kimlik/scripts/jquery.masonry.min.js'
     }
 
     ////////////////////
@@ -83,12 +103,6 @@ modules = {
         }
     }
 
-    angularjs {
-        resource url: 'js/lib/angular/angular.min.js'
-        resource url: 'js/lib/angular/angular-resource.min.js'
-        resource url: 'js/lib/angular/angular-cookies.min.js'
-
-    }
 
     angularUiRoute {
         dependsOn('angularjs')

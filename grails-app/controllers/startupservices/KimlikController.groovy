@@ -57,7 +57,7 @@ class KimlikController {
         render result as JSON
     }
     /**
-     * @param value{delete | worst | same | better}*
+     * @param value {delete | worst | same | better}*
      * @return
      */
     def ajaxRateFriend() {
@@ -106,7 +106,22 @@ class KimlikController {
         render result as JSON
     }
 
+    def ajaxSaveBasicInfo() {
+        assert session.loggedinProfileId
 
+        def currentUsersId = ObjectId.massageToObjectId(session.loggedinProfileId)
+
+        def profile = Profile.get(currentUsersId)
+
+        profile.first_name = params.first_name
+        profile.last_name = params.last_name
+        profile.middle_name = params.middle_name
+        profile.aboutText = params.aboutText
+        profile.contactInfo.webSite = params.webSite
+        profile.save()
+        def result = [result: 'success']
+        render result as JSON
+    }
 
     def index() {
         [profile: fetchProfile()]
@@ -126,6 +141,10 @@ class KimlikController {
     }
 
     def skills() {
+        [profile: fetchProfile()]
+    }
+
+    def personalInfo() {
         [profile: fetchProfile()]
     }
 

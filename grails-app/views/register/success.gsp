@@ -2,9 +2,6 @@
 <html>
 <head>
     <meta name="layout" content="frontKimlik"/>
-    %{--<r:require modules=" fresh,freshServices,freshControllers"/>--}%
-    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.2/angular.min.js"></script>
-    <script src="http://code.angularjs.org/1.2.0-rc.2/angular-animate.min.js"></script>
     <script src="http://code.angularjs.org/1.0.8/angular-resource.min.js"></script>
     <style type="text/css">
 
@@ -25,72 +22,7 @@
         opacity: 1;
     }
     </style>
-
-    <script type="text/javascript">
-        angular.module('kimlikFront', ['ngResource']);
-
-        function RegisterController($scope, $resource) {
-            $scope.username
-            var USERNAME_NOT_AVAILABLE = "Boyle bir kullanici adi var, başka bir tane deneyiniz..";
-            var USERNAME_AVAILABLE = "Kullanıcı adı UYGUN, devam edebilirsiniz...";
-            $scope.userNameMessage = '';
-            var userNameValid = false,
-                    submitInProgress = false,
-                    checkInProgress = false,
-                    checkAgain = false;
-
-            // REST JSON API
-            var apiCheckUsername = $resource('/register/ajaxCheckUsername')
-            var apiCreate = $resource('/register/ajaxCreate')
-
-
-            $scope.checkUsername = function (username) {
-                if (!checkInProgress) {
-                    checkInProgress = true;
-                    apiCheckUsername.get({username: username}, function success(result) {
-                        console.log('result.available', result.available);
-                        console.log('result.username', result.username);
-                        userNameValid = result.available;
-                        if (userNameValid) {
-                            $scope.userNameMessage = USERNAME_AVAILABLE;
-                        } else {
-                            $scope.userNameMessage = USERNAME_NOT_AVAILABLE;
-                        }
-                        checkInProgress = false;
-                        if (checkAgain) {
-                            checkAgain = false;
-                            $scope.checkUsername($scope.username)
-                        }
-                    });
-                } else {
-                    checkAgain = true;  //because the model changed and we did not checked the new value just yet.
-                }
-            }
-
-            $scope.submitButtonIsDisabled = function () {
-                return checkInProgress || !userNameValid || submitInProgress
-            }
-
-            $scope.createProfile = function () {
-                submitInProgress = true;
-
-                function onSuccess(result) {
-                    var username = result.username
-                    document.location = '/kimlik/' + username;
-                }
-
-                function onError(result) {
-                    submitInProgress = false;
-                    alert('Bir hata olustu tekrar deneyin');
-                }
-
-                apiCreate.save({username: $scope.username}, {}, onSuccess, onError);
-            }
-
-
-        }
-
-    </script>
+    <r:require modules="kimlik_register"/>
 </head>
 
 <body>

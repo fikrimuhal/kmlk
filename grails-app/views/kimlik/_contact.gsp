@@ -3,7 +3,7 @@
     /* Google Maps API */
     if (typeof google != 'undefined')
     {
-        var map_latlng = new google.maps.LatLng(${profile.contactInfo.address.googleMapsCoordinates.latitude},${profile.contactInfo.address.googleMapsCoordinates.longitude});
+        var map_latlng = new google.maps.LatLng(${profile.contactInfo.address.googleMapsCoordinates.latitude?:0},${profile.contactInfo.address.googleMapsCoordinates.longitude?:0});
         var map_options = {
             zoom: ${profile.contactInfo.address.googleMapsCoordinates.zoomLevel},
             center: map_latlng,
@@ -59,8 +59,8 @@
         var marker = new google.maps.Marker({
             position: map_latlng,
             title: 'My Location',
-            shadow: markerIconDefault_shadow,
-            icon: markerIconDefault_image,
+          //  shadow: markerIconDefault_shadow,
+           // icon: markerIconDefault_image,
             map: map
         });
     }

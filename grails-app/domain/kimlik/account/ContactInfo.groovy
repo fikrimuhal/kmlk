@@ -10,14 +10,14 @@ class ContactInfo {
     String privateTel
     String publicTel
 
-    Address address
+    Address address  = new Address()
     String webSite
 
 
     static constraints = {
         authenticatedEmails nullable: true
         unAuthenticatedEmails nullable: true
-        primaryEmail nullable: false
+        primaryEmail nullable: true
         publicEmail nullable: true
 
         privateTel nullable: true

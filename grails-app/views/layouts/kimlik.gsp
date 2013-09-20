@@ -30,34 +30,33 @@
         width: 200px;
         background-color: rgba(188, 188, 188, 0.69);;
     }
+
+    [ng\:cloak], [ng-cloak], .ng-cloak {
+        display: none !important;
+    }
     </style>
 
 </head>
 
-<body data-spy="scroll" data-target="#menu" ng-app="kimlik">
+<body data-spy="scroll" data-target="#menu" ng-app="kimlik" ng-controller="UserController">
+<div >
 
-<r:script>
-    var kimlik = angular.module('kimlik', ['ui.bootstrap', 'ngResource']);
-    alert('eloo')
-    function UserController($scope, $http, filterFilter, $resource, skillService) {
+    <div id="currentUser" ng-if="isLoggedIn()" class="ng-cloak">
+        <span class="dropdown">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                <div>
+                    <span class="text-info" style="margin-left: 5px">{{getLoggedInUser().username}}</span>
 
-    }
-</r:script>
-<div id="currentUser">
-    <span class="dropdown">
-        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-            <div>
-                <span class="text-info" style="margin-left: 5px">Ilgaz Şumnulu</span>
-
-                <b class="caret pull-left"></b>
-            </div>
-        </a>
-        <ul class="dropdown-menu">
-            <li><a href="/kimlik/sumnulu">Profilime git</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Oturumu kapat</a></li>
-        </ul>
-    </span>
+                    <b class="caret pull-left"></b>
+                </div>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a href="/kimlik/{{getLoggedInUser().username}}">Profilime git</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Oturumu kapat</a></li>
+            </ul>
+        </span>
+    </div>
 </div>
 <!-- Start Content -->
 <div class="container left-menu">
@@ -100,40 +99,12 @@
 
 <script>
     var themerPrimaryColor = '#71c39a';
-</script>
-
-<script>
-    function masonryGallery() {
-        var $container = $('.quicksand-gallery ul');
-        $container.each(function () {
-            var c = $(this);
-
-            if (c.is('.masonry'))
-                c.masonry('reload');
-
-            c.imagesLoaded(function () {
-                c.masonry({
-                    gutterWidth: 18,
-                    itemSelector: 'li',
-                    columnWidth: c.find('li:first').width() - 5,
-                    isAnimated: true,
-                    animationOptions: {
-                        duration: 250,
-                        easing: 'linear',
-                        queue: true
-                    }
-                });
-            });
-        });
+    var config = {
+        username: '${profile.username}'
     }
-    $(function () {
-        masonryGallery();
 
-        $(window).resize(function (e) {
-            masonryGallery();
-        });
-    });
 </script>
+
 <r:layoutResources/>
 
 </body>

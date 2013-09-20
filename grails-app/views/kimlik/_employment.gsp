@@ -3,11 +3,11 @@
 
 <div class="heading-buttons">
     <h3 class="glyphicons share_alt"><i></i>  İŞ GEÇMİŞİ<span><g:link action="employment"
-                                                                      params="[username: params.username]">hepsini goster</g:link>
+                                                                      params="[username: params.username]"> <span  ng-if="isLoggedIn()" ng-cloak>hepsini goster</span></g:link>
     </span></h3>
 
     <div class="buttons pull-right">
-        <g:link action="employment" params="[username: params.username]">düzenle</g:link>
+        <g:link action="employment" params="[username: params.username]"><span  ng-if="isLoggedIn()" ng-cloak>düzenle</span></g:link>
     </div>
 </div>
 <ul class="history">

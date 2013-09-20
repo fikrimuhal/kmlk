@@ -1,62 +1,122 @@
-'use strict';
+kimlik.factory('userService', function ($resource, $rootScope) {
+    $rootScope.loggedinUser = {}
 
-//TURN OFF THIS AT PRODUCTION (NOT IMPLEMENTED YET)
-//var MERGE_API_WITH_LOCAL_CACHE = true;
+    function isLoggedIn() {
+        return !!$rootScope.loggedinUser.username
+    }
 
-/* Services */
+    function getLoggedInUser() {
+        return $rootScope.loggedinUser
+    }
 
-var SRVC = angular.module('app.services', []).
-    value('version', '0.1');
 
-SRVC.factory('ForumService', function () {
-    //initialize, this will run only one time
+    function auth() {
+        var api = $resource('/auth/ajaxAuth')
+
+        $rootScope.loggedinUser = api.get({}, {}, function () {
+            console.log($rootScope.loggedinUser)
+            $rootScope.$broadcast('userAuthenticated')
+        });
+    }
+
+    auth(); //try authentication
+
     return {
-//        getLastForums: function () {
-//            $rootScope.updateSession();
-//        }
+        isLoggedIn: isLoggedIn,
+        auth: auth,
+        getLoggedInUser: getLoggedInUser
+    }
+});
+
+kimlik.factory('skillService', function ($resource, $rootScope) {
+    $rootScope.skills = [];    //users skills
+    $rootScope.allSkills = undefined  //all skills
+
+    function fetchSkills() {
+        var apiSkills = $resource('/kimlik/' + config.username + '/ajaxSkills');
+        $rootScope.skills = apiSkills.query({}, {}, function (r) {
+        });
+    }
+
+    /**
+     * Current user a skill ekleyecek
+     * @param skillName {String}
+     */
+    function addSkill(skillName) {
+        var apiSkills = $resource('/api/skill/addSkill');
+        apiSkills.save({skillName: skillName}, {}, function (r) {
+            fetchSkills();  //update user skills
+            $rootScope.allSkills = undefined; //update typeahead list
+        });
+    }
+
+    /**
+     * Current user a skill ekleyecek
+     * @param skillName {String}
+     */
+    function removeSkill(skillName) {
+        var apiSkills = $resource('/api/skill/removeSkill');
+        apiSkills.save({skillName: skillName}, {}, function (r) {
+            fetchSkills();  //update user skills
+        });
+    }
+
+    function todo() {
+        alert('todo')
+    }
+
+    function allSkills(filter) {
+        var apiSkills = $resource('/api/skill/getAll');
+        if ($rootScope.allSkills === undefined) {
+            $rootScope.allSkills = apiSkills.query({}, {}, function (r) {
+            });
+        }
+        return  $rootScope.allSkills
+    }
+
+    fetchSkills();
+
+    return{
+        allSkills: allSkills,
+        fetchSkills: fetchSkills,
+        addSkill: addSkill,
+        removeSkill: removeSkill
+
+
     };
 });
 
 
-function applyCacheToResource(resource, cache) {
-    // Check to see what type of value we're dealing with.
-    // If it's an array, we want to splice-in the cache;
-    // if it's an object, we want to extend the keys.
-    if (angular.isArray(resource)) {
-        //alert('ok');
-        resource.splice.apply(
-            resource.data,
-            [ 0, 0 ].concat(cache)
-        );
+kimlik.factory('employmentService', function ($resource, $rootScope, userService) {
+    $rootScope.employment = undefined  // work History
 
-    } else {
-        //alert(resource.data);
-        angular.extend(resource, cache);
+    function addNew(work) {
+        var api = $resource('/employment/addNew');
+
+        var params = work
+        params.username = config.username
+        if (work.startDate) params.startDate = new Date(work.startDate).valueOf()
+        if (work.endDate) params.endDate = new Date(work.endDate).valueOf()
+        console.log(work)
+        api.save(params, {}, function (r) {
+            fetchEmploymentHistory()
+        });
+
     }
-    // Return the updated resource (for easy of use).
-    return( resource );
 
-}
+    function todo() {
+        alert('todo')
+    }
 
-//
-//function mergeCachedResponse(apiResponse, cachedResponse) {
-//    //todo: bunu resources a bir sekilde entegre etmek lazim
-//    //todo: cache i update etmeli son datayla
-//    //todo: cache da son N kayit olmali
-//    //todo: idsi ayni olanlardan 2 sertane olmamali
-//    if (MERGE_API_WITH_LOCAL_CACHE && angular.isArray(apiResponse.data)) {
-//
-//        apiResponse.data.splice.apply(
-//            apiResponse.data,
-//            [ 0, 0 ].concat(cachedResponse.data)
-//        );
-//    }
-//
-//}
+    function fetchEmploymentHistory() {
+        var username = config.username
+        var api = $resource('/employment/list');
+        $rootScope.employment = api.query({username: username}, {});
+        console.log($rootScope.employment)
+    }
 
-
-
-
-
-
-
+    fetchEmploymentHistory()
+    return{
+        addNew: addNew
+    };
+});

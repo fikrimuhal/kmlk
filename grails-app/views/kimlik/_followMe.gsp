@@ -1,6 +1,6 @@
 <div class="row-fluid">
     <div class="span6">
-        <h4 class="glyphicons share"><i></i>takip et <small><a href="/kimlik/${profile.username}/follow">düzenle</a>
+        <h4 class="glyphicons share"><i></i>takip et <small><a href="/kimlik/${profile.username}/follow"><span ng-if="isLoggedIn()" ng-cloak>düzenle</span></a>
         </small></h4>
         <g:if test="${profile?.accounts?.hasFacebook()}">
             <a href="http://facebook.com/${profile.accounts.facebook.remoteId}"

@@ -29,7 +29,7 @@
         </form>
         <div class="clearfix"></div>
     </li>
-    <li class="row-fluid" ng-repeat="elm in getEmploymentHistory()">
+    <li class="row-fluid" ng-repeat="elm in getEmploymentHistory()|orderBy:elm.id:false" ng-cloak>
         <span class="date span3">
             <span class="label label-inverse">{{elm.startDate.year}} - {{elm.endDate.year}}</span>
             <span class="glyphicons hidden-tablet calendar pull-right"><i></i></span>
@@ -43,9 +43,9 @@
         <div class="clearfix"></div>
     </li>
 </ul>
-<pre>
-    {{newWork | json}}
-</pre>
+%{--<pre>--}%
+    %{--{{newWork | json}}--}%
+%{--</pre>--}%
 
 %{--<pre>--}%
 %{--{{getEmploymentHistory() | json}}--}%

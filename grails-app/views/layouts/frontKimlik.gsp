@@ -25,9 +25,6 @@
     <link rel="stylesheet" href="/common/theme/fonts/font-awesome/css/font-awesome.min.css">
     <!--[if IE 7]><link rel="stylesheet" href="/common/theme/fonts/font-awesome/css/font-awesome-ie7.min.css"><![endif]-->
 
-    <!-- Uniform Pretty Checkboxes -->
-    %{--<link href="/common/theme/scripts/plugins/forms/pixelmatrix-uniform/css/uniform.default.css" rel="stylesheet" />--}%
-
     <!-- Main Theme Stylesheet :: CSS -->
     <link href="/common/theme/css/style-default-menus-dark.css" rel="stylesheet"/>
 
@@ -37,11 +34,12 @@
 
     %{--<r:require modules=" fresh,freshServices,freshControllers"/>--}%
 
+
     <g:layoutHead/>
     <r:layoutResources/>
 </head>
 
-<body class="login " ng-app='kimlikFront'>
+<body class="login " ng-app='kimlik'>
 
 <!-- Main Container Fluid -->
 <div class="container-fluid menu-hidden">
@@ -71,6 +69,11 @@
 <script>
     var basePath = '',
             commonPath = '/common/';
+
+    var config = {
+        username: ''
+    }
+
 </script>
 
 
@@ -79,31 +82,6 @@
 
 <!-- Bootstrap -->
 <script src="/common/bootstrap/js/bootstrap.min.js"></script>
-
-%{--<!-- SlimScroll Plugin -->--}%
-%{--<script src="/common/theme/scripts/plugins/other/jquery-slimScroll/jquery.slimscroll.js"></script>--}%
-
-%{--<!-- MegaMenu -->--}%
-%{--<script src="/common/theme/scripts/demo/megamenu.js?1374506533"></script>--}%
-
-%{--<!-- jQuery ScrollTo Plugin -->--}%
-%{--<!--[if gt IE 8]><!--><script src="http://balupton.github.io/jquery-scrollto/lib/jquery-scrollto.js"></script><!--<![endif]-->--}%
-
-<!-- History.js -->
-%{--<!--[if gt IE 8]><!--><script src="http://browserstate.github.io/history.js/scripts/bundled/html4+html5/jquery.history.js"></script><!--<![endif]-->--}%
-
-<!-- jQuery Ajaxify -->
-%{--<!--[if gt IE 8]><!--><script src="/common/theme/scripts/plugins/system/jquery-ajaxify/ajaxify-html5.js"></script><!--<![endif]-->--}%
-
-
-%{--<!-- Holder Plugin -->--}%
-%{--<script src="/common/theme/scripts/plugins/other/holder/holder.js?1374506533"></script>--}%
-
-%{--<!-- Uniform Forms Plugin -->--}%
-%{--<script src="/common/theme/scripts/plugins/forms/pixelmatrix-uniform/jquery.uniform.min.js"></script>--}%
-
-%{--<!-- Common Demo Script -->--}%
-%{--<script src="/common/theme/scripts/demo/common.js?1374506533"></script>--}%
 <r:layoutResources/>
 
 </body>
