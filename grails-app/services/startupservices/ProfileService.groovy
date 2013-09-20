@@ -110,7 +110,7 @@ class ProfileService {
 
 
         if (!friend) {
-            log.debug('YENI ARKADAS OLUSTURULUYOR::: TYPE ' + accountType)
+           // log.debug('YENI ARKADAS OLUSTURULUYOR::: TYPE ' + accountType)
             //            friend daha onceden kayit olmamis bu kisiyi ilk defa goruyoruz
             //CREATE NEW GLOBAL PROFILE
             friend = new Profile(
@@ -148,15 +148,16 @@ class ProfileService {
             friend = friend.save(flush: true, failOnError: true)
             //END --- CREATE NEW GLOBAL PROFILE
         } else {
-            log.debug 'friend zaten sisteme daha onceden eklenmis'
+            log.debug "friend zaten sisteme daha onceden eklenmis ${friend._id}, ${friend.first_name}"
             //currentProfile in arkadasimi bilmiyorum ama
         }
 
         //daha onceden updateAccounts calismis olmasi lazim. (currentProfile'in)
         def _QUERY = [_id: profileId]
 
-        if (friend.id) {
-            Profile.collection.update(_QUERY, [$addToSet: ['friends': friend.id]], false, false, WriteConcern.NONE)
+        def friendId = (friend?.id)?:friend?._id
+        if (friendId) {
+            Profile.collection.update(_QUERY, [$addToSet: ['friends': friendId]], false, false, WriteConcern.NONE)
         }
         //artik arkadaslar, ama tek tarafli
 

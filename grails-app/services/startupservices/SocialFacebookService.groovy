@@ -40,7 +40,7 @@ class SocialFacebookService {
                     id: it.id,
                     first_name: it.first_name,
                     middle_name: it.middle_name,
-                    last_name: it.lastName
+                    last_name: it.last_name
             ]
             profileService.addFriend(profile.id, friendsData, 'facebook')
         }
@@ -62,18 +62,12 @@ class SocialFacebookService {
 
     private updateAccounts(Profile profile, Token token, def data) {
         log.debug('updating updateAccounts')
-        //todo EGER, SISTEME BASKA BIRISI BU KISININ BU ACCOUNT UNU EKLEMIS ISE:
-        //TODO          BUTUN PROFILLERI ACCCOUNT.LINKEDIN.UPSTREAMID YE GORE ARA (REGISTERED:FALSE OLANLAR DA) (KENDIMIZI SILMEYELIM)
-        //TODO              (EGER BIR KAYIT BULURSAN)
-        //TODO                  BULUNAN KAYDIN SIL
-        //TODO                  BULUNAN KAYDIN ID SINI BUTUN PROFIL.FRIENDS DE ARAT
-        //TODO                      BULUNAN KAYITLARI YENI ASAGIDA OLUSTURDUGUN ID ILE DEGISTIR
 
         profile.accounts.facebook = new SocialAccount(
                 remoteId: data.id,
                 first_name: data.first_name,
                 last_name: data.last_name,
-                middle_name: data.last_name,
+                middle_name: data.middle_name,
                 token: token.token,
                 token_secret: token.secret
         )

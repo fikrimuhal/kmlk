@@ -110,12 +110,6 @@ class SocialLinkedInService {
 
     private updateAccounts(Profile profile, Token token, def data) {
         log.debug('updating updateAccounts')
-        //todo EGER, SISTEME BASKA BIRISI BU KISININ BU ACCOUNT UNU EKLEMIS ISE:
-        //TODO          BUTUN PROFILLERI ACCCOUNT.LINKEDIN.UPSTREAMID YE GORE ARA (REGISTERED:FALSE OLANLAR DA) (KENDIMIZI SILMEYELIM)
-        //TODO              (EGER BIR KAYIT BULURSAN)
-        //TODO                  BULUNAN KAYDIN SIL
-        //TODO                  BULUNAN KAYDIN ID SINI BUTUN PROFIL.FRIENDS DE ARAT
-        //TODO                      BULUNAN KAYITLARI YENI ASAGIDA OLUSTURDUGUN ID ILE DEGISTIR
 
         profile.accounts.linkedin = new SocialAccount(
                 remoteId: data.id,

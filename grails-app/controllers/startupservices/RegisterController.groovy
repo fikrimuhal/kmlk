@@ -48,7 +48,6 @@ class RegisterController {
                         redirectToProfile(profile.username)
                     } else {
                         socialLinkedInService.addToProfile(profile, linkedinToken);
-
                         redirectToProfile(profile.username)
                     }
                     break
@@ -74,7 +73,7 @@ class RegisterController {
                     facebookSuccess()
                     break
                 case 'linkedin':
-//                    addLinkedInToProfile(profile);
+                    linkedinSuccess();
                     break
                 case 'google':
 //                   addGoogleToProfile(profile);
@@ -105,37 +104,55 @@ class RegisterController {
         redirect(controller: 'kimlik', params: [username: username], fragment: '')
     }
 
+    /**
+     * kullanici registered olabilir
+     * kallinici arkadas olarak eklenmis olabilir
+     * kullanici yeni olabilir
+     * @return
+     */
+    private linkedinSuccess() {
+        def data = socialLinkedInService.fetchUpStream(linkedinToken)
 
+        def Id = data.id
+        def result = Profile.collection.findOne(['accounts.linkedin.remoteId': id])
+        //todo
+        if (result?.registered == true) {
+            session.loggedinProfileId = result._id
+            log.debug(session.loggedinProfileId)
+            redirect(controller: 'kimlik', params: [username: result.username], fragment: '')
+        } else {
+            session.linkedinRaw = data
+            session._reg_profile = result
 
+        }
 
-
-
-
-
-
-
-
-
-
-
+    }
 
     private facebookSuccess() {
         def data = socialFacebookService.fetchUpStream(facebookToken)
 
         def facebookId = data.id
         def result = Profile.collection.findOne(['accounts.facebook.remoteId': facebookId])
-                   //todo
-        if (result) {
+        //todo
+        if (result?.registered) {
             session.loggedinProfileId = result._id
             log.debug(session.loggedinProfileId)
             redirect(controller: 'kimlik', params: [username: result.username], fragment: '')
         } else {
             session.facebookRaw = data
+            session._reg_profile = result
 
         }
 
     }
-
+    /**
+     * Kullanici registered degil fakat
+     * arkadasi tarafindan eklenmis olabilir yada
+     * ilk defa karsilasiyor olabiliriz
+     *
+     * username i yok eminiz
+     * @return
+     */
     def ajaxCreate() {
         Boolean userNameExists = Profile.countByUsername(params.username) != 0
         if (userNameExists) {
@@ -144,10 +161,15 @@ class RegisterController {
         }
 
         //===============================
-        def profile = new Profile(
-                username: params.username,
-                registered: true,
-        )
+        def profile
+        if (session._reg_profile) {
+            profile = Profile.get(ObjectId.massageToObjectId(session._reg_profile._id))
+        } else {
+            profile = new Profile()
+        }
+        profile.username = params.username
+        profile.registered = true
+
 
         profile = profile.save(failOnError: true)  // hata olursa exeption at
         session.loggedinProfileId = profile.id
@@ -157,9 +179,11 @@ class RegisterController {
             socialFacebookService.addToProfile(profile, facebookToken);
             session.facebookRaw = null
         } else if (session.linkedinRaw) {
+            socialLinkedInService.addToProfile(profile, linkedinToken);
             session.linkedinRaw = null
         }
 
+        session._reg_profile = null
 
 
 
