@@ -223,9 +223,15 @@ function employmentController($scope, employmentService) {
         employmentService.addNew(work)
     }
 
+    $scope.save = function (work) {
+        work.showEdit = false
+        employmentService.save(work)
+        //employmentService.addNew(work)
+    }
+
 
 }
-function personalInfoController($rootScope, $scope, userService,$resource) {
+function personalInfoController($rootScope, $scope, userService, $resource) {
     $scope.model = {}
 
     if (userService.isLoggedIn()) {

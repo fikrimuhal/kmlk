@@ -9,6 +9,7 @@ import java.text.DateFormat
 
 class EmploymentController {
     def profileService
+
     def addNew() {
         def p = fetchProfile()
         Date startDate
@@ -21,8 +22,8 @@ class EmploymentController {
             long s = Long.parseLong(params.endDate)
             endDate = new Date(s)
         }
-         println startDate
-         println endDate
+        println startDate
+        println endDate
         def w = new HistoryEntity(
                 entity: params.entity,
                 position: params.position,
@@ -41,17 +42,18 @@ class EmploymentController {
         log.debug(params)
     }
 
-    def edit() {
+    def save() {
         log.debug(params)
     }
 
     def list() {
         def data = fetchProfile().workHistory.history
+        JSON.use('deep')
 
         JSON.registerObjectMarshaller(ObjectId) { return it.toStringMongod() }
-        JSON.registerObjectMarshaller(Date) { return [year: it?.year+1900, month: it?.month, day: it?.day] }
+//        JSON.registerObjectMarshaller(Date) { return [year: it?.year + 1900, month: it?.month, day: it?.day] }
+//        JSON.registerObjectMarshaller(Date) { return it.getTime() }
 
-        JSON.use('deep')
         render(data as JSON)
 
     }

@@ -148,6 +148,10 @@ class KimlikController {
         [profile: fetchProfile()]
     }
 
+    def skill() {
+        [profile: fetchProfile(), skill:'Javaa']
+    }
+
     private fetchProfile() {
         def profile = Profile.findByUsername(params.username)
         if (!profile) {

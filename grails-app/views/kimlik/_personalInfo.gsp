@@ -27,8 +27,8 @@
             <h4 class="glyphicons notes"><i></i>Kişisel bilgilerim</h4>
 
             <div class="buttons pull-right">
-                <g:link action="personalInfo" params="[username: params.username]"><span ng-if="isLoggedIn()"
-                                                                                       ng-cloak>düzenle</span></g:link>
+                <g:link action="personalInfo" params="[username: params.username]"><span ng-if="isSelfProfile()"
+                                                                                         ng-cloak>düzenle</span></g:link>
             </div>
         </div>
 
@@ -52,44 +52,54 @@
             </tr>--}%
             <tr>
                 <td class="right muted">Website</td>
-                <td contenteditable="true">${profile.contactInfo.webSite}</td>
+                <td>${profile.contactInfo.webSite ?: 'http://'}</td>
             </tr>
             <tr>
                 <td class="right muted">Enson sirketim</td>
-                <td contenteditable="true">${profile.workHistory?.lastEntity?.entity}</td>
+                <td>${profile.workHistory?.lastEntity?.entity}</td>
             </tr>
             </tbody>
         </table>
 
+        <div class="separator line"></div>
+
+        <p>
+            ${profile.aboutText}
+        </p>
+
         <div class="separator line visible-phone"></div>
     </div>
 
-    <div class="span6">
+    <div class="span6"><g:if test="${profile.workHistory?.lastEntity}">
+
         <h4 class="glyphicons cardio"><i></i>${profile.workHistory?.lastEntity?.position} at <a>${profile.workHistory?.lastEntity?.entity}</a>
         </h4>
+    </g:if>
 
         <div class="row-fluid about">
-            <div class="span6">
-                xxxxxx
-            </div>
-
-            <div class="span6">
-                <p contenteditable="true">${profile.aboutText}</p>
+            <div class="span12">
+                <img src="${profile.profilePictureUrl}" style="width: 250px" class="pull-right"
+                     alt="${profile.name}"/>
             </div>
         </div>
 
-        <!-- Twitter Section -->
-        <section class="twitter">
-            <div class="row-fluid">
-                <div class="span12">
-                    <div class="tweet">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nunc lorem, rutrum non porta. <span
-                            class="label label-inverse">01/11/2012</span></div>
-                </div>
+        %{--<!-- Twitter Section -->--}%
+        %{--<section class="twitter">--}%
+        %{--<div class="row-fluid">--}%
+        %{--<div class="span12">--}%
+        %{--<div class="tweet">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nunc lorem, rutrum non porta. <span--}%
+        %{--class="label label-inverse">01/11/2012</span></div>--}%
+        %{--</div>--}%
 
-                <div class="clearfix"></div>
-            </div>
-        </section>
+        %{--<div class="clearfix"></div>--}%
+        %{--</div>--}%
+        %{--</section>--}%
         <!-- Twitter Section END -->
+    </div>
+</div>
+
+<div class="row-fluid">
+    <div class="span12">
     </div>
 </div>
 

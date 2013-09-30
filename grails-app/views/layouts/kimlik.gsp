@@ -100,7 +100,8 @@
 <script>
     var themerPrimaryColor = '#71c39a';
     var config = {
-        username: '${profile.username}'
+        username: '${profile.username}',
+        isSelfProfile: ${profile.id == session.loggedinProfileId}
     }
 
 </script>

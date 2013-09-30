@@ -104,6 +104,21 @@ kimlik.factory('employmentService', function ($resource, $rootScope, userService
 
     }
 
+    function save(work) {
+        var api = $resource('/employment/save');
+
+        var params = work
+        params.username = config.username
+        if (work.startDate) params.startDate = new Date(work.startDate).valueOf()
+        if (work.endDate) params.endDate = new Date(work.endDate).valueOf()
+
+        console.log(work)
+        api.save(params, {}, function (r) {
+            fetchEmploymentHistory()
+        });
+
+    }
+
     function todo() {
         alert('todo')
     }
@@ -117,6 +132,7 @@ kimlik.factory('employmentService', function ($resource, $rootScope, userService
 
     fetchEmploymentHistory()
     return{
-        addNew: addNew
+        addNew: addNew,
+        save: save
     };
 });
