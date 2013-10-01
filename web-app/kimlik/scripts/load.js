@@ -95,8 +95,6 @@ $(function()
 		$('.container:first').toggleClass('menu-hidden');
 		$('#menu').toggleClass('hidden-phone');
 
-		if (typeof masonryGallery != 'undefined')
-			masonryGallery();
 	});
 
 	// tooltips
@@ -111,58 +109,6 @@ $(function()
 	$(window).resize();
 
 	$('a[data-toggle="prettyPhoto"]').prettyPhoto();
-
-	function initGallery(filters, no_quicksand)
-	{
-		if (!$('#portfolio-list-temp').length)
-			$('body').append('<ul id="portfolio-list-temp" class="hidden"></ul>');
-		else
-			$('#portfolio-list-temp').empty();
-
-		var filter_selector = '#portfolio-list-master li'; // all
-
-		if (filters)
-			filter_selector += '[data-type*="' + filters + '"]';
-
-		$(filter_selector).clone().appendTo('#portfolio-list-temp');
-
-		if (!no_quicksand)
-		{
-			$('.quicksand-gallery ul').quicksand($('#portfolio-list-temp li'), {
-				duration: 0,
-				useScaling: false,
-				adjustHeight : false
-			},
-			function()
-			{
-				if ($('.lightBox').size() > 0) $(".lightBox ul a").lightBox({ maxWidth: $(document).width()-40 });
-				masonryGallery();
-			});
-		}
-		else
-		{
-			$('.quicksand-gallery ul').empty().append($('#portfolio-list-temp li'));
-			masonryGallery();
-		}
-
-		// PrettyPhoto
-		if ($('.lightBox').size() > 0) $(".lightBox ul a").lightBox({ maxWidth: $(document).width()-40 });
-	}
-
-	if (!$('#portfolio-list-master').length)
-	{
-		// Auto-set data-id for each list item as index / required by quicksand
-		$('.quicksand-gallery ul li').each(function(index) {
-			$(this).attr('data-id', index);
-		});
-
-		// Create master list if there is none to assist with filtering and pagination
-		$('body').append('<ul id="portfolio-list-master" class="hidden"></ul>');
-		$('.quicksand-gallery ul li').clone().appendTo('#portfolio-list-master');
-
-		// init portfolio
-		initGallery(false);
-	}
 
 	// Category filter click
 	$('.nav-gallery-filter li').click(function()

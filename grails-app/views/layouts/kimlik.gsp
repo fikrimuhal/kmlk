@@ -14,7 +14,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
 
-    <r:require modules="kimlik"/>
+    <r:require modules="kimlik,jquery"/>
 
     <g:layoutHead/>
     <r:layoutResources/>
@@ -39,7 +39,7 @@
 </head>
 
 <body data-spy="scroll" data-target="#menu" ng-app="kimlik" ng-controller="UserController">
-<div >
+<div>
 
     <div id="currentUser" ng-if="isLoggedIn()" class="ng-cloak">
         <span class="dropdown">
@@ -101,9 +101,9 @@
     var themerPrimaryColor = '#71c39a';
     var config = {
         username: '${profile.username}',
-        isSelfProfile: ${profile.id == session.loggedinProfileId}
+        isSelfProfile: <g:isSelfProfile profile="${profile}"/>
     }
-
+    %{--alert('${session}')--}%
 </script>
 
 <r:layoutResources/>
