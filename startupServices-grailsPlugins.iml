@@ -4,12 +4,12 @@
     <facet type="web" name="GrailsWeb">
       <configuration>
         <webroots>
-          <root url="file://$MODULE_DIR$/target/work/plugins/oauth-2.0.1/web-app" relative="/" />
           <root url="file://$MODULE_DIR$/target/work/plugins/jquery-1.10.2/web-app" relative="/" />
           <root url="file://$MODULE_DIR$/target/work/plugins/plugin-config-0.1.5/web-app" relative="/" />
           <root url="file://$MODULE_DIR$/target/work/plugins/cache-headers-1.1.5/web-app" relative="/" />
           <root url="file://$MODULE_DIR$/target/work/plugins/cached-resources-1.0/web-app" relative="/" />
           <root url="file://$MODULE_DIR$/target/work/plugins/cached-resources-1.0/grails-app/views" relative="/" />
+          <root url="file://$MODULE_DIR$/target/work/plugins/oauth-2.0.1/web-app" relative="/" />
         </webroots>
         <sourceRoots />
       </configuration>
@@ -17,6 +17,12 @@
   </component>
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
+    <content url="file://$MODULE_DIR$/target/work/plugins/cache-1.1.1">
+      <sourceFolder url="file://$MODULE_DIR$/target/work/plugins/cache-1.1.1/src/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/target/work/plugins/cache-1.1.1/src/groovy" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/target/work/plugins/cache-1.1.1/grails-app/services" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/target/work/plugins/cache-1.1.1/grails-app/taglib" isTestSource="false" />
+    </content>
     <content url="file://$MODULE_DIR$/target/work/plugins/cache-headers-1.1.5">
       <sourceFolder url="file://$MODULE_DIR$/target/work/plugins/cache-headers-1.1.5/grails-app/i18n" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/target/work/plugins/cache-headers-1.1.5/grails-app/services" isTestSource="false" />
@@ -24,9 +30,6 @@
     <content url="file://$MODULE_DIR$/target/work/plugins/cached-resources-1.0">
       <sourceFolder url="file://$MODULE_DIR$/target/work/plugins/cached-resources-1.0/src/groovy" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/target/work/plugins/cached-resources-1.0/grails-app/i18n" isTestSource="false" />
-    </content>
-    <content url="file://$MODULE_DIR$/target/work/plugins/grails-melody-1.45">
-      <sourceFolder url="file://$MODULE_DIR$/target/work/plugins/grails-melody-1.45/src/groovy" isTestSource="false" />
     </content>
     <content url="file://$MODULE_DIR$/target/work/plugins/jquery-1.10.2">
       <sourceFolder url="file://$MODULE_DIR$/target/work/plugins/jquery-1.10.2/src/groovy" isTestSource="false" />
@@ -60,9 +63,19 @@
       <sourceFolder url="file://$MODULE_DIR$/target/work/plugins/scaffolding-2.0.0/src/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/target/work/plugins/scaffolding-2.0.0/src/groovy" isTestSource="false" />
     </content>
+    <content url="file://$MODULE_DIR$/target/work/plugins/spring-security-core-1.2.7.3">
+      <sourceFolder url="file://$MODULE_DIR$/target/work/plugins/spring-security-core-1.2.7.3/src/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/target/work/plugins/spring-security-core-1.2.7.3/src/groovy" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/target/work/plugins/spring-security-core-1.2.7.3/grails-app/i18n" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/target/work/plugins/spring-security-core-1.2.7.3/grails-app/services" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/target/work/plugins/spring-security-core-1.2.7.3/grails-app/taglib" isTestSource="false" />
+    </content>
     <content url="file://$MODULE_DIR$/target/work/plugins/tomcat-7.0.42">
       <sourceFolder url="file://$MODULE_DIR$/target/work/plugins/tomcat-7.0.42/src/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/target/work/plugins/tomcat-7.0.42/src/groovy" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/target/work/plugins/webxml-1.4.1">
+      <sourceFolder url="file://$MODULE_DIR$/target/work/plugins/webxml-1.4.1/src/groovy" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
@@ -71,17 +84,6 @@
     <orderEntry type="module-library" exported="">
       <library name="Grails User Library (startupServices-grailsPlugins)">
         <CLASSES>
-          <root url="jar://$MAVEN_REPOSITORY$/org/jrobin/jrobin/1.5.9/jrobin-1.5.9.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/net/bull/javamelody/javamelody-core/1.45.0/javamelody-core-1.45.0.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/org/quartz-scheduler/quartz/2.1.6/quartz-2.1.6.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/org/grails/grails-datastore-mongo/1.3.0.RELEASE/grails-datastore-mongo-1.3.0.RELEASE.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/org/grails/grails-datastore-gorm-plugin-support/1.1.9.RELEASE/grails-datastore-gorm-plugin-support-1.1.9.RELEASE.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-commons-core/1.4.1.RELEASE/spring-data-commons-core-1.4.1.RELEASE.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/org/grails/grails-datastore-gorm-mongo/1.3.0.RELEASE/grails-datastore-gorm-mongo-1.3.0.RELEASE.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/org/javassist/javassist/3.16.1-GA/javassist-3.16.1-GA.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/org/grails/grails-datastore-web/1.1.9.RELEASE/grails-datastore-web-1.1.9.RELEASE.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-mongodb/1.2.1.RELEASE/spring-data-mongodb-1.2.1.RELEASE.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/org/mongodb/mongo-java-driver/2.11.1/mongo-java-driver-2.11.1.jar!/" />
           <root url="jar://$MAVEN_REPOSITORY$/org/apache/httpcomponents/httpcore/4.0.1/httpcore-4.0.1.jar!/" />
           <root url="jar://$MAVEN_REPOSITORY$/oauth/signpost/signpost-commonshttp4/1.2.1.2/signpost-commonshttp4-1.2.1.2.jar!/" />
           <root url="jar://$MAVEN_REPOSITORY$/commons-codec/commons-codec/1.3/commons-codec-1.3.jar!/" />
@@ -106,14 +108,11 @@
           <root url="jar://$MAVEN_REPOSITORY$/commons-fileupload/commons-fileupload/1.2.2/commons-fileupload-1.2.2.jar!/" />
           <root url="jar://$MAVEN_REPOSITORY$/commons-collections/commons-collections/3.2.1/commons-collections-3.2.1.jar!/" />
           <root url="jar://$MAVEN_REPOSITORY$/commons-lang/commons-lang/2.6/commons-lang-2.6.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/com/gmongo/gmongo/1.2/gmongo-1.2.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/org/scribe/scribe/1.3.0/scribe-1.3.0.jar!/" />
           <root url="jar://$MAVEN_REPOSITORY$/xalan/serializer/2.7.1/serializer-2.7.1.jar!/" />
           <root url="jar://$MAVEN_REPOSITORY$/oro/oro/2.0.8/oro-2.0.8.jar!/" />
           <root url="jar://$MAVEN_REPOSITORY$/javax/servlet/jstl/1.1.2/jstl-1.1.2.jar!/" />
           <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-logging-log4j/7.0.42/tomcat-embed-logging-log4j-7.0.42.jar!/" />
           <root url="jar://$MAVEN_REPOSITORY$/bouncycastle/bcprov-jdk14/138/bcprov-jdk14-138.jar!/" />
-          <root url="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-commons/1.5.1.RELEASE/spring-data-commons-1.5.1.RELEASE.jar!/" />
           <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-core/7.0.42/tomcat-embed-core-7.0.42.jar!/" />
           <root url="jar://$MAVEN_REPOSITORY$/org/eclipse/jdt/core/compiler/ecj/3.7.2/ecj-3.7.2.jar!/" />
           <root url="jar://$MAVEN_REPOSITORY$/org/apache/tomcat/embed/tomcat-embed-jasper/7.0.42/tomcat-embed-jasper-7.0.42.jar!/" />
@@ -122,6 +121,21 @@
           <root url="jar://$MAVEN_REPOSITORY$/org/apache/ant/ant-trax/1.7.1/ant-trax-1.7.1.jar!/" />
           <root url="jar://$MAVEN_REPOSITORY$/org/fusesource/jansi/jansi/1.2.1/jansi-1.2.1.jar!/" />
           <root url="jar://$MAVEN_REPOSITORY$/jline/jline/1.0/jline-1.0.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-web/3.0.7.RELEASE/spring-security-web-3.0.7.RELEASE.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/3.0.7.RELEASE/spring-security-core-3.0.7.RELEASE.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/quartz-scheduler/quartz/2.1.6/quartz-2.1.6.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/grails/grails-datastore-mongo/1.3.0.RELEASE/grails-datastore-mongo-1.3.0.RELEASE.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/grails/grails-datastore-gorm-plugin-support/1.1.9.RELEASE/grails-datastore-gorm-plugin-support-1.1.9.RELEASE.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-commons-core/1.4.1.RELEASE/spring-data-commons-core-1.4.1.RELEASE.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/grails/grails-datastore-gorm-mongo/1.3.0.RELEASE/grails-datastore-gorm-mongo-1.3.0.RELEASE.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/javassist/javassist/3.16.1-GA/javassist-3.16.1-GA.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/grails/grails-datastore-web/1.1.9.RELEASE/grails-datastore-web-1.1.9.RELEASE.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-mongodb/1.2.1.RELEASE/spring-data-mongodb-1.2.1.RELEASE.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/mongodb/mongo-java-driver/2.11.1/mongo-java-driver-2.11.1.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/com/gmongo/gmongo/1.2/gmongo-1.2.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/scribe/scribe/1.3.0/scribe-1.3.0.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-commons/1.5.1.RELEASE/spring-data-commons-1.5.1.RELEASE.jar!/" />
+          <root url="jar://$MAVEN_REPOSITORY$/net/sf/ehcache/ehcache-core/2.4.6/ehcache-core-2.4.6.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

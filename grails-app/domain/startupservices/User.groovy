@@ -1,4 +1,4 @@
-package startupServices
+package startupservices
 
 class User {
 

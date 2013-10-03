@@ -58,6 +58,7 @@ grails.project.dependency.resolution = {
 
        compile 'oauth.signpost:signpost-core:1.2.1.2'
        compile 'oauth.signpost:signpost-commonshttp4:1.2.1.2'
+        compile "net.sf.ehcache:ehcache-core:2.4.6"
 
 
 
@@ -69,7 +70,7 @@ grails.project.dependency.resolution = {
 
         // plugins for the compile step
         compile ":scaffolding:2.0.0"
-//        compile ':cache:1.1.1'
+        compile ':cache:1.1.1'
 
         // plugins needed at runtime but not for compilation
 //        runtime ":hibernate:3.6.10.1" // or ":hibernate4:4.1.11.1"
@@ -91,8 +92,8 @@ grails.project.dependency.resolution = {
         compile ":cache-headers:1.1.5"
 
         compile ":spring-security-core:1.2.7.3"
-        compile ":spring-security-appinfo:1.0"
+//        compile ":spring-security-appinfo:1.0"
 
-        compile ":grails-melody:1.45" // /monitoring todo: AA ekle filter olabilir simdilik
+//        compile ":grails-melody:1.47" // /monitoring todo: AA ekle filter olabilir simdilik
     }
 }

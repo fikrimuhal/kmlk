@@ -1,11 +1,11 @@
-package startupServices
+package startupservices
 
 class Role {
 
 	String authority
 
 	static mapping = {
-		cache true
+//		cache true
 	}
 
 	static constraints = {

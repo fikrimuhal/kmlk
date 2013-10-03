@@ -1,4 +1,4 @@
-package startupServices
+package startupservices
 
 import org.apache.commons.lang.builder.HashCodeBuilder
 
@@ -43,15 +43,15 @@ class UserRole implements Serializable {
 	}
 
 	static void removeAll(User user) {
-		executeUpdate 'DELETE FROM UserRole WHERE user=:user', [user: user]
+//		executeUpdate 'DELETE FROM UserRole WHERE user=:user', [user: user]
 	}
 
 	static void removeAll(Role role) {
-		executeUpdate 'DELETE FROM UserRole WHERE role=:role', [role: role]
+//		executeUpdate 'DELETE FROM UserRole WHERE role=:role', [role: role]
 	}
 
 	static mapping = {
-		id composite: ['role', 'user']
+//		id composite: ['role', 'user']
 		version false
 	}
 }
