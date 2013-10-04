@@ -52,7 +52,7 @@
             </tr>--}%
             <tr>
                 <td class="right muted">Website</td>
-                <td>${profile.contactInfo.webSite ?: 'http://'}</td>
+                <td>${profile.contactInfo?.webSite ?: 'http://'}</td>
             </tr>
             <tr>
                 <td class="right muted">Enson sirketim</td>

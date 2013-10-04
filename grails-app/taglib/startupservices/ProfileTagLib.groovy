@@ -2,12 +2,13 @@ package startupservices
 
 class ProfileTagLib {
     static defaultEncodeAs = 'html'
+    def authenticationService
     //static encodeAsForTags = [tagName: 'raw']
     /**
      * @attr profile
      */
     def isSelfProfile = { attrs, body ->
-        def isSelf = request.getSession(false) && attrs.profile.id == session?.loggedinProfileId
+        def isSelf = authenticationService.loggedIn && attrs.profile.id == authenticationService.authenticatedUserId
         out << isSelf
     }
 }

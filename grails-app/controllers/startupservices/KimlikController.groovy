@@ -3,33 +3,24 @@ package startupservices
 import com.mongodb.DBCollection
 import com.mongodb.WriteConcern
 import grails.converters.JSON
-import kimlik.account.Accounts
-import kimlik.account.Address
-import kimlik.account.ContactInfo
-import kimlik.account.MapCoordinates
-import kimlik.account.history.GeneralisedHistory
-import kimlik.account.history.HistoryEntity
+
 import org.bson.types.ObjectId
 
 class KimlikController {
     def profileService
+    def authenticationService
     def skillService
 
     def ajaxFriends() {
-
-        def currentUsersId = ObjectId.massageToObjectId(session.loggedinProfileId)
-
-        def data = shallowUser(Profile.get(currentUsersId).friends)
+        def data = shallowUser(authenticationService.authenticatedUser.friends)
         render(data as JSON)
 //        render 'ok'
     }
 
 
     def ajaxSkills() {
-        def currentUsersId = ObjectId.massageToObjectId(session.loggedinProfileId)
-
         def data = []
-        Profile.get(currentUsersId).skills.each {
+        authenticationService.authenticatedUser.skills.each {
             data << [
                     name: it.name,
                     self_score: it.self_score,
@@ -44,12 +35,12 @@ class KimlikController {
     }
 
     def ajaxRateSelf() {
-        assert session.loggedinProfileId
+        assert authenticationService.loggedIn
         assert params.skillName
         assert params.value  //1,2,3,4
         int value = Integer.parseInt(params.value)
         def skillName = params.skillName
-        def currentUsersId = ObjectId.massageToObjectId(session.loggedinProfileId)
+        def currentUsersId = authenticationService.authenticatedUserId
 
         profileService.rateSelfSkill(currentUsersId, skillName, value)
 
@@ -61,7 +52,7 @@ class KimlikController {
      * @return
      */
     def ajaxRateFriend() {
-        assert session.loggedinProfileId
+        assert authenticationService.loggedIn
         assert params.friendId
         assert params.skillName
         assert params.value
@@ -69,7 +60,7 @@ class KimlikController {
         def value = params.value
         def friendId = ObjectId.massageToObjectId(params.friendId)
         def skillName = params.skillName
-        def currentUsersId = ObjectId.massageToObjectId(session.loggedinProfileId)
+        def currentUsersId = authenticationService.authenticatedUserId
 
 //        def bucketNames = ['worst', 'same', 'better']
         DBCollection col = Profile.collection
@@ -107,11 +98,9 @@ class KimlikController {
     }
 
     def ajaxSaveBasicInfo() {
-        assert session.loggedinProfileId
+        assert authenticationService.loggedIn
 
-        def currentUsersId = ObjectId.massageToObjectId(session.loggedinProfileId)
-
-        def profile = Profile.get(currentUsersId)
+        def profile = authenticationService.authenticatedUser
 
         profile.first_name = params.first_name
         profile.last_name = params.last_name
@@ -149,13 +138,41 @@ class KimlikController {
     }
 
     def skill() {
-        [profile: fetchProfile(), skill:'Javaa']
+        [profile: fetchProfile(), skill: 'Javaa']
+    }
+
+    def contacts() {
+        [profile: authenticationService.authenticatedUser]
+
+    }
+
+    def messageInbox() {
+        [profile: authenticationService.authenticatedUser]
+
+    }
+
+    def notifications() {
+        [profile: authenticationService.authenticatedUser]
+    }
+
+    def positionPreferences() {
+        [profile: authenticationService.authenticatedUser]
+    }
+
+    def positionInbox() {
+        [profile: authenticationService.authenticatedUser]
     }
 
     private fetchProfile() {
         def profile = Profile.findByUsername(params.username)
         if (!profile) {
+            //id dene
+            def id = ObjectId.massageToObjectId(params.username)
+            if (id) profile = Profile.findById(id)
+
+        } else if (!profile) {
             redirect(url: '/')
+
         }
 
         return profile

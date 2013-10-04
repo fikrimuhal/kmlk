@@ -4,21 +4,29 @@ import grails.converters.JSON
 import org.bson.types.ObjectId
 
 class AuthController {
+    def authenticationService
+    def persistentLoginService
 
     def index() {}
 
 
-
     def ajaxAuth() {
-        def currentUsersId = ObjectId.massageToObjectId(session.loggedinProfileId)
 
-        def data = Profile.get(currentUsersId)
+        def data = authenticationService.authenticatedUser
         if (data) {
 
             render data as JSON
         } else {
             render status: 404
         }
+    }
+
+
+    def logout() {
+        persistentLoginService.sendCancelCookie()
+        authenticationService.logout()
+        //todo put cancel cookie
+        redirect(url: '/')
     }
 
 

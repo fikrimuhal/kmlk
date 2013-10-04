@@ -16,10 +16,10 @@ class Profile {
     Boolean registered
 
     Accounts accounts = new Accounts()
-    ContactInfo contactInfo  = new ContactInfo()
+    ContactInfo contactInfo = new ContactInfo()
 
-    GeneralisedHistory workHistory  = new GeneralisedHistory()
-    GeneralisedHistory educationHistory   = new GeneralisedHistory()
+    GeneralisedHistory workHistory = new GeneralisedHistory()
+    GeneralisedHistory educationHistory = new GeneralisedHistory()
 
     List<PersonalSkill> skills = new ArrayList<PersonalSkill>()
 
@@ -68,5 +68,15 @@ class Profile {
             return accounts.linkedin.picture_url
         }
 
+    }
+
+    String getProfileUrl() {
+        if (registered) {
+            return '/kimlik/' + username
+
+        } else {
+            return '/kimlik/' + id
+
+        }
     }
 }

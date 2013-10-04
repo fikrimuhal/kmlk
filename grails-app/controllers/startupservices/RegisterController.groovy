@@ -1,22 +1,14 @@
 package startupservices
 
 import grails.converters.JSON
-import groovy.json.JsonSlurper
-import groovyx.net.http.RESTClient
-import kimlik.account.Accounts
-import kimlik.account.Address
-import kimlik.account.ContactInfo
-import kimlik.account.SocialAccount
-import kimlik.account.MapCoordinates
-import kimlik.account.history.GeneralisedHistory
-import kimlik.account.history.HistoryEntity
+
 import org.bson.types.ObjectId
 import org.scribe.model.Token
 import uk.co.desirableobjects.oauth.scribe.OauthService
-import org.scribe.model.Response
 
 
 class RegisterController {
+    def authenticationService
     def random = new Random()
     def socialLinkedInService
     def socialFacebookService
@@ -31,8 +23,8 @@ class RegisterController {
 
     //social callback
     def success() {
-        if (session.loggedinProfileId) {
-            def profile = Profile.get(session.loggedinProfileId)
+        if (authenticationService.loggedIn) {
+            def profile = authenticationService.authenticatedUser
             log.debug 'session da kullanıcı var, hesaba yeni account ekleyelim'
             switch (params.id) {
                 case 'facebook':
@@ -117,8 +109,7 @@ class RegisterController {
         def result = Profile.collection.findOne(['accounts.linkedin.remoteId': id])
         //todo
         if (result?.registered == true) {
-            session.loggedinProfileId = result._id
-            log.debug(session.loggedinProfileId)
+            authenticationService.authenticatedUserId = result._id
             redirect(controller: 'kimlik', params: [username: result.username], fragment: '')
         } else {
             session.linkedinRaw = data
@@ -135,8 +126,7 @@ class RegisterController {
         def result = Profile.collection.findOne(['accounts.facebook.remoteId': facebookId])
         //todo
         if (result?.registered) {
-            session.loggedinProfileId = result._id
-            log.debug(session.loggedinProfileId)
+            authenticationService.authenticatedUserId = result._id
             redirect(controller: 'kimlik', params: [username: result.username], fragment: '')
         } else {
             session.facebookRaw = data
@@ -172,7 +162,8 @@ class RegisterController {
 
 
         profile = profile.save(failOnError: true)  // hata olursa exeption at
-        session.loggedinProfileId = profile.id
+
+        authenticationService.authenticatedUserId = profile.id
         //===============================
 
         if (session.facebookRaw) {
@@ -201,7 +192,6 @@ class RegisterController {
         ]
         render(data as JSON)
     }
-
 
 
     OauthService oauthService // or new OauthService() would work if you're not in a spring-managed class.

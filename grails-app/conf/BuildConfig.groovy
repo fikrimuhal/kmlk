@@ -86,12 +86,13 @@ grails.project.dependency.resolution = {
 
         compile ":mongodb:1.3.0"
         compile ":quartz2:2.1.6.2"
+
 //        compile ":mail:1.0.1"
 
         runtime ":cached-resources:1.0"
         compile ":cache-headers:1.1.5"
 
-        compile ":spring-security-core:1.2.7.3"
+//        compile ":spring-security-core:1.2.7.3"
 //        compile ":spring-security-appinfo:1.0"
 
 //        compile ":grails-melody:1.47" // /monitoring todo: AA ekle filter olabilir simdilik

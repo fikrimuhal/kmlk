@@ -8,6 +8,7 @@ import org.bson.types.ObjectId
 class SkillController {
     def skillService
     def profileService
+    def authenticationService
 
     def getAll() {
         def data = []
@@ -23,12 +24,11 @@ class SkillController {
     }
 
     /**
-     * @required session.loggedinProfileId != null
      * @return
      */
     def addSkill() {
-        assert session.loggedinProfileId
-        def currentUsersId = ObjectId.massageToObjectId(session.loggedinProfileId)
+        assert authenticationService.loggedIn
+        def currentUsersId = authenticationService.authenticatedUserId
 
         String skillName = params.skillName
 
@@ -39,8 +39,8 @@ class SkillController {
     }
 
     def removeSkill() {
-        assert session.loggedinProfileId
-        def currentUsersId = ObjectId.massageToObjectId(session.loggedinProfileId)
+        assert authenticationService.loggedIn
+        def currentUsersId = authenticationService.authenticatedUserId
         String skillName = params.skillName
 
         profileService.removeSkill(currentUsersId, skillName)
