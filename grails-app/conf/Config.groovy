@@ -253,7 +253,9 @@ grails {
 }
 remove this line */
 
-// Added by the Spring Security Core plugin:
-grails.plugins.springsecurity.userLookup.userDomainClassName = 'startupservices.User'
-grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'startupservices.UserRole'
-grails.plugins.springsecurity.authority.className = 'startupservices.Role'
+grails.plugin.awssdk.accessKey = '***REMOVED***'
+grails.plugin.awssdk.secretKey = '***REMOVED***'
+grails.plugin.awssdk.region = 'us-east-1'
+
+
+

@@ -185,9 +185,11 @@
         <w>hesaba</w>
         <w>hesap</w>
         <w>ilgili</w>
+        <w>ilginizi</w>
         <w>kapat</w>
         <w>kayıt</w>
         <w>kimlik</w>
+        <w>kiriterlerim</w>
         <w>kullanıcı</w>
         <w>kutum</w>
         <w>linkedin</w>
@@ -198,7 +200,11 @@
         <w>oluşturalım</w>
         <w>oturumu</w>
         <w>pozisyonlar</w>
+        <w>profil</w>
+        <w>profilime</w>
         <w>rememberme</w>
+        <w>resmi</w>
+        <w>resmim</w>
         <w>startupservices</w>
         <w>tavsan</w>
         <w>themer</w>
@@ -206,7 +212,9 @@
         <w>upsert</w>
         <w>yeni</w>
         <w>yolla</w>
+        <w>çekecek</w>
         <w>şirket</w>
+        <w>şirketler</w>
       </words>
     </dictionary>
   </component>

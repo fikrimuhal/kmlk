@@ -163,6 +163,11 @@ class KimlikController {
         [profile: authenticationService.authenticatedUser]
     }
 
+    def profilePicture() {
+
+        [profile: authenticationService.authenticatedUser]
+    }
+
     private fetchProfile() {
         def profile = Profile.findByUsername(params.username)
         if (!profile) {

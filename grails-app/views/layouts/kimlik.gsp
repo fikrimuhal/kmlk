@@ -59,6 +59,7 @@
                 <li><g:link controller="kimlik" action="contacts" params="[username:params.username]">Adres Defterim</g:link> </li>
                 <li><g:link controller="kimlik" action="notifications" params="[username:profile.username]">Bildirimler</g:link> </li>
                 <li><g:link controller="kimlik" action="messageInbox" params="[username:profile.username]">Mesaj Kutum</g:link> </li>
+                <li><g:link controller="kimlik" action="profilePicture" params="[username:profile.username]">Profil Resmim</g:link> </li>
                 <li class="divider"></li>
                 <li><g:link controller="auth" action="logout">Oturumu kapat</g:link> </li>
             </ul>

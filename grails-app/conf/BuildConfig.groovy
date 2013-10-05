@@ -60,6 +60,12 @@ grails.project.dependency.resolution = {
        compile 'oauth.signpost:signpost-commonshttp4:1.2.1.2'
         compile "net.sf.ehcache:ehcache-core:2.4.6"
 
+        // Workaround to resolve dependency issue with aws-java-sdk and http-builder (dependent on httpcore:4.0)
+        build 'org.apache.httpcomponents:httpcore:4.2'
+        build 'org.apache.httpcomponents:httpclient:4.2'
+        runtime 'org.apache.httpcomponents:httpcore:4.2'
+        runtime 'org.apache.httpcomponents:httpclient:4.2'
+
 
 
     }
@@ -92,8 +98,8 @@ grails.project.dependency.resolution = {
         runtime ":cached-resources:1.0"
         compile ":cache-headers:1.1.5"
 
-//        compile ":spring-security-core:1.2.7.3"
-//        compile ":spring-security-appinfo:1.0"
+     compile ":aws-sdk:1.6.0"
+
 
 //        compile ":grails-melody:1.47" // /monitoring todo: AA ekle filter olabilir simdilik
     }
