@@ -31,6 +31,21 @@
         </g:uploadForm>
     </div>  %{--span 6--}%
 </div> %{--row--}%
+<div class="row-fluid">
+    <div class="span6">
+        <h3>Altarnatif profil resimleri</h3>
+        <ul>
 
+            <g:each in="${profile.profilePicture.pictures}">
+                <li>
+                    <pre>
+                        <img src="${it.url}" alt=""/>
+                    </pre>
+                </li>
+
+            </g:each>
+        </ul>
+    </div>
+</div>
 </body>
 </html>

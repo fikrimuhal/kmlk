@@ -110,7 +110,7 @@ class ProfileService {
 
 
         if (!friend) {
-           // log.debug('YENI ARKADAS OLUSTURULUYOR::: TYPE ' + accountType)
+            // log.debug('YENI ARKADAS OLUSTURULUYOR::: TYPE ' + accountType)
             //            friend daha onceden kayit olmamis bu kisiyi ilk defa goruyoruz
             //CREATE NEW GLOBAL PROFILE
             friend = new Profile(
@@ -155,7 +155,7 @@ class ProfileService {
         //daha onceden updateAccounts calismis olmasi lazim. (currentProfile'in)
         def _QUERY = [_id: profileId]
 
-        def friendId = (friend?.id)?:friend?._id
+        def friendId = (friend?.id) ?: friend?._id
         if (friendId) {
             Profile.collection.update(_QUERY, [$addToSet: ['friends': friendId]], false, false, WriteConcern.NONE)
         }
@@ -164,4 +164,46 @@ class ProfileService {
         //dddd
     }
 
+    def addProfilePicture(Picture picture, ObjectId profileId, boolean isDefault) {
+
+        def pictureMap = [
+                _id: picture.id,
+                path: picture.path,
+                bucket: picture.bucket,
+                url: picture.url,
+//                owner: picture.owner.id,
+                broken: picture.broken,
+                source: picture.source
+        ]
+        DBCollection col = Profile.collection
+
+        def _QUERY = [_id: profileId]
+        def _OPS = [:]
+        if (isDefault) {
+            _OPS.'$set' = ['profilePicture.defaultPicture': pictureMap]
+        }
+        _OPS.'$addToSet' = ['profilePicture.pictures': pictureMap]
+        col.update(_QUERY, _OPS, false, false, WriteConcern.SAFE)
+
+    }
+
+    def makeDefaultProfilePicture(Picture picture, ObjectId profileId) {
+
+        def pictureMap = [
+                _id: picture.id,
+                path: picture.path,
+                bucket: picture.bucket,
+                url: picture.url,
+                owner: picture.owner.id,
+                broken: picture.broken,
+                source: picture.source
+        ]
+        DBCollection col = Profile.collection
+
+        def _QUERY = [_id: profileId]
+        def _OPS = [:]
+            _OPS.'$set' = ['profilePicture.defaultPicture': pictureMap]
+        col.update(_QUERY, _OPS, false, false, WriteConcern.SAFE)
+
+    }
 }

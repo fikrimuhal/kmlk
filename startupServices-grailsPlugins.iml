@@ -4,12 +4,12 @@
     <facet type="web" name="GrailsWeb">
       <configuration>
         <webroots>
-          <root url="file://$MODULE_DIR$/target/work/plugins/cached-resources-1.0/web-app" relative="/" />
-          <root url="file://$MODULE_DIR$/target/work/plugins/cached-resources-1.0/grails-app/views" relative="/" />
-          <root url="file://$MODULE_DIR$/target/work/plugins/plugin-config-0.1.5/web-app" relative="/" />
           <root url="file://$MODULE_DIR$/target/work/plugins/oauth-2.0.1/web-app" relative="/" />
           <root url="file://$MODULE_DIR$/target/work/plugins/jquery-1.10.2/web-app" relative="/" />
+          <root url="file://$MODULE_DIR$/target/work/plugins/plugin-config-0.1.5/web-app" relative="/" />
           <root url="file://$MODULE_DIR$/target/work/plugins/cache-headers-1.1.5/web-app" relative="/" />
+          <root url="file://$MODULE_DIR$/target/work/plugins/cached-resources-1.0/web-app" relative="/" />
+          <root url="file://$MODULE_DIR$/target/work/plugins/cached-resources-1.0/grails-app/views" relative="/" />
         </webroots>
         <sourceRoots />
       </configuration>
@@ -138,9 +138,7 @@
           <root url="jar://$MAVEN_REPOSITORY$/commons-codec/commons-codec/1.6/commons-codec-1.6.jar!/" />
         </CLASSES>
         <JAVADOC />
-        <SOURCES>
-          <root url="jar://$USER_HOME$/.ideaLibSources/aws-java-sdk-1.6.0-sources.jar!/" />
-        </SOURCES>
+        <SOURCES />
       </library>
     </orderEntry>
   </component>

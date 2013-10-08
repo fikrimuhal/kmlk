@@ -6,8 +6,10 @@ import kimlik.account.history.GeneralisedHistory
 import org.bson.types.ObjectId
 
 class Profile {
-    static embedded = ['accounts', 'contactInfo', 'workHistory', 'educationHistory', 'skills']
-    ObjectId id
+    static embedded = ['accounts', 'contactInfo', 'workHistory', 'educationHistory', 'skills', 'profilePicture']
+
+    static transients = ['profilePictureUrl','name','profileUrl']
+            ObjectId id
 
     /**
      * true ise kulanici kimli.io ya register olmus
@@ -23,6 +25,8 @@ class Profile {
 
     List<PersonalSkill> skills = new ArrayList<PersonalSkill>()
 
+    ProfilePicture profilePicture = new ProfilePicture()
+
     List<Profile> friends = new ArrayList<Profile>()
     List<ProfileMerge> contactMerges = new ArrayList<ProfileMerge>()
 
@@ -36,6 +40,7 @@ class Profile {
 
     static hasMany = [
             friends: Profile,
+            skills:PersonalSkill,
             contactMerges: ProfileMerge
     ]
 
@@ -62,13 +67,16 @@ class Profile {
     }
 
     String getProfilePictureUrl() {
-        if (accounts.hasFacebook()) {
-            return "http://graph.facebook.com/${accounts.facebook.remoteId}/picture"
+        if (profilePicture?.profilePictureUrl) {
+            return profilePicture?.profilePictureUrl
+        } else if (accounts.hasFacebook()) {
+            return "http://graph.facebook.com/${accounts.facebook.remoteId}/picture?height=400"
         } else if (accounts.hasLinkedin()) {
             return accounts.linkedin.picture_url
         }
-
     }
+
+
 
     String getProfileUrl() {
         if (registered) {

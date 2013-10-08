@@ -14,6 +14,7 @@ class SocialFacebookService {
     final String FACEBOOK_GRAPH_URL = 'https://graph.facebook.com/'
 
     def profileService
+    def pictureService
 
     def addToProfile(def profile, Token token) {
         log.debug('addFacebookProfile to existing profile')
@@ -28,7 +29,6 @@ class SocialFacebookService {
 
         updateFriends(profile, data)
 
-
     }
 
 
@@ -40,7 +40,7 @@ class SocialFacebookService {
                     id: it.id,
                     first_name: it.first_name,
                     middle_name: it.middle_name,
-                    last_name: it.last_name
+                    last_name: it.last_name,
             ]
             profileService.addFriend(profile.id, friendsData, 'facebook')
         }
@@ -81,7 +81,7 @@ class SocialFacebookService {
 //        def consumerKey = grailsApplication.config.oauth.providers.facebook.key
 //        def consumerSecret = grailsApplication.config.oauth.providers.facebook.secret
         def facebook = new RESTClient(FACEBOOK_GRAPH_URL)
-        def r = facebook.get(path: "me", params: [access_token: token.token, fields: 'email,first_name,last_name,languages,username,name,middle_name,hometown,location,education,devices,age_range,picture.type(large),friends.fields(first_name,last_name,username,middle_name)'], requestContentType: 'application/json')
+        def r = facebook.get(path: "me", params: [access_token: token.token, fields: 'email,first_name,last_name,languages,username,name,middle_name,hometown,location,education,devices,age_range,picture.height(400),friends.fields(picture.height(400),first_name,last_name,username,middle_name)'], requestContentType: 'application/json')
         r.status == 200
         return r.data
     }

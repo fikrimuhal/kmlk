@@ -3,11 +3,10 @@ package startupservices
 import org.bson.types.ObjectId
 
 class Picture {
-    def pictureService
 
     ObjectId id
 
-    String path // without domain name or bucketname    (significant part) includes filename and ext.
+    String path // without domain name or bucket name    (significant part) includes filename and ext.
 
     String bucket
 
@@ -20,5 +19,6 @@ class Picture {
     String source // facebook, linkedin, twitter, upload
 
     static constraints = {
+        owner nullable: true
     }
 }

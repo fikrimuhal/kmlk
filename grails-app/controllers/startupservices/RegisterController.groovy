@@ -105,7 +105,7 @@ class RegisterController {
     private linkedinSuccess() {
         def data = socialLinkedInService.fetchUpStream(linkedinToken)
 
-        def Id = data.id
+        def id = data.id
         def result = Profile.collection.findOne(['accounts.linkedin.remoteId': id])
         //todo
         if (result?.registered == true) {

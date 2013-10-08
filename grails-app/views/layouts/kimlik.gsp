@@ -53,13 +53,13 @@
             <ul class="dropdown-menu">
                 <li><a href="/kimlik/{{getLoggedInUser().username}}">Profilime git</a></li>
                 <li class="divider"></li>
-                <li><g:link controller="kimlik" action="positionInbox" params="[username:profile.username]">İlginizi Çekecek Şirketler</g:link> </li>
-                <li><g:link controller="kimlik" action="positionPreferences" params="[username:profile.username]">Şirketler Kiriterlerim</g:link> </li>
+                <li><a href="/kimlik/{{getLoggedInUser().username}}/positionInbox">İlginizi Çekecek Şirketler</a> </li>
+                <li><a href="/kimlik/{{getLoggedInUser().username}}/positionPreferences">Şirketler Kiriterlerim</a> </li>
                 <li class="divider"></li>
-                <li><g:link controller="kimlik" action="contacts" params="[username:params.username]">Adres Defterim</g:link> </li>
-                <li><g:link controller="kimlik" action="notifications" params="[username:profile.username]">Bildirimler</g:link> </li>
-                <li><g:link controller="kimlik" action="messageInbox" params="[username:profile.username]">Mesaj Kutum</g:link> </li>
-                <li><g:link controller="kimlik" action="profilePicture" params="[username:profile.username]">Profil Resmim</g:link> </li>
+                <li><a href="/kimlik/{{getLoggedInUser().username}}/contacts">Adres Defterim</a> </li>
+                <li><a href="/kimlik/{{getLoggedInUser().username}}/notifications">Bildirimler</a> </li>
+                <li><a href="/kimlik/{{getLoggedInUser().username}}/messageInbox">Mesaj Kutum</a> </li>
+                <li><a href="/kimlik/{{getLoggedInUser().username}}/profilePicture">Profil Resmim</a> </li>
                 <li class="divider"></li>
                 <li><g:link controller="auth" action="logout">Oturumu kapat</g:link> </li>
             </ul>

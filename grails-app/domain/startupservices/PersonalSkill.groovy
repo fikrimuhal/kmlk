@@ -18,9 +18,9 @@ class PersonalSkill {
     Set<Profile> worstThanMe = new HashSet<Profile>()
 
     static hasMany = [
-            betterThanMe : Profile,
-            sameAsMe : Profile,
-            worstThanMe : Profile,
+            betterThanMe: Profile,
+            sameAsMe: Profile,
+            worstThanMe: Profile,
     ]
 
     static constraints = {
@@ -32,4 +32,5 @@ class PersonalSkill {
         sameAsMe nullable: true
         worstThanMe nullable: true
     }
+    static belongsTo = Profile
 }

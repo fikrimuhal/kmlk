@@ -24,11 +24,30 @@ class PictureService {
      *
      * @param originalFileName
      */
-    def upload2Aws(CommonsMultipartFile file) {
-        def originalFileName = file.originalFilename
-        def size = file.size
-        def stream = file.inputStream
-        def contentType = file.contentType
+    def upload2Aws(def file, String source, ObjectId owner) {
+
+        def size, stream, contentType, extension
+        if (file instanceof CommonsMultipartFile) {
+            println 'type file'
+            size = file.size
+            stream = file.inputStream
+            contentType = file.contentType
+            extension = file.originalFilename.tokenize('.').last()
+
+        } else if (file instanceof URL) {
+
+            println 'type url'
+            def connection = file.openConnection()
+
+            size = connection.contentLength
+            stream = connection.inputStream
+            contentType = connection.contentType
+            extension = file.file.tokenize('.').last()
+
+
+        } else {
+            throw new UnsupportedOperationException('Only URL or CommonsMultipartFile supported...')
+        }
 
 
         ObjectMetadata meta = new ObjectMetadata()
@@ -36,15 +55,15 @@ class PictureService {
         meta.setContentType(contentType)
         meta.setCacheControl('public, max-age=31104000')
 
-        def extension = originalFileName.tokenize('.').last()
         //todo sadece jpg gif filan kontrolu
+
         def id = new ObjectId() // database idisi
+
         def fileName = "${id}.$extension"
         String path = "$PATH_BASE/$fileName"
 
         //todo listener ekle
         //todo upload bitince database e yaz
-        //todo stream kullan
         def por = new PutObjectRequest(BUCKET_NAME, path, stream, meta).withCannedAcl(CannedAccessControlList.PublicRead)
         Upload upload = amazonWebService.transferManager.upload(por)
 
@@ -57,6 +76,10 @@ class PictureService {
             // Do work while we wait for our upload to complete…
             Thread.sleep(500)
         }
+        //ok now we create db entity
+
+        return saveToDb(id, path, source, owner)
+
     }
 
     def store() {
@@ -66,5 +89,21 @@ class PictureService {
 
     def generateUrl(def picture) {
 
+    }
+
+    def saveToDb(ObjectId id, String path, String source, ObjectId ownerId) {
+        log.debug('Saving to database picture')
+        Picture picture = new Picture(
+                id: id,
+                path: path,
+                bucket: BUCKET_NAME,
+                url: "${URL_BASE}/$BUCKET_NAME/$path".toString(),
+                owner: Profile.get(ownerId),
+                broken: false,
+                source: source
+
+        ).save(flush:true, failOnError: true)
+        println ' resmi kaydettik'
+        return picture
     }
 }

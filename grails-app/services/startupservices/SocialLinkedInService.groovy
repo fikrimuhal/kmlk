@@ -42,11 +42,12 @@ class SocialLinkedInService {
         log.debug('updating updateFriends')
         profile
         data.connections.values.each {
+            println it
             def friendsData = [
                     id: it.id,
                     first_name: it.firstName,
                     first_name: it.firstName,
-                    picture_url: it.pictureUrl,
+                    picture_url: it.pictureUrls?.values?.getAt(0),
                     last_name: it.lastName
             ]
             profileService.addFriend(profile.id, friendsData, 'linkedin')
@@ -116,7 +117,9 @@ class SocialLinkedInService {
                 first_name: data.firstName,
                 last_name: data.lastName,
                 token: token.token,
-                token_secret: token.secret
+                token_secret: token.secret ,
+                picture_url: data.pictureUrls?.values?.getAt(0),
+
         )
         profile.save(failOnError: true)
 
@@ -140,7 +143,7 @@ class SocialLinkedInService {
                 'num-connections',
                 'specialties',
                 'positions',
-                'picture-url',
+                'picture-urls::(original)',
                 'last-modified-timestamp', //full
                 'languages',
                 'skills',
@@ -150,7 +153,7 @@ class SocialLinkedInService {
                 'recommendations-received',
                 'date-of-birth',
                 'phone-numbers',   //r_contactinfo
-                'connections:(picture-url,first-name,last-name,id,skills,educations,positions,date-of-birth)',
+                'connections:(picture-urls::(original),first-name,last-name,id,skills,educations,positions,date-of-birth)',
         ]
         def requestUrl = apiUrl + ':(' + fields.join(',') + ')?format=json'
         org.scribe.model.Response result = oauthService.getLinkedInResource(token, requestUrl)
