@@ -23,9 +23,11 @@ modules = {
 
     angularjs {
         dependsOn('jquery')
-        resource url: 'https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0-rc.2/angular.min.js', disposition: 'head'
-        resource url: 'http://code.angularjs.org/1.2.0-rc.2/angular-animate.min.js', disposition: 'head'
-        resource url: 'http://code.angularjs.org/1.0.8/angular-resource.min.js', disposition: 'head'
+        resource url: 'http://code.angularjs.org/snapshot/angular.min.js', disposition: 'head'
+        resource url: 'http://code.angularjs.org/snapshot/angular-animate.min.js', disposition: 'head'
+        resource url: 'http://code.angularjs.org/snapshot/angular-resource.min.js', disposition: 'head'
+        resource url: 'http://code.angularjs.org/snapshot/angular-sanitize.min.js', disposition: 'head'
+        resource url: 'http://code.angularjs.org/snapshot/angular-touch.min.js', disposition: 'head'
         resource url: 'http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.6.0.js', disposition: 'head'
 
 

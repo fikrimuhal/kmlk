@@ -1,4 +1,4 @@
-var kimlik = angular.module('kimlik', ['ui.bootstrap', 'ngResource']);
+var kimlik = angular.module('kimlik', ['ui.bootstrap', 'ngResource','ui.bootstrap']);
 
 function UserController($scope, $http, filterFilter, $resource, userService) {
 

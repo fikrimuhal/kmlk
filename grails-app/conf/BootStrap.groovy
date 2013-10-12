@@ -1,6 +1,5 @@
 import grails.converters.JSON
 import org.bson.types.ObjectId
-import startupservices.PersonalSkill
 import startupservices.Skill
 
 class BootStrap {
@@ -35,7 +34,14 @@ class BootStrap {
     def destroy = {
     }
 
-    private configure() {
+    private void configure() {
+        registerJsonHandlers()
+    }
+
+    private void registerJsonHandlers() {
+        JSON.registerObjectMarshaller(ObjectId) {
+            it.toString()
+        }
     }
 }
 

@@ -258,3 +258,108 @@ function personalInfoController($rootScope, $scope, userService, $resource) {
 
 
 }
+
+
+function positionInboxController($rootScope, $scope, userService, $resource, $modal, $log) {
+    $scope.model = 'selassm'
+    var api = $resource('/position/inbox')
+    var visibleDetailsMap = {}
+    $scope.inbox = api.query({}, {}, function () {
+        console.log($scope.inbox)
+    });
+
+    $scope.toggleDetails = function (id) {
+        visibleDetailsMap[id] = !visibleDetailsMap[id]
+    };
+
+    $scope.isDetailsVisible = function (id) {
+        return visibleDetailsMap[id]
+    }
+
+    $scope.testX = function () {
+        console.log('testing testing X')
+        return 'yeppp'
+    }
+
+
+    $scope.items = ['item1', 'item2', 'item3d'];
+
+    $scope.notInterested = function () {
+
+        var modalInstance = $modal.open({
+            templateUrl: 'positionNotInterestedModal.html',
+            controller: PositionNotInterestedCtrl,
+            resolve: {
+                items: function () {
+                    return $scope.items;
+                }
+            }
+        });
+
+        modalInstance.result.then(function (selectedItem) {
+            $scope.selected = selectedItem;
+        }, function () {
+            $log.info('Modal dismissed at: ' + new Date());
+        });
+    };
+
+    $scope.stacked = [
+        {"value": 20, "type": "danger"},
+        {"value": 70, "type": "danger"}
+
+    ]
+
+
+}
+
+
+var PositionNotInterestedCtrl = function ($scope, $modalInstance, items) {
+
+    $scope.items = items;
+    $scope.selected = {
+        item: $scope.items[0]
+    };
+
+    $scope.ok = function () {
+        $modalInstance.close($scope.selected.item);
+    };
+
+    $scope.cancel = function () {
+        $modalInstance.dismiss('cancel');
+    };
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -9,6 +9,7 @@ class UrlMappings {
 
         "/kimlik/$username?/$action?"(controller: 'kimlik')
         "/api/skill/$action"(controller: 'skill')
+        "/api/$controller/$action?/$id?"{}
 
 //        "/kimlik/$user?/follow"(view: "/kimlik/followPage")
 //        "/kimlik/$user?/education"(view: "/kimlik/educationPage")
