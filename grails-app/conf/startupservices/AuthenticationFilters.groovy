@@ -5,7 +5,7 @@ class AuthenticationFilters {
     def authenticationService
 
     def filters = {
-        all(controller: '*', action: '*') {
+        all(controller: 'html', action: '*', invert: true) {
             before = {
                 if (!authenticationService.loggedIn) {
                     def r = authenticationService.authenticate()

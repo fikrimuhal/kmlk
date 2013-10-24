@@ -87,7 +87,7 @@ kimlik.factory('skillService', function ($resource, $rootScope) {
 });
 
 
-kimlik.factory('employmentService', function ($resource, $rootScope, userService) {
+kimlik.factory('employmentService', function ($resource, $rootScope) {
     $rootScope.employment = undefined  // work History
 
     function addNew(work) {

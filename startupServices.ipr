@@ -175,6 +175,7 @@
       <words>
         <w>adres</w>
         <w>anasayfaya</w>
+        <w>anladım</w>
         <w>avukat</w>
         <w>avukatlar</w>
         <w>baskan</w>
@@ -193,9 +194,11 @@
         <w>kullanıcı</w>
         <w>kutum</w>
         <w>linkedin</w>
+        <w>lütfen</w>
         <w>mesaj</w>
         <w>navbar</w>
         <w>nullable</w>
+        <w>okudum</w>
         <w>olmuş</w>
         <w>oluşturalım</w>
         <w>oturumu</w>
@@ -205,7 +208,9 @@
         <w>rememberme</w>
         <w>resmi</w>
         <w>resmim</w>
+        <w>seçiniz</w>
         <w>startupservices</w>
+        <w>sözleşmeyi</w>
         <w>tavsan</w>
         <w>themer</w>
         <w>timeline</w>
@@ -213,7 +218,9 @@
         <w>yeni</w>
         <w>yolla</w>
         <w>çekecek</w>
+        <w>şahıs</w>
         <w>şirket</w>
+        <w>şirketi</w>
         <w>şirketler</w>
       </words>
     </dictionary>

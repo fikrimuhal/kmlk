@@ -1,5 +1,7 @@
 import grails.converters.JSON
+import kimlik.company.Company
 import org.bson.types.ObjectId
+import startupservices.Profile
 import startupservices.Skill
 
 class BootStrap {
@@ -28,6 +30,37 @@ class BootStrap {
                 it.save()
             }
 
+        }
+        if (!Company.count) {
+            def sumnulu = Profile.findById(new ObjectId("5253388e0fb8a098ad784d84"))
+            println 'Bootstrap new demo companies'
+            new Company(
+                    owner: sumnulu,
+                    page_name: 'fikrimuhal',
+                    short_name: 'Fikrimuhal',
+                    full_name: 'Fikrimuhal Teknoloji Ar. Ge. LTD. ŞTİ.',
+                    industry: 'Yazılım',
+                    tags: ['Internet', ' Startuplar', ' İnsankaynakları', ' Sosyal networkler', ' SAS'],
+                    email: 'info@fikrimuhal.com',
+                    tel: '543646363565634',
+                    www: 'http://www.fikrimuhal.com',
+                    about: 'Fikrimuhal Teknoloji hakkinda uzuuun uzuun ama cok uzun olmayan bio about as yazisi.',
+                    employees: [sumnulu]
+            ).save(flush: true, failOnError: true)
+
+            new Company(
+                    owner: sumnulu,
+                    page_name: 'acikdemokrasi',
+                    short_name: 'Açıkdemokrasi',
+                    full_name: 'Açık demokrasi A.Ş.',
+                    industry: 'STK',
+                    tags: ['STK', 'Sivil toplum kurulusu', 'internet'],
+                    email: 'info@acikdemokrasi.org',
+                    tel: '54364636300034',
+                    www: 'http://www.acikdemokrasi.org',
+                    about: 'Acik demokrasi hakkinda uzuuun uzuun ama cok uzun olmayan bio about as yazisi.',
+                    employees: [sumnulu]
+            ).save(flush: true, failOnError: true)
         }
     }
 

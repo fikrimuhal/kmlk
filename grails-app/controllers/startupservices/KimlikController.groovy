@@ -48,7 +48,7 @@ class KimlikController {
         render result as JSON
     }
     /**
-     * @param value {delete | worst | same | better}*
+     * @param value{delete | worst | same | better}*
      * @return
      */
     def ajaxRateFriend() {
@@ -167,6 +167,7 @@ class KimlikController {
 
         [profile: authenticationService.authenticatedUser]
     }
+
 
     private fetchProfile() {
         def profile = Profile.findByUsername(params.username)

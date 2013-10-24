@@ -1,6 +1,24 @@
 import org.codehaus.groovy.grails.web.context.ServletContextHolder
 
 modules = {
+
+    bootstrap3 {
+        dependsOn('jquery')
+
+        resource url: 'http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css'
+        resource url: 'http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js'
+    }
+
+    company {
+        dependsOn(['lodash', 'angularjs'])
+
+
+        resource url: 'js/app.js'
+        resource url: 'js/controllers.js'
+        resource url: 'js/services.js'
+        resource url: 'js/filters.js'
+        resource url: 'js/directives.js'
+    }
     kimlik {
         dependsOn(['theme', 'lodash', 'angularjs'])
 
@@ -29,6 +47,9 @@ modules = {
         resource url: 'http://code.angularjs.org/snapshot/angular-sanitize.min.js', disposition: 'head'
         resource url: 'http://code.angularjs.org/snapshot/angular-touch.min.js', disposition: 'head'
         resource url: 'http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.6.0.js', disposition: 'head'
+
+        resource url: 'http://code.angularjs.org/snapshot/angular-route.min.js', disposition: 'head'
+        resource url: 'js/lib/angular-route-segment/angular-route-segment.min.js'
 
 
     }

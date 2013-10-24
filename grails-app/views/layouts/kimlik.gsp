@@ -51,17 +51,18 @@
                 </div>
             </a>
             <ul class="dropdown-menu">
-                <li><a href="/kimlik/{{getLoggedInUser().username}}">Profilime git</a></li>
+                <li><a href="/kimlik/{{getLoggedInUser().username}}" target="_self">Profilime git</a></li>
+                <li><a href="/company/my/list" target="_self">Şirket profilime git</a></li>
                 <li class="divider"></li>
-                <li><a href="/kimlik/{{getLoggedInUser().username}}/positionInbox">İlginizi Çekecek Şirketler</a> </li>
-                <li><a href="/kimlik/{{getLoggedInUser().username}}/positionPreferences">Şirketler Kiriterlerim</a> </li>
+                <li><a href="/kimlik/{{getLoggedInUser().username}}/positionInbox" target="_self">İlginizi Çekecek Şirketler</a></li>
+                <li><a href="/kimlik/{{getLoggedInUser().username}}/positionPreferences" target="_self">Şirketler Kiriterlerim</a></li>
                 <li class="divider"></li>
-                <li><a href="/kimlik/{{getLoggedInUser().username}}/contacts">Adres Defterim</a> </li>
-                <li><a href="/kimlik/{{getLoggedInUser().username}}/notifications">Bildirimler</a> </li>
-                <li><a href="/kimlik/{{getLoggedInUser().username}}/messageInbox">Mesaj Kutum</a> </li>
-                <li><a href="/kimlik/{{getLoggedInUser().username}}/profilePicture">Profil Resmim</a> </li>
+                <li><a href="/kimlik/{{getLoggedInUser().username}}/contacts" target="_self">Adres Defterim</a></li>
+                <li><a href="/kimlik/{{getLoggedInUser().username}}/notifications" target="_self">Bildirimler</a></li>
+                <li><a href="/kimlik/{{getLoggedInUser().username}}/messageInbox" target="_self">Mesaj Kutum</a></li>
+                <li><a href="/kimlik/{{getLoggedInUser().username}}/profilePicture" target="_self">Profil Resmim</a></li>
                 <li class="divider"></li>
-                <li><g:link controller="auth" action="logout">Oturumu kapat</g:link> </li>
+                <li><g:link controller="auth" action="logout" target="_self">Oturumu kapat</g:link></li>
             </ul>
         </span>
     </div>

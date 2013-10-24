@@ -233,7 +233,6 @@ function employmentController($scope, employmentService) {
 }
 function personalInfoController($rootScope, $scope, userService, $resource) {
     $scope.model = {}
-
     if (userService.isLoggedIn()) {
         populateForm();
     } else {

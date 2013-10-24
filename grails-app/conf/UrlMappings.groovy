@@ -1,6 +1,8 @@
 class UrlMappings {
 
     static mappings = {
+        "/html/$main/$path**.html"(controller: 'html', action: 'index')
+
         "/$controller/$action?/$id?" {
             constraints {
                 // apply constraints here
@@ -8,8 +10,11 @@ class UrlMappings {
         }
 
         "/kimlik/$username?/$action?"(controller: 'kimlik')
+
+        "/company/**"(controller: 'company', action: 'index')
+
         "/api/skill/$action"(controller: 'skill')
-        "/api/$controller/$action?/$id?"{}
+        "/api/$controller/$action?/$id?" {}
 
 //        "/kimlik/$user?/follow"(view: "/kimlik/followPage")
 //        "/kimlik/$user?/education"(view: "/kimlik/educationPage")
