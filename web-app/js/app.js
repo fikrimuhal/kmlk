@@ -36,7 +36,9 @@ kimlik.config(['$routeSegmentProvider', '$locationProvider',
             when('/company/:company_name/hr', 'company.hr.employees').
             when('/company/:company_name/hr/employees', 'company.hr.employees').
             when('/company/:company_name/hr/positions', 'company.hr.positions').
+            when('/company/:company_name/hr/positions/:pid', 'company.hr.positions').
             when('/company/:company_name/hr/applicants', 'company.hr.applicants').
+            when('/company/:company_name/hr/applicants/:pid', 'company.hr.applicants').
             when('/company/:company_name/hr/notifications', 'company.hr.notifications').
 
             within('company').segment('hr', {templateUrl: '/html/company/hr/hr.html',
@@ -44,8 +46,14 @@ kimlik.config(['$routeSegmentProvider', '$locationProvider',
             within().
             segment('employees', {templateUrl: '/html/company/hr/employees.html',
                 controller: CompanyEmployeeCtrl}).
-            segment('positions', {templateUrl: '/html/company/hr/positions.html'}).
-            segment('applicants', {templateUrl: '/html/company/hr/applicants.html'}).
+            segment('positions', {
+                templateUrl: '/html/company/hr/positions.html',
+                dependencies: ['pid'],
+                controller: CompanyPositionCtrl}).
+            segment('applicants', {
+                templateUrl: '/html/company/hr/applicants.html',
+                dependencies: ['pid'],
+                controller: CompanyApplicantsCtrl}).
             segment('notifications', {templateUrl: '/html/company/hr/notifications.html'});
 
         $routeSegmentProvider.
@@ -123,28 +131,108 @@ function CompanyNewCtrl($scope, $routeSegment) {
 }
 
 
-function CompanyListCtrl($scope, $routeSegment) {
+function CompanyListCtrl($scope) {
     console.log('CompanyListCtrl Ready')
 
 }
-function CompanyEmployeeCtrl($scope, $routeSegment) {
+
+function CompanyEmployeeCtrl($scope) {
     $scope.employmentRequests = [
-        {  profile:11111,
-            company:2222222233,
-            requestedByCompany:false},
-        {  profile:11111,
-            company:2222222233,
-            requestedByCompany:true},
-        {  profile:11111,
-            company:2222222233,
-            requestedByCompany:true},
-        {  profile:11111,
-            company:2222222233,
-            requestedByCompany:false},
-        {  profile:11111,
-            company:2222222233,
-            requestedByCompany:false}
+        {  profile: 11111,
+            company: 2222222233,
+            requestedByCompany: false},
+        {  profile: 11111,
+            company: 2222222233,
+            requestedByCompany: true},
+        {  profile: 11111,
+            company: 2222222233,
+            requestedByCompany: true},
+        {  profile: 11111,
+            company: 2222222233,
+            requestedByCompany: false},
+        {  profile: 11111,
+            company: 2222222233,
+            requestedByCompany: false}
     ]
+
+}
+
+function CompanyPositionCtrl($scope, $routeSegment) {
+    var pid = $routeSegment.$routeParams.pid
+    if (pid === "new") {
+        $scope.isNew = true
+    } else {
+        $scope.position_id = pid
+    }
+
+    $scope.positions = [
+        {  _id: '52684f4def861e456dac75b4',
+            company: 2222222233,
+            title: 'Fullstack Java developer'},
+        {  _id: '52684f4def861e456dac75b2',
+            company: 2222222233,
+            title: 'JavaScript developer'},
+        {  _id: '52684f4def861e456dac75b1',
+            company: 2222222233,
+            title: 'Genel başvuru'}
+
+    ]
+
+}
+function CompanyApplicantsCtrl($scope, $routeSegment) {
+    var pid = $routeSegment.$routeParams.pid
+    if (pid === "new") {
+        $scope.isNew = true
+    } else {
+        $scope.position_id = pid
+    }
+
+    $scope.applicants = [
+        {  _id: '52684f4def861e456dac75b1',
+            company: 2222222233,
+            fullName: 'Ilgaz Şumnulu'},
+        {  _id: '52684f4def861e456dac75b2',
+            company: 2222222233,
+            fullName: 'Ahmet mehmet'},
+        {  _id: '52684f4def861e456dac75b3',
+            company: 2222222233,
+            fullName: 'Abuzer kadayif'},
+        {  _id: '52684f4def861e456dac75b4',
+            company: 2222222233,
+            fullName: 'Mark otaa'},
+        {  _id: '52684f4def861e456dac75b5',
+            company: 2222222233,
+            fullName: 'Abdullah Guneydas'},
+        {  _id: '52684f4def861e456dac75b6',
+            company: 2222222233,
+            fullName: 'Yeter dursun Kadayif'},
+        {  _id: '52684f4def861e456dac75b7',
+            company: 2222222233,
+            fullName: 'Coskun kilic'},
+        {  _id: '52684f4def861e456dac75b8',
+            company: 2222222233,
+            fullName: 'Bende varum'},
+        {  _id: '52684f4def861e456dac75b9',
+            company: 2222222233,
+            fullName: 'Mac hintosh'}
+
+    ]
+
+    $scope.getApplicant = function () {
+        if (pid == '52684f4def861e456dac75b1') {
+            return {
+                pictureUrl: '/images/photos/ilgaz2.jpg'
+            }
+        } else if (pid == '52684f4def861e456dac75b2') {
+            return {
+                pictureUrl: '/images/photos/ilgaz3.jpg'
+            }
+        } else {
+            return {
+                pictureUrl: '/images/photos/ilgaz4.jpg'
+            }
+        }
+    }
 
 }
 
