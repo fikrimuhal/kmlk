@@ -21,7 +21,7 @@
                     <li><a href="/company/my/new">Yeni şirket ekle</a></li>
                 </ul>
             </li>
-            <li  ng-repeat="c in companies" class="dropdown">
+            <li  ng-repeat="c in companies" class="dropdown" ng-class="{active: company_name === c.page_name}">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{c.short_name}} <b class="caret"></b></a>
                 <ul class="dropdown-menu" role="menu">
                     <li><a href="/company/{{c.page_name}}">Şirket profili</a></li>

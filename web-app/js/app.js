@@ -15,6 +15,7 @@ kimlik.config(['$routeSegmentProvider', '$locationProvider',
             when('/company/:company_name/settings/notifications', 'company.settings.notifications').
             when('/company/:company_name/settings/security', 'company.settings.security').
 
+
             segment('company', {
                 templateUrl: '_template/company.inline',
                 controller: CompanyCtrl
@@ -159,11 +160,19 @@ function CompanyEmployeeCtrl($scope) {
 
 function CompanyPositionCtrl($scope, $routeSegment) {
     var pid = $routeSegment.$routeParams.pid
+
+    $scope.page = {}
+    $scope.position = {}
     if (pid === "new") {
-        $scope.isNew = true
+        $scope.page.edit = true
+        $scope.page.isNew = true
+        $scope.page.title = "Yeni pozisyon"
     } else {
-        $scope.position_id = pid
+        $scope.page.edit = false
+        $scope.position.id = pid
     }
+    $scope.position = getPositionById(pid)
+
 
     $scope.positions = [
         {  _id: '52684f4def861e456dac75b4',
@@ -178,7 +187,19 @@ function CompanyPositionCtrl($scope, $routeSegment) {
 
     ]
 
+    function getPositionById(pid) {
+        return (!pid || pid == 'new') ? {} : {  _id: pid,
+            company: 2222222233,
+            title: 'Genel başvuru'}
+    }
+
+    $scope.toggleEdit = function () {
+        $scope.page.edit = !$scope.page.edit
+        console.log($scope.page.edit)
+    }
+
 }
+
 function CompanyApplicantsCtrl($scope, $routeSegment) {
     var pid = $routeSegment.$routeParams.pid
     if (pid === "new") {

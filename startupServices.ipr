@@ -179,10 +179,12 @@
         <w>avukat</w>
         <w>avukatlar</w>
         <w>baskan</w>
+        <w>başlığı</w>
         <w>bildirimler</w>
         <w>defterim</w>
         <w>eklendi</w>
         <w>ekleyelim</w>
+        <w>gerekli</w>
         <w>hesaba</w>
         <w>hesap</w>
         <w>ilgili</w>
@@ -202,6 +204,7 @@
         <w>olmuş</w>
         <w>oluşturalım</w>
         <w>oturumu</w>
+        <w>pozisyon</w>
         <w>pozisyonlar</w>
         <w>profil</w>
         <w>profilime</w>
@@ -216,6 +219,7 @@
         <w>timeline</w>
         <w>upsert</w>
         <w>yeni</w>
+        <w>yetenekler</w>
         <w>yolla</w>
         <w>çekecek</w>
         <w>şahıs</w>

@@ -26,7 +26,7 @@
             </div>
 
             <div class="form-group">
-                <label for="inputPassword1" class="col-lg-3 control-label">Sayfa adi</label>
+                <label class="col-lg-3 control-label">Sayfa adi</label>
 
                 <div class="col-lg-9">
                     <input type="text" class="form-control" id="inputPassword12" placeholder="Fikrimuhal">
@@ -35,7 +35,7 @@
             </div>
 
             <div class="form-group">
-                <label for="inputPassword1" class="col-lg-3 control-label">Şirket Türu</label>
+                <label  class="col-lg-3 control-label">Şirket Türu</label>
 
                 <div class="col-lg-9">
                     <select id="disabledSelect" class="form-control">
@@ -49,7 +49,7 @@
             </div>
 
             <div class="form-group">
-                <label for="inputPassword1" class="col-lg-3 control-label">Yetkili kişi</label>
+                <label class="col-lg-3 control-label">Yetkili kişi</label>
 
                 <div class="col-lg-9">
                     <p class="form-control-static">Ilgaz Şumnulu</p>
