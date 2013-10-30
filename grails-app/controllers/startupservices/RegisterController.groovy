@@ -17,6 +17,12 @@ class RegisterController {
     def index() {
     }
 
+    def signIn() {
+    }
+
+    def signUp() {
+    }
+
     def failure() {
         render 'fail'
     }

@@ -1,88 +1,183 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]> <html class="front ie lt-ie9 lt-ie8 lt-ie7 fluid top-full menuh-top"> <![endif]-->
-<!--[if IE 7]>    <html class="front ie lt-ie9 lt-ie8 fluid top-full menuh-top sticky-top"> <![endif]-->
-<!--[if IE 8]>    <html class="front ie lt-ie9 fluid top-full menuh-top sticky-top"> <![endif]-->
-<!--[if gt IE 8]> <html class="animations front ie gt-ie8 fluid top-full menuh-top sticky-top"> <![endif]-->
-<!--[if !IE]><!--><html class="animations front fluid top-full menuh-top sticky-top"><!-- <![endif]-->
+<html lang="en">
 <head>
-    <title>Kimlik.io</title>
-
-    <!-- Meta -->
-    <meta charset="UTF-8"/>
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE"/>
-
-    <!-- Bootstrap -->
-    <link href="/common/bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css"/>
-    <link href="/common/bootstrap/css/responsive.css" rel="stylesheet" type="text/css"/>
-
-    <!-- Glyphicons Font Icons -->
-    <link href="/common/theme/fonts/glyphicons/css/glyphicons.css" rel="stylesheet"/>
-
-    <link rel="stylesheet" href="/common/theme/fonts/font-awesome/css/font-awesome.min.css">
-    <!--[if IE 7]><link rel="stylesheet" href="/common/theme/fonts/font-awesome/css/font-awesome-ie7.min.css"><![endif]-->
-
-    <!-- Main Theme Stylesheet :: CSS -->
-    <link href="/common/theme/css/style-default-menus-dark.css" rel="stylesheet"/>
+    <meta charset="utf-8">
+    <title>Mobile first web app theme | first</title>
+    <meta name="description" content="mobile first, app, web app, responsive, admin dashboard, flat, flat ui">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="/first/css/bootstrap.css">
+    <link rel="stylesheet" href="/first/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/first/css/font.css" cache="false">
+    <link rel="stylesheet" href="/first/css/plugin.css">
+    <link rel="stylesheet" href="/first/css/style.css">
+    <link rel="stylesheet" href="/first/css/landing.css">
 
 
-    <!-- LESS.js Library -->
-    <script src="/common/theme/scripts/plugins/system/less.min.js"></script>
+    %{--<g:layoutHead/>--}%
+    %{--<r:layoutResources/>--}%
 
-    %{--<r:require modules=" fresh,freshServices,freshControllers"/>--}%
+    <!--[if lt IE 9]>
+    <script src="/first/js/ie/respond.min.js" cache="false"></script>
+    <script src="/first/js/ie/html5.js" cache="false"></script>
+  <![endif]-->
 
-
-    <g:layoutHead/>
-    <r:layoutResources/>
 </head>
-
-<body class="login " ng-app='kimlik'>
-
-<!-- Main Container Fluid -->
-<div class="container-fluid menu-hidden">
-
-    <!-- Content -->
-    <div id="content" style="padding-top: 0px;">
-        %{--<g:render template="/shared/front/navbar"/>--}%
-
-        <g:layoutBody></g:layoutBody>
+<body data-spy="scroll" data-target="#header" class="landing"  ng-app='kimlik'>
+%{--<g:layoutBody></g:layoutBody>--}%
+<!-- header -->
+<header id="header" class="navbar navbar-fixed-top"  data-spy="affix" data-offset-top="1">
+    <div class="container">
+        <a class="navbar-brand" href="#">first</a>
+        <p class="navbar-text pull-left text-muted hidden-xs"><small><em>Base on Bootstrap 3</em></small></p>
+        <ul class="nav navbar-nav pull-right hidden-xs">
+            <li class="hide">
+                <a href="#header">Home</a>
+            </li>
+            <li>
+                <a href="#about">About</a>
+            </li>
+            <li>
+                <a href="#features">Features</a>
+            </li>
+            <li>
+                <a href="#screenshot">Screenshot</a>
+            </li>
+        </ul>
     </div>
-    <!-- // Content END -->
+</header>
+<section id="content">
+    <div class="main-visual">
+        <div class="bg-inverse">
+            <div class="container text-center">
+                <h1 class="animated fadeInUp">Mobile first web app template with rich<br> HTML, CSS, and JS components.</h1>
+                <p>
+                    <a href="/register/signIn" target="_self" class="btn btn-lg btn-danger animated fadeInLeft m-l m-r m-b">Giriş yap</a>
+                    <a href="/register/signIn" target="_self" class="btn btn-lg btn-primary animated fadeInRight m-l m-r m-b">Kayıt ol</a>
+                </p>
+            </div>
+        </div>
+    </div>
+    <div id="about">
+        <div class="container">
+            <p>&nbsp;</p>
+            <div class="text-center m-large">
+                <h2 class="font-thin">About this project</h2>
+                <p>Responsive mobile first web app / admin dashboard template with flat ui</p>
+            </div>
+            <div class="text-center">
+                <img src="/first/images/responsive.png">
+            </div>
+            <div class="row m-large">
+                <div class="col-lg-6 col-sm-6 media">
+                    <span class="btn btn-circle btn-lg btn-default pull-left"><i class="icon-mobile-phone"></i></span>
+                    <div class="media-body">
+                        <h3 class="m-t-none">Web app</h3>
+                        <p>first contains many mobile app widgets and components, it's fully responsive, it can run on all the size of the screen.</p>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-sm-6 media m-t-none">
+                    <span class="btn btn-circle btn-lg btn-default pull-left"><i class="icon-signal"></i></span>
+                    <div class="media-body">
+                        <h3 class="m-t-none">Admin dashboard</h3>
+                        <p>first also can be used as admin dashboard, it has tables, charts and other useful components for admin management.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bg-primary" id="features">
+        <div class="container">
+            <p>&nbsp;</p>
+            <div class="text-center m-large">
+                <h2 class="font-thin">Features</h2>
+                <p>Lightweight with rich components</p>
+            </div>
+            <div class="row m-large">
+                <div class="col-lg-4 col-sm-4">
+                    <p class="text-center"><span class="btn btn-circle btn-lg btn-white"><i class="icon-bold"></i></span></p>
+                    <div>
+                        <h3 class="text-center">Bootstrap 3.0</h3>
+                        <p>This project is based on Bootstrap 3. the sleek, intuitive, and powerful mobile-first front-end framework for faster and easier web development.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-4">
+                    <p class="text-center"><span class="btn btn-circle btn-lg btn-warning"><i class="icon-bolt"></i></span></p>
+                    <div>
+                        <h3 class="text-center">Lightweight</h3>
+                        <p>We only choose the lightweight plugins, but with rich functions. we use tiny components, css and js size is first consideration.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-4">
+                    <p class="text-center"><span class="btn btn-circle btn-lg btn-danger"><i class="icon-html5"></i></span></p>
+                    <div>
+                        <h3 class="text-center">HTML5 & CSS3</h3>
+                        <p>first use HTML5 and CSS3 to build the components. the pages use header, nav, section to build the layout. this project have a good color scheme, can easy to change.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="container">
+            <div class="row m-large">
+                <div class="col-lg-4 col-sm-4">
+                    <p class="text-center"><span class="btn btn-circle btn-lg btn-primary"><i class="icon-tablet"></i></span></p>
+                    <div>
+                        <h3 class="text-center">Mobile first</h3>
+                        <p>This project is fully responsive, but it's mobile first. it provide the off screen nav, and almost all the widgets are copatible to all the screen sizes.</p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-4">
+                    <p class="text-center"><span class="btn btn-circle btn-lg btn-default"><i class="icon-briefcase"></i></span></p>
+                    <div>
+                        <h3 class="text-center">Rich components</h3>
+                        <p>We build many components for your project need. also they are extensible and easy to customize. </p>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-sm-4">
+                    <p class="text-center"><span class="btn btn-circle btn-lg btn-success"><i class="icon-refresh"></i></span></p>
+                    <div>
+                        <h3 class="text-center">Keep updating</h3>
+                        <p>We will keep update this project, we will keep adding new widgets and components.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bg-light" id="screenshot">
+        <div class="container gallery">
+            <div class="row m-large gallery">
+                <div class="col-lg-3 col-6">
+                    <a href="/first/images/render-1.jpg" class="thumbnail" target="_blank"><img src="/first/images/render-1-thumb.jpg"></a>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <a href="/first/images/render-2.jpg" class="thumbnail" target="_blank"><img src="/first/images/render-2-thumb.jpg"></a>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <a href="/first/images/render-3.jpg" class="thumbnail" target="_blank"><img src="/first/images/render-3-thumb.jpg"></a>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <a href="/first/images/render-4.jpg" class="thumbnail" target="_blank"><img src="/first/images/render-4-thumb.jpg"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bg-inverse clearfix">
+        <div class="container text-center m-large">
+            <h2 class="font-thin">Thank you for watching!</h2>
+            <p>&nbsp;</p>
+            <a href="#content"><i class="icon-arrow-up"></i><br>Back to top</a>
+        </div>
+    </div>
+</section>
+<!-- / header -->
 
-    <g:render template="/shared/front/footerBig"/>
+%{--<r:layoutResources/>--}%
 
-</div>
-<!-- // Main Container Fluid END -->
-
-<!-- JQuery -->
-<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-<script src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-
-<!-- Code Beautify -->
-<script src="/common/theme/scripts/plugins/other/js-beautify/beautify.js"></script>
-<script src="/common/theme/scripts/plugins/other/js-beautify/beautify-html.js"></script>
-
-<!-- Global -->
-<script>
-    var basePath = '',
-            commonPath = '/common/';
-
-    var config = {
-        username: ''
-    }
-
-</script>
-
-
-<!-- Modernizr -->
-<script src="/common/theme/scripts/plugins/system/modernizr.js"></script>
-
+<script src="/first/js/jquery.min.js"></script>
 <!-- Bootstrap -->
-<script src="/common/bootstrap/js/bootstrap.min.js"></script>
-<r:layoutResources/>
-
+<script src="/first/js/bootstrap.js"></script>
+<!-- app -->
+<script src="/first/js/app.js"></script>
 </body>
 </html>

@@ -94,6 +94,12 @@ kimlik.config(['$routeSegmentProvider', '$locationProvider',
                 controller: CompanyNewCtrl});
 
 
+        $routeSegmentProvider.
+            when('/company/:company_name/dashboard', 'company.dashboard').
+            within('company').segment('dashboard', {
+                templateUrl: '/html/company/dashboard/dashboard.html'});
+
+
     }
 ]);
 
@@ -119,6 +125,10 @@ function UserController($scope, $http, filterFilter, $resource, userService) {
 
 }
 
+
+function CompanyDashboardCtrl($scope, $routeSegment) {
+
+}
 
 function CompanySkillsCtrl($scope, $routeSegment) {
 
@@ -303,6 +313,7 @@ function CompanyCtrl($scope, companyService, $routeSegment) {
         //URL mapping de resolved ile yapila bilinir?
         //Sayfa render olmadan once resolved olsa daha iyi olur.
         $scope.company_name = $routeSegment.$routeParams.company_name
+
     });
 
     console.log('CompanyCtrl Ready')

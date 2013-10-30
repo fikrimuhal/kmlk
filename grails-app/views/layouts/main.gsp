@@ -5,7 +5,7 @@
 <!--[if gt IE 8]> <html class="animations ie gt-ie8 fluid top-full menuh-top"> <![endif]-->
 <!--[if !IE]><!--><html class="animations fluid top-full menuh-top"><!-- <![endif]-->
 <head>
-    <title>Kurumsal.io</title>
+    <title>XX Kurumsal.io </title>
 
     <!-- Meta -->
     <meta charset="UTF-8"/>
