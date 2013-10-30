@@ -42,8 +42,7 @@ kimlik.config(['$routeSegmentProvider', '$locationProvider',
             when('/company/:company_name/hr/applicants/:pid', 'company.hr.applicants').
             when('/company/:company_name/hr/notifications', 'company.hr.notifications').
 
-            within('company').segment('hr', {templateUrl: '/html/company/hr/hr.html',
-                controller: CompanySettingsCtrl}).
+            within('company').segment('hr', {templateUrl: '/html/company/hr/hr.html'}).
             within().
             segment('employees', {templateUrl: '/html/company/hr/employees.html',
                 controller: CompanyEmployeeCtrl}).
@@ -61,19 +60,19 @@ kimlik.config(['$routeSegmentProvider', '$locationProvider',
             when('/company/:company_name/skills', 'company.skills').
             within('company').segment('skills', {
                 templateUrl: '/html/company/skills/skills.html',
-                controller: CompanySettingsCtrl});
+                controller: CompanySkillsCtrl});
 
         $routeSegmentProvider.
             when('/company/:company_name/products', 'company.products').
             within('company').segment('products', {
                 templateUrl: '/html/company/products/products.html',
-                controller: CompanySettingsCtrl});
+                controller: CompanyProjectsCtrl});
 
         $routeSegmentProvider.
             when('/company/:company_name/services', 'company.services').
             within('company').segment('services', {
                 templateUrl: '/html/company/services/services.html',
-                controller: CompanySettingsCtrl});
+                controller: CompanyServicesCtrl});
 
         $routeSegmentProvider.
             when('/company/:company_name/notifications', 'company.notifications').
@@ -102,26 +101,31 @@ function UserController($scope, $http, filterFilter, $resource, userService) {
 
     $scope.isLoggedIn = function () {
         return userService.isLoggedIn()
-    }
+    };
 
     $scope.isLoggedIn = function () {
         return userService.isLoggedIn()
-    }
+    };
 
     $scope.isSelfProfile = function () {
         return config.isSelfProfile
-    }
+    };
 
 
     $scope.getLoggedInUser = function () {
         return userService.getLoggedInUser()
-    }
+    };
 
 
 }
 
 
+function CompanySkillsCtrl($scope, $routeSegment) {
+
+}
+
 function CompanySettingsCtrl($scope, $routeSegment) {
+    console.log('Settings CTRL Ready')
 
 }
 
@@ -131,6 +135,17 @@ function CompanyNewCtrl($scope, $routeSegment) {
 
 }
 
+
+function CompanyServicesCtrl($scope) {
+    console.log('Services CTRL Ready')
+
+}
+
+
+function CompanyProjectsCtrl($scope) {
+    console.log('Projects CTRL Ready')
+
+}
 
 function CompanyListCtrl($scope) {
     console.log('CompanyListCtrl Ready')
@@ -161,47 +176,62 @@ function CompanyEmployeeCtrl($scope) {
 function CompanyPositionCtrl($scope, $routeSegment) {
     var pid = $routeSegment.$routeParams.pid
 
-    $scope.page = {}
-    $scope.position = {}
+    $scope.page = {};
+    $scope.position = {};
     if (pid === "new") {
-        $scope.page.edit = true
-        $scope.page.isNew = true
-        $scope.page.title = "Yeni pozisyon"
+        $scope.page.edit = true;
+        $scope.page.show = false;
+        $scope.page.isNew = true;
+        $scope.page.title = "Yeni pozisyon";
+        console.log('Yeni pozisyon');
     } else {
-        $scope.page.edit = false
-        $scope.position.id = pid
+        $scope.page.edit = false;
+        $scope.page.show = false;
+        $scope.position.id = pid;
+        console.log('Pozisyonu goster')
     }
-    $scope.position = getPositionById(pid)
 
 
-    $scope.positions = [
-        {  _id: '52684f4def861e456dac75b4',
+    var _positionCache = {
+
+        '52684f4def861e456dac75b4': {  _id: '52684f4def861e456dac75b4',
             company: 2222222233,
             title: 'Fullstack Java developer'},
-        {  _id: '52684f4def861e456dac75b2',
+        '52684f4def861e456dac75b2': {  _id: '52684f4def861e456dac75b2',
             company: 2222222233,
             title: 'JavaScript developer'},
-        {  _id: '52684f4def861e456dac75b1',
+        '52684f4def861e456dac75b1': {  _id: '52684f4def861e456dac75b1',
             company: 2222222233,
             title: 'Genel başvuru'}
-
-    ]
+    };
 
     function getPositionById(pid) {
-        return (!pid || pid == 'new') ? {} : {  _id: pid,
-            company: 2222222233,
-            title: 'Genel başvuru'}
+        console.log('pid: ', pid);
+        console.log('position cache: ', _positionCache);
+        if (pid && pid == 'new') {
+            return {}
+        } else if (pid) {
+            return _positionCache[pid]
+        } else {
+            return {}
+        }
+//        return (!pid || pid == 'new') ? {} : {  _id: pid,
+//            company: 2222222233,
+//            title: 'Genel başvuru'}
     }
 
     $scope.toggleEdit = function () {
-        $scope.page.edit = !$scope.page.edit
-        console.log($scope.page.edit)
-    }
+        $scope.page.edit = !$scope.page.edit;
+        $scope.page.show = !$scope.page.edit;
+    };
+    $scope.positions = _.values(_positionCache);
 
+    $scope.position = getPositionById(pid);
+    $scope.page.show = ($scope.position && $scope.position._id);
 }
 
 function CompanyApplicantsCtrl($scope, $routeSegment) {
-    var pid = $routeSegment.$routeParams.pid
+    var pid = $routeSegment.$routeParams.pid;
     if (pid === "new") {
         $scope.isNew = true
     } else {
@@ -237,7 +267,7 @@ function CompanyApplicantsCtrl($scope, $routeSegment) {
             company: 2222222233,
             fullName: 'Mac hintosh'}
 
-    ]
+    ];
 
     $scope.getApplicant = function () {
         if (pid == '52684f4def861e456dac75b1') {
@@ -262,10 +292,11 @@ function CompanyApplicantsCtrl($scope, $routeSegment) {
  * @param $scope
  * @param companyService
  * @constructor
+ * @param $routeSegment
  */
 function CompanyCtrl($scope, companyService, $routeSegment) {
     $scope.companies = companyService.getUserCompanyList();
-    $scope.$routeSegment = $routeSegment
+    $scope.$routeSegment = $routeSegment;
 
     $scope.$on('routeSegmentChange', function () {
         //broadcast de company_name i aliyoruz boylece resolved oldugundan eminiz parametrenin.

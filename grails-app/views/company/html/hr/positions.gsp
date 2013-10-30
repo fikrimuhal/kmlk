@@ -19,8 +19,8 @@
 <div class="col-sm-4 col-md-8">
 
 <div class="panel panel-primary">
-<div class="panel-heading">{{position.title  || page.title}} <button type="button"
-                                                                     ng-hide="page.isNew"
+<div class="panel-heading">{{position.title  || page.title || 'Pozisyonlar'}} <button type="button"
+                                                                     ng-hide="page.isNew || !(page.show || page.edit)"
                                                                      ng-click="toggleEdit()"
                                                                      class="pull-right btn btn-default btn-xs">
     <span class="glyphicon" ng-class="{' glyphicon-pencil': !page.edit, 'glyphicon-list-alt': page.edit }"></span>
@@ -138,7 +138,7 @@
 </div><!--  Edit Position End  -->
 
 <!--  View Position Start  -->
-<div ng-hide="page.edit" class="panel-body">
+<div ng-show="page.show" class="panel-body">
     <form class="form-horizontal" role="form">
         <div class="form-group">
             <label for="fullName" class="col-lg-3 control-label">Pozisyon Başlığı</label>
@@ -216,8 +216,8 @@
 
         <div class="form-group">
             <div class="col-lg-offset-3 col-lg-9">
-                <button type="submit" class="btn btn-default">Adaylar</button>
-                <button type="submit" class="btn btn-default">İstatistikler</button>
+                <a href="/company/{{company_name}}/hr/applicants?positions={{position._id}}" class="btn btn-default">Adaylar</a>
+                <a class="btn btn-default">İstatistikler</a>
             </div>
         </div>
 
