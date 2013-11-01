@@ -134,8 +134,39 @@ function CompanySkillsCtrl($scope, $routeSegment) {
 
 }
 
-function CompanySettingsCtrl($scope, $routeSegment) {
+function CompanySettingsCtrl($scope) {
     console.log('Settings CTRL Ready')
+
+    $scope.testis = function () {
+        console.log('testist')
+        $(function () {
+
+            map = new GMaps({
+                div: '#gmap_geocoding',
+                lat: -12.043333,
+                lng: -77.028333,
+                zoom: 3
+            });
+            $('#geocoding_form').submit(function (e) {
+                e.preventDefault();
+                GMaps.geocode({
+                    address: $('#address').val().trim(),
+                    callback: function (results, status) {
+                        if (status == 'OK') {
+                            var latlng = results[0].geometry.location;
+                            map.setCenter(latlng.lat(), latlng.lng());
+                            map.setContentZoom(5);
+                            map.addMarker({
+                                lat: latlng.lat(),
+                                lng: latlng.lng()
+                            });
+                        }
+                    }
+                });
+            });
+
+        });
+    }
 
 }
 
@@ -185,7 +216,6 @@ function CompanyEmployeeCtrl($scope) {
 
 function CompanyPositionCtrl($scope, $routeSegment) {
     var pid = $routeSegment.$routeParams.pid
-
     $scope.page = {};
     $scope.position = {};
     if (pid === "new") {
@@ -204,13 +234,13 @@ function CompanyPositionCtrl($scope, $routeSegment) {
 
     var _positionCache = {
 
-        '52684f4def861e456dac75b4': {  _id: '52684f4def861e456dac75b4',
+        '52684f4def861e456dac75b4': {  id: '52684f4def861e456dac75b4',
             company: 2222222233,
             title: 'Fullstack Java developer'},
-        '52684f4def861e456dac75b2': {  _id: '52684f4def861e456dac75b2',
+        '52684f4def861e456dac75b2': {  id: '52684f4def861e456dac75b2',
             company: 2222222233,
             title: 'JavaScript developer'},
-        '52684f4def861e456dac75b1': {  _id: '52684f4def861e456dac75b1',
+        '52684f4def861e456dac75b1': {  id: '52684f4def861e456dac75b1',
             company: 2222222233,
             title: 'Genel başvuru'}
     };
@@ -237,7 +267,7 @@ function CompanyPositionCtrl($scope, $routeSegment) {
     $scope.positions = _.values(_positionCache);
 
     $scope.position = getPositionById(pid);
-    $scope.page.show = ($scope.position && $scope.position._id);
+    $scope.page.show = ($scope.position && $scope.position.id);
 }
 
 function CompanyApplicantsCtrl($scope, $routeSegment) {
@@ -249,31 +279,31 @@ function CompanyApplicantsCtrl($scope, $routeSegment) {
     }
 
     $scope.applicants = [
-        {  _id: '52684f4def861e456dac75b1',
+        {  id: '52684f4def861e456dac75b1',
             company: 2222222233,
             fullName: 'Ilgaz Şumnulu'},
-        {  _id: '52684f4def861e456dac75b2',
+        {  id: '52684f4def861e456dac75b2',
             company: 2222222233,
             fullName: 'Ahmet mehmet'},
-        {  _id: '52684f4def861e456dac75b3',
+        {  id: '52684f4def861e456dac75b3',
             company: 2222222233,
             fullName: 'Abuzer kadayif'},
-        {  _id: '52684f4def861e456dac75b4',
+        {  id: '52684f4def861e456dac75b4',
             company: 2222222233,
             fullName: 'Mark otaa'},
-        {  _id: '52684f4def861e456dac75b5',
+        {  id: '52684f4def861e456dac75b5',
             company: 2222222233,
             fullName: 'Abdullah Guneydas'},
-        {  _id: '52684f4def861e456dac75b6',
+        {  id: '52684f4def861e456dac75b6',
             company: 2222222233,
             fullName: 'Yeter dursun Kadayif'},
-        {  _id: '52684f4def861e456dac75b7',
+        {  id: '52684f4def861e456dac75b7',
             company: 2222222233,
             fullName: 'Coskun kilic'},
-        {  _id: '52684f4def861e456dac75b8',
+        {  id: '52684f4def861e456dac75b8',
             company: 2222222233,
             fullName: 'Bende varum'},
-        {  _id: '52684f4def861e456dac75b9',
+        {  id: '52684f4def861e456dac75b9',
             company: 2222222233,
             fullName: 'Mac hintosh'}
 

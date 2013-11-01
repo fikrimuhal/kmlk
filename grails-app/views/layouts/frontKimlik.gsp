@@ -27,20 +27,20 @@
 <!-- header -->
 <header id="header" class="navbar navbar-fixed-top"  data-spy="affix" data-offset-top="1">
     <div class="container">
-        <a class="navbar-brand" href="#">first</a>
-        <p class="navbar-text pull-left text-muted hidden-xs"><small><em>Base on Bootstrap 3</em></small></p>
+        <a class="navbar-brand" href="#">kimlik</a>
+        <p class="navbar-text pull-left text-muted hidden-xs"><small><em>Kimlik.IO / Kurumsal.IO</em></small></p>
         <ul class="nav navbar-nav pull-right hidden-xs">
             <li class="hide">
-                <a href="#header">Home</a>
+                <a href="#header">Ev</a>
             </li>
             <li>
-                <a href="#about">About</a>
+                <a href="#about">Hakkında</a>
             </li>
             <li>
-                <a href="#features">Features</a>
+                <a href="#features">Nedir</a>
             </li>
             <li>
-                <a href="#screenshot">Screenshot</a>
+                <a href="#screenshot">Örnekler</a>
             </li>
         </ul>
     </div>
@@ -49,7 +49,7 @@
     <div class="main-visual">
         <div class="bg-inverse">
             <div class="container text-center">
-                <h1 class="animated fadeInUp">Mobile first web app template with rich<br> HTML, CSS, and JS components.</h1>
+                <h1 class="animated fadeInUp">Startup ve Kisisel kariyer yonetim yazilimi<br> Some thing is seriously wrong with this landing page!</h1>
                 <p>
                     <a href="/register/signIn" target="_self" class="btn btn-lg btn-danger animated fadeInLeft m-l m-r m-b">Giriş yap</a>
                     <a href="/register/signIn" target="_self" class="btn btn-lg btn-primary animated fadeInRight m-l m-r m-b">Kayıt ol</a>
@@ -61,8 +61,8 @@
         <div class="container">
             <p>&nbsp;</p>
             <div class="text-center m-large">
-                <h2 class="font-thin">About this project</h2>
-                <p>Responsive mobile first web app / admin dashboard template with flat ui</p>
+                <h2 class="font-thin">Hemde bedava!</h2>
+                <p>Ilk 24 saat ucretsizdir, daha sonra dakika uzerinden 3$ dan hesaplanacaktir.</p>
             </div>
             <div class="text-center">
                 <img src="/first/images/responsive.png">
@@ -71,14 +71,14 @@
                 <div class="col-lg-6 col-sm-6 media">
                     <span class="btn btn-circle btn-lg btn-default pull-left"><i class="icon-mobile-phone"></i></span>
                     <div class="media-body">
-                        <h3 class="m-t-none">Web app</h3>
+                        <h3 class="m-t-none">Cok zevkli</h3>
                         <p>first contains many mobile app widgets and components, it's fully responsive, it can run on all the size of the screen.</p>
                     </div>
                 </div>
                 <div class="col-lg-6 col-sm-6 media m-t-none">
                     <span class="btn btn-circle btn-lg btn-default pull-left"><i class="icon-signal"></i></span>
                     <div class="media-body">
-                        <h3 class="m-t-none">Admin dashboard</h3>
+                        <h3 class="m-t-none">Mukemmel</h3>
                         <p>first also can be used as admin dashboard, it has tables, charts and other useful components for admin management.</p>
                     </div>
                 </div>
@@ -164,9 +164,9 @@
     </div>
     <div class="bg-inverse clearfix">
         <div class="container text-center m-large">
-            <h2 class="font-thin">Thank you for watching!</h2>
+            <h2 class="font-thin">Teşekkürler size!</h2>
             <p>&nbsp;</p>
-            <a href="#content"><i class="icon-arrow-up"></i><br>Back to top</a>
+            <a href="#content"><i class="icon-arrow-up"></i><br>Tepeye dön</a>
         </div>
     </div>
 </section>

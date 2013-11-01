@@ -31,7 +31,7 @@
             </ul>
         </li>
     </ul>
-    <a class="navbar-brand" href="#">kimlik</a>
+    <a class="navbar-brand" href="/" target="_self">kimlik</a>
     <button type="button" class="btn btn-link pull-left nav-toggle visible-xs"
             data-toggle="class:slide-nav slide-nav-left" data-target="body">
         <i class="icon-reorder icon-xlarge text-default"></i>

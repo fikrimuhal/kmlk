@@ -3,9 +3,9 @@
 
     <div class="list-group">
         <a ng-repeat="p in positions"
-           href="/company/{{company_name}}/hr/positions/{{p._id}}"
+           href="/company/{{company_name}}/hr/positions/{{p.id}}"
            class="list-group-item"
-           ng-class="{active: $routeSegment.$routeParams.pid ==p._id }">
+           ng-class="{active: $routeSegment.$routeParams.pid ==p.id }">
             {{p.title}}
         </a>
 
@@ -216,7 +216,7 @@
 
         <div class="form-group">
             <div class="col-lg-offset-3 col-lg-9">
-                <a href="/company/{{company_name}}/hr/applicants?positions={{position._id}}" class="btn btn-default">Adaylar</a>
+                <a href="/company/{{company_name}}/hr/applicants?positions={{position.id}}" class="btn btn-default">Adaylar</a>
                 <a class="btn btn-default">İstatistikler</a>
             </div>
         </div>

@@ -42,9 +42,9 @@
 
         <div class="list-group">
             <a ng-repeat="a in applicants"
-               href="/company/{{company_name}}/hr/applicants/{{a._id}}"
+               href="/company/{{company_name}}/hr/applicants/{{a.id}}"
                class="list-group-item"
-               ng-class="{active: $routeSegment.$routeParams.pid ==a._id }">
+               ng-class="{active: $routeSegment.$routeParams.pid ==a.id }">
                 {{a.fullName}}
             </a>
 

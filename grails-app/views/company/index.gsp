@@ -98,5 +98,10 @@
 <script src="/first/js/charts/sparkline/jquery.sparkline.min.js"></script>
 <!-- Easy Pie Chart -->
 <script src="/first/js/charts/easypiechart/jquery.easy-pie-chart.js"></script>
+
+
+<script src="http://maps.google.com/maps/api/js?sensor=true" cache="false"></script>
+<script src="/first/js/maps/gmaps.js" cache="false"></script>
+
 </body>
 </html>

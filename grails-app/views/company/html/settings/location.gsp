@@ -1,6 +1,3 @@
-
-<div class="pull-right">Current route: <span ng-bind="$routeSegment.name"></span></div>
-
 <div class="row">
     <div class="col-sm-6">
         <form class="form-horizontal" role="form">
@@ -76,8 +73,25 @@
         </form>
     </div>
 
+    <div class="col-sm-6">
+        <section class="panel">
+            <header class="panel-heading">
+                <form method="post" id="geocoding_form" class="m-b-none">
+                    <div class="input-group">
+                        <input type="text" id="address" name="address" class="input-sm form-control" placeholder="Search">
+                        <span class="input-group-btn">
+                            <button class="btn btn-sm btn-white" ng-click="testis()">Go!</button>
+                        </span>
+                    </div>
+                </form>
+            </header>
+            <div class="panel-body">
+                <div id="gmap_geocoding" style="height:350px">
 
+                </div>
+            </div>
+        </section>
+    </div>
 
 
 </div>
-
