@@ -82,8 +82,8 @@
                     class="icon-cog icon-xlarge visible-xs visible-xs-inline"></i>Şirket <b
                     class="caret hidden-sm-only"></b></a>
             <ul class="dropdown-menu">
-                <li><a href="/company/my/list">Şirketlerim</a></li>
-                <li><a href="/company/my/new">Yeni şirket ekle</a></li>
+                <li><a href="/company/my/list" target="_self">Şirketlerim</a></li>
+                <li><a href="/company/my/new" target="_self">Yeni şirket ekle</a></li>
 
                 <li>
                     <a href="#" data-toggle="class:navbar-fixed" data-target='body'>Navbar
