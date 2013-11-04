@@ -1,6 +1,6 @@
 
 <!-- header -->
-<header id="header" class="navbar">
+<header id="header" class="navbar" ng-controller="NavBarCtrl">
     <ul class="nav navbar-nav navbar-avatar pull-right">
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -117,6 +117,7 @@
         <li  ng-repeat="c in companies" class="dropdown" ng-class="{active: company_name === c.page_name}">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{c.short_name}} <b class="caret"></b></a>
             <ul class="dropdown-menu" role="menu">
+                <li><a href="/company/profile/{{c.page_name}}" target="_self">Web Sayfası</a></li>
                 <li><a href="/company/{{c.page_name}}/dashboard">Şirket paneli</a></li>
                 <li><a href="/company/{{c.page_name}}/hr">Insan kaynakları</a></li>
                 <li><a href="/company/{{c.page_name}}/skills">Şirket yetenekleri</a></li>

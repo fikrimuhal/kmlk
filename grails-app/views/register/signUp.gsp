@@ -2,18 +2,9 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>Mobile first web app theme | first</title>
-    <meta name="description" content="mobile first, app, web app, responsive, admin dashboard, flat, flat ui">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="/first/css/bootstrap.css">
-    <link rel="stylesheet" href="/first/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/first/css/font.css" cache="false">
-    <link rel="stylesheet" href="/first/css/style.css">
-    <!--[if lt IE 9]>
-    <script src="/first/js/ie/respond.min.js" cache="false"></script>
-    <script src="/first/js/ie/html5.js" cache="false"></script>
-  <![endif]-->
+    <meta name="layout" content="first"/>
+    <r:require modules="first_deprecated"/>
+
 </head>
 <body>
 <!-- header -->
@@ -69,12 +60,5 @@
 </section>
 <g:render template="/shared/footer"/>
 
-<script src="/first/js/jquery.min.js"></script>
-<!-- Bootstrap -->
-<script src="/first/js/bootstrap.js"></script>
-<!-- app -->
-<script src="/first/js/app.js"></script>
-<script src="/first/js/app.plugin.js"></script>
-<script src="/first/js/app.data.js"></script>
 </body>
 </html>

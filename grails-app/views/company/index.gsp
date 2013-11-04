@@ -1,27 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="kimlik">
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>Mobile first web app theme | first</title>
-    <meta name="description" content="mobile first, app, web app, responsive, admin dashboard, flat, flat ui">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link rel="stylesheet" href="/first/css/bootstrap.css">
-    <link rel="stylesheet" href="/first/css/font-awesome.min.css">
-    <link rel="stylesheet" href="/first/css/font.css" cache="false">
-    <link rel="stylesheet" href="/first/css/style.css">
-    <link rel="stylesheet" href="/first/css/plugin.css">
+    <meta name="layout" content="first"/>
     <link rel="stylesheet" href="/first/css/landing.css">
 
-    <r:require modules="company"/>
+    <r:require modules="company,first_deprecated,sparkline,easypiechart,googleMaps"/>
 
-
-    <r:layoutResources/>
-
-    <!--[if lt IE 9]>
-    <script src="/first/js/ie/respond.min.js" cache="false"></script>
-    <script src="/first/js/ie/html5.js" cache="false"></script>
-    <script src="/first/js/ie/excanvas.js" cache="false"></script>
-  <![endif]-->
     <script type="text/ng-template" id="_template/company.inline">
 
     <g:render template="/shared/header"/>
@@ -30,7 +14,7 @@
                 <section id="content">
                     <section class="main padder" app-view-segment="1"></section>
                 </section>
-</script>
+    </script>
 </head>
 
 <body>
@@ -82,26 +66,10 @@
 
 
 <g:render template="/shared/footer"/>
-<r:layoutResources/>
 
 <a href="#" class="hide slide-nav-block" data-toggle="class:slide-nav slide-nav-left" data-target="body"></a>
 <!-- / footer -->
-<script src="/first/js/jquery.min.js"></script>
-<!-- Bootstrap -->
-<script src="/first/js/bootstrap.js"></script>
-<!-- app -->
-<script src="/first/js/app.js"></script>
-<script src="/first/js/app.plugin.js"></script>
-<script src="/first/js/app.data.js"></script>
 
-<!-- Sparkline Chart -->
-<script src="/first/js/charts/sparkline/jquery.sparkline.min.js"></script>
-<!-- Easy Pie Chart -->
-<script src="/first/js/charts/easypiechart/jquery.easy-pie-chart.js"></script>
-
-
-<script src="http://maps.google.com/maps/api/js?sensor=true" cache="false"></script>
-<script src="/first/js/maps/gmaps.js" cache="false"></script>
 
 </body>
 </html>

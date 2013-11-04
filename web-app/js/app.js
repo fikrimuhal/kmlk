@@ -1,6 +1,5 @@
 var kimlik = angular.module('kimlik', ['ui.bootstrap', 'ngResource', 'ngRoute', 'route-segment', 'view-segment']);
 
-
 kimlik.config(['$routeSegmentProvider', '$locationProvider',
     function ($routeSegmentProvider, $locationProvider) {
         $locationProvider.html5Mode(true);
@@ -99,7 +98,7 @@ kimlik.config(['$routeSegmentProvider', '$locationProvider',
             within('company').segment('dashboard', {
                 templateUrl: '/html/company/dashboard/dashboard.html'});
 
-
+    console.log('App config finished')
     }
 ]);
 
@@ -350,6 +349,12 @@ function CompanyCtrl($scope, companyService, $routeSegment) {
 }
 
 
+function NavBarCtrl($scope,companyService) {
+    $scope.companies = $scope.companies || companyService.getUserCompanyList(); //bir onceki scope da yuklenmis olabilir
+
+    console.log('NAV_BAR Ready');
+}
+
 kimlik.factory('companyService', function ($resource, $rootScope) {
 
     function todo() {
@@ -359,7 +364,7 @@ kimlik.factory('companyService', function ($resource, $rootScope) {
     function getUserCompanyList() {
 
         var api = $resource('/company/userCompanyList');
-        return employment = api.query({}, {});
+        return api.query({}, {});
     }
 
     return{

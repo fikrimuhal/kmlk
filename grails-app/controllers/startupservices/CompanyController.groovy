@@ -7,7 +7,30 @@ class CompanyController {
     def authenticationService
     def companyService
 
-    def index() {}
+
+    /**
+     * todo cache able
+     * @return
+     */
+    def index() {/* Client side render*/ }
+
+    /**
+     * todo cache able
+     * @return
+     */
+    def profile() {
+        def company =  companyService.findByPageName(params.id)
+
+        if(!company) return(redirect(uri: '/'))
+
+        log.debug company
+
+    }
+
+
+
+
+//REST - API
 
     def userCompanyList() {
         ObjectId loggedInUser = ObjectId.massageToObjectId(authenticationService.authenticatedUserId)
@@ -18,9 +41,11 @@ class CompanyController {
         render result as JSON
     }
 
-    def addEmployee(){}
-    def removeEmployee(){}
-    def listRequests(){
+    def addEmployee() {}
+
+    def removeEmployee() {}
+
+    def listRequests() {
         ObjectId companyId = ObjectId.massageToObjectId(authenticationService.authenticatedUserId)
 
     }

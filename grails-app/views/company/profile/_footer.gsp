@@ -1,0 +1,9 @@
+<div class="bg-inverse clearfix">
+    <div class="container text-center m-large">
+        <h2 class="font-thin"><small>This web page is </small> Powered by  <a href="/" target="_self">KiMLiK.iO!</a></h2>
+
+        <p>&nbsp;</p>
+        <a href="#content"><i class="icon-arrow-up"></i><br>Tepeye dön</a><br/>
+        <a href="/" target="_self">Bu websitesini beğendiyseniz ücretsiz olarak şirketiniz/startup'ınız için kullanabilirsiniz. </a>
+    </div>
+</div>

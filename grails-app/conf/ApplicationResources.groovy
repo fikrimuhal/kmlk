@@ -2,6 +2,42 @@ import org.codehaus.groovy.grails.web.context.ServletContextHolder
 
 modules = {
 
+
+    first {
+        dependsOn('jquery')
+        resource url: '/first/js/bootstrap.js'
+        resource url: '/first/js/app.js'
+
+        resource url: '/first/css/bootstrap.css'
+        resource url: '/first/css/font-awesome.min.css'
+        resource url: '/first/css/font.css' //cache false mu olmasi lazim bunun ??
+        resource url: '/first/css/plugin.css'
+        resource url: '/first/css/style.css'
+
+
+    }
+
+    first_deprecated {
+        dependsOn('first')
+        resource url: '/first/js/app.plugin.js'
+        resource url: '/first/js/app.data.js'
+    }
+
+    sparkline {
+        dependsOn('jquery')
+        resource url: '/first/js/charts/sparkline/jquery.sparkline.min.js'
+    }
+    easypiechart {
+        dependsOn('jquery')
+         resource url: '/first/js/charts/easypiechart/jquery.easy-pie-chart.js'
+    }
+
+    googleMaps {
+        resource  url:'http://maps.google.com/maps/api/js?sensor=true', attrs: [cache: 'false',type: "js"]
+        resource  url:'/first/js/maps/gmaps.js'
+    }
+
+
     bootstrap3 {
         dependsOn('jquery')
 
@@ -12,13 +48,14 @@ modules = {
     company {
         dependsOn(['lodash', 'angularjs'])
 
-
         resource url: 'js/app.js'
         resource url: 'js/controllers.js'
         resource url: 'js/services.js'
         resource url: 'js/filters.js'
         resource url: 'js/directives.js'
     }
+
+
     kimlik {
         dependsOn(['theme', 'lodash', 'angularjs'])
 
@@ -54,6 +91,9 @@ modules = {
 
     }
 
+    /**
+     * @Deprecated
+     */
     theme {
         dependsOn('jquery')
         resource url: 'http://code.jquery.com/jquery-migrate-1.2.1.min.js'
@@ -102,7 +142,9 @@ modules = {
         resource url: 'js/application.js'
     }
 
-
+    /**
+     * @Deprecated
+     */
     fresh {
         defaultBundle 'fresh'
         dependsOn(['angularjs', 'angularUiRoute', 'httpAuthInterceptor', 'lodash', 'angularStorageProvider'])
@@ -113,6 +155,9 @@ modules = {
         resource url: 'js/directives.js'
     }
 
+    /**
+     * @Deprecated
+     */
     freshServices {
         defaultBundle 'fresh'
         dependsOn(['fresh', 'lodash'])
@@ -120,6 +165,10 @@ modules = {
             resource url: it
         }
     }
+
+    /**
+     * @Deprecated
+     */
     freshControllers {
         defaultBundle 'fresh'
         dependsOn(['fresh', 'lodash'])

@@ -95,4 +95,11 @@ class CompanyService {
 
     ]
 
+    def findByPageName(def pageName) {
+        if(!pageName) return null
+
+        DBCollection col = Company.collection
+        def _QUERY = [page_name:  pageName]
+        return col.findOne(_QUERY)
+    }
 }
