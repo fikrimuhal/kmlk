@@ -5,6 +5,9 @@
 
     <link rel="stylesheet" href="/first/css/landing.css">
 
+    <script type="text/javascript">
+        _settings.staticMode = true // i.e. locationProvider should not use html5Mode
+    </script>
 </head>
 
 <body data-spy="scroll" data-target="#header" class="landing" id="body">
@@ -37,9 +40,6 @@
 </section>
 
 
-<script type="text/javascript">
-    _settings.staticMode = true // i.e. locationProvider should not use html5Mode
-</script>
 
 </body>
 </html>

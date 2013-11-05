@@ -1,4 +1,5 @@
 <div class="bg-light" id="screenshot">
+    <p>&nbsp;</p>
 
 
     <div class="container gallery">

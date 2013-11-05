@@ -1,5 +1,7 @@
 
 <div id="timeline">
+    <p>&nbsp;</p>
+
     <div class="container">
         <p>&nbsp;</p>
         <section class="main">

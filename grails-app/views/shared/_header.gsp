@@ -1,6 +1,6 @@
 
 <!-- header -->
-<header id="header" class="navbar" ng-controller="NavBarCtrl" ng-cloak ng-show="showPrivateNavBar">
+<header id="headerPrivate" class="navbar" ng-controller="NavBarCtrl" ng-cloak ng-show="showPrivateNavBar">
     <ul class="nav navbar-nav navbar-avatar pull-right">
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
@@ -82,8 +82,8 @@
                     class="icon-cog icon-xlarge visible-xs visible-xs-inline"></i>Şirket <b
                     class="caret hidden-sm-only"></b></a>
             <ul class="dropdown-menu">
-                <li><a href="/company/my/list" target="_self">Şirketlerim</a></li>
-                <li><a href="/company/my/new" target="_self">Yeni şirket ekle</a></li>
+                <li><a href="/company/my/list">Şirketlerim</a></li>
+                <li><a href="/company/my/new">Yeni şirket ekle</a></li>
 
                 <li>
                     <a href="#" data-toggle="class:navbar-fixed" data-target='body'>Navbar

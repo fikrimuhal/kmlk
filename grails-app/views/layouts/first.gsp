@@ -9,6 +9,19 @@
 
     <r:require modules="first,company"/>
 
+    <script type="text/javascript">
+        /**
+         * child page should set/override these settings
+         * this block should be before 'layoutHead' (these are the defaults!)
+         * @type {{}}
+         * @private
+         */
+        var _settings = {
+            staticMode:false,
+            debug:false
+        };
+    </script>
+
     <g:layoutHead/>
 
     <r:layoutResources/>
@@ -25,20 +38,14 @@
     }
     </style>
 
-    <script type="text/javascript">
-        /**
-         * child page should set settings
-         * @type {{}}
-         * @private
-         */
-        var _settings = {};
-    </script>
+
 </head>
 
-<body data-spy="${pageProperty(name: 'body. data-spy')}"
+<body data-spy="${pageProperty(name: 'body.data-spy')}"
       data-target="${pageProperty(name: 'body.data-target')}"
       data-offset-top="${pageProperty(name: 'body.data-offset-top')}"
-      class="${pageProperty(name: 'body.class')}">
+      class="${pageProperty(name: 'body.class')}"
+      id="body">
 
 <g:layoutBody></g:layoutBody>
 

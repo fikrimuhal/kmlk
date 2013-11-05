@@ -1,5 +1,7 @@
 <div class="bg-light" id="skills">
     <div class="container">
+        <p>&nbsp;</p>
+
         <div class="row m-large">
             <div class="col-lg-4 col-sm-4">
 

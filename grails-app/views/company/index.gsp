@@ -8,17 +8,20 @@
 
     <script type="text/ng-template" id="_template/company.inline">
 
-    <g:render template="/shared/header"/>
-    <g:render template="/shared/nav"/>
+        <g:render template="/shared/header"/>
+        <g:render template="/shared/nav"/>
 
                 <section id="content">
                     <section class="main padder" app-view-segment="1"></section>
                 </section>
+
+    </script>
+    <script type="text/javascript">
+        _settings.staticMode = false // i.e. locationProvider should USE html5Mode
     </script>
 </head>
 
 <body>
-
 
 <div app-view-segment="0"></div>
 
@@ -69,7 +72,6 @@
 
 <a href="#" class="hide slide-nav-block" data-toggle="class:slide-nav slide-nav-left" data-target="body"></a>
 <!-- / footer -->
-
 
 </body>
 </html>

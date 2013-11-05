@@ -4,6 +4,10 @@
     <meta name="layout" content="first"/>
     <link rel="stylesheet" href="/first/css/landing.css">
 
+
+    <script type="text/javascript">
+        _settings.staticMode = true // i.e. locationProvider should not use html5Mode
+    </script>
 </head>
 
 

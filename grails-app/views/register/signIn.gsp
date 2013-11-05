@@ -5,6 +5,9 @@
     <meta name="layout" content="first"/>
     <r:require modules="first_deprecated"/>
 
+    <script type="text/javascript">
+        _settings.staticMode = true // i.e. locationProvider should not use html5Mode
+    </script>
 </head>
 
 <body>
