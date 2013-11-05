@@ -7,7 +7,7 @@
 
 </head>
 
-<body data-spy="scroll" data-target="#header" class="landing"  id="body">
+<body data-spy="scroll" data-target="#header" class="landing" id="body">
 
 <g:render template="profile/headerPublic"></g:render>
 <g:render template="/shared/header"></g:render>
@@ -37,7 +37,9 @@
 </section>
 
 
-
+<script type="text/javascript">
+    _settings.staticMode = true // i.e. locationProvider should not use html5Mode
+</script>
 
 </body>
 </html>

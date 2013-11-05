@@ -1,9 +1,12 @@
 var kimlik = angular.module('kimlik', ['ui.bootstrap', 'ngResource', 'ngRoute', 'route-segment', 'view-segment']);
-
 kimlik.config(['$routeSegmentProvider', '$locationProvider',
     function ($routeSegmentProvider, $locationProvider) {
-        $locationProvider.html5Mode(true);
+
+        console.debug('_settings :', _settings)
+
+        $locationProvider.html5Mode(!_settings.staticMode);
         $routeSegmentProvider.options.autoLoadTemplates = true;
+        $routeSegmentProvider.options.strictMode = true;
 
         $routeSegmentProvider.
             when('/company/:company_name/settings', 'company.settings.general').
@@ -98,9 +101,20 @@ kimlik.config(['$routeSegmentProvider', '$locationProvider',
             within('company').segment('dashboard', {
                 templateUrl: '/html/company/dashboard/dashboard.html'});
 
-    console.log('App config finished')
+        console.log('App config block finished')
     }
 ]);
+
+// run blocks
+kimlik.run(function ($rootScope) {
+
+    $rootScope.$on('routeSegmentChange', function () {
+        console.log('* route change event')
+
+    });
+    console.log('App run block finished')
+
+});
 
 function UserController($scope, $http, filterFilter, $resource, userService) {
 
@@ -349,9 +363,14 @@ function CompanyCtrl($scope, companyService, $routeSegment) {
 }
 
 
-function NavBarCtrl($scope,companyService) {
+function NavBarCtrl($scope, companyService) {
     $scope.companies = $scope.companies || companyService.getUserCompanyList(); //bir onceki scope da yuklenmis olabilir
-
+    $scope.companies.$promise.then(function () {
+        $scope.showPrivateNavBar = true && $scope.companies //todo bunun yerine kullanici login olmus mu diye kontrol et
+        console.log('companies', $scope.companies)
+    })
+    //todo: login bilgileri rest ile gelecek
+    //todo:
     console.log('NAV_BAR Ready');
 }
 

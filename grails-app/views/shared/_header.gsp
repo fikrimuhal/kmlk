@@ -1,6 +1,6 @@
 
 <!-- header -->
-<header id="header" class="navbar" ng-controller="NavBarCtrl">
+<header id="header" class="navbar" ng-controller="NavBarCtrl" ng-cloak ng-show="showPrivateNavBar">
     <ul class="nav navbar-nav navbar-avatar pull-right">
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
