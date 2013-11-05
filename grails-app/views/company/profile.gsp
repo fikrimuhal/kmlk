@@ -22,11 +22,11 @@
     <g:render template="profile/office"></g:render>
 
     <div class="row bg-white" id="2column">
-        <div class="col-lg-8">
+        <div class="col-md-8">
             <g:render template="profile/timeline"></g:render>
         </div>
 
-        <div class="col-lg-4 bg-white">
+        <div class="col-md-4 bg-white">
             <g:render template="profile/stats"></g:render>
         </div>
     </div>

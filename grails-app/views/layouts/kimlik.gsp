@@ -15,7 +15,18 @@
 
 
     <r:require modules="kimlik,jquery"/>
-
+    <script type="text/javascript">
+        /**
+         * child page should set/override these settings
+         * this block should be before 'layoutHead' (these are the defaults!)
+         * @type {{}}
+         * @private
+         */
+        var _settings = {
+            staticMode:true,
+            debug:false
+        };
+    </script>
     <g:layoutHead/>
     <r:layoutResources/>
 
