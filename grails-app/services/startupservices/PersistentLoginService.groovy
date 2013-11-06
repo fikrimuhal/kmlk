@@ -12,6 +12,7 @@ import javax.servlet.http.Cookie
 
 class PersistentLoginService {
     def authenticationService
+    def grailsApplication
 
     final String COOKIE_BASE = 'remember'
     final String COOKIE_DEVICE = COOKIE_BASE + '.device'
@@ -30,7 +31,7 @@ class PersistentLoginService {
      */
     ObjectId authenticate() {
         ObjectId profileId = null
-
+        getDomain()
         def cookie = currentPersistentLoginCookie
         if (!cookie) {
             log.debug('No persistent login cookie found in the request')
@@ -90,6 +91,7 @@ class PersistentLoginService {
             def cookie = new Cookie(key, val)
             cookie.path = '/'
             cookie.maxAge = COOKIE_AGE
+            cookie.domain = '.' + domain
             response.addCookie(cookie)
         }
     }
@@ -99,7 +101,8 @@ class PersistentLoginService {
         [COOKIE_DEVICE, COOKIE_TOKEN].each {
             def cookie = new Cookie(it, '')
             cookie.path = '/'
-            cookie.maxAge = 0 //1 yil
+            cookie.maxAge = 0 // delete,
+            cookie.domain = '.' + domain
             response.addCookie(cookie)
         }
 
@@ -179,5 +182,14 @@ class PersistentLoginService {
 
     private getSession() {
         return grailsWebRequest.session
+    }
+
+    /**
+     *
+     * @return localhost.kimlik.io
+     */
+    private getDomain() {
+        grailsApplication.config.grails.serverURL.toLowerCase() - 'http://'
+
     }
 }

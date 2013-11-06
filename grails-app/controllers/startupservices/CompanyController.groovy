@@ -7,7 +7,6 @@ class CompanyController {
     def authenticationService
     def companyService
 
-
     /**
      * todo cache able
      * @return
@@ -19,16 +18,36 @@ class CompanyController {
      * @return
      */
     def profile() {
-        def company =  companyService.findByPageName(params.id)
 
-        if(!company) return(redirect(uri: '/'))
+        def company = companyService.findByPageName(params.id)
+
+        if (!company) return (redirect(uri: '/'))
 
         log.debug company
+        def mockCompany = [
+                name: [
+                        oneWord: 'Fikrimuhal',
+                        significantPart: 'Fikrimuhal Teknoloji', // first letter capital
+                        legalType: 'LTD. STİ.',
+                        pageName: 'fikrimuhal',
+                        fullLegal: 'Fikrimuhal Teknoloji Ar. Ge. LTD. STİ',
+                ],
+                founded: '1/4/2013',
+                industry: 'Yazılım',
+                totalInvesment: [
+                        value: 150000,
+                        currency: 'TL'
+                ],
+                tags: ['Internet', 'Startuplar', 'İnsan kaynakları', 'Sosyal networkler', 'Networkler SAS'],
+                employees: [
+                        numberOfTotal: 3,
+                        numberOfTechnical: 2,
+                        numberOfManagment: 2
+                ]
 
+        ]
+        [company: mockCompany]
     }
-
-
-
 
 //REST - API
 

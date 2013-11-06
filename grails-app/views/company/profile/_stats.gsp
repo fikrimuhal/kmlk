@@ -31,14 +31,14 @@
                 <tr>
                     <td>Kuruluş</td>
                     <td class="text- col-lg-1">
-                        1/4/2013
+                        ${company.founded}
                     </td>
                 </tr>
 
                 <tr>
                     <td>Çalışan sayisi</td>
                     <td class="text-">
-                        3
+                        ${company.employees.numberOfTotal}
                     </td>
                 </tr>
 
@@ -46,7 +46,7 @@
                 <tr>
                     <td>Teknik Personel Orani</td>
                     <td class="text-">
-                        100%
+                        ${100 * company.employees.numberOfTechnical / company.employees.numberOfTotal as Integer}%
                     </td>
                 </tr>
 
@@ -54,7 +54,7 @@
                 <tr>
                     <td>Şirket Türü</td>
                     <td class="text-">
-                        LTD
+                        ${company.name.legalType}
                     </td>
                 </tr>
 
@@ -70,7 +70,8 @@
                 <tr>
                     <td>Sektör</td>
                     <td class="text-">
-                        Yazılım
+                        ${company.industry}
+
                     </td>
                 </tr>
 
@@ -78,7 +79,7 @@
                 <tr>
                     <td>Toplam Yatırım</td>
                     <td class="text-">
-                        150.000TL
+                        ${company.totalInvesment.value + '' + company.totalInvesment.currency}
                     </td>
                 </tr>
 
@@ -99,13 +100,10 @@
 
             <div id="MyPillbox" class="pillbox clearfix m-b">
                 <ul>
-                    <li class="label bg-default">Internet</li>
-                    <li class="label bg-success">Startuplar</li>
-                    <li class="label bg-warning">İnsan kaynakları</li>
-                    <li class="label bg-danger">Sosyal networkler</li>
-                    <li class="label bg-info">networkler SAS</li>
-
-                    <input type="text" placeholder="add a pill">
+                    <g:each in="${company.tags}" var="tag">
+                        <li class="label bg-info"> ${tag} </li>
+                    </g:each>
+                    %{--<input type="text" placeholder="add a pill">--}%
                 </ul>
             </div>
 
