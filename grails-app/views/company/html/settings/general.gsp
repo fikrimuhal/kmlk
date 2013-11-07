@@ -1,6 +1,3 @@
-
-<div class="pull-right">Current route: <span ng-bind="$routeSegment.name"></span></div>
-
 <div class="row">
     <div class="col-sm-6">
         <form class="form-horizontal" role="form">

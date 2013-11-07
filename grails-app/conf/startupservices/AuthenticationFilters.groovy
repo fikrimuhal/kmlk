@@ -3,6 +3,7 @@ package startupservices
 class AuthenticationFilters {
     def persistentLoginService
     def authenticationService
+    def domainService
     def grailsApplication
 
     def filters = {
@@ -32,7 +33,8 @@ class AuthenticationFilters {
 
                 String requestedHost = request.getHeader('Host').toLowerCase()
 
-                if (requestedHost.endsWith(domain)) return //this is not external request (anymore, maybe requested inside iframe)
+                if (requestedHost.endsWith(domain)) return
+                //this is not external request (anymore, maybe requested inside iframe)
 
                 boolean isCrawler = webRequest.params._escaped_fragment_ != null
                 if (isCrawler) {
@@ -97,19 +99,9 @@ class AuthenticationFilters {
 
     }
 
-    //todo mock implement me
     private domain2Page(domain) {
-        log.debug('NOT IMPLEMENTED YET (domain2Page)')
-        if (domain == 'kimliklocal.fikrimuhal.com') {
+        return domainService.domain2Page(domain)
 
-            return [
-                    isCompany: true,
-                    isProfile: false,
-                    pageName: 'fikrimuhal' //yada direk id mi kullansak??
-            ]
-        } else {
-            return null
-        }
 
     }
 

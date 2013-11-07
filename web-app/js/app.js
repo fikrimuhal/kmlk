@@ -1,4 +1,3 @@
-//
 //if ( window.self === window.top ) {
 //    console.log('we are not in the frame ')
 //} else {
@@ -23,6 +22,7 @@ kimlik.config(['$routeSegmentProvider', '$locationProvider',
             when('/company/:company_name/settings/social', 'company.settings.social').
             when('/company/:company_name/settings/notifications', 'company.settings.notifications').
             when('/company/:company_name/settings/security', 'company.settings.security').
+            when('/company/:company_name/settings/www', 'company.settings.www').
 
 
             segment('company', {
@@ -40,7 +40,8 @@ kimlik.config(['$routeSegmentProvider', '$locationProvider',
             segment('images', {templateUrl: '/html/company/settings/images.html'}).
             segment('social', {templateUrl: '/html/company/settings/social.html'}).
             segment('notifications', {templateUrl: '/html/company/settings/notifications.html'}).
-            segment('security', {templateUrl: '/html/company/settings/security.html'});
+            segment('security', {templateUrl: '/html/company/settings/security.html'}).
+            segment('www', {templateUrl: '/html/company/settings/www.html'});
 
         $routeSegmentProvider.
             when('/company/:company_name/hr', 'company.hr.employees').

@@ -6,6 +6,8 @@ import org.bson.types.ObjectId
 class CompanyController {
     def authenticationService
     def companyService
+    def domainService
+
 
     /**
      * todo cache able
@@ -18,12 +20,13 @@ class CompanyController {
      * @return
      */
     def profile() {
+        boolean isCrawler = params.containsKey('_escaped_fragment_')
 
         def company = companyService.findByPageName(params.id)
 
         if (!company) return (redirect(uri: '/'))
 
-        log.debug company
+        //log.debug company
         def mockCompany = [
                 name: [
                         oneWord: 'Fikrimuhal',
@@ -46,7 +49,7 @@ class CompanyController {
                 ]
 
         ]
-        [company: mockCompany]
+        [company: mockCompany, isCrawler: isCrawler]
     }
 
 //REST - API

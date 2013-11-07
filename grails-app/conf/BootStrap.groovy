@@ -1,6 +1,7 @@
 import grails.converters.JSON
 import kimlik.company.Company
 import org.bson.types.ObjectId
+import startupservices.DomainToPage
 import startupservices.Profile
 import startupservices.Skill
 
@@ -61,6 +62,15 @@ class BootStrap {
                     about: 'Acik demokrasi hakkinda uzuuun uzuun ama cok uzun olmayan bio about as yazisi.',
                     employees: [sumnulu]
             ).save(flush: true, failOnError: true)
+        }
+
+        if (!DomainToPage.count) {
+            new DomainToPage(
+                    pageName: 'fikrimuhal',
+                    isCompany: true,
+                    domains: ['kimliklocal.fikrimuhal.com', 'fikrimuhal.com'],
+                    enabled: true
+            ).save()
         }
     }
 

@@ -17,6 +17,7 @@
                     <li ng-class="{active: $routeSegment.contains('security')}"><a href="/company/{{company_name}}/settings/security">Güvenlik ve İzinler</a></li>
                     <li ng-class="{active: $routeSegment.contains('notifications')}"><a href="/company/{{company_name}}/settings/notifications">Bildirimler</a></li>
                     <li ng-class="{active: $routeSegment.contains('social')}"><a href="/company/{{company_name}}/settings/social">Sosyal</a></li>
+                    <li ng-class="{active: $routeSegment.contains('www')}"><a href="/company/{{company_name}}/settings/www">Web Sayfası</a></li>
 
                 </ul>
                 <span class="hidden-sm hidden-xs hidden-phone">Ayarlar</span>
