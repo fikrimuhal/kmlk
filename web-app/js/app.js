@@ -1,3 +1,10 @@
+//
+//if ( window.self === window.top ) {
+//    console.log('we are not in the frame ')
+//} else {
+//    console.log('we are in the frame ')
+//}
+
 var kimlik = angular.module('kimlik', ['ui.bootstrap', 'ngResource', 'ngRoute', 'route-segment', 'view-segment']);
 kimlik.config(['$routeSegmentProvider', '$locationProvider',
     function ($routeSegmentProvider, $locationProvider) {
@@ -381,8 +388,9 @@ kimlik.factory('companyService', function ($resource, $rootScope) {
     }
 
     function getUserCompanyList() {
-
-        var api = $resource('/company/userCompanyList');
+//         alert(_settings.baseUrl)
+        //todo urlleri merkezi biryerde yaz hepsini burdan consttant a eris sadece
+        var api = $resource(_settings.baseUrl+'company/userCompanyList');
         return api.query({}, {});
     }
 
@@ -390,7 +398,6 @@ kimlik.factory('companyService', function ($resource, $rootScope) {
         getUserCompanyList: getUserCompanyList
     };
 });
-
 
 
 

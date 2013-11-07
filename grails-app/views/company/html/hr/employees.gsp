@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-sm-4 col-md-4">
         <div class="thumbnail" onclick="document.location.href = '/company/people/ilgaz'" style="cursor: hand;">
-            <img src="/images/photos/ilgaz2.jpg" alt="100%x200 Image Holder" style="height: 200px;">
+<g:img uri="/images/photos/ilgaz2.jpg" alt="100%x200 Image Holder" style="height: 200px;"/>
 
             <div class="caption">
                 <h4>Ilgaz Şumnulu</h4>
@@ -21,7 +21,7 @@
 
     <div class="col-sm-4 col-md-4">
         <div class="thumbnail" onclick="document.location.href = '/company/people/ilgaz'" style="cursor: hand;">
-            <img src="/images/photos/ilgaz3.jpg" alt="100%x200 Image Holder" style="height: 200px;">
+        <g:img uri="/images/photos/ilgaz3.jpg" alt="100%x200 Image Holder" style="height: 200px;"/>
 
             <div class="caption">
                 <h4>Ilgaz Şumnulu</h4>
@@ -41,7 +41,7 @@
 
     <div class="col-sm-4 col-md-4">
         <div class="thumbnail" onclick="document.location.href = '/company/people/ilgaz'" style="cursor: hand;">
-            <img src="/images/photos/ilgaz4.jpg" alt="100%x200 Image Holder" style="height: 200px;">
+<g:img uri="/images/photos/ilgaz4.jpg" alt="100%x200 Image Holder" style="height: 200px;"/>
 
             <div class="caption">
                 <h4>Ilgaz Şumnulu</h4>

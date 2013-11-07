@@ -3,7 +3,12 @@
 <head>
     <meta name="layout" content="first"/>
 
-    <link rel="stylesheet" href="/first/css/landing.css">
+    %{--https://developers.google.com/webmasters/ajax-crawling/docs/specification?csw=1--}%
+    <meta name="fragment" content="!">
+
+    %{--<r:require modules="landing,grid,gallery,prettyPhoto"/>--}%
+    <r:require modules="landing,grid"/>
+
 
     <script type="text/javascript">
         _settings.staticMode = true // i.e. locationProvider should not use html5Mode

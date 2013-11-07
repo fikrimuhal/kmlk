@@ -54,30 +54,24 @@
     }
     </style>
 
-    <script type="text/javascript">
-//        window.onload = init;
-        function init() {
-            document.getElementById('mainFrame').src = 'http://localhost.kimlik.io/company/profile/fikrimuhal'
-        }
-    </script>
-
 
 </head>
 
 <body>
 
-<script type="text/javascript">
-    var a = window.location.host.split('.',2);
-    var b = "http://localhost.kimlik.io/";  //todo production ve development da farkli hostlar server side set et bunlari
-    var s = b + (a[1]==='p'?"XXXXTODOXXX/profile/": a[1]=='s'?'company/profile/':'error/frame')+a[0]; //todo domainler c ve p olmali
+%{--<script type="text/javascript">--}%
+    %{--var a = window.location.host.split('.',2);--}%
+    %{--var b = "http://localhost.kimlik.io/";  //todo production ve development da farkli hostlar server side set et bunlari--}%
+    %{--var s = b + (a[1]==='p'?"XXXXTODOXXX/profile/": a[1]=='s'?'company/profile/':'error/frame')+a[0]; //todo domainler c ve p olmali--}%
 
-    ifrm = document.createElement("iframe");
-    ifrm.setAttribute("src", s);
-    ifrm.setAttribute("seamless", "seamless");
-    ifrm.setAttribute("id", "mainFrame");
-    document.body.appendChild(ifrm);
-</script>
+    %{--ifrm = document.createElement("iframe");--}%
+    %{--ifrm.setAttribute("src", s);--}%
+    %{--ifrm.setAttribute("seamless", "seamless");--}%
+    %{--ifrm.setAttribute("id", "mainFrame");--}%
+    %{--document.body.appendChild(ifrm);--}%
+%{--</script>--}%
 
-%{--<iframe id="mainFrame" seamless="seamless" src="javascript: 'http://localhost.kimlik.io/company/profile/fikrimuhal' "></iframe>--}%
+<iframe id="mainFrame" seamless="seamless" src="http://localhost.kimlik.io/company/profile/fikrimuhal"></iframe>
+
 </body>
 </html>

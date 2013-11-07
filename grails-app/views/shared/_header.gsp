@@ -5,8 +5,8 @@
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <span class="hidden-xs-only">Ilgaz Şumnulu</span>
-                <span class="thumb-small avatar inline"><img src="/first/images/avatar.jpg" alt="Ilgaz Şumnulu"
-                                                             class="img-circle"></span>
+                <span class="thumb-small avatar inline"><g:img uri="first/images/avatar.jpg" alt="Ilgaz Şumnulu"
+                                                             class="img-circle"/></span>
                 <b class="caret hidden-xs-only"></b>
             </a>
             <ul class="dropdown-menu">
@@ -49,8 +49,8 @@
 
                         <div class="list-group">
                             <a href="#" class="media list-group-item">
-                                <span class="pull-left thumb-small"><img src="/first/images/avatar.jpg" alt="John said"
-                                                                         class="img-circle"></span>
+                                <span class="pull-left thumb-small"><g:img uri="first/images/avatar.jpg" alt="John said"
+                                                                         class="img-circle"/></span>
                                 <span class="media-body block m-b-none">
                                     Moved to Bootstrap 3.0<br>
                                     <small class="text-muted">23 June 13</small>
@@ -117,7 +117,7 @@
         <li  ng-repeat="c in companies" class="dropdown" ng-class="{active: company_name === c.page_name}">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{c.short_name}} <b class="caret"></b></a>
             <ul class="dropdown-menu" role="menu">
-                <li><a href="/company/profile/{{c.page_name}}" target="_self">Web Sayfası</a></li>
+                <li><a href="/company/profile/{{c.page_name}}" target="_top">Web Sayfası</a></li>
                 <li><a href="/company/{{c.page_name}}/dashboard">Şirket paneli</a></li>
                 <li><a href="/company/{{c.page_name}}/hr">Insan kaynakları</a></li>
                 <li><a href="/company/{{c.page_name}}/skills">Şirket yetenekleri</a></li>

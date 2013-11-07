@@ -52,6 +52,8 @@ class CompanyController {
 //REST - API
 
     def userCompanyList() {
+//        response.addHeader('Access-Control-Allow-Origin','*') //todo SECURITYYY
+
         ObjectId loggedInUser = ObjectId.massageToObjectId(authenticationService.authenticatedUserId)
         assert loggedInUser
 

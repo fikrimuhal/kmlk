@@ -54,4 +54,11 @@ class TestController {
         }
 
     }
+
+
+
+    def hashTest(){
+        render 'OK :) <br/>'
+        render "_escaped_fragment_ = ${params._escaped_fragment_}"
+    }
 }

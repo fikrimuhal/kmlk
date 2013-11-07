@@ -2,9 +2,8 @@
 <html lang="en">
 <head>
     <meta name="layout" content="first"/>
-    <link rel="stylesheet" href="/first/css/landing.css">
 
-    <r:require modules="company,first_deprecated,sparkline,easypiechart,googleMaps"/>
+    <r:require modules="company,first_deprecated,sparkline,easypiechart,googleMaps, landing"/>
 
     <script type="text/ng-template" id="_template/company.inline">
 

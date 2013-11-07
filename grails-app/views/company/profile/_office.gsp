@@ -70,6 +70,7 @@
         </div>
 
     </div>
+
     <div class="clearfix"></div>
 
 
@@ -129,9 +130,3 @@
     %{--</div>--}%
     %{--</div>--}%
 </div>
-
-<link rel="stylesheet" href="/first/js/prettyphoto/prettyPhoto.css" type="text/css" cache="false"/>
-
-<script src="/first/js/prettyphoto/jquery.prettyPhoto.js" cache="false"></script>
-<script src="/first/js/grid/jquery.grid-a-licious.min.js" cache="false"></script>
-<script src="/first/js/grid/gallery.js" cache="false"></script>

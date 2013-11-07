@@ -5,36 +5,55 @@ modules = {
 
     first {
         dependsOn('jquery')
-        resource url: '/first/js/bootstrap.js'
-        resource url: '/first/js/app.js'
+        resource url: 'first/js/bootstrap.js'
+        resource url: 'first/js/app.js'
 
-        resource url: '/first/css/bootstrap.css'
-        resource url: '/first/css/font-awesome.min.css'
-        resource url: '/first/css/font.css' //cache false mu olmasi lazim bunun ??
-        resource url: '/first/css/plugin.css'
-        resource url: '/first/css/style.css'
+        resource url: 'first/css/bootstrap.css'
+        resource url: 'first/css/font-awesome.min.css'
+        resource url: 'first/css/font.css' //cache false mu olmasi lazim bunun ??
+        resource url: 'first/css/plugin.css'
+        resource url: 'first/css/style.css'
 
 
     }
 
     first_deprecated {
         dependsOn('first')
-        resource url: '/first/js/app.plugin.js'
-        resource url: '/first/js/app.data.js'
+        resource url: 'first/js/app.plugin.js'
+        resource url: 'first/js/app.data.js'
     }
+
+    landing {
+        dependsOn('first')
+        resource url: 'first/css/landing.css'
+    }
+
+    prettyPhoto {
+        resource url: 'first/js/prettyphoto/prettyPhoto.css'
+    }
+
+    gallery {
+        dependsOn(['jquery','prettyPhoto'])
+        resource url: 'first/js/grid/gallery.js'
+    }
+    grid {
+        dependsOn('jquery')
+        resource url: 'first/js/grid/jquery.grid-a-licious.min.js'
+    }
+
 
     sparkline {
         dependsOn('jquery')
-        resource url: '/first/js/charts/sparkline/jquery.sparkline.min.js'
+        resource url: 'first/js/charts/sparkline/jquery.sparkline.min.js'
     }
     easypiechart {
         dependsOn('jquery')
-         resource url: '/first/js/charts/easypiechart/jquery.easy-pie-chart.js'
+         resource url: 'first/js/charts/easypiechart/jquery.easy-pie-chart.js'
     }
 
     googleMaps {
         resource  url:'http://maps.google.com/maps/api/js?sensor=true', attrs: [cache: 'false',type: "js"]
-        resource  url:'/first/js/maps/gmaps.js'
+        resource  url:'first/js/maps/gmaps.js'
     }
 
 

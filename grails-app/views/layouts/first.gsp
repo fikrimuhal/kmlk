@@ -18,7 +18,8 @@
          */
         var _settings = {
             staticMode:false,
-            debug:false
+            debug:false,
+            baseUrl: '<g:createLink absolute="true" uri="/" />'
         };
     </script>
 
@@ -48,6 +49,7 @@
       id="body">
 
 <g:layoutBody></g:layoutBody>
+
 
 
 

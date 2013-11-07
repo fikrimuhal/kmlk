@@ -258,4 +258,5 @@ grails.plugin.awssdk.secretKey = '***REMOVED***'
 grails.plugin.awssdk.region = 'us-east-1'
 
 
-
+//grails.resources.mappers.baseurl.enabled = true
+//grails.resources.mappers.baseurl.default = "http://localhost.kimlik.io/static/"

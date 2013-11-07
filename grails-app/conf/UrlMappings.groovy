@@ -24,6 +24,10 @@ class UrlMappings {
 
 
         "/"(controller: "register", action: 'index')
+
+
+
+
         "/help/terms"(view: "/help_terms")
         "/help/ik"(view: "/help_ik")
         "/help/register"(view: "/help")
