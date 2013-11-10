@@ -55,7 +55,6 @@ class CompanyController {
 //REST - API
 
     def userCompanyList() {
-//        response.addHeader('Access-Control-Allow-Origin','*') //todo SECURITYYY
 
         ObjectId loggedInUser = ObjectId.massageToObjectId(authenticationService.authenticatedUserId)
         assert loggedInUser
@@ -71,6 +70,19 @@ class CompanyController {
 
     def listRequests() {
         ObjectId companyId = ObjectId.massageToObjectId(authenticationService.authenticatedUserId)
+    }
 
+
+    def domainSettings(){
+        //todo get de show
+        //todo post da save/update
+        //todo AA
+        log.debug(params.companyId)
+        ObjectId companyId = ObjectId.massageToObjectId(params.companyId)
+        def company = companyService.getCompany(companyId)
+        def domainId = company.domainToPage
+        def result = domainService.get(domainId)
+
+        render result as JSON
     }
 }

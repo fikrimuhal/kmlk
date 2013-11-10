@@ -72,6 +72,10 @@ class BootStrap {
                     enabled: true
             ).save()
         }
+
+        def fikrimuhal = Company.findByPage_name('fikrimuhal')
+        fikrimuhal.domainToPage = DomainToPage.findByPageNameAndIsCompany('fikrimuhal',true)
+        fikrimuhal.save()
     }
 
     def destroy = {

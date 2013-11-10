@@ -96,7 +96,7 @@ environments {
         //ipfw add 10 fwd 127.0.0.1,8080 tcp from any to me 80
         grails.serverURL = "http://localhost.kimlik.io"
         grails.app.context = "/"
-        grails.resources.debug = false
+        grails.resources.debug = true
         cache.headers.enabled = false
 
 

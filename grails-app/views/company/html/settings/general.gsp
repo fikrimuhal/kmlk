@@ -53,6 +53,15 @@
                     <span class="help-block">Daha sonra başka kişiler ekleye bilirsiniz, yada yonetici haklarini düzenleye bilirsiniz.</span>
                 </div>
             </div>
+
+
+            <div class="form-group">
+                <div class="col-lg-9 col-lg-offset-3">
+                    <button type="button" class="btn btn-primary pull-right">Kaydet</button>
+                    <span class="help-block"></span>
+                </div>
+            </div>
+
         </form>
     </div>
 

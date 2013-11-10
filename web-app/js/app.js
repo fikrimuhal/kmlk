@@ -4,7 +4,7 @@
 //    console.log('we are in the frame ')
 //}
 
-var kimlik = angular.module('kimlik', ['ui.bootstrap', 'ngResource', 'ngRoute', 'route-segment', 'view-segment']);
+var kimlik = angular.module('kimlik', ['ui.bootstrap', 'ngResource', 'ngRoute', 'route-segment', 'view-segment','blueimp.fileupload']);
 kimlik.config(['$routeSegmentProvider', '$locationProvider',
     function ($routeSegmentProvider, $locationProvider) {
 
@@ -41,7 +41,8 @@ kimlik.config(['$routeSegmentProvider', '$locationProvider',
             segment('social', {templateUrl: '/html/company/settings/social.html'}).
             segment('notifications', {templateUrl: '/html/company/settings/notifications.html'}).
             segment('security', {templateUrl: '/html/company/settings/security.html'}).
-            segment('www', {templateUrl: '/html/company/settings/www.html'});
+            segment('www', {templateUrl: '/html/company/settings/www.html',
+                controller: CompanySettingsWwwCtrl});
 
         $routeSegmentProvider.
             when('/company/:company_name/hr', 'company.hr.employees').
@@ -153,6 +154,19 @@ function CompanyDashboardCtrl($scope, $routeSegment) {
 
 function CompanySkillsCtrl($scope, $routeSegment) {
 
+}
+
+function CompanySettingsWwwCtrl($scope, $resource) {
+    console.log('company id = ', $scope.company._id)
+
+    var api = $resource(_settings.baseUrl + 'company/domainSettings');
+    var domain = api.get({companyId: $scope.company._id}, {});
+    $scope.domain = domain;
+    console.log('domain : ', domain)
+
+    $scope.save = function (domain) {
+        var result = api.save({companyId: $scope.company._id}, domain);
+    }
 }
 
 function CompanySettingsCtrl($scope) {
@@ -363,7 +377,8 @@ function CompanyCtrl($scope, companyService, $routeSegment) {
         //broadcast de company_name i aliyoruz boylece resolved oldugundan eminiz parametrenin.
         //URL mapping de resolved ile yapila bilinir?
         //Sayfa render olmadan once resolved olsa daha iyi olur.
-        $scope.company_name = $routeSegment.$routeParams.company_name
+        $scope.company_name = $routeSegment.$routeParams.company_name //todo bunun adi pageName olsa daha iyi
+        $scope.company = _.find($scope.companies, {page_name: $scope.company_name })
 
     });
 
@@ -391,7 +406,7 @@ kimlik.factory('companyService', function ($resource, $rootScope) {
     function getUserCompanyList() {
 //         alert(_settings.baseUrl)
         //todo urlleri merkezi biryerde yaz hepsini burdan consttant a eris sadece
-        var api = $resource(_settings.baseUrl+'company/userCompanyList');
+        var api = $resource(_settings.baseUrl + 'company/userCompanyList');
         return api.query({}, {});
     }
 
@@ -403,3 +418,55 @@ kimlik.factory('companyService', function ($resource, $rootScope) {
 
 
 
+var url = '/test/upload2'
+kimlik
+    .controller('OfficePicturesController', [
+        '$scope', '$http',
+        function ($scope, $http) {
+            $scope.options = {
+                url: url
+            };
+
+            $scope.officePictures = [
+                {url:'http://placehold.it/400x200' , name:'name1', thumbnailUrl:'http://placehold.it/400x200'},
+                {url:'http://placehold.it/400x200' , name:'name1', thumbnailUrl:'http://placehold.it/400x200'},
+                {url:'http://placehold.it/200x100' , name:'name1', thumbnailUrl:'http://placehold.it/200x100'},
+                {url:'http://placehold.it/400x300' , name:'name1', thumbnailUrl:'http://placehold.it/400x300'},
+                {url:'http://placehold.it/400x200' , name:'name1', thumbnailUrl:'http://placehold.it/400x200'}
+
+            ];
+
+        }
+    ])
+
+    .controller('FileDestroyController', [
+        '$scope', '$http',
+        function ($scope, $http) {
+            var file = $scope.file,
+                state;
+            if (file.url) {
+                file.$state = function () {
+                    return state;
+                };
+                file.$destroy = function () {
+                    state = 'pending';
+                    return $http({
+                        url: file.deleteUrl,
+                        method: file.deleteType
+                    }).then(
+                        function () {
+                            state = 'resolved';
+                            $scope.clear(file);
+                        },
+                        function () {
+                            state = 'rejected';
+                        }
+                    );
+                };
+            } else if (!file.$cancel && !file._index) {
+                file.$cancel = function () {
+                    $scope.clear(file);
+                };
+            }
+        }
+    ]);

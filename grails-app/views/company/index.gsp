@@ -3,7 +3,7 @@
 <head>
     <meta name="layout" content="first"/>
 
-    <r:require modules="company,first_deprecated,sparkline,easypiechart,googleMaps, landing"/>
+    <r:require modules="company,first_deprecated,sparkline,easypiechart,googleMaps, landing,fileUpload"/>
 
     <script type="text/ng-template" id="_template/company.inline">
 

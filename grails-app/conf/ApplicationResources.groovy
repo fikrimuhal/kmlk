@@ -21,6 +21,8 @@ modules = {
         dependsOn('first')
         resource url: 'first/js/app.plugin.js'
         resource url: 'first/js/app.data.js'
+//        resource url: 'first/js/file-input/bootstrap.file-input.js'
+
     }
 
     landing {
@@ -28,12 +30,32 @@ modules = {
         resource url: 'first/css/landing.css'
     }
 
+    fileUpload {
+        dependsOn(['jquery', 'angularjs'])
+
+        resource url: 'http://blueimp.github.io/Gallery/css/blueimp-gallery.min.css'
+        resource url: 'http://blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js'
+
+        resource url: 'js/lib/fileUpload/css/jquery.fileupload.css'
+        resource url: 'js/lib/fileUpload/css/jquery.fileupload-ui.css'
+        resource url: 'js/lib/fileUpload/js/vendor/jquery.ui.widget.js'
+        resource url: 'http://blueimp.github.io/JavaScript-Load-Image/js/load-image.min.js'
+        resource url: 'http://blueimp.github.io/JavaScript-Canvas-to-Blob/js/canvas-to-blob.min.js'
+        resource url: 'js/lib/fileUpload/js/jquery.iframe-transport.js'
+        resource url: 'js/lib/fileUpload/js/jquery.fileupload.js'
+        resource url: 'js/lib/fileUpload/js/jquery.fileupload-process.js'
+        resource url: 'js/lib/fileUpload/js/jquery.fileupload-image.js'
+        resource url: 'js/lib/fileUpload/js/jquery.fileupload-audio.js'
+        resource url: 'js/lib/fileUpload/js/jquery.fileupload-validate.js'
+        resource url: 'js/lib/fileUpload/js/jquery.fileupload-angular.js'
+    }
+
     prettyPhoto {
         resource url: 'first/js/prettyphoto/prettyPhoto.css'
     }
 
     gallery {
-        dependsOn(['jquery','prettyPhoto'])
+        dependsOn(['jquery', 'prettyPhoto'])
         resource url: 'first/js/grid/gallery.js'
     }
     grid {
@@ -48,12 +70,12 @@ modules = {
     }
     easypiechart {
         dependsOn('jquery')
-         resource url: 'first/js/charts/easypiechart/jquery.easy-pie-chart.js'
+        resource url: 'first/js/charts/easypiechart/jquery.easy-pie-chart.js'
     }
 
     googleMaps {
-        resource  url:'http://maps.google.com/maps/api/js?sensor=true', attrs: [cache: 'false',type: "js"]
-        resource  url:'first/js/maps/gmaps.js'
+        resource url: 'http://maps.google.com/maps/api/js?sensor=true', attrs: [cache: 'false', type: "js"]
+        resource url: 'first/js/maps/gmaps.js'
     }
 
 
