@@ -7,7 +7,7 @@ import startupservices.Picture
 import startupservices.Profile
 
 class Company {
-    static embedded = ['address']
+    static embedded = ['address','officePictures']
 
     ObjectId id
     String page_name
@@ -34,6 +34,8 @@ class Company {
     Picture coverPicture
 
     DomainToPage domainToPage
+
+    List<Picture> officePictures
 
     static constraints = {
     }

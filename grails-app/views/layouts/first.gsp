@@ -7,7 +7,7 @@
           content="app, kimlik, mobile, fikrimuhal, sumnulu, ilgaz sumnulu, ilgaz, kurumsal, startup, girişim, girisim, şirket">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <r:require modules="first,company"/>
+    <r:require modules="first,company,fileUpload"/>
 
     <script type="text/javascript">
         /**

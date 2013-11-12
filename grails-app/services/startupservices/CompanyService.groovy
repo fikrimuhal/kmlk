@@ -1,6 +1,7 @@
 package startupservices
 
 import com.mongodb.DBCollection
+import com.mongodb.WriteConcern
 import kimlik.company.Company
 import org.bson.types.ObjectId
 
@@ -14,7 +15,9 @@ class CompanyService {
         def result = []
         DBCollection col = Company.collection
         def _QUERY = [owner: owner]
-        col.find(_QUERY).each { result << it }
+        col.find(_QUERY).each {
+            result << it  + mockExtraData
+        }
         return result
     }
 
@@ -26,7 +29,7 @@ class CompanyService {
     def listByEmployee(ObjectId employee) {
         def result = []
         DBCollection col = Company.collection
-        def _QUERY = [employees:  employee]
+        def _QUERY = [employees: employee]
         col.find(_QUERY).each { result << it }
         return result
     }
@@ -34,72 +37,99 @@ class CompanyService {
 
     def getCompany(ObjectId id) {
         DBCollection col = Company.collection
-        def _QUERY = [_id:  id]
-        return col.findOne(_QUERY)
+        def _QUERY = [_id: id]
+        def result = col.findOne(_QUERY)
+        result << mockExtraData
+
+        return result
     }
 
-
-    private fikrimuhal = [
-            _id: new ObjectId(),
-            short_name: 'Fikrimuhal',
-            page_name: 'fikrimuhal',
-            full_name: 'Fikrimuhal Teknoloji Ar. Ge. LTD. ŞTİ.',
-            employees: [
-                    new ObjectId(),
-                    new ObjectId(),
-                    new ObjectId(),
-                    new ObjectId(),
-                    new ObjectId()
-            ],
-            location: [
-                    country: 'Turkey',
-                    city: 'İstanbul',
-                    district: 'Çekmeköy',
-                    address: 'zind ismerkezi no:5/5',
-                    zip: 06530,
-                    latitude: 1.321323,
-                    longitude: 12.321432432,
-                    zooomLevel: 12,
-            ],
-            bio: 'company bio blahh',
-            skills: [
-                    new ObjectId(),
-                    new ObjectId(),
-                    new ObjectId(),
-                    new ObjectId(),
-                    new ObjectId()
-            ],
-            industry: 'Yazılım',
-            tags: ['Internet', ' Startuplar', ' İnsankaynakları', ' Sosyal networkler', ' SAS'],
-            email: 'info@fikrimuhal.com',
-            tel: '543646363565634',
-            www: 'http://www.dddd.com',
-            linkedin: [
-                    _id: 12331232,
-                    profileUrl: 'http://dsadsads.com'
-            ],
-            facebook: [
-                    _id: 324324324,
-                    profileUrl: 'http://dsadsads.com'
-            ],
-            twitter: [
-                    _id: 324324324,
-                    profileUrl: 'http://dsadsads.com'
-            ],
-            foursquare: [
-                    _id: 324324324,
-                    profileUrl: 'http://dsadsads.com'
-            ],
-            perks: []
-
-
-    ]
 
     def findByPageName(def pageName) {
-        if(!pageName) return null
+        if (!pageName) return null
 
         DBCollection col = Company.collection
-        def _QUERY = [page_name:  pageName]
-        return col.findOne(_QUERY)
+        def _QUERY = [page_name: pageName]
+        def result = col.findOne(_QUERY)
+        result << mockExtraData
+
+        return result
     }
+
+
+    def addOfficePhoto(Picture picture, ObjectId companyId) {
+
+        def pictureMap = [
+                _id: picture.id,
+                path: picture.path,
+                bucket: picture.bucket,
+                url: picture.url,
+//                owner: picture.owner.id,
+                broken: picture.broken,
+                source: picture.source
+        ]
+        DBCollection col = Company.collection
+
+        def _QUERY = [_id: companyId]
+        def _OPS = [:]
+
+        _OPS.'$addToSet' = ['officePictures': pictureMap]
+        col.update(_QUERY, _OPS, false, false, WriteConcern.SAFE)
+
+    }
+
+    def deleteOfficePhoto(ObjectId pictureId, companyId) {
+
+        DBCollection col = Company.collection
+
+
+        def _QUERY = [
+                _id: companyId,
+                'officePictures._id': pictureId
+        ]
+
+        def _OPS = [:]
+
+        _OPS.'$pull' = ['officePictures': ['_id': pictureId]]
+        col.update(_QUERY, _OPS, false, false, WriteConcern.SAFE)
+
+    }
+
+
+    private mockExtraData = [
+            name: [
+                    oneWord: 'Fikrimuhal',
+                    significantPart: 'Fikrimuhal Teknoloji', // first letter capital
+                    legalType: 'LTD. STİ.',
+                    pageName: 'fikrimuhal',
+                    fullLegal: 'Fikrimuhal Teknoloji Ar. Ge. LTD. STİ',
+            ],
+            founded: '1/4/2013',
+            totalInvesment: [
+                    value: 150000,
+                    currency: 'TL'
+            ],
+            employeeStats: [
+                    numberOfTotal: 3,
+                    numberOfTechnical: 2,
+                    numberOfManagment: 2
+            ],
+            products: [
+                    [
+                            title: 'Kimlik IO',
+                            about: 'Startuplar için SAAS hizmetleri',
+                            url: 'http://www.kimlik.io',
+                            _id: new ObjectId('527c1171ef86ec0cec62b096')
+
+                    ],
+                    [
+                            title: 'Sental',
+                            about: 'Sental sosyal medya cözümleme',
+                            url: 'http://www.sental.com',
+                            _id: new ObjectId('527c1171ef86ec0cec62b097')
+
+                    ]
+            ]
+    ]
+
 }

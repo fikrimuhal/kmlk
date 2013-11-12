@@ -14,8 +14,11 @@ class PictureService {
     final String URL_BASE = "http://s3.amazonaws.com"
     def amazonWebService
 
-    def delete() {
-        amazonWebService.s3.deleteObject(BUCKET_NAME, 'somePath/someKey.jpg')
+    def delete(ObjectId pictureId) {
+        def picture = getPictureById(pictureId)
+        assert picture
+        amazonWebService.s3.deleteObject(BUCKET_NAME, picture.path)
+        picture.delete()
     }
 
     /**
@@ -102,8 +105,13 @@ class PictureService {
                 broken: false,
                 source: source
 
-        ).save(flush:true, failOnError: true)
+        ).save(flush: true, failOnError: true)
         println ' resmi kaydettik'
         return picture
     }
+
+    def getPictureById(ObjectId pictureId) {
+        Picture.get(pictureId)
+    }
+
 }

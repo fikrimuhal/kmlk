@@ -38,7 +38,7 @@
                 <tr>
                     <td>Çalışan sayisi</td>
                     <td class="text-">
-                        ${company.employees.numberOfTotal}
+                        ${company.employeeStats.numberOfTotal}
                     </td>
                 </tr>
 
@@ -46,7 +46,7 @@
                 <tr>
                     <td>Teknik Personel Orani</td>
                     <td class="text-">
-                        ${100 * company.employees.numberOfTechnical / company.employees.numberOfTotal as Integer}%
+                        ${100 * company.employeeStats.numberOfTechnical / company.employeeStats.numberOfTotal as Integer}%
                     </td>
                 </tr>
 

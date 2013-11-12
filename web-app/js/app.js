@@ -4,7 +4,7 @@
 //    console.log('we are in the frame ')
 //}
 
-var kimlik = angular.module('kimlik', ['ui.bootstrap', 'ngResource', 'ngRoute', 'route-segment', 'view-segment','blueimp.fileupload']);
+var kimlik = angular.module('kimlik', ['ui.bootstrap', 'ngResource', 'ngRoute', 'route-segment', 'view-segment', 'blueimp.fileupload']);
 kimlik.config(['$routeSegmentProvider', '$locationProvider',
     function ($routeSegmentProvider, $locationProvider) {
 
@@ -416,25 +416,30 @@ kimlik.factory('companyService', function ($resource, $rootScope) {
 });
 
 
-
-
-var url = '/test/upload2'
+var url = '/picture/ajaxUpload';
 kimlik
     .controller('OfficePicturesController', [
-        '$scope', '$http',
-        function ($scope, $http) {
+        '$scope', '$resource',
+        function ($scope, $resource) {
+            var api = $resource(_settings.baseUrl + 'picture/ajaxDelete');
+
+
             $scope.options = {
-                url: url
+                url: url,
+                formData: {companyId: $scope.company._id}
             };
+            console.log($scope.company)
 
-            $scope.officePictures = [
-                {url:'http://placehold.it/400x200' , name:'name1', thumbnailUrl:'http://placehold.it/400x200'},
-                {url:'http://placehold.it/400x200' , name:'name1', thumbnailUrl:'http://placehold.it/400x200'},
-                {url:'http://placehold.it/200x100' , name:'name1', thumbnailUrl:'http://placehold.it/200x100'},
-                {url:'http://placehold.it/400x300' , name:'name1', thumbnailUrl:'http://placehold.it/400x300'},
-                {url:'http://placehold.it/400x200' , name:'name1', thumbnailUrl:'http://placehold.it/400x200'}
+            $scope.officePictures = $scope.company.officePictures
+            $scope.deletePicture = function (file) {
+                console.log(file._id)
+                var result = api.delete({pictureId: file._id, companyId: $scope.company._id})
 
-            ];
+                //todo: api result i mi beklesek...
+                $scope.officePictures = _.reject($scope.officePictures, {_id: file._id})
+                console.log($scope.company.officePictures)
+                return result
+            }
 
         }
     ])
@@ -450,10 +455,7 @@ kimlik
                 };
                 file.$destroy = function () {
                     state = 'pending';
-                    return $http({
-                        url: file.deleteUrl,
-                        method: file.deleteType
-                    }).then(
+                    return $scope.deletePicture(file).$promise.then(
                         function () {
                             state = 'resolved';
                             $scope.clear(file);

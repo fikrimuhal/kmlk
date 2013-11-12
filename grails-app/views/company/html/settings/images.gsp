@@ -92,14 +92,14 @@
             <td>
                 <div class="preview">
                     <a ng-href="{{file.url}}" title="{{file.name}}" download="{{file.name}}" data-gallery><img
-                            ng-src="{{file.thumbnailUrl}}" alt="" height="55"></a>
+                            ng-src="{{file.url}}" alt="" height="55"></a>
                 </div>
             </td>
             <td>
                 <p class="name">
                     <span>
-                        <a ng-href="{{file.url}}" title="{{file.name}}" download="{{file.name}}"
-                           data-gallery>{{file.name}}</a>
+                        <a ng-href="{{file.url}}" title="{{file.path}}" download="{{file.path}}"
+                           data-gallery>{{file.path}}</a>
                     </span>
                 </p>
             </td>
@@ -108,8 +108,8 @@
             </td>
             <td>
 
-                <button ng-controller="FileDestroyController" type="button" class="btn btn-danger destroy"
-                        ng-click="file.$destroy()">
+                <button type="button" class="btn btn-danger destroy"
+                        ng-click="deletePicture(file)">
                     <i class="glyphicon glyphicon-trash"></i>
                     <span>Sil</span>
                 </button>
