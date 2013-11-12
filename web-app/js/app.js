@@ -75,8 +75,10 @@ kimlik.config(['$routeSegmentProvider', '$locationProvider',
 
         $routeSegmentProvider.
             when('/company/:company_name/products', 'company.products').
+            when('/company/:company_name/products/:pid', 'company.products').
             within('company').segment('products', {
                 templateUrl: '/html/company/products/products.html',
+                dependencies: ['pid'],
                 controller: CompanyProjectsCtrl});
 
         $routeSegmentProvider.
@@ -218,7 +220,39 @@ function CompanyServicesCtrl($scope) {
 }
 
 
-function CompanyProjectsCtrl($scope) {
+function CompanyProjectsCtrl($scope, $routeSegment, $resource) {
+    var api = $resource(_settings.baseUrl + 'company/products');
+
+    var pid = $routeSegment.$routeParams.pid
+    var products = _($scope.company.products);
+
+    $scope.product = products.find({_id: pid});
+
+    console.log('product', $scope.product)
+    $scope.new = function () {
+        console.log('new product');
+        $scope.product = {};
+    };
+
+    $scope.save = function (product) {
+        console.log('save product', product);
+        api.save({companyId: $scope.company._id}, product);
+        //todo company yi reload et
+
+    };
+
+    $scope.delete = function (product) {
+        console.log('delete product', product);
+        api.delete({companyId: $scope.company._id, productId: product._id});
+        //todo company yi reload et
+        //todo bu urlye geri don  '/company/fikrimuhal/products'
+    };
+
+    $scope.getId = function (p) {
+        if (!p) return ''
+        else return p._id;
+    };
+
     console.log('Projects CTRL Ready')
 
 }

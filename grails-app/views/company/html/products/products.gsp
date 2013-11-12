@@ -34,8 +34,9 @@
                                 <section class="panel">
 
                                     <div class="list-group">
-                                        <a ng-repeat="p in company.products" href="#"
-                                           class="list-group-item bg-lighter">
+                                        <a ng-repeat="p in company.products" href="/company/{{company_name}}/products/{{getId(p)}}"
+                                           ng-class="{active: $routeSegment.$routeParams.pid ==getId(p) }"
+                                           class="list-group-item">
                                             <i class="icon-chevron-right"></i>
                                             <i class="icon-inbox"></i> {{p.title}}
                                         </a>
@@ -96,7 +97,7 @@
 
                                                 <div class="col-lg-9">
                                                     <div class="checkbox"><label><input
-                                                            type="checkbox" ng-model="product.public">Web sayfamda göster</label></div>
+                                                            type="checkbox" ng-model="product.isPublic">Web sayfamda göster</label></div>
                                                 </div>
                                             </div>
 
@@ -104,6 +105,7 @@
                                             <div class="form-group">
                                                 <div class="col-lg-offset-3 col-lg-9">
                                                     <button type="submit" class="btn btn-primary" ng-click="save(product)">Kaydet</button>
+                                                    <button type="submit" class="btn btn-danger" ng-show="getId(product)" ng-click="delete(product)">Sil</button>
                                                 </div>
                                             </div>
 

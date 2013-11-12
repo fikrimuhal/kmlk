@@ -16,7 +16,7 @@ class CompanyService {
         DBCollection col = Company.collection
         def _QUERY = [owner: owner]
         col.find(_QUERY).each {
-            result << it  + mockExtraData
+            result << it + mockExtraData
         }
         return result
     }
@@ -113,12 +113,12 @@ class CompanyService {
                     numberOfTotal: 3,
                     numberOfTechnical: 2,
                     numberOfManagment: 2
-            ],
+            ]/*,
             products: [
                     [
                             title: 'Kimlik IO',
-                            about: 'Startuplar için SAAS hizmetleri',
-                            url: 'http://www.kimlik.io',
+                            about: '',
+                            url: '',
                             _id: new ObjectId('527c1171ef86ec0cec62b096')
 
                     ],
@@ -129,7 +129,46 @@ class CompanyService {
                             _id: new ObjectId('527c1171ef86ec0cec62b097')
 
                     ]
-            ]
+            ]*/
     ]
 
+    def saveProduct(def product, ObjectId companyId) {
+        log.debug(product)
+        def documentMap = [
+                _id: ObjectId.massageToObjectId(product._id) ?: new ObjectId(),
+                about: product.about,
+                title: product.title,
+                isPublic: product.isPublic,
+                url: product.url,
+        ]
+        DBCollection col = Company.collection
+
+        def _QUERY = [_id: companyId]
+        if (product._id) _QUERY.'products._id' = ObjectId.massageToObjectId(product._id)
+
+        def _OPS = [:]
+
+        if (!product._id) _OPS.'$addToSet' = ['products': documentMap]
+        else _OPS.'$set' = ['products.$': documentMap]
+
+        log.debug col.update(_QUERY, _OPS, false, false, WriteConcern.SAFE)
+
+    }
+
+    def deleteProduct(ObjectId productId, companyId) {
+         log.debug productId
+         log.debug companyId
+        DBCollection col = Company.collection
+
+
+        def _QUERY = [
+                _id: companyId,
+                'products._id': productId
+        ]
+
+        def _OPS = [:]
+
+        _OPS.'$pull' = ['products': ['_id': productId]]
+        log.debug col.update(_QUERY, _OPS, false, false, WriteConcern.SAFE)
+    }
 }

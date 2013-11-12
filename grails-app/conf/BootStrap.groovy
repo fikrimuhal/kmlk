@@ -46,7 +46,8 @@ class BootStrap {
                     tel: '543646363565634',
                     www: 'http://www.fikrimuhal.com',
                     about: 'Fikrimuhal Teknoloji hakkinda uzuuun uzuun ama cok uzun olmayan bio about as yazisi.',
-                    employees: [sumnulu]
+                    employees: [sumnulu],
+                    products: []
             ).save(flush: true, failOnError: true)
 
             new Company(
@@ -60,7 +61,8 @@ class BootStrap {
                     tel: '54364636300034',
                     www: 'http://www.acikdemokrasi.org',
                     about: 'Acik demokrasi hakkinda uzuuun uzuun ama cok uzun olmayan bio about as yazisi.',
-                    employees: [sumnulu]
+                    employees: [sumnulu],
+                    products: []
             ).save(flush: true, failOnError: true)
         }
 

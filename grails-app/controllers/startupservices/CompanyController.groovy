@@ -62,4 +62,26 @@ class CompanyController {
 
         render result as JSON
     }
+
+    def products() {
+        //todo AA
+
+        switch (request.method) {
+            case 'POST':
+                companyService.saveProduct(request.JSON, ObjectId.massageToObjectId(params.companyId))
+                break
+
+            case 'DELETE':
+                log.debug(request.JSON)
+                companyService.deleteProduct(ObjectId.massageToObjectId(params.productId), ObjectId.massageToObjectId(params.companyId))
+                break
+
+            case 'GET':
+                break
+
+        }
+        def result = [:]
+        render result as JSON
+
+    }
 }
