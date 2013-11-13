@@ -74,8 +74,8 @@ modules = {
     }
 
     googleMaps {
-        resource url: 'http://maps.google.com/maps/api/js?sensor=true', attrs: [cache: 'false', type: "js"]
-        resource url: 'first/js/maps/gmaps.js'
+        resource url: 'https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBzXlLCgeP354clUpEoZ5zaufpeDDJ5YQ4&sensor=false&language=tr&region=TR', attrs: [cache: 'false', type: "js"]
+//        resource url: 'first/js/maps/gmaps.js'
     }
 
 

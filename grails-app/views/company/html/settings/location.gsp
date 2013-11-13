@@ -1,3 +1,11 @@
+<style>
+#map-canvas {
+    height: 350px;
+    margin: 0px;
+    padding: 0px
+}
+</style>
+
 <div class="row">
     <div class="col-sm-6">
         <form class="form-horizontal" role="form">
@@ -6,8 +14,8 @@
 
                 <div class="col-lg-9">
                     <input type="text" class="form-control" id="fullName"
-                           placeholder="Fikrimuhal Teknoloji Araştırma Geliştirme LTD. ŞTİ.">
-                    <span class="help-block">Şirketinizin yasal tam adı</span>
+                           ng-model="address.country"
+                    <span class="help-block"></span>
 
                 </div>
             </div>
@@ -16,8 +24,8 @@
                 <label for="sortName" class="col-lg-3 control-label">İl</label>
 
                 <div class="col-lg-9">
-                    <input type="text" class="form-control" id="sortName" placeholder="Fikrimuhal">
-                    <span class="help-block">Yasal olarak kullanılabilecek en kısa adı. genelde 2 kelime sonuna LTD. ŞTİ eklemeyiniz. </span>
+                    <input type="text" class="form-control" id="sortName" ng-model="address.city">
+                    <span class="help-block"></span>
 
                 </div>
             </div>
@@ -26,8 +34,35 @@
                 <label class="col-lg-3 control-label">İlçe</label>
 
                 <div class="col-lg-9">
-                    <input type="text" class="form-control"  placeholder="Fikrimuhal">
-                    <span class="help-block">Http://kimlik.io/[SAYFA_ADI] şeklinde kullanicak ad. Şirket unvaninin Ilk parcasini kullaniniz. Boşluk Kullanmayiniz</span>
+                    <input type="text" class="form-control" ng-model="address.district">
+                    <span class="help-block"></span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-lg-3 control-label">Mahalle</label>
+
+                <div class="col-lg-9">
+                    <input type="text" class="form-control" ng-model="address.quarter">
+                    <span class="help-block">Eğer mahalle ismini bilmiyorsanız yada yok ise boş bırakınız</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-lg-3 control-label">Cadde</label>
+
+                <div class="col-lg-9">
+                    <input type="text" class="form-control" ng-model="address.avenue">
+                    <span class="help-block">Eğer cadde ismini bilmiyorsanız yada yok ise boş bırakınız</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-lg-3 control-label">Sokak</label>
+
+                <div class="col-lg-9">
+                    <input type="text" class="form-control" ng-model="address.street">
+                    <span class="help-block">Eğer sokak ismini bilmiyorsanız yada yok ise boş bırakınız</span>
                 </div>
             </div>
 
@@ -35,46 +70,26 @@
                 <label class="col-lg-3 control-label">Address</label>
 
                 <div class="col-lg-9">
-                    <input type="text" class="form-control" placeholder="Fikrimuhal">
-                    <span class="help-block">Http://kimlik.io/[SAYFA_ADI] şeklinde kullanicak ad. Şirket unvaninin Ilk parcasini kullaniniz. Boşluk Kullanmayiniz</span>
+                    <textarea class="form-control" ng-model="address.display_address" rows="5"></textarea>
+                    <span class="help-block">Bu alani revize etmeyi unutmayınız, profiliniz de bu adres gosterilecektir.</span>
                 </div>
             </div>
+
             <div class="form-group">
                 <label class="col-lg-3 control-label">Foursquare</label>
 
                 <div class="col-lg-9">
-                    <input type="text" class="form-control" placeholder="Fikrimuhal">
-                    <span class="help-block">Http://kimlik.io/[SAYFA_ADI] şeklinde kullanicak ad. Şirket unvaninin Ilk parcasini kullaniniz. Boşluk Kullanmayiniz</span>
+                    <input type="text" class="form-control" placeholder="todo: NOT IMPLEMENTED YET!">
+                    <span class="help-block">Sirketinizin foursquare deki profil adi</span>
                 </div>
             </div>
 
-            <div class="form-group">
-                <label  class="col-lg-3 control-label">Ofis Türu</label>
 
-                <div class="col-lg-9">
-                    <select id="disabledSelect" class="form-control">
-                        <option>Lütfen seçiniz...</option>
-                        <option>LTD. ŞTİ.</option>
-                        <option>A.Ş.</option>
-                        <option>Şahıs Şirketi</option>
-                        <option>Henüz resmi olarak kurulmadı</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="form-group">
-                <label class="col-lg-3 control-label">Yetkili kişi</label>
-
-                <div class="col-lg-9">
-                    <p class="form-control-static">Ilgaz Şumnulu</p>
-                    <span class="help-block">Daha sonra başka kişiler ekleye bilirsiniz, yada yonetici haklarini düzenleye bilirsiniz.</span>
-                </div>
-            </div>
 
 
             <div class="form-group">
                 <div class="col-lg-9 col-lg-offset-3">
-                    <button type="button" class="btn btn-primary pull-right">Kaydet</button>
+                    <button ng-click="save(address)" type="button" class="btn btn-primary pull-right">Kaydet</button>
                     <span class="help-block"></span>
                 </div>
             </div>
@@ -83,23 +98,27 @@
 
     <div class="col-sm-6">
         <section class="panel">
-            <header class="panel-heading">
-                <form method="post" id="geocoding_form" class="m-b-none">
-                    <div class="input-group">
-                        <input type="text" id="address" name="address" class="input-sm form-control" placeholder="Search">
-                        <span class="input-group-btn">
-                            <button class="btn btn-sm btn-white" ng-click="testis()">Go!</button>
-                        </span>
-                    </div>
-                </form>
-            </header>
-            <div class="panel-body">
-                <div id="gmap_geocoding" style="height:350px">
 
-                </div>
+            <div class="panel-body" style="padding: 0px;">
+                <div id="map-canvas"></div>
             </div>
-        </section>
-    </div>
+            <header class="panel-heading">
+                <p class="form-control-static">{{address.formatted_address}}</p>
+            </header>
 
+        </section>
+
+        <div class="alert alert-info alert-block" ng-show="address.city">
+            <button type="button" class="close" data-dismiss="alert"><i class="icon-remove"></i></button>
+
+            <h4><i class="icon-map-marker icon-2x"></i>
+                {{markerIsJumping?'Zıplayan':'Zıplamayan'}} işaret hakkında!</h4>
+            <p>
+                Lütfen sirketinizin yerini isaretleyiniz. Olabildigince dogru yere koymaya calisin: <br/>
+                (sirketinize yapilan iş basvurularinda adaylarin oturdugu evin sirketinize olan uzakligi hesaplanacaktir.)
+            </p>
+        </div>
+
+    </div>
 
 </div>

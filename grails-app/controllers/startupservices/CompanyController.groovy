@@ -84,4 +84,10 @@ class CompanyController {
         render result as JSON
 
     }
+
+    def updateLocation(){
+        log.debug(request.JSON)
+        log.debug(params)
+
+    }
 }

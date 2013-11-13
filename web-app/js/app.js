@@ -36,7 +36,8 @@ kimlik.config(['$routeSegmentProvider', '$locationProvider',
                 controller: CompanySettingsCtrl}).
             within().
             segment('general', {templateUrl: '/html/company/settings/general.html'}).
-            segment('location', {templateUrl: '/html/company/settings/location.html'}).
+            segment('location', {templateUrl: '/html/company/settings/location.html',
+                controller: 'CompanySettingsLocationCtrl'}).
             segment('images', {templateUrl: '/html/company/settings/images.html'}).
             segment('social', {templateUrl: '/html/company/settings/social.html'}).
             segment('notifications', {templateUrl: '/html/company/settings/notifications.html'}).
@@ -174,36 +175,6 @@ function CompanySettingsWwwCtrl($scope, $resource) {
 function CompanySettingsCtrl($scope) {
     console.log('Settings CTRL Ready')
 
-    $scope.testis = function () {
-        console.log('testist')
-        $(function () {
-
-            map = new GMaps({
-                div: '#gmap_geocoding',
-                lat: -12.043333,
-                lng: -77.028333,
-                zoom: 3
-            });
-            $('#geocoding_form').submit(function (e) {
-                e.preventDefault();
-                GMaps.geocode({
-                    address: $('#address').val().trim(),
-                    callback: function (results, status) {
-                        if (status == 'OK') {
-                            var latlng = results[0].geometry.location;
-                            map.setCenter(latlng.lat(), latlng.lng());
-                            map.setContentZoom(5);
-                            map.addMarker({
-                                lat: latlng.lat(),
-                                lng: latlng.lng()
-                            });
-                        }
-                    }
-                });
-            });
-
-        });
-    }
 
 }
 
@@ -425,7 +396,7 @@ function NavBarCtrl($scope, companyService) {
     $scope.companies.$promise.then(function () {
         $scope.showPrivateNavBar = true && $scope.companies //todo bunun yerine kullanici login olmus mu diye kontrol et
         console.log('companies', $scope.companies)
-    })
+    });
     //todo: login bilgileri rest ile gelecek
     //todo:
     console.log('NAV_BAR Ready');
@@ -505,4 +476,144 @@ kimlik
                 };
             }
         }
+    ])
+
+
+    .controller('CompanySettingsLocationCtrl', ['$scope', '$resource', function ($scope, $resource) {
+        google.maps.visualRefresh = true;
+        var api = $resource(_settings.baseUrl + 'company/updateLocation');
+
+        var map;
+        var geocoder;
+        var marker;
+        var myLatlng = new google.maps.LatLng(41.0136, 28.9550)
+        var markerLocation = new google.maps.LatLng(41.0369, 29.1786)
+        $scope.markerIsJumping = true;  //kozmetik
+        var markerDragListener = function () {
+            console.log('dragend: ', marker.getPosition());
+            marker.setAnimation(null);
+
+            $scope.$apply(function () {
+                $scope.markerIsJumping = false;
+            });
+
+            /*Vodoo START!
+            digest cycle in disinda bilerek bu atamayi yaptim (address objesinde degisiklik oldugu halde event fire etmesin diye)
+            bu satir apply dan sonra olmali
+            */
+            $scope.address.latLng = {lat: marker.getPosition().lat, lng: marker.getPosition().lng()  }
+            /*Vodoo END!*/
+        };
+
+        var markerDragStartListener = function () {
+            console.log('.')
+            marker.setAnimation(google.maps.Animation.BOUNCE);
+            $scope.$apply(function () {
+                $scope.markerIsJumping = true
+            });
+
+
+        };
+
+        function initialize() {
+            console.log('google maps init')
+
+
+            var mapOptions = {
+                zoom: 9,
+                center: myLatlng,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+//                disableDefaultUI: true,
+                panControl: false,
+                zoomControl: true,
+                mapTypeControl: true,
+                scaleControl: false,
+                streetViewControl: false,
+                overviewMapControl: true,
+                overviewMapControlOptions: {opened: true}
+            };
+            map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+
+            //marker
+            marker = new google.maps.Marker({
+                position: markerLocation,
+                map: map,
+                draggable: true,
+                animation: google.maps.Animation.DROP,
+                title: "Hello World!"
+            });
+            google.maps.event.addListener(marker, 'dragend', markerDragListener);
+            google.maps.event.addListener(marker, 'dragstart', markerDragStartListener);
+
+            //geocode
+            geocoder = new google.maps.Geocoder();
+        }
+
+
+        initialize();
+        marker.setAnimation(google.maps.Animation.BOUNCE);
+        var waitingGeocoder = false;
+        $scope.codeAddress = function () {
+            if (!waitingGeocoder) {
+                waitingGeocoder = true;
+                var address = getPartialAddress($scope.address);
+                console.log(address)
+
+                geocoder.geocode({ 'address': address}, function (results, status) {
+                    try {
+                        if (status == google.maps.GeocoderStatus.OK) {
+                            map.panTo(results[0].geometry.location);
+                            map.fitBounds(results[0].geometry.bounds)
+                            console.log(results);
+                            marker.setPosition(results[0].geometry.location);
+                            markerDragStartListener();
+                            $scope.address.formatted_address = results[0].formatted_address
+                            $scope.address.display_address = results[0].formatted_address
+                        } else {
+//                        alert("Geocode was not successful for the following reason: " + status);
+                        }
+                    } catch (e) {
+                        throw e;
+                    } finally {
+                        waitingGeocoder = false;
+
+                    }
+                });
+
+            }
+        };
+
+        $scope.address = {
+            country: 'Türkiye',
+            city: '',
+            district: '',
+            quarter: '',
+            avenue: '',
+            street: '',
+            formatted_address: '', //calculated
+            display_address: '',
+            latLng: {}
+        };
+
+        $scope.$watchCollection('address', function () {
+            console.log('address data changed');
+            $scope.codeAddress();
+        });
+
+        function getPartialAddress(a) {
+            return a.street + ', ' + a.avenue + ', ' + a.quarter + ', ' + a.district + ', ' + a.city + ', ' + a.country;
+        }
+
+
+        $scope.save = function (address) {
+            var result = api.save({companyId: $scope.company._id}, address)
+
+        }
+        console.log('Settings location Ready')
+
+    }
     ]);
+
+
+//end
