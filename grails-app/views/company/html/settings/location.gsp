@@ -14,7 +14,7 @@
 
                 <div class="col-lg-9">
                     <input type="text" class="form-control" id="fullName"
-                           ng-model="address.country"
+                           ng-model="address.country"  ng-change="codeAddress()"
                     <span class="help-block"></span>
 
                 </div>
@@ -24,7 +24,7 @@
                 <label for="sortName" class="col-lg-3 control-label">İl</label>
 
                 <div class="col-lg-9">
-                    <input type="text" class="form-control" id="sortName" ng-model="address.city">
+                    <input type="text" class="form-control" id="sortName"  ng-change="codeAddress()" ng-model="address.city">
                     <span class="help-block"></span>
 
                 </div>
@@ -34,7 +34,7 @@
                 <label class="col-lg-3 control-label">İlçe</label>
 
                 <div class="col-lg-9">
-                    <input type="text" class="form-control" ng-model="address.district">
+                    <input type="text" class="form-control"  ng-change="codeAddress()" ng-model="address.district">
                     <span class="help-block"></span>
                 </div>
             </div>
@@ -43,7 +43,7 @@
                 <label class="col-lg-3 control-label">Mahalle</label>
 
                 <div class="col-lg-9">
-                    <input type="text" class="form-control" ng-model="address.quarter">
+                    <input type="text" class="form-control"  ng-change="codeAddress()" ng-model="address.quarter">
                     <span class="help-block">Eğer mahalle ismini bilmiyorsanız yada yok ise boş bırakınız</span>
                 </div>
             </div>
@@ -52,7 +52,7 @@
                 <label class="col-lg-3 control-label">Cadde</label>
 
                 <div class="col-lg-9">
-                    <input type="text" class="form-control" ng-model="address.avenue">
+                    <input type="text" class="form-control"  ng-change="codeAddress()" ng-model="address.avenue">
                     <span class="help-block">Eğer cadde ismini bilmiyorsanız yada yok ise boş bırakınız</span>
                 </div>
             </div>
@@ -61,7 +61,7 @@
                 <label class="col-lg-3 control-label">Sokak</label>
 
                 <div class="col-lg-9">
-                    <input type="text" class="form-control" ng-model="address.street">
+                    <input type="text" class="form-control"  ng-change="codeAddress()" ng-model="address.street">
                     <span class="help-block">Eğer sokak ismini bilmiyorsanız yada yok ise boş bırakınız</span>
                 </div>
             </div>

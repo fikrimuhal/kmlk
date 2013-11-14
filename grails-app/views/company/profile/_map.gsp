@@ -31,7 +31,7 @@
                 ]
             }
         ];
-
+         var location = new google.maps.LatLng(${company.location?.latLng?.lat}, ${company.location?.latLng?.lng})
         // Create a new StyledMapType object, passing it the array of styles,
         // as well as the name to be displayed on the map type control.
         var styledMap = new google.maps.StyledMapType(styles,
@@ -41,7 +41,7 @@
         // to the map type control.
         var mapOptions = {
             zoom: 11,
-            center: new google.maps.LatLng(40.96278944471396, 29.199600219726562),
+            center: location,
             scaleControl: false,
             draggable: false,
             scrollwheel: false,
@@ -52,6 +52,14 @@
         var map = new google.maps.Map(document.getElementById('gmap_geocoding'),
                 mapOptions);
 
+        //marker
+       var marker = new google.maps.Marker({
+            position: location,
+            map: map,
+            draggable: true,
+            animation: google.maps.Animation.DROP,
+            title: "Biz"
+        });
         //Associate the styled map with the MapTypeId and set it to display.
         map.mapTypes.set('map_style', styledMap);
         map.setMapTypeId('map_style');

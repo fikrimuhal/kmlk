@@ -6,7 +6,9 @@ package kimlik.account
  * Date: 9/11/13
  * Time: 5:36 PM
  * To change this template use File | Settings | File Templates.
+ * @Deprecated
  */
+@Deprecated
 class Address {
     static embedded = ['mapCoordinates']
 

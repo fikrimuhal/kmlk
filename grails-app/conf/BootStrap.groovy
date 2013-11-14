@@ -1,5 +1,6 @@
 import grails.converters.JSON
 import kimlik.company.Company
+import kimlik.company.CompanyName
 import org.bson.types.ObjectId
 import startupservices.DomainToPage
 import startupservices.Profile
@@ -37,6 +38,14 @@ class BootStrap {
             println 'Bootstrap new demo companies'
             new Company(
                     owner: sumnulu,
+
+                    name: new CompanyName(
+                            oneWord: 'Fikrimuhal',
+                            significantPart: 'Fikrimuhal Teknoloji',
+                            legalType: 'Ltd. Şti.',
+                            pageName: 'fikrimuhal',
+                            fullLegal: 'Fikrimuhal Teknoloji Ar. Ge. LTD. STİ'
+                    ),
                     page_name: 'fikrimuhal',
                     short_name: 'Fikrimuhal',
                     full_name: 'Fikrimuhal Teknoloji Ar. Ge. LTD. ŞTİ.',
@@ -52,6 +61,13 @@ class BootStrap {
 
             new Company(
                     owner: sumnulu,
+                    name: new CompanyName(
+                      oneWord: 'Acikdemokrasi',
+                            significantPart: 'Acikdemokrasi ',
+                            legalType: 'A.Ş.',
+                            pageName: 'acikdemokrasi',
+                            fullLegal: 'Açık demokrasi A.Ş.'
+                    ),
                     page_name: 'acikdemokrasi',
                     short_name: 'Açıkdemokrasi',
                     full_name: 'Açık demokrasi A.Ş.',

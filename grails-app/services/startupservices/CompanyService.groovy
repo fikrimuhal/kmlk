@@ -97,13 +97,6 @@ class CompanyService {
 
 
     private mockExtraData = [
-            name: [
-                    oneWord: 'Fikrimuhal',
-                    significantPart: 'Fikrimuhal Teknoloji', // first letter capital
-                    legalType: 'LTD. STİ.',
-                    pageName: 'fikrimuhal',
-                    fullLegal: 'Fikrimuhal Teknoloji Ar. Ge. LTD. STİ',
-            ],
             founded: '1/4/2013',
             totalInvesment: [
                     value: 150000,
@@ -113,23 +106,7 @@ class CompanyService {
                     numberOfTotal: 3,
                     numberOfTechnical: 2,
                     numberOfManagment: 2
-            ]/*,
-            products: [
-                    [
-                            title: 'Kimlik IO',
-                            about: '',
-                            url: '',
-                            _id: new ObjectId('527c1171ef86ec0cec62b096')
-
-                    ],
-                    [
-                            title: 'Sental',
-                            about: 'Sental sosyal medya cözümleme',
-                            url: 'http://www.sental.com',
-                            _id: new ObjectId('527c1171ef86ec0cec62b097')
-
-                    ]
-            ]*/
+            ]
     ]
 
     def saveProduct(def product, ObjectId companyId) {
@@ -156,8 +133,8 @@ class CompanyService {
     }
 
     def deleteProduct(ObjectId productId, companyId) {
-         log.debug productId
-         log.debug companyId
+        log.debug productId
+        log.debug companyId
         DBCollection col = Company.collection
 
 
@@ -171,4 +148,35 @@ class CompanyService {
         _OPS.'$pull' = ['products': ['_id': productId]]
         log.debug col.update(_QUERY, _OPS, false, false, WriteConcern.SAFE)
     }
+
+
+    def updateLocation(def location, ObjectId companyId) {
+        log.debug(location)
+
+        def documentMap = [
+                country: location.country,
+                city: location.city,
+                district: location.district,
+                quarter: location.quarter,
+                avenue: location.avenue,
+                street: location.street,
+                display_address: location.display_address,
+                latLng: [
+                        lat: location.latLng?.lat,
+                        lng: location.latLng?.lng,
+                        zoomLevel: location.latLng?.zoomLevel
+                ]
+        ]
+        DBCollection col = Company.collection
+
+        def _QUERY = [_id: companyId]
+
+        def _OPS = [:]
+
+        _OPS.'$set' = ['location': documentMap]
+
+        return col.update(_QUERY, _OPS, false, false, WriteConcern.SAFE)
+
+    }
+
 }

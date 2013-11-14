@@ -481,14 +481,18 @@ kimlik
 
     .controller('CompanySettingsLocationCtrl', ['$scope', '$resource', function ($scope, $resource) {
         google.maps.visualRefresh = true;
+        $scope.address = $scope.company.location;
+
         var api = $resource(_settings.baseUrl + 'company/updateLocation');
 
         var map;
         var geocoder;
         var marker;
-        var myLatlng = new google.maps.LatLng(41.0136, 28.9550)
-        var markerLocation = new google.maps.LatLng(41.0369, 29.1786)
-        $scope.markerIsJumping = true;  //kozmetik
+        var myLatlng = new google.maps.LatLng($scope.address.latLng.lat, $scope.address.latLng.lng)
+        var markerLocation = new google.maps.LatLng($scope.address.latLng.lat, $scope.address.latLng.lng)
+        var zoomLevel = _.min([$scope.address.latLng.zoomLevel , 12])
+        $scope.markerIsJumping = !($scope.address && $scope.address.latLng && $scope.address.latLng.lat && $scope.address.latLng.lng);  //kozmetik
+
         var markerDragListener = function () {
             console.log('dragend: ', marker.getPosition());
             marker.setAnimation(null);
@@ -498,10 +502,14 @@ kimlik
             });
 
             /*Vodoo START!
-            digest cycle in disinda bilerek bu atamayi yaptim (address objesinde degisiklik oldugu halde event fire etmesin diye)
-            bu satir apply dan sonra olmali
-            */
-            $scope.address.latLng = {lat: marker.getPosition().lat, lng: marker.getPosition().lng()  }
+             digest cycle in disinda bilerek bu atamayi yaptim (address objesinde degisiklik oldugu halde event fire etmesin diye)
+             bu satir apply dan sonra olmali
+             */
+            $scope.address.latLng = {
+                lat: marker.getPosition().lat(),
+                lng: marker.getPosition().lng(),
+                zoomLevel: map.getZoom()
+            }
             /*Vodoo END!*/
         };
 
@@ -520,7 +528,7 @@ kimlik
 
 
             var mapOptions = {
-                zoom: 9,
+                zoom: zoomLevel,
                 center: myLatlng,
                 mapTypeId: google.maps.MapTypeId.ROADMAP,
 //                disableDefaultUI: true,
@@ -552,7 +560,7 @@ kimlik
 
 
         initialize();
-        marker.setAnimation(google.maps.Animation.BOUNCE);
+        marker.setAnimation($scope.markerIsJumping ? google.maps.Animation.BOUNCE : null);
         var waitingGeocoder = false;
         $scope.codeAddress = function () {
             if (!waitingGeocoder) {
@@ -564,7 +572,7 @@ kimlik
                     try {
                         if (status == google.maps.GeocoderStatus.OK) {
                             map.panTo(results[0].geometry.location);
-                            map.fitBounds(results[0].geometry.bounds)
+                            map.fitBounds(results[0].geometry.bounds);
                             console.log(results);
                             marker.setPosition(results[0].geometry.location);
                             markerDragStartListener();
@@ -584,22 +592,14 @@ kimlik
             }
         };
 
-        $scope.address = {
-            country: 'Türkiye',
-            city: '',
-            district: '',
-            quarter: '',
-            avenue: '',
-            street: '',
-            formatted_address: '', //calculated
-            display_address: '',
-            latLng: {}
-        };
-
-        $scope.$watchCollection('address', function () {
-            console.log('address data changed');
-            $scope.codeAddress();
-        });
+//        var skippCodeAddress = true;
+//        $scope.$watchCollection('address', function () {
+//            console.log('address data changed');
+//            if (!skippCodeAddress) {
+//                $scope.codeAddress();
+//            }
+//            skippCodeAddress = false;
+//        });
 
         function getPartialAddress(a) {
             return a.street + ', ' + a.avenue + ', ' + a.quarter + ', ' + a.district + ', ' + a.city + ', ' + a.country;

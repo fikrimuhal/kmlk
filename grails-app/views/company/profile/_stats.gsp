@@ -122,11 +122,8 @@
             <div class="pillbox">
 
                 <address class="">
-                    <strong>Fikrimuhal Teknoloji LTD. ŞTİ.</strong><br>
-                    Mimar Sinan Mah. Çavuşbaşı Cad.<br>
-                    Ethem sk. Zin D iş mer. N.5/5<br>
-                    34782 <br>
-                    Istanbul, Turkey  <br>
+                    <strong>${company.name.fullLegal}</strong><br>
+                    ${company.location?.display_address}
 
                     <abbr title="Work email">e-mail:</abbr> <a href="mailto:#">info@fikrimuhal.com</a><br>
                     <abbr title="Work Phone">phone:</abbr> (012) 345-678-901<br>

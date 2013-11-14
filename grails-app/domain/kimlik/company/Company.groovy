@@ -3,16 +3,35 @@ package kimlik.company
 import kimlik.account.Address
 import org.bson.types.ObjectId
 import startupservices.DomainToPage
+import startupservices.Location
 import startupservices.Picture
 import startupservices.Profile
 
 class Company {
-    static embedded = ['address','officePictures','products']
+    static embedded = ['location', 'officePictures', 'products', 'name']
 
     ObjectId id
-    String page_name
 
+    CompanyName name = new CompanyName()
+    /*
+
+            founded: '1/4/2013',
+            totalInvesment: [
+                    value: 150000,
+                    currency: 'TL'
+            ],
+            employeeStats: [
+                    numberOfTotal: 3,
+                    numberOfTechnical: 2,
+                    numberOfManagement: 2
+            ]
+     */
+
+    @Deprecated
+    String page_name
+    @Deprecated
     String short_name
+    @Deprecated
     String full_name
 
     String about
@@ -24,7 +43,7 @@ class Company {
     String tel
     String www
 
-    Address address = new Address()
+    Location location = new Location()
 
     Profile owner
 

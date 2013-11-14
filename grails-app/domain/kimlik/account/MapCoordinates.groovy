@@ -6,7 +6,9 @@ package kimlik.account
  * Date: 9/11/13
  * Time: 5:43 PM
  * To change this template use File | Settings | File Templates.
+ * @Deprecated
  */
+@Deprecated
 class MapCoordinates {
     Double longitude
     Double latitude

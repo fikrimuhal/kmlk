@@ -25,8 +25,17 @@ class CompanyController {
 
         if (!company) return (redirect(uri: '/'))
 
-
-        [company: company, isCrawler: isCrawler]
+        //skilleri 2 ayri DIV icinde gosteriyoruz
+        def skills1, skills2
+        if (skills.size() < 5) {
+            skills1 = skills
+            skills2 = null
+        } else {
+            int midIdx =  Math.ceil(skills.size() / 2)
+            skills1 = skills.subList(0, midIdx)
+            skills2 = skills.subList(midIdx, skills.size())
+        }
+        [company: company, isCrawler: isCrawler, skills1: skills1, skills2: skills2]
     }
 
 //REST - API
@@ -85,9 +94,69 @@ class CompanyController {
 
     }
 
-    def updateLocation(){
-        log.debug(request.JSON)
-        log.debug(params)
-
+    def updateLocation() {
+        def result = [status: companyService.updateLocation(request.JSON, ObjectId.massageToObjectId(params.companyId))]
+        render result as JSON
     }
+
+
+    def skills = [
+
+            [name: 'Java',
+                    percent: 65,
+                    numberOfPeopleHave: 2,
+                    cssClass: 'bg-primary'],
+            [name: 'HTML',
+                    percent: 80,
+                    numberOfPeopleHave: 2,
+                    cssClass: 'bg-success'],
+            [name: 'jQuery',
+                    percent: 35,
+                    numberOfPeopleHave: 2,
+                    cssClass: 'bg-info'],
+            [name: 'PHP',
+                    percent: 85,
+                    numberOfPeopleHave: 2,
+                    cssClass: 'bg-warning'],
+            [name: 'WP',
+                    percent: 95,
+                    numberOfPeopleHave: 2,
+                    cssClass: 'bg-danger'],
+            [name: 'SEO',
+                    percent: 45,
+                    numberOfPeopleHave: 2,
+                    cssClass: 'bg-primary'],
+            [name: 'Proje Yönetimi',
+                    percent: 85,
+                    numberOfPeopleHave: 2,
+                    cssClass: 'bg-default'],
+            [name: 'Groovy',
+                    percent: 75,
+                    numberOfPeopleHave: 2,
+                    cssClass: 'bg-success'],
+            [name: 'Grails',
+                    percent: 85,
+                    numberOfPeopleHave: 2,
+                    cssClass: 'bg-success'],
+            [name: 'UX Design',
+                    percent: 35,
+                    numberOfPeopleHave: 2,
+                    cssClass: 'bg-success'],
+            [name: 'Amazon Web Services',
+                    percent: 75,
+                    numberOfPeopleHave: 2,
+                    cssClass: 'bg-info'],
+            [name: 'Startup Managment',
+                    percent: 65,
+                    numberOfPeopleHave: 2,
+                    cssClass: 'bg-warning'],
+            [name: 'Git',
+                    percent: 63,
+                    numberOfPeopleHave: 2,
+                    cssClass: 'bg-primary'],
+            [name: 'AngularJs',
+                    percent: 91,
+                    numberOfPeopleHave: 2,
+                    cssClass: 'bg-danger'],
+    ]
 }
