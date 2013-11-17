@@ -1,227 +1,93 @@
 <!-- skills -->
 <div class="row">
-<div class="col-lg-12">
+    <div class="col-lg-12">
 
-<ul class="breadcrumb hidden-sm hidden-xs hidden-phone">
-    <li><a href="#"><i class="icon-home"></i>Fikrimuhal</a></li>
-    <li class="active">Şirket yetenekleri</li>
-</ul>
+        <ul class="breadcrumb hidden-sm hidden-xs hidden-phone">
+            <li><a href="#"><i class="icon-home"></i>Fikrimuhal</a></li>
+            <li class="active">Şirket yetenekleri</li>
+        </ul>
 
-<section class="panel">
-<header class="panel-heading text-right">
-    <ul class="nav nav-tabs pull-left">
-        <li ng-class="{active: $routeSegment.contains('skills')}"><a
-                href="/company/{{company_name}}/skills"><i
-                    class="icon-home icon-large text-default"></i>Şirket yetenekleri</a></li>
-    </ul>
-    <span class="hidden-sm hidden-xs hidden-phone">Yetenek Yönetimi</span>
-</header>
+        <section class="panel">
+            <header class="panel-heading text-right">
+                <ul class="nav nav-tabs pull-left">
+                    <li ng-class="{active: $routeSegment.contains('skills')}"><a
+                            href="/company/{{company_name}}/skills"><i
+                                class="icon-home icon-large text-default"></i>Şirket yetenekleri</a></li>
+                </ul>
+                <span class="hidden-sm hidden-xs hidden-phone">Yetenek Yönetimi</span>
+            </header>
 
-<div class="panel-body">
-<div class="tab-content">
-<div class="tab-pane fade active in">
-    <div class="row">
+            <div class="panel-body">
+                <div class="tab-content">
+                    <div class="tab-pane fade active in">
+                        <div class="row">
 
-        <div class=" col-md-3">
-            <h3>Yetenkler</h3>
+                            <div class=" col-md-3">
+                                <h3>Yetenekler  <a href="#" ng-click="forceRecalculate()" class="btn btn-white pull-right">Güncelle</a></h3>
+                                <br/>
+                                <p>
+                                    Yetenekler otomatik olarak 1 saat de bir tekrar hesaplanir. Tekrar hesaplamayi tetiklemek icin guncelle butonunu kullanabilirsiniz (gibi bir aciklama...)
+                                </p>
+                            </div>
 
-            <p>
-               Yardim yazisi, aciklama yazisi
-            </p>
-        </div>
+                            <div class=" col-md-9">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th class="col-xs-1">Yetenek</th>
+                                        <th class="col-xs-3">Puan</th>
+                                        <th class="col-xs-3">Katkıda bulunanlar</th>
+                                        <th class="col-xs-1">Görünür</th>
+                                        <th class="col-xs-2">Önem</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
 
-        <div class=" col-md-9">
-            <table class="table">
-                <thead>
-                <tr>
-                    <th class="col-xs-1">Yetenek</th>
-                    <th class="col-xs-3">Puan</th>
-                    <th class="col-xs-3">Katkıda bulunanlar</th>
-                    <th class="col-xs-1">Görünürlük</th>
-                    <th class="col-xs-1">Önem</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td>javascript</td>
-                    <td>
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20"
-                                 aria-valuemin="0" aria-valuemax="100" style="width: 20%">
-                                <span class="sr-only">20% Complete</span>
+                                    <tr ng-repeat="skill in skills | orderBy:'order'">
+                                        <td>{{skill.name}}</td>
+                                        <td>
+                                            <div class="progress">
+                                                <div class="progress-bar progress-bar-info" role="progressbar"
+                                                     aria-valuenow="{{skill.percent}}"
+                                                     aria-valuemin="0" aria-valuemax="100"
+                                                     style="{{progressBarStyle(skill.percent)}}">
+                                                    <span class="sr-only">{{skill.percent}}%</span>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td style="">
+                                            <ul>
+
+                                                <li ng-repeat="c in skill.contributors"
+                                                    class="label label-primary pull-left m-b-mini m-r-mini ">{{c}}</li>
+                                            </ul>
+
+                                        </td>
+                                        <td>
+                                            <button class="btn btn-white" ng-class="{'active':skill.visibility}"
+                                                    ng-click="toggleVisibility(skill)">
+                                                <i ng-if="skill.visibility"
+                                                   class="icon-lightbulb text-active text-warning"></i>
+                                                <i ng-if="!skill.visibility"
+                                                   class="icon-eye-close text-active text-danger"></i>
+                                            </button>
+                                        </td>
+                                        <td>
+                                            <input class="form-control" type="number" min="1" ng-model="skill.order" ng-change="updateOrder(skill)"/>
+                                        </td>
+                                    </tr>
+
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
-                    </td>
-                    <td>
-                        <span class="label label-primary">Ilgaz Şumnulu</span>
-                        <span class="label label-primary">Samican tandogdu</span>
-                        <span class="label label-primary">Abuzer kadayif</span>
-                        <span class="label label-primary">Primary</span>
-                    </td>
-                    <td>
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                Görünür
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Gizli</a></li>
-                                <li><a href="#">Sadece Şirket</a></li>
-                                <li><a href="#">Görünür</a></li>
-                            </ul>
-                        </div>
-                    </td>
-                    <td>
-                        <input class="form-control" type="number" min="1" value="10"/>
-                    </td>
-                </tr>
 
-                <tr>
-                    <td>javascript</td>
-                    <td>
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="40"
-                                 aria-valuemin="0" aria-valuemax="100" style="width: 40%">
-                            </div>
-                        </div>
-                    </td>
-                    <td>
-                        <span class="label label-primary">Ilgaz Şumnulu</span>
-                        <span class="label label-primary">Samican tandogdu</span>
-                        <span class="label label-primary">Abuzer kadayif</span>
-                        <span class="label label-primary">Primary</span>
-                    </td>
-                    <td>
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                Görünür
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Gizli</a></li>
-                                <li><a href="#">Sadece Şirket</a></li>
-                                <li><a href="#">Görünür</a></li>
-                            </ul>
-                        </div>
-                    </td>
-                    <td>
-                        <input class="form-control" type="number" min="1" value="10"/>
-                    </td>
-                </tr>
+                    </div><!--end tab-pane-->
 
-                <tr>
-                    <td>javascript</td>
-                    <td>
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20"
-                                 aria-valuemin="0" aria-valuemax="100" style="width: 55%">
-                                <span class="sr-only">20% Complete</span>
-                            </div>
-                        </div>
-                    </td>
-                    <td>
-                        <span class="label label-primary">Ilgaz Şumnulu</span>
-                        <span class="label label-primary">Samican tandogdu</span>
-                        <span class="label label-primary">Abuzer kadayif</span>
-                        <span class="label label-primary">Primary</span>
-                    </td>
-                    <td>
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                Görünür
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Gizli</a></li>
-                                <li><a href="#">Sadece Şirket</a></li>
-                                <li><a href="#">Görünür</a></li>
-                            </ul>
-                        </div>
-                    </td>
-                    <td>
-                        <input class="form-control" type="number" min="1" value="10"/>
-                    </td>
-                </tr>
+                </div>
+            </div>
+        </section>
 
-                <tr>
-                    <td>javascript</td>
-                    <td>
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20"
-                                 aria-valuemin="0" aria-valuemax="100" style="width: 12%">
-                                <span class="sr-only">20% Complete</span>
-                            </div>
-                        </div>
-                    </td>
-                    <td>
-                        <span class="label label-primary">Ilgaz Şumnulu</span>
-                        <span class="label label-primary">Samican tandogdu</span>
-                        <span class="label label-primary">Abuzer kadayif</span>
-                        <span class="label label-primary">Primary</span>
-                    </td>
-                    <td>
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                Görünür
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Gizli</a></li>
-                                <li><a href="#">Sadece Şirket</a></li>
-                                <li><a href="#">Görünür</a></li>
-                            </ul>
-                        </div>
-                    </td>
-                    <td>
-                        <input class="form-control" type="number" min="1" value="10"/>
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>javascript</td>
-                    <td>
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="20"
-                                 aria-valuemin="0" aria-valuemax="100" style="width: 87%">
-                                <span class="sr-only">20% Complete</span>
-                            </div>
-                        </div>
-                    </td>
-                    <td>
-                        <span class="label label-primary">Ilgaz Şumnulu</span>
-                        <span class="label label-primary">Samican tandogdu</span>
-                        <span class="label label-primary">Abuzer kadayif</span>
-                        <span class="label label-primary">Primary</span>
-                    </td>
-                    <td>
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                                Görünür
-                                <span class="caret"></span>
-                            </button>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Gizli</a></li>
-                                <li><a href="#">Sadece Şirket</a></li>
-                                <li><a href="#">Görünür</a></li>
-                            </ul>
-                        </div>
-                    </td>
-                    <td>
-                        <input class="form-control" type="number" min="1" value="10"/>
-                    </td>
-                </tr>
-
-                </tbody>
-            </table>
-        </div>
     </div>
-
-</div><!--end tab-pane-->
-
-</div>
-</div>
-</section>
-
-</div>
 </div>
 <!-- / skills -->

@@ -33,14 +33,14 @@ modules = {
     fileUpload {
         dependsOn(['jquery', 'angularjs'])
 
-        resource url: 'http://blueimp.github.io/Gallery/css/blueimp-gallery.min.css'
-        resource url: 'http://blueimp.github.io/Gallery/js/jquery.blueimp-gallery.min.js'
+        resource url: 'js/lib/blueimp/blueimp-gallery.min.css'
+        resource url: 'js/lib/blueimp/jquery.blueimp-gallery.min.js'
 
         resource url: 'js/lib/fileUpload/css/jquery.fileupload.css'
         resource url: 'js/lib/fileUpload/css/jquery.fileupload-ui.css'
         resource url: 'js/lib/fileUpload/js/vendor/jquery.ui.widget.js'
-        resource url: 'http://blueimp.github.io/JavaScript-Load-Image/js/load-image.min.js'
-        resource url: 'http://blueimp.github.io/JavaScript-Canvas-to-Blob/js/canvas-to-blob.min.js'
+        resource url: 'js/lib/blueimp/load-image.min.js'
+        resource url: 'js/lib/blueimp/canvas-to-blob.min.js'
         resource url: 'js/lib/fileUpload/js/jquery.iframe-transport.js'
         resource url: 'js/lib/fileUpload/js/jquery.fileupload.js'
         resource url: 'js/lib/fileUpload/js/jquery.fileupload-process.js'
@@ -74,7 +74,7 @@ modules = {
     }
 
     googleMaps {
-        resource url: 'https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBzXlLCgeP354clUpEoZ5zaufpeDDJ5YQ4&sensor=false&language=tr&region=TR', attrs: [cache: 'false', type: "js"]
+        resource url: 'https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyBzXlLCgeP354clUpEoZ5zaufpeDDJ5YQ4&sensor=false&language=tr&region=TR', attrs: [ type: "js"]
 //        resource url: 'first/js/maps/gmaps.js'
     }
 
@@ -119,14 +119,14 @@ modules = {
 
     angularjs {
         dependsOn('jquery')
-        resource url: 'http://code.angularjs.org/snapshot/angular.min.js', disposition: 'head'
-        resource url: 'http://code.angularjs.org/snapshot/angular-animate.min.js', disposition: 'head'
-        resource url: 'http://code.angularjs.org/snapshot/angular-resource.min.js', disposition: 'head'
-        resource url: 'http://code.angularjs.org/snapshot/angular-sanitize.min.js', disposition: 'head'
-        resource url: 'http://code.angularjs.org/snapshot/angular-touch.min.js', disposition: 'head'
-        resource url: 'http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.6.0.js', disposition: 'head'
+        resource url: 'js/lib/angular/angular.min.js', disposition: 'head'
+        resource url: 'js/lib/angular/angular-animate.min.js', disposition: 'head'
+        resource url: 'js/lib/angular/angular-resource.min.js', disposition: 'head'
+        resource url: 'js/lib/angular/angular-sanitize.min.js', disposition: 'head'
+        resource url: 'js/lib/angular/angular-touch.min.js', disposition: 'head'
+        resource url: 'js/lib/angular-ui/ui-bootstrap-tpls-0.6.0.min.js', disposition: 'head'
 
-        resource url: 'http://code.angularjs.org/snapshot/angular-route.min.js', disposition: 'head'
+        resource url: 'js/lib/angular/angular-route.min.js', disposition: 'head'
         resource url: 'js/lib/angular-route-segment/angular-route-segment.min.js'
 
 

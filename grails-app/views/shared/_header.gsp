@@ -44,28 +44,28 @@
                         class="badge badge-notes bg-danger count-n">2</b></a>
                 <section class="dropdown-menu m-l-small m-t-mini">
                     <section class="panel panel-large arrow arrow-top">
-                        <header class="panel-heading bg-white"><span class="h5"><strong>You have <span
-                                class="count-n">2</span> notifications</strong></span></header>
+                        <header class="panel-heading bg-white"><span class="h5"><strong><span
+                                class="count-n">2</span> yeni bildiriminiz var</strong></span></header>
 
                         <div class="list-group">
                             <a href="#" class="media list-group-item">
-                                <span class="pull-left thumb-small"><g:img uri="first/images/avatar.jpg" alt="John said"
+                                <span class="pull-left thumb-small"><g:img uri="first/images/avatar.jpg" alt="kimlik"
                                                                          class="img-circle"/></span>
                                 <span class="media-body block m-b-none">
-                                    Moved to Bootstrap 3.0<br>
+                                    Bootstrap 3.0 a geçtik süper!<br>
                                     <small class="text-muted">23 June 13</small>
                                 </span>
                             </a>
                             <a href="#" class="media list-group-item">
                                 <span class="media-body block m-b-none">
-                                    first v.1 (Bootstrap 2.3 based) released<br>
+                                    Ilgaz Şumnulu, kendini fikrimuhal de çalışan olarak ekledi<br>
                                     <small class="text-muted">19 June 13</small>
                                 </span>
                             </a>
                         </div>
                         <footer class="panel-footer text-small">
                             <a href="#" class="pull-right"><i class="icon-cog"></i></a>
-                            <a href="#">See all the notifications</a>
+                            <a href="#">Bütün bildirimleri gör</a>
                         </footer>
                     </section>
                 </section>
@@ -74,7 +74,7 @@
 
 
         <li><div class="m-t-small"><a class="btn btn-sm btn-info" data-toggle="modal" href="#modal"><i
-                class="icon-plus"></i> POST</a></div></li>
+                class="icon-lightbulb"></i> Geri bildirim</a></div></li>
 
 
         <li class="dropdown shift" data-toggle="shift:appendTo" data-target=".nav-primary .nav">
@@ -86,29 +86,23 @@
                 <li><a href="/company/my/new">Yeni şirket ekle</a></li>
 
                 <li>
-                    <a href="#" data-toggle="class:navbar-fixed" data-target='body'>Navbar
-                        <span class="text-active">auto</span>
-                        <span class="text">fixed</span>
-                    </a>
-                </li>
-                <li class="hidden-xs">
-                    <a href="#" data-toggle="class:nav-vertical" data-target="#nav">Nav
-                        <span class="text-active">vertical</span>
-                        <span class="text">horizontal</span>
+                    <a href="#" data-toggle="class:navbar-fixed" data-target='body'>Navigasyon
+                        <span class="text-active">otomatik</span>
+                        <span class="text">sabit</span>
                     </a>
                 </li>
                 <li class="divider hidden-xs"></li>
-                <li class="dropdown-header">Colors</li>
+                <li class="dropdown-header">Renkler</li>
                 <li>
-                    <a href="#" data-toggle="class:bg bg-black" data-target='.navbar'>Navbar
-                        <span class="text-active">white</span>
-                        <span class="text">inverse</span>
+                    <a href="#" data-toggle="class:bg bg-black" data-target='.navbar'>Navigasyon
+                        <span class="text-active">beyaz</span>
+                        <span class="text">siyah</span>
                     </a>
                 </li>
                 <li>
-                    <a href="#" data-toggle="class:bg-light" data-target='#nav'>Nav
-                        <span class="text-active">inverse</span>
-                        <span class="text">light</span>
+                    <a href="#" data-toggle="class:bg-light" data-target='#nav'>Navigasyon 2
+                        <span class="text-active">sihay</span>
+                        <span class="text">beyaz</span>
                     </a>
                 </li>
             </ul>

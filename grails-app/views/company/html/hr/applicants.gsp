@@ -71,7 +71,7 @@
 
                     <div class="col-md-8">
                         <h4>Ilgaz Şumnulu</h4>
-                        Basic panel example
+                       DEBUH
                         {{$routeSegment.$routeParams | json}}
                         <hr/>
                         <div class="pull-right">

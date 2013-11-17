@@ -33,31 +33,26 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal"><i class="icon-remove"></i></button>
-                    <h4 class="modal-title" id="myModalLabel">Post your first idea</h4>
+                    <h4 class="modal-title" id="myModalLabel">Geri bildirim ve İstekler</h4>
                 </div>
 
                 <div class="modal-body">
                     <div class="block">
-                        <label class="control-label">Title</label>
-                        <input type="text" class="form-control" placeholder="Post title">
+                        <label class="control-label">Kısaca...</label>
+                        <input type="text" class="form-control" placeholder="Konu başlığı">
                     </div>
 
                     <div class="block">
-                        <label class="control-label">Content</label>
-                        <textarea class="form-control" placeholder="Content" rows="5"></textarea>
+                        <label class="control-label">Mesaj</label>
+                        <textarea class="form-control" placeholder="Size çok daha iyi hizmet verebilmek için istek, önerileri ve şikayetlerinizi dinliyoruz." rows="5"></textarea>
                     </div>
 
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox"> Share with all memebers of first
-                        </label>
-                    </div>
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Save</button>
+                    <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Vazgeçtim</button>
                     <button type="button" class="btn btn-sm btn-primary"
-                            data-loading-text="Publishing...">Publish</button>
+                            data-loading-text="Publishing...">Gönder</button>
                 </div>
             </div><!-- /.modal-content -->
         </div>

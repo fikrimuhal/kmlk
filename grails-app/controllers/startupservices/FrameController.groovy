@@ -2,5 +2,7 @@ package startupservices
 
 class FrameController {
 
-    def index() { }
+    def index() {
+        cache("public_3600")
+    }
 }

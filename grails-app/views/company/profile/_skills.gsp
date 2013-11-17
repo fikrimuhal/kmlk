@@ -17,7 +17,7 @@
 
                                 <div class="progress bg-light">
                                     <div class="progress-bar ${skill.cssClass}" style="width: ${skill.percent}%">
-                                        2x</div>
+                                        ${skill.contributors.size()}x</div>
                                 </div>
                             </div>
                         </g:each>
@@ -40,7 +40,7 @@
 
                                     <div class="progress bg-light">
                                         <div class="progress-bar ${skill.cssClass}" style="width: ${skill.percent}%">
-                                            2x</div>
+                                            ${skill.contributors.size()}x</div>
                                     </div>
                                 </div>
                             </g:each>

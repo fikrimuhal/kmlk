@@ -45,18 +45,18 @@ $(document).ready(function() {
 	}
 	var $noteMail = {
 		icon: '<i class="icon-envelope-alt icon-2x text-default"></i>',
-		title: 'Added the mail app, Check it out.<br><small class="text-muted">2 July 13</small>',
-		link: 'mail.html'
+		title: 'Ilgaz şumnulu, artık fikrimuhal de çalışiyor<br><small class="text-muted">2 July 13</small>',
+		link: '/'
 	}
 	var $noteCalendar = {
 		icon: '<i class="icon-calendar icon-2x text-default"></i>',
-		title: 'Added the calendar, Get it.<br><small class="text-muted">10 July 13</small>',
-		link: 'calendar.html'
+		title: 'Şirketinize yeni yetkinlik eklendi, onaylamak için tiklayın <br><small class="text-muted">10 July 13</small>',
+		link: '/'
 	}
 	var $noteTimeline = {
 		icon: '<i class="icon-time icon-2x text-default"></i>',
-		title: 'Added the timeline, view it here.<br><small class="text-muted">1 minute ago</small>',
-		link: 'timeline.html'
+		title: 'Yeni bir mesajiniz var!<br><small class="text-muted">1 minute ago</small>',
+		link: '/'
 	}
 	window.setTimeout(function(){addNotification($noteMail)}, 2000);
 	window.setTimeout(function(){addNotification($noteCalendar)}, 3500);

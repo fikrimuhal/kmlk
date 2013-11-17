@@ -106,7 +106,74 @@ class CompanyService {
                     numberOfTotal: 3,
                     numberOfTechnical: 2,
                     numberOfManagment: 2
-            ]
+            ],
+            skills: [
+
+                    [name: 'Java',
+                            percent: 65,
+                            skill:new ObjectId(),
+                            cssClass: 'bg-primary'],
+                    [name: 'HTML',
+                            percent: 80,
+                            skill:new ObjectId(),
+                            cssClass: 'bg-success'],
+                    [name: 'jQuery',
+                            percent: 35,
+                            skill:new ObjectId(),
+                            cssClass: 'bg-info'],
+                    [name: 'PHP',
+                            percent: 85,
+                            skill:new ObjectId(),
+                            cssClass: 'bg-warning'],
+                    [name: 'WP',
+                            percent: 95,
+                            skill:new ObjectId(),
+                            cssClass: 'bg-danger'],
+                    [name: 'SEO',
+                            percent: 45,
+                            skill:new ObjectId(),
+                            cssClass: 'bg-primary'],
+                    [name: 'Proje Yönetimi',
+                            percent: 85,
+                            skill:new ObjectId(),
+                            cssClass: 'bg-default'],
+                    [name: 'Groovy',
+                            percent: 75,
+                            skill:new ObjectId(),
+                            cssClass: 'bg-success'],
+                    [name: 'Grails',
+                            percent: 85,
+                            skill:new ObjectId(),
+                            cssClass: 'bg-success'],
+                    [name: 'UX Design',
+                            percent: 35,
+                            skill:new ObjectId(),
+                            cssClass: 'bg-success'],
+                    [name: 'Amazon Web Services',
+                            percent: 75,
+                            skill:new ObjectId(),
+                            cssClass: 'bg-info'],
+                    [name: 'Startup Management',
+                            percent: 65,
+                            skill:new ObjectId(),
+                            cssClass: 'bg-warning'],
+                    [name: 'Git',
+                            percent: 63,
+                            skill:new ObjectId(),
+                            cssClass: 'bg-primary'],
+                    [name: 'AngularJs',
+                            percent: 91,
+                            skill:new ObjectId(),
+                            cssClass: 'bg-danger'],
+
+            ].each {
+
+                def rand = new java.util.Random()
+                it.contributors = []
+                (rand.nextInt(5)+1).times{o -> it.contributors << new ObjectId()}
+                it.order = rand.nextInt(100)
+                it.visibility = rand.nextBoolean()
+            }
     ]
 
     def saveProduct(def product, ObjectId companyId) {

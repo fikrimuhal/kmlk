@@ -155,7 +155,30 @@ function CompanyDashboardCtrl($scope, $routeSegment) {
 
 }
 
-function CompanySkillsCtrl($scope, $routeSegment) {
+function CompanySkillsCtrl($scope, $resource) {
+    var api = $resource(_settings.baseUrl + 'company/skillUpdate');
+
+    $scope.skills = $scope.company.skills
+    console.log($scope.skills)
+
+    $scope.forceRecalculate = function () {
+        api.save({companyId: $scope.company._id}, {op: 'recalculate'});
+    };
+
+    $scope.updateOrder = function (skill) {
+        //todo server a request biraz deferred gitmeli, ng-change ile tetikleniyor bu
+        api.save({companyId: $scope.company._id}, {op: 'order'});
+    };
+
+    $scope.toggleVisibility = function (skill) {
+        skill.visibility = !skill.visibility
+        api.save({companyId: $scope.company._id}, {op: 'visibility'});
+    };
+
+
+    $scope.progressBarStyle = function (percent) {
+        return 'width:' + percent + '%;';
+    }
 
 }
 
