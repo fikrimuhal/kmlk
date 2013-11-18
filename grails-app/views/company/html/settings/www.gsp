@@ -57,6 +57,18 @@
                 </div>
             </div>
 
+
+            <div class="form-group">
+                <label class="col-lg-3 control-label">Google analytics:</label>
+
+                <div class="col-lg-9">
+                    <input type="text" class="form-control" ng-model="domain.googleAnalytics"
+                           placeholder="google analytics takib numarasi">
+                    <span class="help-block">örnek: UA-XXXXXXXX-X</span>
+                </div>
+            </div>
+
+
             <div class="form-group">
                 <div class="col-lg-9 col-lg-offset-3">
                     <button type="button" class="btn btn-primary pull-right" ng-click="save(domain)">Kaydet</button>

@@ -13,7 +13,7 @@
 //#####################################################################################################################
 
 
-angular.module('fm.analytics', ['ui.state']).run(['$rootScope', '$location', function ($rootScope, $location) {
+angular.module('fm.analytics', []).run(['$rootScope', '$location', function ($rootScope, $location) {
     (function (i, s, o, g, r, a, m) {
         i['GoogleAnalyticsObject'] = r;
         i[r] = i[r] || function () {
@@ -27,33 +27,39 @@ angular.module('fm.analytics', ['ui.state']).run(['$rootScope', '$location', fun
     })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
     //init
-    ga('create', 'UA-41123168-3', 'acikdemokrasi.org');
+    ga('create', 'UA-41123168-4', 'kimlik.io');
+    console.log('google analytics initialized');
 
+    var previousAbsUrl
     /**
-     * https://github.com/angular-ui/ui-router/wiki#state-change-events
+     *
      * @param event
-     * @param toState
-     * @param toParams
-     * @param fromState
-     * @param fromParams
+     * @param next
+     * @param current
      */
-    var track = function (event, toState, toParams, fromState, fromParams) {
+    var track = function (event, next, current) {
         var path = $location.path();
         var absUrl = $location.absUrl();
+        if (previousAbsUrl !== absUrl) { //todo ayni sayfa cagrilinca yeni event gonderilmiyecek, bu istenmiye bilinir.
+            previousAbsUrl = absUrl;
 
-        ga('send', 'pageview', {
-            'page': path,
-            'title': absUrl   //todo change to this title, and add absUrl to different place
-        });
+            ga('send', 'pageview', {
+                'page': path,
+                'title': absUrl   //todo change to this title, and add absUrl to different place
+            });
+            console.debug('track url sent', absUrl)
 //        console.log('------>event', event);
-//        console.log('---->toState', toState);
-//        console.log('--->toParams', toParams);
-//        console.log('-->fromState', fromState);
-//        console.log('->fromParams', fromParams);
+//        console.log('---->next', next);
+//        console.log('--->current', current);
 //        console.log('----------->', $location);
+        }
     };
 
-    //track every stage change
-    $rootScope.$on('$stateChangeSuccess', track);
 
-}])
+    //track every stage change
+    $rootScope.$on("$routeChangeStart", track);
+    //ui route ile
+//    $rootScope.$on('$stateChangeSuccess', track);
+
+    track();
+}]);
