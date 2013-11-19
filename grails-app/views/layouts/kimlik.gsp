@@ -14,7 +14,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
 
-    <r:require modules="kimlik,jquery"/>
+    <r:require modules="kimlik,jquery,fileUpload,company"/>
     <script type="text/javascript">
         /**
          * child page should set/override these settings

@@ -47,9 +47,7 @@
                                         <td>{{skill.name}}</td>
                                         <td>
                                             <div class="progress">
-                                                <div class="progress-bar progress-bar-info" role="progressbar"
-                                                     aria-valuenow="{{skill.percent}}"
-                                                     aria-valuemin="0" aria-valuemax="100"
+                                                <div class="progress-bar progress-bar-info"
                                                      style="{{progressBarStyle(skill.percent)}}">
                                                     <span class="sr-only">{{skill.percent}}%</span>
                                                 </div>
@@ -59,16 +57,16 @@
                                             <ul>
 
                                                 <li ng-repeat="c in skill.contributors"
-                                                    class="label label-primary pull-left m-b-mini m-r-mini ">{{c}}</li>
+                                                    class="label label-primary pull-left m-b-mini m-r-mini ">{{getFullName(c)}}</li>
                                             </ul>
 
                                         </td>
                                         <td>
-                                            <button class="btn btn-white" ng-class="{'active':skill.visibility}"
+                                            <button class="btn btn-white" ng-class="{'active':skill.visible}"
                                                     ng-click="toggleVisibility(skill)">
-                                                <i ng-if="skill.visibility"
+                                                <i ng-if="skill.visible"
                                                    class="icon-lightbulb text-active text-warning"></i>
-                                                <i ng-if="!skill.visibility"
+                                                <i ng-if="!skill.visible"
                                                    class="icon-eye-close text-active text-danger"></i>
                                             </button>
                                         </td>

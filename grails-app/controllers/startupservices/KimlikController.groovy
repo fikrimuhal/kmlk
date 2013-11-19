@@ -168,6 +168,28 @@ class KimlikController {
         [profile: authenticationService.authenticatedUser]
     }
 
+    def getProfileById() {
+//        def result = [x:params.id]
+//        sleep(1000)
+        def id = ObjectId.massageToObjectId(params.id)
+//        log.debug(id)
+        def result = Profile.list()[random.nextInt(150)]//Profile.findById(id) ?: [:]
+
+        render result as JSON
+    }
+
+    def getProfilesByIds() {
+        def ids = []
+        request.JSON.ids.each { ids << ObjectId.massageToObjectId(it) }
+
+        DBCollection col = Profile.collection
+        def _QUERY = [_id: ['$in': ids]]
+
+        log.debug(ids)
+        def result = col.find(_QUERY).toArray()// Profile.list()[1..40]//Profile.findById(id) ?: [:]
+
+        render result as JSON
+    }
 
     private fetchProfile() {
         def profile = Profile.findByUsername(params.username)

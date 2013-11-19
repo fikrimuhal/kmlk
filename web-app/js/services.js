@@ -136,3 +136,51 @@ kimlik.factory('employmentService', function ($resource, $rootScope) {
         save: save
     };
 });
+
+
+kimlik.factory('profileService', function ($resource) {
+    var todoCount = 0;
+    var _profileCache = {}
+    var api = $resource('/kimlik/api/:verb', {},
+        {
+            //@deprecated
+            'getProfileById': {method: 'GET', params: {verb: 'getProfileById'}},
+
+            'getProfilesByIds': {method: 'POST', params: {verb: 'getProfilesByIds'}, isArray: true}
+        });
+
+
+    function todo() {
+        console.log(todoCount++)
+    }
+
+    function prefetchProfilesByIds(ids) {
+        _(ids).each(function (id) {
+            if (!_profileCache[id]) {
+                console.log('cachede id yok: ', id);
+                _profileCache[id] = {}
+            } else {
+                console.log('cachede id var: ', _profileCache[id]);
+            }
+        });
+
+        api.getProfilesByIds({}, {ids: ids}, function (result) {
+            _(result).each(function (it) {
+                angular.extend(_profileCache[it._id], it)
+            });
+        });
+
+        return _profileCache
+
+    }
+
+    function getProfileById(id) {
+        return _profileCache[id] || prefetchProfilesByIds([id])[id]
+    }
+
+    return{
+        getProfileById: getProfileById,
+        prefetchProfilesByIds: prefetchProfilesByIds,
+        todo: todo
+    };
+});

@@ -155,30 +155,40 @@ function CompanyDashboardCtrl($scope, $routeSegment) {
 
 }
 
-function CompanySkillsCtrl($scope, $resource) {
+function CompanySkillsCtrl($scope, $resource, profileService) {
     var api = $resource(_settings.baseUrl + 'company/skillUpdate');
 
     $scope.skills = $scope.company.skills
+
+    profileService.prefetchProfilesByIds(_.chain($scope.skills).map('contributors').flatten().uniq().value());
+
     console.log($scope.skills)
 
     $scope.forceRecalculate = function () {
-        api.save({companyId: $scope.company._id}, {op: 'recalculate'});
+        api.save({companyId: $scope.company._id}, {op: 'RECALCULATE'});
     };
 
     $scope.updateOrder = function (skill) {
         //todo server a request biraz deferred gitmeli, ng-change ile tetikleniyor bu
-        api.save({companyId: $scope.company._id}, {op: 'order'});
+        api.save({companyId: $scope.company._id}, {op: 'ORDER',order:skill.order});
     };
 
     $scope.toggleVisibility = function (skill) {
-        skill.visibility = !skill.visibility
-        api.save({companyId: $scope.company._id}, {op: 'visibility'});
+        skill.visible = !skill.visible;
+        api.save({companyId: $scope.company._id}, {op: 'VISIBILITY', visible:skill.visible});
     };
 
 
     $scope.progressBarStyle = function (percent) {
         return 'width:' + percent + '%;';
     }
+
+    $scope.getFullName = function (id) {
+//        console.log($scope.$$phase)
+        var u = profileService.getProfileById(id)
+        return u.first_name + ' ' + u.last_name;
+
+    };
 
 }
 

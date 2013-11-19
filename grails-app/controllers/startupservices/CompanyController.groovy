@@ -27,7 +27,7 @@ class CompanyController {
 
         if (!company) return (redirect(uri: '/'))
 
-        def skills = company.skills?.findAll { it.visibility == true } //sirket yetkilisinin izin verdigi skiller
+        def skills = company.skills?.findAll { it.visible } //sirket yetkilisinin izin verdigi skiller
         //skilleri 2 ayri DIV icinde gosteriyoruz
         def skills1, skills2
         if (skills.size() < 5) {
@@ -107,6 +107,22 @@ class CompanyController {
         ObjectId companyId = ObjectId.massageToObjectId(params.companyId)
         log.debug(request.JSON)
         log.debug(params)  //operation
+
+        switch (request.JSON.op) {
+            case 'RECALCULATE':
+                log.debug('recalculate')
+                companyService.calculateCompanySkills(ObjectId.massageToObjectId(params.companyId))
+                break
+
+            case 'ORDER':
+                log.debug('order change')
+                break
+
+            case 'VISIBILITY':
+                log.debug('change visibility')
+                break
+
+        }
 
         def result = [:]//[status: companyService.updateLocation(null, companyId)]
         render result as JSON
