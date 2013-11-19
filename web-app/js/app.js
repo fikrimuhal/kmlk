@@ -113,6 +113,12 @@ kimlik.config(['$routeSegmentProvider', '$locationProvider',
             within('company').segment('dashboard', {
                 templateUrl: '/html/company/dashboard/dashboard.html'});
 
+
+        $routeSegmentProvider.
+            when('/company/:company_name/timeline', 'company.timeline').
+            within('company').segment('timeline', {
+                templateUrl: '/html/company/timeline/timeline.html'});
+
         console.log('App config block finished')
     }
 ]);
@@ -170,12 +176,12 @@ function CompanySkillsCtrl($scope, $resource, profileService) {
 
     $scope.updateOrder = function (skill) {
         //todo server a request biraz deferred gitmeli, ng-change ile tetikleniyor bu
-        api.save({companyId: $scope.company._id}, {op: 'ORDER',order:skill.order});
+        api.save({companyId: $scope.company._id}, {op: 'ORDER',order:skill.order, skillId:skill.skill});
     };
 
     $scope.toggleVisibility = function (skill) {
         skill.visible = !skill.visible;
-        api.save({companyId: $scope.company._id}, {op: 'VISIBILITY', visible:skill.visible});
+        api.save({companyId: $scope.company._id}, {op: 'VISIBILITY', visible:skill.visible, skillId:skill.skill});
     };
 
 

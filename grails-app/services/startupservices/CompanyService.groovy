@@ -321,21 +321,20 @@ class CompanyService {
         //reduce
         def max = { a, b -> [a, b.percent].max() }
         def getVisibility = { it && it.visible != null ? it.visible : true }
-        def getOrder = { it && it.order != null ? it.order : 99 }
+        def getOrder = { it && it.order != null ? it.order : 50 }
         newSkillsMap.each { k, v ->
             //assert k instanceof ObjectId
             newSkillList << [
                     skill: k,
                     percent: v.inject(0, max),
                     contributors: v*._profile,
-                    visible: getVisibility(oldSkills.findResult { it._id == k }), //default value is true
-                    order: getOrder(oldSkills.findResult { it._id == k }), //default value is true
-                    name : v[0].name
+                    visible: getVisibility(oldSkills.findResult { it.skill == k ? it : null }), //default value is true
+                    order: getOrder(oldSkills.findResult { it.skill == k ? it : null }), //default value is true
+                    name: v[0].name
             ]
 
         }
-        log.debug(newSkillList)
-
+        // log.debug(newSkillList)
 
 
         def _OPS = [:]
@@ -349,6 +348,33 @@ class CompanyService {
         //companySkill e ekle
 
         //companySkills i geridondur yada butun companyi
+    }
+
+
+    def updateSkillField(ObjectId companyId, def op, ObjectId skillId, def newValue) {
+        assert ['VISIBILITY', 'ORDER'].any { it == op }
+        assert skillId
+        assert newValue != null
+
+
+        DBCollection col = Company.collection
+
+        def _QUERY = [_id: companyId, 'skills.skill': skillId]
+
+        def _OPS = [:]
+        switch (op) {
+            case 'VISIBILITY':
+                _OPS.'$set' = ['skills.$.visible': newValue]
+                break
+            case 'ORDER':
+                _OPS.'$set' = ['skills.$.order': newValue]
+                break
+            default:
+                throw new UnsupportedOperationException(op)
+        }
+
+        return col.update(_QUERY, _OPS, false, false, WriteConcern.SAFE)
+
     }
 
 }

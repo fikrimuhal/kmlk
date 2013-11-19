@@ -27,7 +27,7 @@ class CompanyController {
 
         if (!company) return (redirect(uri: '/'))
 
-        def skills = company.skills?.findAll { it.visible } //sirket yetkilisinin izin verdigi skiller
+        def skills = company.skills?.findAll { it.visible }.sort {it.order} //sirket yetkilisinin izin verdigi skiller
         //skilleri 2 ayri DIV icinde gosteriyoruz
         def skills1, skills2
         if (skills.size() < 5) {
@@ -111,15 +111,22 @@ class CompanyController {
         switch (request.JSON.op) {
             case 'RECALCULATE':
                 log.debug('recalculate')
-                companyService.calculateCompanySkills(ObjectId.massageToObjectId(params.companyId))
+                companyService.calculateCompanySkills(companyId)
                 break
 
             case 'ORDER':
                 log.debug('order change')
+                int newValue =request.JSON.order as int
+                ObjectId skillId =  ObjectId.massageToObjectId(request.JSON.skillId)
+                companyService.updateSkillField(companyId,'ORDER',skillId,newValue)
                 break
 
             case 'VISIBILITY':
                 log.debug('change visibility')
+                boolean newValue = request.JSON.visible as boolean
+                ObjectId skillId = ObjectId.massageToObjectId(request.JSON.skillId)
+                companyService.updateSkillField(companyId,'VISIBILITY',skillId,newValue)
+
                 break
 
         }
