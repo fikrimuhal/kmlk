@@ -3,7 +3,7 @@
 <head>
     <meta name="layout" content="first"/>
     <script type="text/javascript">
-        _settings.staticMode = true // i.e. locationProvider should not use html5Mode
+        _settings.staticMode = true; // i.e. locationProvider should not use html5Mode
     </script>
 </head>
 
@@ -62,7 +62,6 @@
         %{--</div>--}%
         %{--</div>--}%
 
-        <div class="panel ">
 
             <div class="panel-body bg-white" id="all">
                 <g:render template="/kimlik/personalInfo" model="[profile: profile]"/>
@@ -76,7 +75,6 @@
                 %{--<g:render template="/kimlik/other"></g:render>--}%
 
             </div>
-        </div>
 
     </section>
     <!-- /.sidebar -->

@@ -2,11 +2,13 @@
 <div class="row">
     <div class="col-lg-12">
 
-        <section class="panel">
+        %{--<section class="panel">--}%
             <header class="panel-heading text-right">
                 <ul class="nav nav-tabs pull-left">
 
-                    %{--<li ng-class="{active: $routeSegment.contains('general')}"><a href="/company/{{company_name}}/settings/general">Genel</a></li>--}%
+                    <li ng-class="{active: $routeSegment.contains('general')}"><a  href="/kimlik/{{user_name}}/settings/general">Genel</a></li>
+                    <li ng-class="{active: $routeSegment.contains('education')}"><a  href="/kimlik/{{user_name}}/settings/education">Eğitim</a></li>
+                    <li ng-class="{active: $routeSegment.contains('work')}"><a  href="/kimlik/{{user_name}}/settings/work">İş</a></li>
                     %{--<li ng-class="{active: $routeSegment.contains('location')}"><a href="/company/{{company_name}}/settings/location">Lokasyon</a></li>--}%
                     %{--<li ng-class="{active: $routeSegment.contains('images')}"><a href="/company/{{company_name}}/settings/images">Görseller</a></li>--}%
                     %{--<li ng-class="{active: $routeSegment.contains('security')}"><a href="/company/{{company_name}}/settings/security">Güvenlik ve İzinler</a></li>--}%
@@ -19,18 +21,17 @@
             </header>
 
 
-<div class="panel-body">
-    <div class="tab-content">
-        <div class="tab-pane fade active in">
-            SILBENIIIII
-            <div app-view-segment="2"></div>
+            <div class="panel-body">
+                <div class="tab-content">
+                    <div class="tab-pane fade active in">
+                        <div app-view-segment="2"></div>
 
-        </div>
+                    </div>
+
+                </div>
+            </div>
+        %{--</section>--}%
 
     </div>
-</div>
-</section>
-
-</div>
 </div>
 <!-- / hr -->

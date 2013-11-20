@@ -31,7 +31,7 @@
         </div>
 
         <div class="bg-light padder padder-v">
-            <span class="h4">Ilgaz şumnulu</span>
+            <span class="h4">Ilgaz şumnulu </span>
             <small class="block m-t-mini">CTO</small>
             <button class="btn btn-primary btn-sm active" data-toggle="button">
                 <span class="text">

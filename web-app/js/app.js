@@ -122,9 +122,8 @@ kimlik.config(['$routeSegmentProvider', '$locationProvider',
 
         // Personal profiles start
         $routeSegmentProvider.
-            when('/kimlik/:username_name/settings', 'kimlik.settings.general').
-            when('/kimlik/:username_name/settings/general', 'kimlik.settings.general').
-
+            when('/kimlik/:user_name/settings', 'kimlik.settings.general').
+            when('/kimlik/:user_name/settings/general', 'kimlik.settings.general').
 
 
             segment('kimlik', {
@@ -135,7 +134,7 @@ kimlik.config(['$routeSegmentProvider', '$locationProvider',
         $routeSegmentProvider.within('kimlik').
             segment('settings', {
                 templateUrl: '/html/kimlik/settings/settings.html'/*,
-                controller: CompanySettingsCtrl*/}).
+                 controller: CompanySettingsCtrl*/}).
             within().
             segment('general', {templateUrl: '/html/kimlik/settings/general.html'})
 
@@ -187,19 +186,17 @@ function UserController($scope, userService) {
 function KimlikCtrl($scope, $routeSegment) {
 //    $scope.companies = companyService.getUserCompanyList();
     $scope.$routeSegment = $routeSegment;
-//
-//    $scope.$on('routeSegmentChange', function () {
-//        //broadcast de company_name i aliyoruz boylece resolved oldugundan eminiz parametrenin.
-//        //URL mapping de resolved ile yapila bilinir?
-//        //Sayfa render olmadan once resolved olsa daha iyi olur.
-//        $scope.company_name = $routeSegment.$routeParams.company_name //todo bunun adi pageName olsa daha iyi
-//        $scope.company = _.find($scope.companies, {page_name: $scope.company_name })
-//
-//    });
+
+    $scope.$on('routeSegmentChange', function () {
+        //broadcast de company_name i aliyoruz boylece resolved oldugundan eminiz parametrenin.
+        //URL mapping de resolved ile yapila bilinir?
+        //Sayfa render olmadan once resolved olsa daha iyi olur.
+        $scope.user_name = $routeSegment.$routeParams.user_name; //todo bunun adi pageName olsa daha iyi
+//   $scope.company = _.find($scope.companies, {page_name: $scope.company_name })
+    });
 
     console.log('KimlikCtrl Ready')
 }
-
 
 
 function CompanyDashboardCtrl($scope, $routeSegment) {
@@ -221,12 +218,12 @@ function CompanySkillsCtrl($scope, $resource, profileService) {
 
     $scope.updateOrder = function (skill) {
         //todo server a request biraz deferred gitmeli, ng-change ile tetikleniyor bu
-        api.save({companyId: $scope.company._id}, {op: 'ORDER',order:skill.order, skillId:skill.skill});
+        api.save({companyId: $scope.company._id}, {op: 'ORDER', order: skill.order, skillId: skill.skill});
     };
 
     $scope.toggleVisibility = function (skill) {
         skill.visible = !skill.visible;
-        api.save({companyId: $scope.company._id}, {op: 'VISIBILITY', visible:skill.visible, skillId:skill.skill});
+        api.save({companyId: $scope.company._id}, {op: 'VISIBILITY', visible: skill.visible, skillId: skill.skill});
     };
 
 
