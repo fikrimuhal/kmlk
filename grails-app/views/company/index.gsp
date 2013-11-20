@@ -16,7 +16,7 @@
 
     </script>
     <script type="text/javascript">
-        _settings.staticMode = false // i.e. locationProvider should USE html5Mode
+        _settings.staticMode = false; // i.e. locationProvider should USE html5Mode
     </script>
 </head>
 

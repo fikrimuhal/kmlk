@@ -1,24 +1,66 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta name="layout" content="kimlik"/>
+    <meta name="layout" content="first"/>
+
+
+    <script type="text/ng-template" id="_template/kimlik.inline">
+
+
+                    <section class="main" app-view-segment="1"></section>
+
+    </script>
+
+    <script type="text/javascript">
+        _settings.staticMode = false; // i.e. locationProvider should USE html5Mode
+    </script>
+
+
 </head>
 
 <body>
 
-<div class="separator line"></div>
-<g:render template="/kimlik/personalInfo" model="[profile:profile]"/>
-<g:render template="/kimlik/followMe" model="[profile:profile]"/>
-<g:render template="/kimlik/employment" model="[profile:profile]"/>
-<g:render template="/kimlik/skills"  model="[profile:profile]"/>
-<g:render template="/kimlik/education" model="[profile:profile]"/>
-%{--<g:render template="/kimlik/testimonials"></g:render>--}%
-%{--<g:render template="/kimlik/portfolio"></g:render>--}%
-<g:render template="/kimlik/contact"  model="[profile:profile]"/>
-%{--<g:render template="/kimlik/other"></g:render>--}%
+<g:render template="/shared/header"/>
+
+<section id="content" class="content-sidebar bg-white">
+
+    <!-- .sidebar -->
+    <aside class="sidebar bg-lighter sidebar">
+        <div class="text-center clearfix bg-white">
+            <img src="http://s3.amazonaws.com/kimlik/photos/525bee2aef869502d11cc461.jpg">
+        </div>
+
+        <div class="bg-light padder padder-v">
+            <span class="h4">Ilgaz şumnulu</span>
+            <small class="block m-t-mini">CTO</small>
+            <button class="btn btn-primary btn-sm active" data-toggle="button">
+                <span class="text">
+                    <i class="icon-eye-open"></i> Follow
+                </span>
+                <span class="text-active">
+                    <i class="icon-eye-open"></i> Following
+                </span>
+            </button>
+        </div>
+
+        <div class="list-group list-normal m-b-none">
+            <a href="#" class="list-group-item">Profile</a>
+            <a href="#" class="list-group-item">Activity</a>
+            <a href="#" class="list-group-item">Group</a>
+            <a href="#" class="list-group-item"><span class="badge m-r">3</span> Friends</a>
+            <a href="#" class="list-group-item"><span class="badge m-r">4</span> Posts</a>
+        </div>
+    </aside>
+    <!-- /.sidebar -->
+
+<div app-view-segment="0"></div>
+</section>
 
 
 
+<g:render template="/shared/footer"/>
 
+<a href="#" class="hide slide-nav-block" data-toggle="class:slide-nav slide-nav-left" data-target="body"></a>
+<!-- / footer -->
 </body>
 </html>

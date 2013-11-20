@@ -5,14 +5,14 @@
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <span class="hidden-xs-only">Ilgaz Şumnulu</span>
-                <span class="thumb-small avatar inline"><g:img uri="first/images/avatar.jpg" alt="Ilgaz Şumnulu"
+                <span class="thumb-small avatar inline"><g:img uri="http://s3.amazonaws.com/kimlik/photos/525bee2aef869502d11cc461.jpg" alt="Ilgaz Şumnulu"
                                                              class="img-circle"/></span>
                 <b class="caret hidden-xs-only"></b>
             </a>
             <ul class="dropdown-menu">
 
 
-                <li><a href="/kimlik/{{getLoggedInUser().username}}" target="_self">Profilime git</a></li>
+                <li><a href="/kimlik/profile/{{getLoggedInUser().username}}" target="_self">Profilime git</a></li>
                 <li><a href="/company/my/list">Şirket profilime git</a></li>
                 <li class="divider"></li>
                 <li><a href="/kimlik/{{getLoggedInUser().username}}/positionInbox" target="_self">İlginizi Çekecek Şirketler</a>
@@ -49,7 +49,7 @@
 
                         <div class="list-group">
                             <a href="#" class="media list-group-item">
-                                <span class="pull-left thumb-small"><g:img uri="first/images/avatar.jpg" alt="kimlik"
+                                <span class="pull-left thumb-small"><g:img uri="http://s3.amazonaws.com/kimlik/photos/525bee2aef869502d11cc461.jpg" alt="kimlik"
                                                                          class="img-circle"/></span>
                                 <span class="media-body block m-b-none">
                                     Bootstrap 3.0 a geçtik süper!<br>

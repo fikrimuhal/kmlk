@@ -112,7 +112,10 @@ class KimlikController {
         render result as JSON
     }
 
-    def index() {
+    def index() {}
+
+    def profile() {
+        session._responseCommitedExceptionWorkAround = 'force to create new session'
         [profile: fetchProfile()]
 
     }
@@ -192,10 +195,10 @@ class KimlikController {
     }
 
     private fetchProfile() {
-        def profile = Profile.findByUsername(params.username)
+        def profile = Profile.findByUsername(params.id)
         if (!profile) {
             //id dene
-            def id = ObjectId.massageToObjectId(params.username)
+            def id = ObjectId.massageToObjectId(params.id)
             if (id) profile = Profile.findById(id)
 
         } else if (!profile) {

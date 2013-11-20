@@ -82,7 +82,9 @@ class BootStrap {
             ).save(flush: true, failOnError: true)
         }
 
+
         if (!DomainToPage.count) {
+
             new DomainToPage(
                     pageName: 'fikrimuhal',
                     isCompany: true,
@@ -90,10 +92,11 @@ class BootStrap {
                     enabled: true
             ).save()
         }
-
-        def fikrimuhal = Company.findByPage_name('fikrimuhal')
-        fikrimuhal.domainToPage = DomainToPage.findByPageNameAndIsCompany('fikrimuhal',true)
-        fikrimuhal.save()
+        //
+//        def fikrimuhal = Company.findByPage_name('fikrimuhal')
+//        fikrimuhal.domainToPage = DomainToPage.findByPageNameAndIsCompany('fikrimuhal',true)
+//        fikrimuhal.save()
+//        assert false
     }
 
     def destroy = {

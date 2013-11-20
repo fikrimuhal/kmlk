@@ -11,13 +11,13 @@
 </div>
 <ul class="history">
     <g:each in="${profile.educationHistory.history}">
-        <li class="row-fluid">
-            <span class="date span3">
+        <li class="row">
+            <span class="date col-lg-3">
                 <span class="label label-important">${it.startDate?.year} - ${it.endDate?.year}</span>
                 <span class="glyphicons hidden-tablet calendar pull-right"><i></i></span>
             </span>
 
-            <div class="body span9">
+            <div class="body col-lg-9">
                 <h4>${it.position} @${it.entity}</h4>
                 ${it.note}
             </div>

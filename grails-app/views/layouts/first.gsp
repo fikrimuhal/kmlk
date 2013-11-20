@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!--suppress CheckTagEmptyBody -->
 <html lang="en" ng-app="kimlik">
 <head>
     <meta charset="utf-8">
@@ -6,6 +7,9 @@
     <meta name="description"
           content="app, kimlik, mobile, fikrimuhal, sumnulu, ilgaz sumnulu, ilgaz, kurumsal, startup, girişim, girisim, şirket">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
 
     <r:require modules="first,company,fileUpload"/>
 
@@ -19,7 +23,7 @@
         var _settings = {
             staticMode:false,
             debug:false,
-            baseUrl: '<g:createLink absolute="true" uri="/" />'
+            baseUrl: '${g.createLink([absolute:true, uri:"/" ])}'
         };
     </script>
 

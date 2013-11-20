@@ -20,15 +20,14 @@
 }
 </style>
 
-<div class="row-fluid">
-    <div class="span6">
+<div class="row ">
+    <div class="col-lg-6">
         <div class="heading-buttons">
 
             <h4 class="glyphicons notes"><i></i>Kişisel bilgilerim</h4>
 
             <div class="buttons pull-right">
-                <g:link action="personalInfo" params="[username: params.username]"><span ng-if="isSelfProfile()"
-                                                                                         ng-cloak>düzenle</span></g:link>
+              <a href="/kimlik/sumnulu/settings" ng-if="isSelfProfile()"  ng-cloak>düzenle</a>
             </div>
         </div>
 
@@ -70,16 +69,16 @@
         <div class="separator line visible-phone"></div>
     </div>
 
-    <div class="span6"><g:if test="${profile.workHistory?.lastEntity}">
+    <div class="col-lg-6"><g:if test="${profile.workHistory?.lastEntity}">
 
         <h4 class="glyphicons cardio"><i></i>${profile.workHistory?.lastEntity?.position} at <a>${profile.workHistory?.lastEntity?.entity}</a>
         </h4>
     </g:if>
 
-        <div class="row-fluid about">
-            <div class="span12">
-                <img src="${profile.profilePictureUrl}" style="width: 250px" class="pull-right"
-                     alt="${profile.name}"/>
+        <div class="rowabout">
+            <div class="col-lg-12">
+                %{--<img src="${profile.profilePictureUrl}" style="width: 250px" class="pull-right"--}%
+                     %{--alt="${profile.name}"/>--}%
             </div>
         </div>
 
@@ -98,8 +97,8 @@
     </div>
 </div>
 
-<div class="row-fluid">
-    <div class="span12">
+<div class="row">
+    <div class="col-lg-12">
     </div>
 </div>
 

@@ -9,8 +9,9 @@ class UrlMappings {
             }
         }
 
-        "/kimlik/$username?/$action?"(controller: 'kimlik')
+        //"/kimlik/$username?/$action?"(controller: 'kimlik')
 
+        "/kimlik/**"(controller: 'kimlik', action: 'index')
         "/company/**"(controller: 'company', action: 'index')
 
         "/api/skill/$action"(controller: 'skill')

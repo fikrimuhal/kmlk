@@ -119,6 +119,27 @@ kimlik.config(['$routeSegmentProvider', '$locationProvider',
             within('company').segment('timeline', {
                 templateUrl: '/html/company/timeline/timeline.html'});
 
+
+        // Personal profiles start
+        $routeSegmentProvider.
+            when('/kimlik/:username_name/settings', 'kimlik.settings.general').
+            when('/kimlik/:username_name/settings/general', 'kimlik.settings.general').
+
+
+
+            segment('kimlik', {
+                templateUrl: '_template/kimlik.inline',
+                controller: KimlikCtrl
+            });
+
+        $routeSegmentProvider.within('kimlik').
+            segment('settings', {
+                templateUrl: '/html/kimlik/settings/settings.html'/*,
+                controller: CompanySettingsCtrl*/}).
+            within().
+            segment('general', {templateUrl: '/html/kimlik/settings/general.html'})
+
+
         console.log('App config block finished')
     }
 ]);
@@ -134,7 +155,7 @@ kimlik.run(function ($rootScope) {
 
 });
 
-function UserController($scope, $http, filterFilter, $resource, userService) {
+function UserController($scope, userService) {
 
     $scope.isLoggedIn = function () {
         return userService.isLoggedIn()
@@ -155,6 +176,30 @@ function UserController($scope, $http, filterFilter, $resource, userService) {
 
 
 }
+
+
+/**
+ * Parent Controller of Personal profile related pages
+ * @param $scope
+ * @constructor
+ * @param $routeSegment
+ */
+function KimlikCtrl($scope, $routeSegment) {
+//    $scope.companies = companyService.getUserCompanyList();
+    $scope.$routeSegment = $routeSegment;
+//
+//    $scope.$on('routeSegmentChange', function () {
+//        //broadcast de company_name i aliyoruz boylece resolved oldugundan eminiz parametrenin.
+//        //URL mapping de resolved ile yapila bilinir?
+//        //Sayfa render olmadan once resolved olsa daha iyi olur.
+//        $scope.company_name = $routeSegment.$routeParams.company_name //todo bunun adi pageName olsa daha iyi
+//        $scope.company = _.find($scope.companies, {page_name: $scope.company_name })
+//
+//    });
+
+    console.log('KimlikCtrl Ready')
+}
+
 
 
 function CompanyDashboardCtrl($scope, $routeSegment) {
