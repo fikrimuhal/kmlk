@@ -14,7 +14,7 @@
 
                 <div class="col-lg-9">
                     <input type="text" class="form-control" id="fullName"
-                           ng-model="address.country" ng-change="codeAddress()" />
+                           ng-model="address.country" ng-change="codeAddress()"/>
                     <span class="help-block"></span>
 
                 </div>
@@ -83,12 +83,14 @@
                 <div class="col-lg-9">
 
                     <span class="help-block">Profilinize bakan kişilerin ev adresinizi hangi seviyeye kadar görebileceğini seçiniz</span>
+
                     <div class="radio">
                         <label>
                             <input type="radio" name="optionsRadios" id="optionsRadios0" value="0" checked>
                             Gizli &mdash; Adres bilgisi gösterilmez
                         </label>
                     </div>
+
                     <div class="radio">
                         <label>
                             <input type="radio" name="optionsRadios" id="optionsRadios1" value="1">
@@ -122,8 +124,6 @@
                 </div>
             </div>
 
-
-
         </form>
     </div>
 
@@ -154,3 +154,7 @@
     </div>
 
 </div>
+<pre>
+
+    {{user | json}}
+</pre>

@@ -9,13 +9,13 @@ class UrlMappings {
             }
         }
 
+        "/api/$controller/$action?/$id?" {}
         //"/kimlik/$username?/$action?"(controller: 'kimlik')
 
         "/kimlik/**"(controller: 'kimlik', action: 'index')
         "/company/**"(controller: 'company', action: 'index')
 
         "/api/skill/$action"(controller: 'skill')
-        "/api/$controller/$action?/$id?" {}
 
 //        "/kimlik/$user?/follow"(view: "/kimlik/followPage")
 //        "/kimlik/$user?/education"(view: "/kimlik/educationPage")

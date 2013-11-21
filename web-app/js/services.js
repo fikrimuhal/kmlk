@@ -14,7 +14,7 @@ kimlik.factory('userService', function ($resource, $rootScope) {
         var api = $resource('/auth/ajaxAuth')
 
         $rootScope.loggedinUser = api.get({}, {}, function () {
-            console.log($rootScope.loggedinUser)
+            console.log('userAuthenticated',$rootScope.loggedinUser)
             $rootScope.$broadcast('userAuthenticated')
         });
     }
@@ -141,7 +141,7 @@ kimlik.factory('employmentService', function ($resource, $rootScope) {
 kimlik.factory('profileService', function ($resource) {
     var todoCount = 0;
     var _profileCache = {}
-    var api = $resource('/kimlik/api/:verb', {},
+    var api = $resource('/api/kimlik/:verb', {},
         {
             //@deprecated
             'getProfileById': {method: 'GET', params: {verb: 'getProfileById'}},

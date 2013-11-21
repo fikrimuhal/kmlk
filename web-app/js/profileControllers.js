@@ -49,11 +49,17 @@ function KimlikCtrl($scope, $routeSegment) {
     console.log('KimlikCtrl Ready')
 }
 
-kimlik.controller('KimlikSettingsLocationCtrl', ['$scope', '$resource', function ($scope, $resource) {
+kimlik.controller('KimlikSettingsLocationCtrl', ['$scope', '$resource', 'userService', function ($scope, $resource, userService) {
     google.maps.visualRefresh = true;
-    $scope.address = $scope.company.location;
+    $scope.user = userService.getLoggedInUser();
 
-    var api = $resource(_settings.baseUrl + 'kimlik/updateLocation');
+    $scope.address = {
+        latLng:{lat:0,lng:0}
+    }
+    console.log($scope.address)
+
+
+    var api = $resource(_settings.baseUrl + 'api/kimlik/updateLocation');
 
     var map;
     var geocoder;

@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta name="layout" content="first"/>
+    <r:require modules="googleMaps"/>
 
 
     <script type="text/ng-template" id="_template/kimlik.inline">
