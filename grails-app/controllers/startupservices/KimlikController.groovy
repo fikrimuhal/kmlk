@@ -135,57 +135,6 @@ class KimlikController {
 
     }
 
-    def follow() {
-        [profile: fetchProfile()]
-    }
-
-    def education() {
-        [profile: fetchProfile()]
-    }
-
-    def employment() {
-        [profile: fetchProfile()]
-    }
-
-    def skills() {
-        [profile: fetchProfile()]
-    }
-
-    def personalInfo() {
-        [profile: fetchProfile()]
-    }
-
-    def skill() {
-        [profile: fetchProfile(), skill: 'Javaa']
-    }
-
-    def contacts() {
-        [profile: authenticationService.authenticatedUser]
-
-    }
-
-    def messageInbox() {
-        [profile: authenticationService.authenticatedUser]
-
-    }
-
-    def notifications() {
-        [profile: authenticationService.authenticatedUser]
-    }
-
-    def positionPreferences() {
-        [profile: authenticationService.authenticatedUser]
-    }
-
-    def positionInbox() {
-        [profile: authenticationService.authenticatedUser]
-    }
-
-    def profilePicture() {
-
-        [profile: authenticationService.authenticatedUser]
-    }
-
     def getProfileById() {
 //        def result = [x:params.id]
 //        sleep(1000)
