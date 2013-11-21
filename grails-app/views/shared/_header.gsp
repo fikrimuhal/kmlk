@@ -12,22 +12,22 @@
             <ul class="dropdown-menu">
 
 
-                <li><a href="/kimlik/profile/{{getLoggedInUser().username}}" target="_self">Profilime git</a></li>
+                <li><a href="/kimlik/profile/{{user_name}}" target="_self">Profilime git</a></li>
                 <li><a href="/company/my/list">Şirket profilime git</a></li>
                 <li class="divider"></li>
-                <li><a href="/kimlik/{{getLoggedInUser().username}}/positionInbox" target="_self">İlginizi Çekecek Şirketler</a>
+                <li><a href="/kimlik/{{user_name}}/positionInbox" target="_self">İlginizi Çekecek Şirketler</a>
                 </li>
-                <li><a href="/kimlik/{{getLoggedInUser().username}}/positionPreferences" target="_self">Şirketler Kiriterlerim</a>
+                <li><a href="/kimlik/{{user_name}}/positionPreferences" target="_self">Şirketler Kiriterlerim</a>
                 </li>
                 <li class="divider"></li>
-                <li><a href="/kimlik/{{getLoggedInUser().username}}/contacts" target="_self">Adres Defterim</a></li>
-                <li><a href="/kimlik/{{getLoggedInUser().username}}/notifications" target="_self">Bildirimler</a></li>
-                <li><a href="/kimlik/{{getLoggedInUser().username}}/messageInbox" target="_self">Mesaj Kutum</a></li>
-                <li><a href="/kimlik/{{getLoggedInUser().username}}/profilePicture" target="_self">Profil Resmim</a></li>
+                <li><a href="/kimlik/{{user_name}}/contacts" target="_self">Adres Defterim</a></li>
+                <li><a href="/kimlik/{{user_name}}/notifications" target="_self">Bildirimler</a></li>
+                <li><a href="/kimlik/{{user_name}}/messageInbox" target="_self">Mesaj Kutum</a></li>
+                <li><a href="/kimlik/{{user_name}}/profilePicture" target="_self">Profil Resmim</a></li>
                 <li class="divider"></li>
                 <li><g:link controller="auth" action="logout" target="_self">Oturumu kapat</g:link></li>
 
-                <li><a href="#"><span class="badge bg-danger pull-right">3</span>Notifications</a></li>
+                <li><a href="#"><span class="badge bg-danger pull-right">3</span>Bildirimler</a></li>
             </ul>
         </li>
     </ul>

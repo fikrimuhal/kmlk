@@ -5,10 +5,7 @@
 
 
     <script type="text/ng-template" id="_template/kimlik.inline">
-
-
                     <section class="main" app-view-segment="1"></section>
-
     </script>
 
     <script type="text/javascript">
@@ -35,21 +32,15 @@
             <small class="block m-t-mini">CTO</small>
             <button class="btn btn-primary btn-sm active" data-toggle="button">
                 <span class="text">
-                    <i class="icon-eye-open"></i> Follow
+                    <i class="icon-eye-open"></i> TODO
                 </span>
                 <span class="text-active">
-                    <i class="icon-eye-open"></i> Following
+                    <i class="icon-eye-open"></i> ODOT
                 </span>
             </button>
         </div>
+    <g:render template="leftNav"/>
 
-        <div class="list-group list-normal m-b-none">
-            <a href="#" class="list-group-item">Profile</a>
-            <a href="#" class="list-group-item">Activity</a>
-            <a href="#" class="list-group-item">Group</a>
-            <a href="#" class="list-group-item"><span class="badge m-r">3</span> Friends</a>
-            <a href="#" class="list-group-item"><span class="badge m-r">4</span> Posts</a>
-        </div>
     </aside>
     <!-- /.sidebar -->
 

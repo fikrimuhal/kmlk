@@ -124,6 +124,10 @@ kimlik.config(['$routeSegmentProvider', '$locationProvider',
         $routeSegmentProvider.
             when('/kimlik/:user_name/settings', 'kimlik.settings.general').
             when('/kimlik/:user_name/settings/general', 'kimlik.settings.general').
+            when('/kimlik/:user_name/settings/history', 'kimlik.settings.history').
+            when('/kimlik/:user_name/settings/skills', 'kimlik.settings.skills').
+            when('/kimlik/:user_name/settings/social', 'kimlik.settings.social').
+            when('/kimlik/:user_name/settings/notifications', 'kimlik.settings.notifications').
 
 
             segment('kimlik', {
@@ -136,7 +140,20 @@ kimlik.config(['$routeSegmentProvider', '$locationProvider',
                 templateUrl: '/html/kimlik/settings/settings.html'/*,
                  controller: CompanySettingsCtrl*/}).
             within().
-            segment('general', {templateUrl: '/html/kimlik/settings/general.html'})
+            segment('general', {templateUrl: '/html/kimlik/settings/general.html'}).
+            segment('history', {templateUrl: '/html/kimlik/settings/history.html'}).
+            segment('skills', {templateUrl: '/html/kimlik/settings/skills.html'}).
+            segment('social', {templateUrl: '/html/kimlik/settings/social.html'}).
+            segment('notifications', {templateUrl: '/html/kimlik/settings/notifications.html'});
+
+        $routeSegmentProvider.
+            when('/kimlik/:user_name/contacts', 'kimlik.contacts').
+            within('kimlik').segment('contacts', {
+                templateUrl: '/html/kimlik/contacts/contacts.html'});
+
+
+
+
 
 
         console.log('App config block finished')
@@ -475,11 +492,17 @@ function CompanyCtrl($scope, companyService, $routeSegment) {
 function NavBarCtrl($scope, companyService) {
     $scope.companies = $scope.companies || companyService.getUserCompanyList(); //bir onceki scope da yuklenmis olabilir
     $scope.companies.$promise.then(function () {
+    //todo kullanicinin sirketi olmaya bilir!
         $scope.showPrivateNavBar = true && $scope.companies //todo bunun yerine kullanici login olmus mu diye kontrol et
         console.log('companies', $scope.companies)
     });
+
     //todo: login bilgileri rest ile gelecek
-    //todo:
+    console.log('TODO NAVBAR login olmus kulaniciyi cekmesi lazim');
+    $scope.user_name = 'sumnulu';
+    //todo: login bilgileri rest ile gelecek
+
+
     console.log('NAV_BAR Ready');
 }
 

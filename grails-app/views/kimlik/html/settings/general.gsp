@@ -2,55 +2,62 @@
     <div class="col-sm-6">
         <form class="form-horizontal" role="form">
             <div class="form-group">
-                <label for="fullName" class="col-lg-3 control-label">Şirketin tam ünvanı</label>
+                <label for="fullName" class="col-lg-3 control-label">Ad</label>
 
                 <div class="col-lg-9">
                     <input type="text" class="form-control" id="fullName"
-                           placeholder="Fikrimuhal Teknoloji Araştırma Geliştirme LTD. ŞTİ.">
-                    <span class="help-block">Şirketinizin yasal tam adı</span>
+                           placeholder="Ilgaz">
+                    <span class="help-block">xxx</span>
 
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="sortName" class="col-lg-3 control-label">Kisa ad</label>
+                <label for="sortName" class="col-lg-3 control-label">Soyad</label>
 
                 <div class="col-lg-9">
-                    <input type="text" class="form-control" id="sortName" placeholder="Fikrimuhal">
-                    <span class="help-block">Yasal olarak kullanılabilecek en kısa adı. genelde 2 kelime sonuna LTD. ŞTİ eklemeyiniz. </span>
+                    <input type="text" class="form-control" id="sortName" placeholder="Şumnulu">
+                    <span class="help-block">xxx</span>
 
                 </div>
             </div>
 
             <div class="form-group">
-                <label class="col-lg-3 control-label">Sayfa adi</label>
+                <label class="col-lg-3 control-label">Gobek Adi</label>
 
                 <div class="col-lg-9">
-                    <input type="text" class="form-control" id="inputPassword12" placeholder="Fikrimuhal">
-                    <span class="help-block">Http://kimlik.io/[SAYFA_ADI] şeklinde kullanicak ad. Şirket unvaninin Ilk parcasini kullaniniz. Boşluk Kullanmayiniz</span>
+                    <input type="text" class="form-control" id="inputPassword12" placeholder="">
+                    <span class="help-block">xxx</span>
                 </div>
             </div>
 
             <div class="form-group">
-                <label  class="col-lg-3 control-label">Şirket Türu</label>
+                <label  class="col-lg-3 control-label">Cinsiyet</label>
 
                 <div class="col-lg-9">
                     <select id="disabledSelect" class="form-control">
-                        <option>Lütfen seçiniz...</option>
-                        <option>LTD. ŞTİ.</option>
-                        <option>A.Ş.</option>
-                        <option>Şahıs Şirketi</option>
-                        <option>Henüz resmi olarak kurulmadı</option>
+                        <option>Erkek</option>
+                        <option>Kadin</option>
                     </select>
                 </div>
             </div>
 
+
             <div class="form-group">
-                <label class="col-lg-3 control-label">Yetkili kişi</label>
+                <label class="col-lg-3 control-label">Hakkımda</label>
 
                 <div class="col-lg-9">
-                    <p class="form-control-static">Ilgaz Şumnulu</p>
-                    <span class="help-block">Daha sonra başka kişiler ekleye bilirsiniz, yada yonetici haklarini düzenleye bilirsiniz.</span>
+                    <textarea rows="5" class="form-control" id="s" placeholder=""></textarea>
+                    <span class="help-block">xxx</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-lg-3 control-label">Sayfa Adi</label>
+
+                <div class="col-lg-9">
+                    <input type="text" class="form-control" id="d" placeholder="sumnulu">
+                    <span class="help-block">kimlik.io/sumnulu</span>
                 </div>
             </div>
 

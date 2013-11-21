@@ -6,15 +6,11 @@
             <header class="panel-heading text-right">
                 <ul class="nav nav-tabs pull-left">
 
-                    <li ng-class="{active: $routeSegment.contains('general')}"><a  href="/kimlik/{{user_name}}/settings/general">Genel</a></li>
-                    <li ng-class="{active: $routeSegment.contains('education')}"><a  href="/kimlik/{{user_name}}/settings/education">Eğitim</a></li>
-                    <li ng-class="{active: $routeSegment.contains('work')}"><a  href="/kimlik/{{user_name}}/settings/work">İş</a></li>
-                    %{--<li ng-class="{active: $routeSegment.contains('location')}"><a href="/company/{{company_name}}/settings/location">Lokasyon</a></li>--}%
-                    %{--<li ng-class="{active: $routeSegment.contains('images')}"><a href="/company/{{company_name}}/settings/images">Görseller</a></li>--}%
-                    %{--<li ng-class="{active: $routeSegment.contains('security')}"><a href="/company/{{company_name}}/settings/security">Güvenlik ve İzinler</a></li>--}%
-                    %{--<li ng-class="{active: $routeSegment.contains('notifications')}"><a href="/company/{{company_name}}/settings/notifications">Bildirimler</a></li>--}%
-                    %{--<li ng-class="{active: $routeSegment.contains('social')}"><a href="/company/{{company_name}}/settings/social">Sosyal</a></li>--}%
-                    %{--<li ng-class="{active: $routeSegment.contains('www')}"><a href="/company/{{company_name}}/settings/www">Web Sayfası</a></li>--}%
+                    <li ng-class="{active: $routeSegment.contains('general')}"><a href="/kimlik/{{user_name}}/settings/general"> <i class="icon-home icon-large text-default"></i>Hakkımda</a></li>
+                    <li ng-class="{active: $routeSegment.contains('history')}"><a href="/kimlik/{{user_name}}/settings/history"> <i class="icon-user icon-large text-default"></i>Eğitim ve İş geçmişi</a></li>
+                    <li ng-class="{active: $routeSegment.contains('skills')}"><a href="/kimlik/{{user_name}}/settings/skills"><i class="icon-user icon-large text-default"></i> Beceri ve Yeterlilikler</a></li>
+                    <li ng-class="{active: $routeSegment.contains('social')}"><a href="/kimlik/{{user_name}}/settings/social"><i class="icon-user icon-large text-default"></i> Sosyal Hesaplarım</a></li>
+                    <li ng-class="{active: $routeSegment.contains('notifications')}"><a href="/kimlik/{{user_name}}/settings/notifications"><i class="icon-user icon-large text-default"></i> Bildirimler</a></li>
 
                 </ul>
                 <span class="hidden-sm hidden-xs hidden-phone">Ayarlar</span>
@@ -23,7 +19,7 @@
 
             <div class="panel-body">
                 <div class="tab-content">
-                    <div class="tab-pane fade active in">
+                    <div class="">
                         <div app-view-segment="2"></div>
 
                     </div>
@@ -35,3 +31,4 @@
     </div>
 </div>
 <!-- / hr -->
+

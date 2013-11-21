@@ -23,22 +23,17 @@
             <small class="block m-t-mini">${profile.workHistory?.lastEntity?.position}</small>
             <button class="btn btn-primary btn-sm active" data-toggle="button">
                 <span class="text">
-                    <i class="icon-eye-open"></i> Follow
+                    <i class="icon-eye-open"></i> ODOT
                 </span>
                 <span class="text-active">
-                    <i class="icon-eye-open"></i> Following
+                    <i class="icon-eye-open"></i> NOT IMP. YET
                 </span>
             </button>
         </div>
 
-        <div class="list-group list-normal m-b-none">
-            <a href="#" class="list-group-item">Profile</a>
-            <a href="#" class="list-group-item">Activity</a>
-            <a href="#" class="list-group-item">Group</a>
-            <a href="#" class="list-group-item"><span class="badge m-r">3</span> Friends</a>
-            <a href="#" class="list-group-item"><span class="badge m-r">4</span> Posts</a>
-        </div>
-    </aside>
+    <g:render template="leftNav"/>
+
+</aside>
     <!-- /.sidebar -->
 
     <!-- .sidebar -->
@@ -68,7 +63,6 @@
                 <g:render template="/kimlik/followMe" model="[profile: profile]"/>
                 <g:render template="/kimlik/employment" model="[profile: profile]"/>
                 <g:render template="/kimlik/skills" model="[profile: profile]"/>
-                <g:render template="/kimlik/education" model="[profile: profile]"/>
                 %{--<g:render template="/kimlik/testimonials"></g:render>--}%
                 %{--<g:render template="/kimlik/portfolio"></g:render>--}%
                 <g:render template="/kimlik/contact" model="[profile: profile]"/>

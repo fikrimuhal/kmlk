@@ -80,10 +80,10 @@ class Profile {
 
     String getProfileUrl() {
         if (registered) {
-            return '/kimlik/' + username
+            return '/kimlik/profile/' + username
 
         } else {
-            return '/kimlik/' + id
+            return '/kimlik/profile/' + id
 
         }
     }
