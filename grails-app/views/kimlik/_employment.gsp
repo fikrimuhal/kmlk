@@ -1,7 +1,10 @@
-<div class="separator line" id="resume"></div>
+%{--<div class="separator line" id="resume"></div>--}%
+
+<h3 class="font-thin"><i class="icon-time"></i>İş ve Eğitim</h3>
+<div class="separator line"></div>
 
 <div class="row bg-white" id="2column">
-    <div class="col-md-8">
+    <div class="col-md-offset-2 col-md-8">
         <!--Timeline -->
 
         <div id="timeline">
@@ -60,21 +63,6 @@
         <!--Timeline -->
     </div>
 
-    <div class="col-md-4 bg-white">
-        sssss <br/>
-        <g:link action="employment"
-                params="[username: params.username]"><span
-                ng-if="isSelfProfile()" ng-cloak>hepsini goster</span></g:link>   <br/>
-        <g:link action="employment" params="[username: params.username]"><span ng-if="isSelfProfile()"
-                                                                               ng-cloak>düzenle</span></g:link>
-        <br/>
-        <g:link action="education"
-                params="[username: params.username]"><span ng-if="isSelfProfile()"
-                                                           ng-cloak>hepsini goster</span></g:link>
-        <g:link action="education" params="[username: params.username]"><span ng-if="isSelfProfile()"
-                                                                              ng-cloak>düzenle</span></g:link>
 
-    %{--<g:render template="profile/stats" model="[company: company]"></g:render>--}%
-    </div>
 </div>
 

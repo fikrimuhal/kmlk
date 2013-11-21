@@ -1,105 +1,51 @@
-<style type="text/css">
-
-    /*#example-one { margin-bottom: 10px; }*/
-[contenteditable]:hover {
-    background: rgba(255, 255, 153, 1);
-    outline: 3px dashed #0090D2;
-    cursor: pointer;
-}
-
-    /*#example-one { margin-bottom: 10px; }*/
-[contenteditable]:focus {
-    background: rgb(197, 240, 255);
-    outline: 3px dashed #0090D2;
-    cursor: text;
-}
-
-.private {
-    /*-webkit-filter: blur(3px);*/
-
-}
-</style>
 
 <div class="row ">
+
     <div class="col-lg-6">
-        <div class="heading-buttons">
+        <h1 class="font-thin">Ilgaz Sumnulu</h1>
+        <br/>
+            <div class="row">
+                <div class="col-lg-3"><strong>Ad</strong></div>
 
-            <h4 class="glyphicons notes"><i></i>Kişisel bilgilerim</h4>
-
-            <div class="buttons pull-right">
-              <a href="/kimlik/sumnulu/settings" ng-if="isSelfProfile()"  ng-cloak>düzenle</a>
+                <div class="col-lg-9">Ilgaz Şumnulu</div>
             </div>
-        </div>
 
-        <table class="table table-condensed">
-            <tbody>
-            %{--<tr>
-                <td class="right muted">Dogum Tarihi</td>
-                <td class="private"><span contenteditable="true">${profile.birthDate?.format("MMM d, ''yy")}</span></td>
-            </tr>
-            <tr>
-                <td class="right muted">Adres</td>
-                <td class="private" contenteditable="true">${profile.contactInfo.address.fullAddress}</td>
-            </tr>
-            <tr>
-                <td class="right muted">E-mail</td>
-                <td class="private" contenteditable="true">${profile.contactInfo.publicEmail}</td>
-            </tr>
-            <tr>
-                <td class="right muted">Tel</td>
-                <td class="private" contenteditable="true">${profile.contactInfo.publicTel}</td>
-            </tr>--}%
-            <tr>
-                <td class="right muted">Website</td>
-                <td>${profile.contactInfo?.webSite ?: 'http://'}</td>
-            </tr>
-            <tr>
-                <td class="right muted">Enson sirketim</td>
-                <td>${profile.workHistory?.lastEntity?.entity}</td>
-            </tr>
-            </tbody>
-        </table>
+            <div class="row">
+                <div class="col-lg-3"><strong>Email</strong></div>
 
-        <div class="separator line"></div>
+                <div class="col-lg-9"><a href="#">sumnulu@gmail.com</a></div>
+            </div>
 
-        <p>
-            ${profile.aboutText}
-        </p>
+            <div class="row">
+                <div class="col-lg-3"><strong>Doğum Tarihi</strong></div>
 
-        <div class="separator line visible-phone"></div>
+                <div class="col-lg-9">16/10/1985</div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-3"><strong>Adres</strong></div>
+
+                <div class="col-lg-9"><a href="#">Elysium garden k4, alemdag, cekmekoy, istanbul, turkiye</a></div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-3"><strong>Tel</strong></div>
+
+                <div class="col-lg-9">+90 533 640 61 20</div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-3"><strong>Web</strong></div>
+
+                <div class="col-lg-9"><a href="#">http://sumnulu.kimlik.io</a></div>
+            </div>
+        <br/>
     </div>
+    <div class="col-lg-6">
+        <div class="bg-white-desktop m-l-n m-r-n m-b-n m-t-n" style="margin-bottom: -90px;">
 
-    <div class="col-lg-6"><g:if test="${profile.workHistory?.lastEntity}">
-
-        <h4 class="glyphicons cardio"><i></i>${profile.workHistory?.lastEntity?.position} at <a>${profile.workHistory?.lastEntity?.entity}</a>
-        </h4>
-    </g:if>
-
-        <div class="rowabout">
-            <div class="col-lg-12">
-                %{--<img src="${profile.profilePictureUrl}" style="width: 250px" class="pull-right"--}%
-                     %{--alt="${profile.name}"/>--}%
-            </div>
+            <div id="gmap_geocoding" style="height:302px;"> </div>
         </div>
-
-        %{--<!-- Twitter Section -->--}%
-        %{--<section class="twitter">--}%
-        %{--<div class="row-fluid">--}%
-        %{--<div class="span12">--}%
-        %{--<div class="tweet">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin nunc lorem, rutrum non porta. <span--}%
-        %{--class="label label-inverse">01/11/2012</span></div>--}%
-        %{--</div>--}%
-
-        %{--<div class="clearfix"></div>--}%
-        %{--</div>--}%
-        %{--</section>--}%
-        <!-- Twitter Section END -->
     </div>
 </div>
-
-<div class="row">
-    <div class="col-lg-12">
-    </div>
-</div>
-
-<div class="separator line"></div>
+<br/>

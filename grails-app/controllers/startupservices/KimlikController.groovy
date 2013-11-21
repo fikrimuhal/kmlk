@@ -116,7 +116,22 @@ class KimlikController {
 
     def profile() {
         session._responseCommitedExceptionWorkAround = 'force to create new session'
-        [profile: fetchProfile()]
+        def profile = fetchProfile()
+        log.debug profile
+        def skills = profile.skills.sort { it.percent ? -1 * it.percent : 0 } //sirket yetkilisinin izin verdigi skiller
+        //skilleri 2 ayri DIV icinde gosteriyoruz
+        def skills1, skills2
+        if (skills.size() < 5) {
+            skills1 = skills
+            skills2 = null
+        } else {
+            int midIdx = Math.ceil(skills.size() / 2)
+            skills1 = skills.subList(0, midIdx)
+
+            skills2 = skills.subList(midIdx, skills.size())
+        }
+
+        [profile: profile, skills1: skills1, skills2: skills2]
 
     }
 
