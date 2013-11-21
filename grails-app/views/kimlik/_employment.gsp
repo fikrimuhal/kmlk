@@ -36,7 +36,7 @@
                             <g:each in="${profile.educationHistory.history}">
                                 <article class="timeline-item alt">
                                     <div class="timeline-caption">
-                                        <div class="panel arrow arrow-left">
+                                        <div class="panel arrow arrow-right">
                                             <span class="timeline-icon"><i class="icon-calendar time-icon"></i></span>
                                             <span class="timeline-date">${it.startDate?.year} - ${it.endDate?.year}</span>
                                             <h5>
