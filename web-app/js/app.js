@@ -124,6 +124,7 @@ kimlik.config(['$routeSegmentProvider', '$locationProvider',
         $routeSegmentProvider.
             when('/kimlik/:user_name/settings', 'kimlik.settings.general').
             when('/kimlik/:user_name/settings/general', 'kimlik.settings.general').
+            when('/kimlik/:user_name/settings/location', 'kimlik.settings.location').
             when('/kimlik/:user_name/settings/history', 'kimlik.settings.history').
             when('/kimlik/:user_name/settings/skills', 'kimlik.settings.skills').
             when('/kimlik/:user_name/settings/social', 'kimlik.settings.social').
@@ -137,10 +138,11 @@ kimlik.config(['$routeSegmentProvider', '$locationProvider',
 
         $routeSegmentProvider.within('kimlik').
             segment('settings', {
-                templateUrl: '/html/kimlik/settings/settings.html'/*,
-                 controller: CompanySettingsCtrl*/}).
+                templateUrl: '/html/kimlik/settings/settings.html'}).
             within().
             segment('general', {templateUrl: '/html/kimlik/settings/general.html'}).
+            segment('location', {templateUrl: '/html/kimlik/settings/location.html',
+             controller: KimlikSettingsLocationCtrl}).
             segment('history', {templateUrl: '/html/kimlik/settings/history.html'}).
             segment('skills', {templateUrl: '/html/kimlik/settings/skills.html'}).
             segment('social', {templateUrl: '/html/kimlik/settings/social.html'}).
@@ -214,6 +216,181 @@ function KimlikCtrl($scope, $routeSegment) {
 
     console.log('KimlikCtrl Ready')
 }
+
+kimlik.controller('KimlikSettingsLocationCtrl', ['$scope', '$resource', function ($scope, $resource) {
+    google.maps.visualRefresh = true;
+    $scope.address = $scope.company.location;
+
+    var api = $resource(_settings.baseUrl + 'kimlik/updateLocation');
+
+    var map;
+    var geocoder;
+    var marker;
+    var myLatlng = new google.maps.LatLng($scope.address.latLng.lat, $scope.address.latLng.lng)
+    var markerLocation = new google.maps.LatLng($scope.address.latLng.lat, $scope.address.latLng.lng)
+    var zoomLevel = _.min([$scope.address.latLng.zoomLevel , 12])
+    $scope.markerIsJumping = !($scope.address && $scope.address.latLng && $scope.address.latLng.lat && $scope.address.latLng.lng);  //kozmetik
+
+    var markerDragListener = function () {
+        console.log('dragend: ', marker.getPosition());
+        marker.setAnimation(null);
+
+        $scope.$apply(function () {
+            $scope.markerIsJumping = false;
+        });
+
+        /*Vodoo START!
+         digest cycle in disinda bilerek bu atamayi yaptim (address objesinde degisiklik oldugu halde event fire etmesin diye)
+         bu satir apply dan sonra olmali
+         */
+        $scope.address.latLng = {
+            lat: marker.getPosition().lat(),
+            lng: marker.getPosition().lng(),
+            zoomLevel: map.getZoom()
+        }
+        /*Vodoo END!*/
+    };
+
+    var markerDragStartListener = function () {
+        console.log('.')
+        marker.setAnimation(google.maps.Animation.BOUNCE);
+        $scope.$apply(function () {
+            $scope.markerIsJumping = true
+        });
+
+
+    };
+
+    function initialize() {
+        console.log('google maps init')
+
+
+        var mapOptions = {
+            zoom: zoomLevel,
+            center: myLatlng,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+//                disableDefaultUI: true,
+            panControl: false,
+            zoomControl: true,
+            mapTypeControl: true,
+            scaleControl: false,
+            streetViewControl: false,
+            overviewMapControl: true,
+            overviewMapControlOptions: {opened: true}
+        };
+        map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+
+        //marker
+        marker = new google.maps.Marker({
+            position: markerLocation,
+            map: map,
+            draggable: true,
+            animation: google.maps.Animation.DROP,
+            title: "Hello World!"
+        });
+        google.maps.event.addListener(marker, 'dragend', markerDragListener);
+        google.maps.event.addListener(marker, 'dragstart', markerDragStartListener);
+
+        //geocode
+        geocoder = new google.maps.Geocoder();
+    }
+
+
+    initialize();
+    marker.setAnimation($scope.markerIsJumping ? google.maps.Animation.BOUNCE : null);
+    var waitingGeocoder = false;
+    $scope.codeAddress = function () {
+        if (!waitingGeocoder) {
+            waitingGeocoder = true;
+            var address = getPartialAddress($scope.address);
+            console.log(address)
+
+            geocoder.geocode({ 'address': address}, function (results, status) {
+                try {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        map.panTo(results[0].geometry.location);
+                        map.fitBounds(results[0].geometry.bounds);
+                        console.log(results);
+                        marker.setPosition(results[0].geometry.location);
+                        markerDragStartListener();
+                        $scope.address.formatted_address = results[0].formatted_address
+                        $scope.address.display_address = results[0].formatted_address
+                    } else {
+//                        alert("Geocode was not successful for the following reason: " + status);
+                    }
+                } catch (e) {
+                    throw e;
+                } finally {
+                    waitingGeocoder = false;
+
+                }
+            });
+
+        }
+    };
+
+//        var skippCodeAddress = true;
+//        $scope.$watchCollection('address', function () {
+//            console.log('address data changed');
+//            if (!skippCodeAddress) {
+//                $scope.codeAddress();
+//            }
+//            skippCodeAddress = false;
+//        });
+
+    function getPartialAddress(a) {
+        return a.street + ', ' + a.avenue + ', ' + a.quarter + ', ' + a.district + ', ' + a.city + ', ' + a.country;
+    }
+
+
+    $scope.save = function (address) {
+        var result = api.save({companyId: $scope.company._id}, address)
+
+    }
+    console.log('Settings location Ready')
+
+}
+]);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 function CompanyDashboardCtrl($scope, $routeSegment) {

@@ -4,7 +4,7 @@
 <div class="separator line"></div>
 
 <div class="row bg-white" id="2column">
-    <div class="col-md-offset-2 col-md-8">
+    <div class="col-md-offset-1 col-md-6">
         <!--Timeline -->
 
         <div id="timeline">

@@ -2,17 +2,8 @@
 
 
 <div class="heading-buttons">
-    <h2 class="font-thin"><i class="icon-tags"></i>Bilgi ve Yeterlilikler </h2>
-
-
-
-    <div class="buttons pull-right">
-        <g:link action="skills"
-                params="[username: params.username]"><span
-                ng-if="isSelfProfile()" ng-cloak>hepsini goster</span></g:link>
-        <g:link action="skills" params="[username: params.username]"><span ng-if="isSelfProfile()"
-                                                                           ng-cloak>düzenle</span></g:link>
-    </div>
+    <h2 class="font-thin"><i class="icon-tags"></i>Bilgi ve Yeterlilikler  <small><br/>Bu uzmanlıklar analatik olarak hesaplanmıştır.
+        Daha fazla bilgi için <a href="#">tıklayın</a>.</small></h2>
 </div>
 
 <div class="row">
@@ -61,4 +52,16 @@
 
         </div>
     </g:if>
+    <div class="col-lg-4 col-sm-4">
+        <p class="text-center"><span class="btn btn-circle btn-lg btn-default"><i class="icon-refresh"></i>
+        </span></p>
+
+        <div>
+            <h3 class="text-center">Uzmanlıklar hakkında</h3>
+
+            <p class="text-center">Bu uzmanlıklar analatik olarak hesaplanmıştır. <br/>
+                Daha fazla bilgi için <a href="#">tıklayın</a>.</p>
+        </div>
+    </div>
 </div> %{--row--}%
+%{--<div class="separator line"></div>--}%

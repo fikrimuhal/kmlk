@@ -65,7 +65,7 @@
                 <g:render template="/kimlik/skills" model="[profile: profile]"/>
                 %{--<g:render template="/kimlik/testimonials"></g:render>--}%
                 %{--<g:render template="/kimlik/portfolio"></g:render>--}%
-                <g:render template="/kimlik/contact" model="[profile: profile]"/>
+                %{--<g:render template="/kimlik/contact" model="[profile: profile]"/>--}%
                 %{--<g:render template="/kimlik/other"></g:render>--}%
 
             </div>

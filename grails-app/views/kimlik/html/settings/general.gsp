@@ -7,7 +7,7 @@
                 <div class="col-lg-9">
                     <input type="text" class="form-control" id="fullName"
                            placeholder="Ilgaz">
-                    <span class="help-block">xxx</span>
+                    <span class="help-block"></span>
 
                 </div>
             </div>
@@ -17,17 +17,17 @@
 
                 <div class="col-lg-9">
                     <input type="text" class="form-control" id="sortName" placeholder="Şumnulu">
-                    <span class="help-block">xxx</span>
+                    <span class="help-block"></span>
 
                 </div>
             </div>
 
             <div class="form-group">
-                <label class="col-lg-3 control-label">Gobek Adi</label>
+                <label class="col-lg-3 control-label">Ortanca Ad</label>
 
                 <div class="col-lg-9">
                     <input type="text" class="form-control" id="inputPassword12" placeholder="">
-                    <span class="help-block">xxx</span>
+                    <span class="help-block"></span>
                 </div>
             </div>
 
@@ -58,6 +58,30 @@
                 <div class="col-lg-9">
                     <input type="text" class="form-control" id="d" placeholder="sumnulu">
                     <span class="help-block">kimlik.io/sumnulu</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-3 control-label">Web</label>
+
+                <div class="col-lg-9">
+                    <input type="text" class="form-control" id="w" placeholder="http://">
+                    <span class="help-block">http://www.xxxx.com</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-3 control-label">Açık Email</label>
+
+                <div class="col-lg-9">
+                    <input type="text" class="form-control" id="h" placeholder="email adresiniz">
+                    <span class="help-block">Ziyaretcilere görünür</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="col-lg-3 control-label">Tel</label>
+
+                <div class="col-lg-9">
+                    <input type="text" class="form-control" id="v" placeholder="Telefon numariniz">
+                    <span class="help-block">Ziyaretcilere görünür</span>
                 </div>
             </div>
 

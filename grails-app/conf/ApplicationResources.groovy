@@ -94,6 +94,8 @@ modules = {
         dependsOn(['lodash', 'angularjs','fmAnalytics'])
 
         resource url: 'js/app.js'
+        resource url: 'js/companyControllers.js'
+        resource url: 'js/profileControllers.js'
         resource url: 'js/controllers.js'
         resource url: 'js/services.js'
         resource url: 'js/filters.js'
@@ -106,6 +108,8 @@ modules = {
 
 
         resource url: 'js/app.js'
+        resource url: 'js/companyControllers.js'
+        resource url: 'js/profileControllers.js'
         resource url: 'js/controllers.js'
         resource url: 'js/services.js'
         resource url: 'js/filters.js'

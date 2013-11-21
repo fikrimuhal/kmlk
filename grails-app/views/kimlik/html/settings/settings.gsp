@@ -7,6 +7,7 @@
                 <ul class="nav nav-tabs pull-left">
 
                     <li ng-class="{active: $routeSegment.contains('general')}"><a href="/kimlik/{{user_name}}/settings/general"> <i class="icon-home icon-large text-default"></i>Hakkımda</a></li>
+                    <li ng-class="{active: $routeSegment.contains('location')}"><a href="/kimlik/{{user_name}}/settings/location"> <i class="icon-map-marker icon-large text-default"></i>Ev adresim</a></li>
                     <li ng-class="{active: $routeSegment.contains('history')}"><a href="/kimlik/{{user_name}}/settings/history"> <i class="icon-user icon-large text-default"></i>Eğitim ve İş geçmişi</a></li>
                     <li ng-class="{active: $routeSegment.contains('skills')}"><a href="/kimlik/{{user_name}}/settings/skills"><i class="icon-user icon-large text-default"></i> Beceri ve Yeterlilikler</a></li>
                     <li ng-class="{active: $routeSegment.contains('social')}"><a href="/kimlik/{{user_name}}/settings/social"><i class="icon-user icon-large text-default"></i> Sosyal Hesaplarım</a></li>
