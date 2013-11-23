@@ -17,7 +17,7 @@ class AuthController {
 
             render data as JSON
         } else {
-            render status: 404
+            render status: 401
         }
     }
 

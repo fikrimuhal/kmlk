@@ -98,7 +98,10 @@ class KimlikController {
     }
 
     def ajaxSaveBasicInfo() {
-        assert authenticationService.loggedIn
+        if (!authenticationService.loggedIn){
+            render status: 401
+            return
+        }
 
         def profile = authenticationService.authenticatedUser
 

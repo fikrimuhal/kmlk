@@ -1,4 +1,3 @@
-
 <div ng-controller="positionInboxController">
     <div class="separator line"></div>
 
@@ -8,13 +7,13 @@
         </h3>
     </div>
 
-    <div class="row-fluid">
-        <div class="span12">
+    <div class="row">
+        <div class="col-lg-12">
             <div ng-repeat="it in inbox" ng-cloak>
                 <div class="separator line"></div>
 
-                <div class="row-fluid main-position">
-                    <div class="span8">
+                <div class="row main-position">
+                    <div class="col-lg-8">
                         <h4>{{it.company.short_name}}</h4>
                         Position title: <span>{{it.position.title}}</span> <br/>
                         Yer: <span>Istanbul / Çekmeköy (4km)</span><br/>
@@ -26,19 +25,19 @@
                         Çalışma ortamı: <span><a href="#">7x</a></span> <br/>
                     </div>
 
-                    <div class="span4">
+                    <div class="col-lg-4">
                         <span class="">{{it.position.sallary}} TL /ay</span>  <br/>
                         <span class=""><b>Genel Puan</b> 65 %</span>  <br/>
                         <button>Burada çalışmak istiyorum</button>  <br/>
-                        <button ng-click="notInterested(it._id)">İlgilenmiyorum</button>  <br/>
-                        <button ng-click="toggleDetails(it._id)">Detaylar</button>  <br/>
+                        <button ng-click="notInterested(it)">İlgilenmiyorum</button>  <br/>
+                        <button ng-click="toggleDetails(it)">Detaylar</button>  <br/>
                         <!-- Button to trigger modal -->
 
                     </div>
                 </div>
 
-                <div class="row-fluid details-position" ng-if="isDetailsVisible(it._id)">
-                    <div class="span12">
+                <div class="row details-position" ng-if="isDetailsVisible(it)">
+                    <div class="col-lg-12">
                         <div class="positionDetails">
                             <h5>Pozisyon hakkında</h5>
                             <span>{{it.position.about}}</span> <br/>
@@ -80,7 +79,7 @@
                         <div class="employees">
                             <h5>Çalışanlar <small>Toplam 6 çalışan</small></h5>
                             <ul class="thumbnails">
-                                <li class="span4">
+                                <li class="col-lg-4">
                                     <div class="thumbnail">
                                         <img data-src="holder.js/300x200" alt="300x200"
                                              style="width: 300px; height: 200px;"
@@ -91,7 +90,7 @@
                                         </div>
                                     </div>
                                 </li>
-                                <li class="span4">
+                                <li class="col-lg-4">
                                     <div class="thumbnail">
                                         <img data-src="holder.js/300x200" alt="300x200"
                                              style="width: 300px; height: 200px;"
@@ -102,7 +101,7 @@
                                         </div>
                                     </div>
                                 </li>
-                                <li class="span4">
+                                <li class="col-lg-4">
                                     <div class="thumbnail">
                                         <img data-src="holder.js/300x200" alt="300x200"
                                              style="width: 300px; height: 200px;"
@@ -160,7 +159,7 @@
 
     </div> %{--row--}%
 
-
+    <!--suppress CheckValidXmlInScriptTagBody -->
     <script type="text/ng-template" id="positionNotInterestedModal.html">
         <div class="modal-header">
             <h3>Bu ilanı beğenmedim çünkü,</h3>

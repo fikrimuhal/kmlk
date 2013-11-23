@@ -258,7 +258,17 @@ function personalInfoController($rootScope, $scope, userService, $resource) {
 
 }
 
-
+/**
+ * @deprecated
+ * @refactor router cagirsin bu kontroller i
+ *
+ * @param $rootScope
+ * @param $scope
+ * @param userService
+ * @param $resource
+ * @param $modal
+ * @param $log
+ */
 function positionInboxController($rootScope, $scope, userService, $resource, $modal, $log) {
     $scope.model = 'selassm'
     var api = $resource('/position/inbox')
@@ -267,11 +277,15 @@ function positionInboxController($rootScope, $scope, userService, $resource, $mo
         console.log($scope.inbox)
     });
 
-    $scope.toggleDetails = function (id) {
+    $scope.toggleDetails = function (it) {
+        var id = it._id;
+        console.log('details',id)
+        console.log('details1',visibleDetailsMap[id])
         visibleDetailsMap[id] = !visibleDetailsMap[id]
     };
 
-    $scope.isDetailsVisible = function (id) {
+    $scope.isDetailsVisible = function (it) {
+        var id = it._id;
         return visibleDetailsMap[id]
     }
 

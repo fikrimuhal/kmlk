@@ -17,7 +17,7 @@ class PositionController {
         def result = [
                 [
                         _id: new ObjectId(),
-                        company: companyService.getCompany(/*TODO*/new ObjectId()),
+                        company: companyService.getCompany(/*TODO*/new ObjectId('5284d3dfef86d6dccf7161a0')),
                         requester: profileId,
                         position: [
                                 requiredSkills: [
@@ -38,7 +38,7 @@ class PositionController {
                 ],
                 [
                         _id: new ObjectId(),
-                        company: companyService.getCompany(/*TODO*/new ObjectId()),
+                        company: companyService.getCompany(/*TODO*/new ObjectId('5284d3dfef86d6dccf71619f')),
                         requester: profileId,
                         position: [
                                 requiredSkills: [
@@ -59,7 +59,7 @@ class PositionController {
                 ],
                 [
                         _id: new ObjectId(),
-                        company: companyService.getCompany(/*TODO*/new ObjectId()),
+                        company: companyService.getCompany(/*TODO*/new ObjectId('5284d3dfef86d6dccf71619f')),
                         requester: profileId,
                         position: [
                                 requiredSkills: [

@@ -1,3 +1,4 @@
+<%--suppress CheckValidXmlInScriptTagBody --%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -23,7 +24,7 @@
     <aside class="sidebar bg-lighter sidebar">
         <div class="text-center clearfix bg-white">
             <a href="/kimlik/profile/sumnulu" target="_self">
-            <img ng-src="{{loggedinUser.profilePicture.defaultPicture.url}}">
+            <img ng-src="{{loggedinUser.profilePicture.defaultPicture.url}}"/>
             </a>
         </div>
 
@@ -39,7 +40,7 @@
                 </span>
             </button>
         </div>
-    <g:render template="leftNav"/>
+<g:render template="leftNav"/>
 
     </aside>
     <!-- /.sidebar -->

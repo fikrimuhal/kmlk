@@ -41,7 +41,10 @@ class CompanyController {
     def userCompanyList() {
 
         ObjectId loggedInUser = ObjectId.massageToObjectId(authenticationService.authenticatedUserId)
-        assert loggedInUser
+        if (!loggedInUser){
+            render status: 401
+            return
+        }
 
         def result = companyService.listByOwner(loggedInUser)
 
