@@ -123,6 +123,7 @@ kimlik.config(['$routeSegmentProvider', '$locationProvider',
         $routeSegmentProvider.
             when('/kimlik/:user_name/settings', 'kimlik.settings.general').
             when('/kimlik/:user_name/settings/general', 'kimlik.settings.general').
+            when('/kimlik/:user_name/settings/profilePicture', 'kimlik.settings.profilePicture').
             when('/kimlik/:user_name/settings/location', 'kimlik.settings.location').
             when('/kimlik/:user_name/settings/history', 'kimlik.settings.history').
             when('/kimlik/:user_name/settings/skills', 'kimlik.settings.skills').
@@ -140,21 +141,38 @@ kimlik.config(['$routeSegmentProvider', '$locationProvider',
                 templateUrl: '/html/kimlik/settings/settings.html'}).
             within().
             segment('general', {templateUrl: '/html/kimlik/settings/general.html'}).
+            segment('profilePicture', {templateUrl: '/html/kimlik/settings/profilePicture.html'}).
             segment('location', {templateUrl: '/html/kimlik/settings/location.html',
-             controller: 'KimlikSettingsLocationCtrl'}).
+                controller: 'KimlikSettingsLocationCtrl'}).
             segment('history', {templateUrl: '/html/kimlik/settings/history.html'}).
             segment('skills', {templateUrl: '/html/kimlik/settings/skills.html'}).
             segment('social', {templateUrl: '/html/kimlik/settings/social.html'}).
             segment('notifications', {templateUrl: '/html/kimlik/settings/notifications.html'});
 
+
         $routeSegmentProvider.
             when('/kimlik/:user_name/contacts', 'kimlik.contacts').
             within('kimlik').segment('contacts', {
+                controller: 'KimlikContactsCtrl',
                 templateUrl: '/html/kimlik/contacts/contacts.html'});
 
 
+        $routeSegmentProvider.
+            when('/kimlik/:user_name/notifications', 'kimlik.notifications').
+            within('kimlik').segment('notifications', {
+                templateUrl: '/html/kimlik/notifications/notifications.html'});
 
 
+        $routeSegmentProvider.
+            when('/kimlik/:user_name/positions', 'kimlik.positions.inbox').
+            when('/kimlik/:user_name/positions/inbox', 'kimlik.positions.inbox').
+            when('/kimlik/:user_name/positions/settings', 'kimlik.positions.settings');
+
+        $routeSegmentProvider.within('kimlik').segment('positions', {
+            templateUrl: '/html/kimlik/positions/positions.html'}).
+            within().
+            segment('inbox', {templateUrl: '/html/kimlik/positions/inbox.html'}).
+            segment('settings', {templateUrl: '/html/kimlik/positions/settings.html'});
 
 
         console.log('App config block finished')
@@ -173,20 +191,23 @@ kimlik.run(function ($rootScope) {
 });
 
 
-
-function NavBarCtrl($scope, companyService) {
+function NavBarCtrl($scope, companyService, userService) {
     $scope.companies = $scope.companies || companyService.getUserCompanyList(); //bir onceki scope da yuklenmis olabilir
     $scope.companies.$promise.then(function () {
-    //todo kullanicinin sirketi olmaya bilir!
-        $scope.showPrivateNavBar = true && $scope.companies //todo bunun yerine kullanici login olmus mu diye kontrol et
+        $scope.showPrivateNavBarCompanies = true; //flicker i onlemek icin showPrivateNavBar burada true olmali eger true olacak ise
+        //todo companies i cache e at
         console.log('companies', $scope.companies)
     });
+    function initialize() {
 
-    //todo: login bilgileri rest ile gelecek
-    console.log('TODO NAVBAR login olmus kulaniciyi cekmesi lazim');
-    $scope.user_name = 'sumnulu';
-    //todo: login bilgileri rest ile gelecek
+        if (userService.isLoggedIn()) {
+            $scope.showPrivateNavBar = true;
+            $scope.user_name = userService.getLoggedInUser().username;
+        }
+    }
 
+    initialize();
+    $scope.$on('userAuthenticated', initialize);
 
     console.log('NAV_BAR Ready');
 }

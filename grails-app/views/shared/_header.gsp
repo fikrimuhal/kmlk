@@ -5,7 +5,7 @@
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <span class="hidden-xs-only">Ilgaz Şumnulu</span>
-                <span class="thumb-small avatar inline"><g:img uri="http://s3.amazonaws.com/kimlik/photos/525bee2aef869502d11cc461.jpg" alt="Ilgaz Şumnulu"
+                <span class="thumb-small avatar inline"><img ng-src="{{loggedinUser.profilePicture.defaultPicture.url}}" alt="{{loggedinUser.first_name + ' ' + loggedinUser.last_name}}"
                                                              class="img-circle"/></span>
                 <b class="caret hidden-xs-only"></b>
             </a>
@@ -15,19 +15,19 @@
                 <li><a href="/kimlik/profile/{{user_name}}" target="_self">Profilime git</a></li>
                 <li><a href="/company/my/list">Şirket profilime git</a></li>
                 <li class="divider"></li>
-                <li><a href="/kimlik/{{user_name}}/positionInbox" target="_self">İlginizi Çekecek Şirketler</a>
+                <li><a href="/kimlik/{{user_name}}/positions/inbox">İlginizi Çekecek Şirketler</a>
                 </li>
-                <li><a href="/kimlik/{{user_name}}/positionPreferences" target="_self">Şirketler Kiriterlerim</a>
+                <li><a href="/kimlik/{{user_name}}/positions/settings">Şirketler Kiriterlerim</a>
                 </li>
                 <li class="divider"></li>
-                <li><a href="/kimlik/{{user_name}}/contacts" target="_self">Adres Defterim</a></li>
-                <li><a href="/kimlik/{{user_name}}/notifications" target="_self">Bildirimler</a></li>
-                <li><a href="/kimlik/{{user_name}}/messageInbox" target="_self">Mesaj Kutum</a></li>
-                <li><a href="/kimlik/{{user_name}}/profilePicture" target="_self">Profil Resmim</a></li>
+                <li><a href="/kimlik/{{user_name}}/contacts" >Adres Defterim</a></li>
+                <li><a href="/kimlik/{{user_name}}/notifications">Mesaj Kutum</a></li>
+                <li><a href="/kimlik/{{user_name}}/settings/profilePicture">Profil Resmim</a></li>
                 <li class="divider"></li>
+                <li><a href="/kimlik/{{user_name}}/settings" >Profilimi düzenle</a></li>
                 <li><g:link controller="auth" action="logout" target="_self">Oturumu kapat</g:link></li>
 
-                <li><a href="#"><span class="badge bg-danger pull-right">3</span>Bildirimler</a></li>
+                <li><a href="/kimlik/{{user_name}}/notifications"><span class="badge bg-danger pull-right">3</span>Bildirimler</a></li>
             </ul>
         </li>
     </ul>
@@ -108,7 +108,7 @@
             </ul>
         </li>
 
-        <li  ng-repeat="c in companies" class="dropdown" ng-class="{active: company_name === c.page_name}">
+        <li ng-cloak ng-show="showPrivateNavBarCompanies" ng-repeat="c in companies" class="dropdown" ng-class="{active: company_name === c.page_name}">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{c.short_name}} <b class="caret"></b></a>
             <ul class="dropdown-menu" role="menu">
                 <li><a href="/company/profile/{{c.page_name}}" target="_top">Web Sayfası</a></li>

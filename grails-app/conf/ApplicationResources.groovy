@@ -104,7 +104,7 @@ modules = {
 
 
     kimlik {
-        dependsOn(['theme', 'lodash', 'angularjs'])
+        dependsOn(['lodash', 'angularjs'])
 
 
         resource url: 'js/app.js'
@@ -130,6 +130,7 @@ modules = {
         resource url: 'js/lib/angular/angular.min.js', disposition: 'head'
         resource url: 'js/lib/angular/angular-animate.min.js', disposition: 'head'
         resource url: 'js/lib/angular/angular-resource.min.js', disposition: 'head'
+//        resource url: 'js/lib/angular/angular-cookies.min.js', disposition: 'head'
         resource url: 'js/lib/angular/angular-sanitize.min.js', disposition: 'head'
         resource url: 'js/lib/angular/angular-touch.min.js', disposition: 'head'
         resource url: 'js/lib/angular-ui/ui-bootstrap-tpls-0.6.0.min.js', disposition: 'head'
@@ -138,6 +139,7 @@ modules = {
         resource url: 'js/lib/angular-route-segment/angular-route-segment.min.js'
 
 
+//        resource url: 'js/lib/cookies.min.js', disposition: 'head'
     }
 
 

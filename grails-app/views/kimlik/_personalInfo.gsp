@@ -2,12 +2,12 @@
 <div class="row ">
 
     <div class="col-lg-6">
-        <h1 class="font-thin">Ilgaz Sumnulu</h1>
+        <h1 class="font-thin">${profile.name}</h1>
         <br/>
             <div class="row">
                 <div class="col-lg-3"><strong>Ad</strong></div>
 
-                <div class="col-lg-9">Ilgaz Şumnulu</div>
+                <div class="col-lg-9">${profile.name}</div>
             </div>
 
             <div class="row">

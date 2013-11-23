@@ -134,7 +134,10 @@ class KimlikController {
         [profile: profile, skills1: skills1, skills2: skills2]
 
     }
-
+    /**
+     * @Deprecated
+     * @return
+     */
     def getProfileById() {
 //        def result = [x:params.id]
 //        sleep(1000)
@@ -153,7 +156,18 @@ class KimlikController {
         def _QUERY = [_id: ['$in': ids]]
 
         log.debug(ids)
-        def result = col.find(_QUERY).toArray()// Profile.list()[1..40]//Profile.findById(id) ?: [:]
+        def result = []
+                col.find(_QUERY).each {
+
+                        if (it.accounts?.facebook?.remoteId) {
+                            it.profilePictureUrl = "http://graph.facebook.com/${it.accounts.facebook.remoteId}/picture?height=400"
+                        } else if (it.accounts?.linkedin?.remoteId) {
+                            it.profilePictureUrl = it.accounts?.linkedin?.picture_url
+                        }
+                    it.profileUrl = '/kimlik/profile/' + (it.username?:it._id)
+
+                    result << it
+                }
 
         render result as JSON
     }

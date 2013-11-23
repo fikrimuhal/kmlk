@@ -25,11 +25,13 @@
     <!-- .sidebar -->
     <aside class="sidebar bg-lighter sidebar">
         <div class="text-center clearfix bg-white">
-            <img src="http://s3.amazonaws.com/kimlik/photos/525bee2aef869502d11cc461.jpg">
+            <a href="/kimlik/profile/sumnulu" target="_self">
+            <img ng-src="{{loggedinUser.profilePicture.defaultPicture.url}}">
+            </a>
         </div>
 
         <div class="bg-light padder padder-v">
-            <span class="h4">Ilgaz şumnulu </span>
+            <a href="/kimlik/profile/{{user_name}}" target="_self"> <span class="h4"> Ilgaz şumnulu </span></a>
             <small class="block m-t-mini">CTO</small>
             <button class="btn btn-primary btn-sm active" data-toggle="button">
                 <span class="text">

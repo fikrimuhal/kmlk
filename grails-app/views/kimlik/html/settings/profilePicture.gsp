@@ -1,12 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="layout" content="kimlik"/>
 
-</head>
-
-<body>
-<div class="separator line"></div>
 
 
 <div class="heading-buttons">
@@ -17,7 +9,7 @@
 <div class="row-fluid">
     <div class="span6">
         <h4>Şuan ki profil resminiz</h4>
-        <img src="${profile.profilePictureUrl}" alt=""/>
+        <img src="${profile?.profilePictureUrl}" alt=""/>
     </div>
 
     <div class="span6">
@@ -26,7 +18,7 @@
             <input type="file" name="file"/>
             <g:submitButton name="Yükle"/>
             <g:hiddenField name="redirectTo"
-                           value="${g.createLink([controller: 'kimlik', action: 'profilePicture', params: [username: profile.username]])}"/>
+                           value="${g.createLink([controller: 'kimlik', action: 'profilePicture', params: [username: profile?.username]])}"/>
 
         </g:uploadForm>
     </div>  %{--span 6--}%
@@ -36,7 +28,7 @@
         <h3>Altarnatif profil resimleri</h3>
         <ul>
 
-            <g:each in="${profile.profilePicture.pictures}">
+            <g:each in="${profile?.profilePicture?.pictures}">
                 <li>
                     <pre>
                         <img src="${it.url}" alt=""/>
@@ -47,5 +39,3 @@
         </ul>
     </div>
 </div>
-</body>
-</html>

@@ -28,6 +28,23 @@ function UserController($scope, userService) {
 }
 
 
+function KimlikContactsCtrl($scope, userService, profileService) {
+    console.log('KimlikContactsCtrl ready')
+    $scope.profiles = [];
+    var user = userService.getLoggedInUser()
+    user.$promise.then(function (d) {
+        console.log('cacheee ', profileService.prefetchProfilesByIds(_.chain(user.friends).map('id').value()));
+        _.chain(user.friends).map('id').uniq().forEach(function (id) {
+            $scope.profiles.push(profileService.getProfileById(id))
+        });
+
+
+    });
+
+
+}
+
+
 /**
  * Parent Controller of Personal profile related pages
  * @param $scope
@@ -37,7 +54,7 @@ function UserController($scope, userService) {
 function KimlikCtrl($scope, $routeSegment) {
 //    $scope.companies = companyService.getUserCompanyList();
     $scope.$routeSegment = $routeSegment;
-
+    $scope.user_name = $routeSegment.$routeParams.user_name;
     $scope.$on('routeSegmentChange', function () {
         //broadcast de company_name i aliyoruz boylece resolved oldugundan eminiz parametrenin.
         //URL mapping de resolved ile yapila bilinir?
@@ -46,7 +63,9 @@ function KimlikCtrl($scope, $routeSegment) {
 //   $scope.company = _.find($scope.companies, {page_name: $scope.company_name })
     });
 
-    console.log('KimlikCtrl Ready')
+
+
+
 }
 
 kimlik.controller('KimlikSettingsLocationCtrl', ['$scope', '$resource', 'userService', function ($scope, $resource, userService) {
@@ -54,7 +73,7 @@ kimlik.controller('KimlikSettingsLocationCtrl', ['$scope', '$resource', 'userSer
     $scope.user = userService.getLoggedInUser();
 
     $scope.address = {
-        latLng:{lat:0,lng:0}
+        latLng: {lat: 0, lng: 0}
     }
     console.log($scope.address)
 
@@ -188,8 +207,7 @@ kimlik.controller('KimlikSettingsLocationCtrl', ['$scope', '$resource', 'userSer
     }
     console.log('Settings location Ready')
 
-}
-]);
+}]);
 
 
 

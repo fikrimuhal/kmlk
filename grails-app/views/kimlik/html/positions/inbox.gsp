@@ -1,11 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <meta name="layout" content="kimlik"/>
 
-</head>
-
-<body>
 <div ng-controller="positionInboxController">
     <div class="separator line"></div>
 
@@ -189,6 +182,3 @@
         </div>
     </script>
 </div>
-
-</body>
-</html>

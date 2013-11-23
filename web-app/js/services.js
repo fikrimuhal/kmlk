@@ -1,33 +1,3 @@
-kimlik.factory('userService', function ($resource, $rootScope) {
-    $rootScope.loggedinUser = {}
-
-    function isLoggedIn() {
-        return !!$rootScope.loggedinUser.username
-    }
-
-    function getLoggedInUser() {
-        return $rootScope.loggedinUser
-    }
-
-
-    function auth() {
-        var api = $resource('/auth/ajaxAuth')
-
-        $rootScope.loggedinUser = api.get({}, {}, function () {
-            console.log('userAuthenticated',$rootScope.loggedinUser)
-            $rootScope.$broadcast('userAuthenticated')
-        });
-    }
-
-    auth(); //try authentication
-
-    return {
-        isLoggedIn: isLoggedIn,
-        auth: auth,
-        getLoggedInUser: getLoggedInUser
-    }
-});
-
 kimlik.factory('skillService', function ($resource, $rootScope) {
     $rootScope.skills = [];    //users skills
     $rootScope.allSkills = undefined  //all skills
@@ -138,6 +108,65 @@ kimlik.factory('employmentService', function ($resource, $rootScope) {
 });
 
 
+kimlik.factory('userService', function ($resource, $rootScope) {
+    //$rootScope.loggedinUser;
+    var _cacheKey = 'loggedInProfile';
+    var user;
+    function getCachedProfile() {
+        var p;
+        try {
+           p = angular.fromJson(localStorage.getItem(_cacheKey));
+            console.log('getCachedProfile')
+        } catch (e) {
+            console.warn('localStorage cached profile is corrupted (purge everything!!!)');
+            localStorage.removeItem(_cacheKey)
+        }
+        return p
+    }
+
+    function setCachedProfile(profile) {
+        localStorage.setItem(_cacheKey, angular.toJson(profile))
+        console.log('setCachedProfile')
+
+    }
+
+
+    function isLoggedIn() {
+        return !!user;
+    }
+
+    function getLoggedInUser() {
+        console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
+      // alert(getCachedProfile().username)
+        return user
+    }
+
+
+    function auth() {
+        user = getCachedProfile();
+
+        console.log('auth begin');
+        var api = $resource('/auth/ajaxAuth')
+
+        api.get({}, {}, function (d) {
+            console.log('server authenticated the user');
+            setCachedProfile(d);
+            user = d ;
+            $rootScope.loggedinUser = d; //deprecate
+
+            $rootScope.$broadcast('userAuthenticated')
+        });
+    }
+
+    auth(); //try authentication  on service init
+
+    return {
+        isLoggedIn: isLoggedIn,
+        auth: auth,
+        getLoggedInUser: getLoggedInUser
+    }
+});
+
 kimlik.factory('profileService', function ($resource) {
     var todoCount = 0;
     var _profileCache = {}
@@ -157,16 +186,16 @@ kimlik.factory('profileService', function ($resource) {
     function prefetchProfilesByIds(ids) {
         _(ids).each(function (id) {
             if (!_profileCache[id]) {
-                console.log('cachede id yok: ', id);
+//                console.log('cachede id yok: ', id);
                 _profileCache[id] = {}
             } else {
-                console.log('cachede id var: ', _profileCache[id]);
+//                console.log('cachede id var: ', _profileCache[id]);
             }
         });
 
         api.getProfilesByIds({}, {ids: ids}, function (result) {
             _(result).each(function (it) {
-                angular.extend(_profileCache[it._id], it)
+                angular.extend(_profileCache[it._id || it.id ], it)
             });
         });
 
