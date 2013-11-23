@@ -12,8 +12,8 @@ class UrlMappings {
         "/api/$controller/$action?/$id?" {}
         //"/kimlik/$username?/$action?"(controller: 'kimlik')
 
-        "/kimlik/**"(controller: 'kimlik', action: 'index')
-        "/company/**"(controller: 'company', action: 'index')
+        "/kimlik/**"(controller: 'html', action: 'mainAppLayout')
+        "/company/**"(controller: 'html', action: 'mainAppLayout')
 
         "/api/skill/$action"(controller: 'skill')
 

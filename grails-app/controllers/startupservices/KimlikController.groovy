@@ -112,9 +112,9 @@ class KimlikController {
         render result as JSON
     }
 
-    def index() {}
-
     def profile() {
+        cache("public_3600")
+
         session._responseCommitedExceptionWorkAround = 'force to create new session'
         def profile = fetchProfile()
         log.debug profile

@@ -12,12 +12,6 @@ class CompanyController {
      * todo cache able
      * @return
      */
-    def index() {/* Client side render*/ }
-
-    /**
-     * todo cache able
-     * @return
-     */
     def profile() {
         cache("public_3600")
 

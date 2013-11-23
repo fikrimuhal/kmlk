@@ -7,4 +7,8 @@ class HtmlController {
 
         render view: "/$main/html/$path"
     }
+
+    def mainAppLayout(){
+        cache("public_3600")
+    }
 }

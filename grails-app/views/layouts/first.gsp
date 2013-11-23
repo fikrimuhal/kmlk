@@ -26,9 +26,7 @@
             baseUrl: '${g.createLink([absolute:true, uri:"/" ])}'
         };
     </script>
-
     <g:layoutHead/>
-
     <r:layoutResources/>
 
     <!--[if lt IE 9]>

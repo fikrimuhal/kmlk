@@ -261,16 +261,14 @@ function CompanyApplicantsCtrl($scope, $routeSegment) {
  * @constructor
  * @param $routeSegment
  */
-function CompanyCtrl($scope, companyService, $routeSegment) {
+function CompanyCtrl($scope, companyService, $routeSegment, $rootScope) {
     $scope.companies = companyService.getUserCompanyList();
     $scope.$routeSegment = $routeSegment;
 
     $scope.$on('routeSegmentChange', function () {
-        //broadcast de company_name i aliyoruz boylece resolved oldugundan eminiz parametrenin.
         //URL mapping de resolved ile yapila bilinir?
         //Sayfa render olmadan once resolved olsa daha iyi olur.
-        $scope.company_name = $routeSegment.$routeParams.company_name //todo bunun adi pageName olsa daha iyi
-        $scope.company = _.find($scope.companies, {page_name: $scope.company_name })
+        $rootScope.company = _.find($scope.companies, {page_name: $scope.company_name })
 
     });
 

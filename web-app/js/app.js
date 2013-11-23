@@ -180,9 +180,13 @@ kimlik.config(['$routeSegmentProvider', '$locationProvider',
 ]);
 
 // run blocks
-kimlik.run(function ($rootScope) {
+kimlik.run(function ($rootScope,$routeSegment) {
 
     $rootScope.$on('routeSegmentChange', function () {
+        //broadcast de company_name i aliyoruz boylece resolved oldugundan eminiz parametrenin.
+
+        $rootScope.company_name = $routeSegment.$routeParams.company_name //todo bunun adi pageName olsa daha iyi
+
         console.log('* route change event')
 
     });
