@@ -64,7 +64,7 @@
 
             </div>
             <div class="text-center">
-                <g:img  dir="images" file="kimlikapple1.png"/>
+                <g:img  dir="images" file="kimlikapple2.png"/>
             </div>
 
             <div class="row m-large">
