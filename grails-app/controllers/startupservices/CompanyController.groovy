@@ -21,17 +21,21 @@ class CompanyController {
 
         if (!company) return (redirect(uri: '/'))
 
-        def skills = company.skills?.findAll { it.visible }.sort {it.order} //sirket yetkilisinin izin verdigi skiller
+        def skills = company.skills?.findAll { it.visible }?.sort { it.order }
+        //sirket yetkilisinin izin verdigi skiller
         //skilleri 2 ayri DIV icinde gosteriyoruz
         def skills1, skills2
-        if (skills.size() < 5) {
-            skills1 = skills
-            skills2 = null
-        } else {
-            int midIdx = Math.ceil(skills.size() / 2)
-            skills1 = skills.subList(0, midIdx)
+        if (skills) {
 
-            skills2 = skills.subList(midIdx, skills.size())
+            if (skills.size() < 5) {
+                skills1 = skills
+                skills2 = null
+            } else {
+                int midIdx = Math.ceil(skills.size() / 2)
+                skills1 = skills.subList(0, midIdx)
+
+                skills2 = skills.subList(midIdx, skills.size())
+            }
         }
         [company: company, isCrawler: isCrawler, skills1: skills1, skills2: skills2]
     }
@@ -41,7 +45,7 @@ class CompanyController {
     def userCompanyList() {
 
         ObjectId loggedInUser = ObjectId.massageToObjectId(authenticationService.authenticatedUserId)
-        if (!loggedInUser){
+        if (!loggedInUser) {
             render status: 401
             return
         }
@@ -113,16 +117,16 @@ class CompanyController {
 
             case 'ORDER':
                 log.debug('order change')
-                int newValue =request.JSON.order as int
-                ObjectId skillId =  ObjectId.massageToObjectId(request.JSON.skillId)
-                companyService.updateSkillField(companyId,'ORDER',skillId,newValue)
+                int newValue = request.JSON.order as int
+                ObjectId skillId = ObjectId.massageToObjectId(request.JSON.skillId)
+                companyService.updateSkillField(companyId, 'ORDER', skillId, newValue)
                 break
 
             case 'VISIBILITY':
                 log.debug('change visibility')
                 boolean newValue = request.JSON.visible as boolean
                 ObjectId skillId = ObjectId.massageToObjectId(request.JSON.skillId)
-                companyService.updateSkillField(companyId,'VISIBILITY',skillId,newValue)
+                companyService.updateSkillField(companyId, 'VISIBILITY', skillId, newValue)
 
                 break
 
