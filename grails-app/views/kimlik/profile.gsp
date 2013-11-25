@@ -23,10 +23,10 @@
             <small class="block m-t-mini">${profile.workHistory?.lastEntity?.position}</small>
             <button class="btn btn-primary btn-sm active" data-toggle="button">
                 <span class="text">
-                    <i class="icon-eye-open"></i> ODOT
+                    <i class="fa fa-eye"></i> ODOT
                 </span>
                 <span class="text-active">
-                    <i class="icon-eye-open"></i> NOT IMP. YET
+                    <i class="fa fa-eye"></i> NOT IMP. YET
                 </span>
             </button>
         </div>

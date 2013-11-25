@@ -12,7 +12,7 @@
 <body>
 <!-- header -->
 <header id="header" class="navbar bg bg-black">
-    <a href="docs.html" class="btn btn-link pull-right m-t-mini"><i class="icon-question icon-xlarge text-default"></i></a>
+    <a href="" class="btn btn-link pull-right m-t-mini"><i class="icon-question icon-xlarge text-default"></i></a>
     <a class="navbar-brand" href="#">kimlik</a>
 </header>
 <!-- / header -->
@@ -24,37 +24,34 @@
                     <header class="panel-heading text-center">
                         Sign up
                     </header>
-                    <form action="index.html" class="panel-body">
+                    <form action="/" class="panel-body">
                         <div class="block">
-                            <label class="control-label">Display name</label>
-                            <input type="text" placeholder="eg. Your name or company" class="form-control">
+                            <label class="control-label">Sayfa adı</label>
+                            <input type="text" placeholder="Profil adiniz" class="form-control">
                         </div>
                         <div class="block">
-                            <label class="control-label">Your email address</label>
-                            <input type="email" placeholder="test@example.com" class="form-control">
+                            <label class="control-label">Email adresiniz</label>
+                            <input type="email" placeholder="mayday@ouuugkk.com" class="form-control">
                         </div>
-                        <div class="block">
-                            <label class="control-label">Type a password</label>
-                            <input type="password" id="inputPassword" placeholder="Password" class="form-control">
-                        </div>
+
                         <div class="checkbox">
                             <label>
-                                <input type="checkbox"> Agree the <a href="#">terms and policy</a>
+                                <input type="checkbox"> Kullanım sözleşmesini kabulet. Okumak için <a href="#">tiklayin</a>
                             </label>
                         </div>
-                        <button type="submit" class="btn btn-info">Sign up</button>
+                        <button type="submit" class="btn btn-info">Profilimi oluştur</button>
                         <div class="line line-dashed"></div>
                         <div class="row">
                             <div class="col-sm-6 text-center">
-                                <a href="#" class="btn btn-facebook btn-circle btn-sm"><i class="icon-facebook"></i>Sign up with Facebook</a>
+                                <a href="#" class="btn btn-facebook btn-circle btn-sm"><i class="icon-facebook"></i>facebook</a>
                             </div>
                             <div class="col-sm-6 text-center">
-                                <a href="#" class="btn btn-twitter btn-circle btn-sm"><i class="icon-twitter"></i>Sign up with Twitter</a>
+                                <a href="#" class="btn btn-twitter btn-circle btn-sm"><i class="icon-twitter"></i>Twitter</a>
                             </div>
                         </div>
                         <div class="line line-dashed"></div>
-                        <p class="text-muted text-center"><small>Already have an account?</small></p>
-                        <a href="/register/signIn" target="_self" class="btn btn-white btn-block">Sign in</a>
+                        <p class="text-muted text-center"><small>Daha önceden kayıt olduysanız</small></p>
+                        <a href="/register/signIn" target="_self" class="btn btn-white btn-block">Giriş yapın</a>
                     </form>
                 </section>
             </div>

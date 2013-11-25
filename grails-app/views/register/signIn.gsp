@@ -13,7 +13,7 @@
 <body>
 <!-- header -->
 <header id="header" class="navbar bg bg-black">
-    <a href="docs.html" class="btn btn-link pull-right m-t-mini"><i class="icon-question icon-xlarge text-default"></i>
+    <a href="" class="btn btn-link pull-right m-t-mini"><i class="icon-question icon-xlarge text-default"></i>
     </a>
     <a class="navbar-brand" href="/">kimlik</a>
 </header>
@@ -49,8 +49,8 @@
 
                         <div class="line line-dashed"></div>
 
-                        <p class="text-muted text-center"><small>Do not have an account?</small></p>
-                        <a href="/register/signUp" target="_self" class="btn btn-white btn-block">Create an account</a>
+                        <p class="text-muted text-center"><small>Hesabin henüz yok mu?</small></p>
+                        <a href="/register/signUp" target="_self" class="btn btn-white btn-block">Ücretsiz hemen hesap oluştur</a>
                     </form>
                 </section>
             </div>
