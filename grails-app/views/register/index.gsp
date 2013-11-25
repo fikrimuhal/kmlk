@@ -40,7 +40,7 @@
     <div class="main-visual">
         <div class="bg-inverse">
             <div class="container text-center">
-                <h1 class="animated fadeInUp">Startup ve Kisisel kariyer yonetim yazilimi<br> Some thing is seriously wrong with this landing page!
+                <h1 class="animated fadeInUp">Kurumsal ve Kisisel Saas hizmetleri <br> Some thing is seriously wrong with this landing page!
                 </h1>
 
                 <p>
@@ -60,11 +60,11 @@
             <div class="text-center m-large">
                 <h2 class="font-thin">Hemde bedava!</h2>
 
-                <p>Ilk 24 saat ucretsizdir, daha sonra dakika uzerinden 3$ dan hesaplanacaktir.</p>
-            </div>
+                <p>Ilk 24 saat ucretsizdir, daha sonra dakika uzerinden 2 elma ile hesaplanacaktir.</p>
 
+            </div>
             <div class="text-center">
-                <g:img uri="/first/images/responsive.png"/>
+                <g:img  dir="images" file="kimlikapple1.png"/>
             </div>
 
             <div class="row m-large">
@@ -74,7 +74,7 @@
                     <div class="media-body">
                         <h3 class="m-t-none">Cok zevkli</h3>
 
-                        <p>first contains many mobile app widgets and components, it's fully responsive, it can run on all the size of the screen.</p>
+                        <p>Siz isinizi yapin bizde o daginizi bozalim....</p>
                     </div>
                 </div>
 
@@ -84,7 +84,7 @@
                     <div class="media-body">
                         <h3 class="m-t-none">Mukemmel</h3>
 
-                        <p>first also can be used as admin dashboard, it has tables, charts and other useful components for admin management.</p>
+                        <p>Ougggkk!Ougggkk!Ougggkk!Ougggkk!Ougggkk! Ougggkk!Ougggkk!</p>
                     </div>
                 </div>
             </div>
@@ -109,7 +109,7 @@
                     <div>
                         <h3 class="text-center">Kontrol Paneli</h3>
 
-                        <p>This project is based on Bootstrap 3. the sleek, intuitive, and powerful mobile-first front-end framework for faster and easier web development.</p>
+                        <p>Bootstrap 3. sagolsun hemde mobile first</p>
                     </div>
                 </div>
 
@@ -120,7 +120,7 @@
                     <div>
                         <h3 class="text-center">Online Hizmetler</h3>
 
-                        <p>We only choose the lightweight plugins, but with rich functions. we use tiny components, css and js size is first consideration.</p>
+                        <p>Super Ouuugkk! Tam bir product market fit, oleyyy oleyyyy blah blah yazi yazi calis calis all work no play makes </p>
                     </div>
                 </div>
 
@@ -131,7 +131,7 @@
                     <div>
                         <h3 class="text-center">Kurumsal Destek</h3>
 
-                        <p>first use HTML5 and CSS3 to build the components. the pages use header, nav, section to build the layout. this project have a good color scheme, can easy to change.</p>
+                        <p>hemde 3 ay dan kisa surede bitti superr kudos kudos oleyyyy</p>
                     </div>
                 </div>
             </div>
@@ -148,7 +148,7 @@
                     <div>
                         <h3 class="text-center">100% Mobil</h3>
 
-                        <p>This project is fully responsive, but it's mobile first. it provide the off screen nav, and almost all the widgets are copatible to all the screen sizes.</p>
+                        <p>Hemde programcilar icin api destegi voooo </p>
                     </div>
                 </div>
 
@@ -159,7 +159,7 @@
                     <div>
                         <h3 class="text-center">Şirketinizi Web Sitesi</h3>
 
-                        <p>We build many components for your project need. also they are extensible and easy to customize.</p>
+                        <p>Ouuugk!</p>
                     </div>
                 </div>
 
@@ -170,7 +170,7 @@
                     <div>
                         <h3 class="text-center">Kişisel Web Siteniz</h3>
 
-                        <p>We will keep update this project, we will keep adding new widgets and components.</p>
+                        <p>şirket;Kimlik.IO! yu kullanan bir kaç  Aşağida ki Kimlik.IO! yu kullanan bir kaç linkler şirketlerin profil sayfasina gider..</p>
                     </div>
                 </div>
             </div>
@@ -196,19 +196,22 @@
                 </div>
 
                 <div class="col-lg-3 col-6">
-                    <a href="${resource(dir: 'first/images', file: 'render-2.jpg')}" class="thumbnail"
-                       target="_blank"><g:img uri="/first/images/render-2-thumb.jpg"/></a>
+                    <a href="${resource(dir: 'images', file: '1.png')}" class="thumbnail"
+                       target="_blank"><g:img uri="/images/1.png"/></a>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <a href="${resource(dir: 'images', file: '2.png')}" class="thumbnail"
+                       target="_blank"><g:img uri="/images/2.png"/></a>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <a href="${resource(dir: 'images', file: '5.png')}" class="thumbnail"
+                       target="_blank"><g:img uri="/images/5.png"/></a>
+                </div>
+                <div class="col-lg-3 col-6">
+                    <a href="${resource(dir: 'images', file: '4.png')}" class="thumbnail"
+                       target="_blank"><g:img uri="/images/4.png"/></a>
                 </div>
 
-                <div class="col-lg-3 col-6">
-                    <a href="${resource(dir: 'first/images', file: 'render-3.jpg')}" class="thumbnail"
-                       target="_blank"><g:img uri="/first/images/render-3-thumb.jpg"/></a>
-                </div>
-
-                <div class="col-lg-3 col-6">
-                    <a href="${resource(dir: 'first/images', file: 'render-4.jpg')}" class="thumbnail"
-                       target="_blank"><g:img uri="/first/images/render-4-thumb.jpg"/></a>
-                </div>
             </div>
         </div>
     </div>
