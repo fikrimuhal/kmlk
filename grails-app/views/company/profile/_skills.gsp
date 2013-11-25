@@ -52,7 +52,7 @@
             </g:if>
 
             <div class="col-lg-4 col-sm-4">
-                <p class="text-center"><span class="btn btn-circle btn-lg btn-success"><i class="icon-refresh"></i>
+                <p class="text-center"><span class="btn btn-circle btn-lg btn-success"><i class="fa fa-refresh"></i>
                 </span></p>
 
                 <div>

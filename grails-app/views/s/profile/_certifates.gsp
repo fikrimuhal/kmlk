@@ -1,6 +1,6 @@
 <div class="heading-buttons">
     <h2 class="margin-none separator bottom"><i
-            class="icon-group text-primary icon-fixed-width"></i>Sertifika & Belgeler <span> <a href="/profile/ilgaz/certificates">hepsini goster</a></span></h2>
+            class="fa fa-group text-primary icon-fixed-width"></i>Sertifika & Belgeler <span> <a href="/profile/ilgaz/certificates">hepsini goster</a></span></h2>
     <div class="buttons pull-right">
         <a href="/profile/ilgaz/certificates" >düzenle</a>
     </div>
@@ -13,11 +13,11 @@
             <div class="span2">
                 <h5 class="strong">Reports</h5>
                 <a href="" class="btn btn-primary btn-small btn-block"><i
-                        class="icon-download-alt icon-fixed-width"></i> June</a>
+                        class="fa fa-download-alt icon-fixed-width"></i> June</a>
                 <a href="" class="btn btn-default btn-small btn-block"><i
-                        class="icon-download-alt icon-fixed-width"></i> May</a>
+                        class="fa fa-download-alt icon-fixed-width"></i> May</a>
                 <a href="" class="btn btn-default btn-small btn-block"><i
-                        class="icon-download-alt icon-fixed-width"></i> April</a>
+                        class="fa fa-download-alt icon-fixed-width"></i> April</a>
 
                 <div class="separator bottom"></div>
             </div>

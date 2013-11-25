@@ -3,7 +3,7 @@
     <div class="col-lg-12">
 
         <ul class="breadcrumb hidden-sm hidden-xs hidden-phone">
-            <li><a href="#"><i class="icon-home"></i>Fikrimuhal</a></li>
+            <li><a href="#"><i class="fa fa-home"></i>Fikrimuhal</a></li>
             <li class="active">Şirket yetenekleri</li>
         </ul>
 
@@ -12,7 +12,7 @@
                 <ul class="nav nav-tabs pull-left">
                     <li ng-class="{active: $routeSegment.contains('skills')}"><a
                             href="/company/{{company_name}}/skills"><i
-                                class="icon-home icon-large text-default"></i>Şirket yetenekleri</a></li>
+                                class="fa fa-home icon-large text-default"></i>Şirket yetenekleri</a></li>
                 </ul>
                 <span class="hidden-sm hidden-xs hidden-phone">Yetenek Yönetimi</span>
             </header>
@@ -65,9 +65,9 @@
                                             <button class="btn btn-white" ng-class="{'active':skill.visible}"
                                                     ng-click="toggleVisibility(skill)">
                                                 <i ng-if="skill.visible"
-                                                   class="icon-lightbulb text-active text-warning"></i>
+                                                   class="fa fa-lightbulb-o text-active text-warning"></i>
                                                 <i ng-if="!skill.visible"
-                                                   class="icon-eye-close text-active text-danger"></i>
+                                                   class="fa fa-eye-slash text-active text-danger"></i>
                                             </button>
                                         </td>
                                         <td>

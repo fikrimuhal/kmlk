@@ -9,12 +9,12 @@
                         <div class="panel text-small m-b-none">
                             <div class="panel-body">Merhaba, <br/>Sormak istediğiniz bir sey var ise cekinmeyin</div>
                         </div>
-                        <small class="text-muted"><i class="icon-ok text-success"></i> 1 minutes ago</small>
+                        <small class="text-muted"><i class="fa fa-ok text-success"></i> 1 minutes ago</small>
                     </section>
                 </article>
                 <!-- chat form -->
                 <article class="chat-item media" id="chat-form">
-                    <a class="pull-left thumb-small"><span class="btn btn-circle btn-xs"><i class="icon-user"></i></span></a>
+                    <a class="pull-left thumb-small"><span class="btn btn-circle btn-xs"><i class="fa fa-user"></i></span></a>
                     <section class="media-body">
                         <form action="" class="m-b-none">
                             <div class="input-group">

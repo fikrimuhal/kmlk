@@ -3,12 +3,12 @@
 
         <div class=" m-t-large m-b-none">
 
-            <h2 class="font-thin"><i class="icon-signal"></i>Istatistikler</h2>
+            <h2 class="font-thin"><i class="fa fa-signal"></i>Istatistikler</h2>
 
             <div class="bg-primary">
                 <div class="container">
                     <div class="text-center m-large">
-                        <h2 class="font-thin"><i class="icon-group"></i>İş Başvurusu</h2>
+                        <h2 class="font-thin"><i class="fa fa-group"></i>İş Başvurusu</h2>
 
                         <p>Bizim ile çalışmak istermisin?</p>
                     </div>
@@ -23,7 +23,7 @@
 <div class="bg-white-desktop" id="featuresxx">
     <div class="container">
         <div class=" m-t-large m-b-none">
-            <h2 class="font-thin"><i class="icon-briefcase"></i>Hızlı Istatistikler</h2>
+            <h2 class="font-thin"><i class="fa fa-briefcase"></i>Hızlı Istatistikler</h2>
 
             <table class="table  m-b-none text-small bg-light">
 
@@ -96,7 +96,7 @@
     <div class="container">
 
         <div class="m-none">
-            <h2 class="font-thin"><i class="icon-tags"></i>Faliyet alanları</h2>
+            <h2 class="font-thin"><i class="fa fa-tags"></i>Faliyet alanları</h2>
 
             <div id="MyPillbox" class="pillbox clearfix m-b">
                 <ul>
@@ -117,7 +117,7 @@
     <div class="container">
 
         <div class="m-none">
-            <h2 class="font-thin"><i class="icon-home"></i>Adres</h2>
+            <h2 class="font-thin"><i class="fa fa-home"></i>Adres</h2>
 
             <div class="pillbox">
 

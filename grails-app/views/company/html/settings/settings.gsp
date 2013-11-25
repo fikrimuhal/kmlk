@@ -3,8 +3,8 @@
     <div class="col-lg-12">
 
         <ul class="breadcrumb hidden-sm hidden-xs hidden-phone">
-            <li><a href="#"><i class="icon-home"></i>Fikrimuhal</a></li>
-            <li><a href="#"><i class="icon-list-ul"></i>Ayarlar</a></li>
+            <li><a href="#"><i class="fa fa-home"></i>Fikrimuhal</a></li>
+            <li><a href="#"><i class="fa fa-list-ul"></i>Ayarlar</a></li>
             <li class="active">Genel</li>
         </ul>
         <section class="panel">

@@ -1,9 +1,9 @@
 %{--<h2 class="margin-none separator bottom"><i--}%
-        %{--class="icon-group text-primary icon-fixed-width"></i>Yetenekler <span> <a href="">hepsini goster</a></span></h2>--}%
+        %{--class="fa fa-group text-primary icon-fixed-width"></i>Yetenekler <span> <a href="">hepsini goster</a></span></h2>--}%
 
 <div class="heading-buttons">
     <h2 class="margin-none separator bottom"><i
-            class="icon-group text-primary icon-fixed-width"></i>Yetenekler <span> <a href="/profile/ilgaz/skills">hepsini goster</a></span></h2>
+            class="fa fa-group text-primary icon-fixed-width"></i>Yetenekler <span> <a href="/profile/ilgaz/skills">hepsini goster</a></span></h2>
     <div class="buttons pull-right">
         <a href="/profile/ilgaz/skills" >düzenle</a>
     </div>

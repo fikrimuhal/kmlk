@@ -16,9 +16,9 @@
 <ul class="breadcrumb">
     <li>Bulunduğunuz sayfa</li>
     <li><a href="/dashboard" class="glyphicons dashboard"><i></i> Şirket</a></li>
-    <li class="divider"><i class="icon-caret-right"></i></li>
+    <li class="divider"><i class="fa fa-caret-right"></i></li>
     <li><a href="/">Projeler</a></li>
-    <li class="divider"><i class="icon-caret-right"></i></li>
+    <li class="divider"><i class="fa fa-caret-right"></i></li>
     <li><a href="/">Proje listesi</a></li>
 </ul>
 

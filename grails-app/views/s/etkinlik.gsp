@@ -18,9 +18,9 @@
 <ul class="breadcrumb">
     <li>You are here</li>
     <li><a href="index.html?lang=en&amp;layout_type=fluid&amp;style=style-default-menus-dark&amp;top-sticky=false&amp;sidebar=false" class="glyphicons dashboard"><i></i> FLAT KIT</a></li>
-    <li class="divider"><i class="icon-caret-right"></i></li>
+    <li class="divider"><i class="fa fa-caret-right"></i></li>
     <li>Pages</li>
-    <li class="divider"><i class="icon-caret-right"></i></li>
+    <li class="divider"><i class="fa fa-caret-right"></i></li>
     <li>Google maps</li>
 </ul>
 

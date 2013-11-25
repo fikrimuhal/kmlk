@@ -1,4 +1,4 @@
-<h2 class="margin-none separator bottom"><i class="icon-group text-primary icon-fixed-width"></i> Şirket uzmanlıkları</h2>
+<h2 class="margin-none separator bottom"><i class="fa fa-group text-primary icon-fixed-width"></i> Şirket uzmanlıkları</h2>
 <style type="text/css">
 .add-outside .add{
     white-space: nowrap;
@@ -11,9 +11,9 @@
         <div class="row-fluid">
             <div class="span2">
                 <h5 class="strong">Reports</h5>
-                <a href="" class="btn btn-primary btn-small btn-block"><i class="icon-download-alt icon-fixed-width"></i> June</a>
-                <a href="" class="btn btn-default btn-small btn-block"><i class="icon-download-alt icon-fixed-width"></i> May</a>
-                <a href="" class="btn btn-default btn-small btn-block"><i class="icon-download-alt icon-fixed-width"></i> April</a>
+                <a href="" class="btn btn-primary btn-small btn-block"><i class="fa fa-download-alt icon-fixed-width"></i> June</a>
+                <a href="" class="btn btn-default btn-small btn-block"><i class="fa fa-download-alt icon-fixed-width"></i> May</a>
+                <a href="" class="btn btn-default btn-small btn-block"><i class="fa fa-download-alt icon-fixed-width"></i> April</a>
                 <div class="separator bottom"></div>
             </div>
             <div class="span4 offset1">
@@ -45,9 +45,9 @@
     </div>
 </div>
 
-<p class="separator text-center"><i class="icon-ellipsis-horizontal icon-3x"></i></p>
+<p class="separator text-center"><i class="fa fa-ellipsis-horizontal icon-3x"></i></p>
 
-<h2 class="margin-none separator bottom"><i class="icon-group text-primary icon-fixed-width"></i> Sertifika / Belge</h2>
+<h2 class="margin-none separator bottom"><i class="fa fa-group text-primary icon-fixed-width"></i> Sertifika / Belge</h2>
 
 
 <div class="widget widget-heading-simple widget-body-gray">
@@ -56,9 +56,9 @@
         <div class="row-fluid">
             <div class="span2">
                 <h5 class="strong">Reports</h5>
-                <a href="" class="btn btn-primary btn-small btn-block"><i class="icon-download-alt icon-fixed-width"></i> June</a>
-                <a href="" class="btn btn-default btn-small btn-block"><i class="icon-download-alt icon-fixed-width"></i> May</a>
-                <a href="" class="btn btn-default btn-small btn-block"><i class="icon-download-alt icon-fixed-width"></i> April</a>
+                <a href="" class="btn btn-primary btn-small btn-block"><i class="fa fa-download-alt icon-fixed-width"></i> June</a>
+                <a href="" class="btn btn-default btn-small btn-block"><i class="fa fa-download-alt icon-fixed-width"></i> May</a>
+                <a href="" class="btn btn-default btn-small btn-block"><i class="fa fa-download-alt icon-fixed-width"></i> April</a>
                 <div class="separator bottom"></div>
             </div>
             <div class="span4 offset1">

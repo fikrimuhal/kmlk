@@ -69,7 +69,7 @@
 
             <div class="row m-large">
                 <div class="col-lg-6 col-sm-6 media">
-                    <span class="btn btn-circle btn-lg btn-default pull-left"><i class="icon-mobile-phone"></i></span>
+                    <span class="btn btn-circle btn-lg btn-default pull-left"><i class="fa fa-mobile-phone"></i></span>
 
                     <div class="media-body">
                         <h3 class="m-t-none">Cok zevkli</h3>
@@ -79,7 +79,7 @@
                 </div>
 
                 <div class="col-lg-6 col-sm-6 media m-t-none">
-                    <span class="btn btn-circle btn-lg btn-default pull-left"><i class="icon-signal"></i></span>
+                    <span class="btn btn-circle btn-lg btn-default pull-left"><i class="fa fa-signal"></i></span>
 
                     <div class="media-body">
                         <h3 class="m-t-none">Mukemmel</h3>
@@ -103,7 +103,7 @@
 
             <div class="row m-large">
                 <div class="col-lg-4 col-sm-4">
-                    <p class="text-center"><span class="btn btn-circle btn-lg btn-white"><i class="icon-bold"></i>
+                    <p class="text-center"><span class="btn btn-circle btn-lg btn-white"><i class="fa fa-bold"></i>
                     </span></p>
 
                     <div>
@@ -114,7 +114,7 @@
                 </div>
 
                 <div class="col-lg-4 col-sm-4">
-                    <p class="text-center"><span class="btn btn-circle btn-lg btn-warning"><i class="icon-bolt"></i>
+                    <p class="text-center"><span class="btn btn-circle btn-lg btn-warning"><i class="fa fa-bolt"></i>
                     </span></p>
 
                     <div>
@@ -125,7 +125,7 @@
                 </div>
 
                 <div class="col-lg-4 col-sm-4">
-                    <p class="text-center"><span class="btn btn-circle btn-lg btn-danger"><i class="icon-html5"></i>
+                    <p class="text-center"><span class="btn btn-circle btn-lg btn-danger"><i class="fa fa-html5"></i>
                     </span></p>
 
                     <div>
@@ -142,7 +142,7 @@
         <div class="container">
             <div class="row m-large">
                 <div class="col-lg-4 col-sm-4">
-                    <p class="text-center"><span class="btn btn-circle btn-lg btn-primary"><i class="icon-tablet"></i>
+                    <p class="text-center"><span class="btn btn-circle btn-lg btn-primary"><i class="fa fa-tablet"></i>
                     </span></p>
 
                     <div>
@@ -154,7 +154,7 @@
 
                 <div class="col-lg-4 col-sm-4">
                     <p class="text-center"><span class="btn btn-circle btn-lg btn-default"><i
-                            class="icon-briefcase"></i></span></p>
+                            class="fa fa-briefcase"></i></span></p>
 
                     <div>
                         <h3 class="text-center">Şirketinizi Web Sitesi</h3>
@@ -164,7 +164,7 @@
                 </div>
 
                 <div class="col-lg-4 col-sm-4">
-                    <p class="text-center"><span class="btn btn-circle btn-lg btn-success"><i class="icon-refresh"></i>
+                    <p class="text-center"><span class="btn btn-circle btn-lg btn-success"><i class="fa fa-refresh"></i>
                     </span></p>
 
                     <div>
@@ -221,7 +221,7 @@
             <h2 class="font-thin">Teşekkürler size!</h2>
 
             <p>&nbsp;</p>
-            <a href="#content"><i class="icon-arrow-up"></i><br>Tepeye dön</a>
+            <a href="#content"><i class="fa fa-arrow-up"></i><br>Tepeye dön</a>
         </div>
     </div>
 </section>

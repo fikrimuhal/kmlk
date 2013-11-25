@@ -11,7 +11,7 @@
             <li><a target="_self" href="#skills">Uzmanlıklar</a></li>
             <li><a target="_self" href="#products">Projeler</a></li>
             <li><a target="_self" href="#contact">Bize erişin</a></li>
-            <li><a target="_self" href="#body"><i class="icon-arrow-up"></i></a></li>
+            <li><a target="_self" href="#body"><i class="fa fa-arrow-up"></i></a></li>
         </ul>
     </div>
 </header>

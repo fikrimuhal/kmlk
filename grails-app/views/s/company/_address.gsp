@@ -1,6 +1,6 @@
 
 <!-- Widget -->
-<h2 class="margin-none separator bottom"><i class="icon-file-text icon-fixed-width text-primary"></i>Adres
+<h2 class="margin-none separator bottom"><i class="fa fa-file-text icon-fixed-width text-primary"></i>Adres
 </h2>
 
 <div class="widget widget-heading-simple widget-body-gray">

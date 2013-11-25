@@ -32,10 +32,10 @@
             <small class="block m-t-mini">CTO</small>
             <button class="btn btn-primary btn-sm active" data-toggle="button">
                 <span class="text">
-                    <i class="icon-eye-open"></i> TODO
+                    <i class="fa fa-eye-open"></i> TODO
                 </span>
                 <span class="text-active">
-                    <i class="icon-eye-open"></i> ODOT
+                    <i class="fa fa-eye-open"></i> ODOT
                 </span>
             </button>
         </div>
@@ -68,7 +68,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><i class="icon-remove"></i></button>
+                    <button type="button" class="close" data-dismiss="modal"><i class="fa fa-remove"></i></button>
                     <h4 class="modal-title" id="myModalLabel">Geri bildirim ve İstekler</h4>
                 </div>
 

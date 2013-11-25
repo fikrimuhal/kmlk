@@ -1,4 +1,4 @@
-<h2 class="margin-none separator bottom"><i class="icon-sitemap text-primary icon-fixed-width"></i> Şirket Tarihi</h2>
+<h2 class="margin-none separator bottom"><i class="fa fa-sitemap text-primary icon-fixed-width"></i> Şirket Tarihi</h2>
 
 <div class="relativeWrap overflow-hidden">
     <div class="row-fluid row-merge border-bottom border-top layout-timeline layout-timeline-mirror">

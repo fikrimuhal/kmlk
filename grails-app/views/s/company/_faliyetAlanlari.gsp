@@ -1,6 +1,6 @@
 
 <!-- Activity/List Widget -->
-<h2 class="margin-none separator bottom"><i class="icon-signal text-primary icon-fixed-width"></i>Faliyet alanları</h2>
+<h2 class="margin-none separator bottom"><i class="fa fa-signal text-primary icon-fixed-width"></i>Faliyet alanları</h2>
 <div class="widget widget-heading-simple widget-body-white" data-toggle="collapse-widget">
     <div class="widget-body">
 

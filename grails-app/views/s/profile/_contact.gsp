@@ -1,6 +1,6 @@
 <div class="heading-buttons">
     <h2 class="margin-none separator bottom"><i
-            class="icon-coffee text-primary icon-fixed-width"></i> Iletisim bilgileri<span> <a href="">hepsini goster</a></span></h2>
+            class="fa fa-coffee text-primary icon-fixed-width"></i> Iletisim bilgileri<span> <a href="">hepsini goster</a></span></h2>
     <div class="buttons pull-right">
         <a href="" >düzenle</a>
     </div>

@@ -17,11 +17,11 @@
 <ul class="breadcrumb">
     <li>Bulunduğunuz sayfa</li>
     <li><a href="/company" class="glyphicons home"><i></i> Fikrimuhal</a></li>
-    <li class="divider"><i class="icon-caret-right"></i></li>
+    <li class="divider"><i class="fa fa-caret-right"></i></li>
     <li><a href="/company/people">Çalışanlar</a></li>
-    <li class="divider"><i class="icon-caret-right"></i></li>
+    <li class="divider"><i class="fa fa-caret-right"></i></li>
     <li><a href="/profile/ilgaz">Ilgaz Şumnulu</a></li>
-    <li class="divider"><i class="icon-caret-right"></i></li>
+    <li class="divider"><i class="fa fa-caret-right"></i></li>
     <li><a href="/profile/ilgaz/certificates">Sertifikalar</a></li>
 </ul>
 

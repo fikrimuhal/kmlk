@@ -34,13 +34,13 @@
     <a class="navbar-brand" href="/" target="_self">kimlik</a>
     <button type="button" class="btn btn-link pull-left nav-toggle visible-xs"
             data-toggle="class:slide-nav slide-nav-left" data-target="body">
-        <i class="icon-reorder icon-xlarge text-default"></i>
+        <i class="fa fa-reorder icon-xlarge text-default"></i>
     </button>
     <ul class="nav navbar-nav hidden-xs">
         <li>
             <div class="m-t m-b-small" id="panel-notifications">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
-                        class="icon-comment-alt icon-xlarge text-default"></i><b
+                        class="fa fa-comment-alt icon-xlarge text-default"></i><b
                         class="badge badge-notes bg-danger count-n">2</b></a>
                 <section class="dropdown-menu m-l-small m-t-mini">
                     <section class="panel panel-large arrow arrow-top">
@@ -64,7 +64,7 @@
                             </a>
                         </div>
                         <footer class="panel-footer text-small">
-                            <a href="#" class="pull-right"><i class="icon-cog"></i></a>
+                            <a href="#" class="pull-right"><i class="fa fa-cog"></i></a>
                             <a href="#">Bütün bildirimleri gör</a>
                         </footer>
                     </section>
@@ -74,12 +74,12 @@
 
 
         <li><div class="m-t-small"><a class="btn btn-sm btn-info" data-toggle="modal" href="#modal"><i
-                class="icon-lightbulb"></i> Geri bildirim</a></div></li>
+                class="fa fa-lightbulb"></i> Geri bildirim</a></div></li>
 
 
         <li class="dropdown shift" data-toggle="shift:appendTo" data-target=".nav-primary .nav">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
-                    class="icon-cog icon-xlarge visible-xs visible-xs-inline"></i>Şirket <b
+                    class="fa fa-cog icon-xlarge visible-xs visible-xs-inline"></i>Şirket <b
                     class="caret hidden-sm-only"></b></a>
             <ul class="dropdown-menu">
                 <li><a href="/company/my/list">Şirketlerim</a></li>
@@ -124,7 +124,7 @@
     </ul>
 
     <form class="navbar-form pull-left shift" action="" data-toggle="shift:appendTo" data-target=".nav-primary">
-        <i class="icon-search text-muted"></i>
+        <i class="fa fa-search text-muted"></i>
         <input type="text" class="input-sm form-control" placeholder="Search">
     </form>
 </header>

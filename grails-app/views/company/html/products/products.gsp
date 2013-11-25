@@ -3,8 +3,8 @@
     <div class="col-lg-12">
 
         <ul class="breadcrumb hidden-sm hidden-xs hidden-phone">
-            <li><a href="#"><i class="icon-home"></i>Fikrimuhal</a></li>
-            <li><a href="#"><i class="icon-list-ul"></i>İnsan Kaynakları</a></li>
+            <li><a href="#"><i class="fa fa-home"></i>Fikrimuhal</a></li>
+            <li><a href="#"><i class="fa fa-list-ul"></i>İnsan Kaynakları</a></li>
             <li class="active">Çalışanlar</li>
         </ul>
 
@@ -14,10 +14,10 @@
                 <ul class="nav nav-tabs pull-left">
                     <li class="active"><a
                             href="/company/{{company_name}}/products"><i
-                                class="icon-home icon-large text-default"></i>Ürunler ve Projeler</a></li>
+                                class="fa fa-home icon-large text-default"></i>Ürunler ve Projeler</a></li>
                     <li><a
                             href="/company/{{company_name}}/services"><i
-                                class="icon-group icon-large text-default"></i>Hizmetler</a></li>
+                                class="fa fa-group icon-large text-default"></i>Hizmetler</a></li>
 
                 </ul>
                 <span class="hidden-sm hidden-xs hidden-phone">Ürun ve Hizmetler</span>
@@ -37,8 +37,8 @@
                                         <a ng-repeat="p in company.products" href="/company/{{company_name}}/products/{{getId(p)}}"
                                            ng-class="{active: $routeSegment.$routeParams.pid ==getId(p) }"
                                            class="list-group-item">
-                                            <i class="icon-chevron-right"></i>
-                                            <i class="icon-inbox"></i> {{p.title}}
+                                            <i class="fa fa-chevron-right"></i>
+                                            <i class="fa fa-inbox"></i> {{p.title}}
                                         </a>
 
                                     </div>

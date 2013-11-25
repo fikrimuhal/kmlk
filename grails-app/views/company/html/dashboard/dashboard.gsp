@@ -2,16 +2,16 @@
 <div class="row">
     <div class="col-lg-12">
         <section class="toolbar clearfix m-t-large m-b">
-            <a href="mail.html" class="btn btn-white btn-circle"><i class="icon-envelope-alt"></i>Inbox <b
+            <a href="mail.html" class="btn btn-white btn-circle"><i class="fa fa-envelope-alt"></i>Inbox <b
                     class="badge bg-white">5</b></a>
-            <a href="#" class="btn btn-primary btn-circle active"><i class="icon-lightbulb"></i>Projects</a>
-            <a href="#" class="btn btn-success btn-circle"><i class="icon-check"></i>Tasks</a>
-            <a href="#" class="btn btn-info btn-circle active"><i class="icon-time"></i>Timeline<b
-                    class="badge bg-info"><i class="icon-plus"></i></b></a>
-            <a href="#" class="btn btn-inverse btn-circle"><i class="icon-bar-chart"></i>Stats</a>
-            <a href="calendar.html" class="btn btn-warning btn-circle"><i class="icon-calendar-empty"></i>Calendar</a>
-            <a href="#" class="btn btn-danger btn-circle"><i class="icon-group"></i>Groups</a>
-            <a href="#" class="btn btn-circle"><i class="icon-plus"></i>More</a>
+            <a href="#" class="btn btn-primary btn-circle active"><i class="fa fa-lightbulb"></i>Projects</a>
+            <a href="#" class="btn btn-success btn-circle"><i class="fa fa-check"></i>Tasks</a>
+            <a href="#" class="btn btn-info btn-circle active"><i class="fa fa-time"></i>Timeline<b
+                    class="badge bg-info"><i class="fa fa-plus"></i></b></a>
+            <a href="#" class="btn btn-inverse btn-circle"><i class="fa fa-bar-chart"></i>Stats</a>
+            <a href="calendar.html" class="btn btn-warning btn-circle"><i class="fa fa-calendar-empty"></i>Calendar</a>
+            <a href="#" class="btn btn-danger btn-circle"><i class="fa fa-group"></i>Groups</a>
+            <a href="#" class="btn btn-circle"><i class="fa fa-plus"></i>More</a>
         </section>
     </div>
 
@@ -31,8 +31,8 @@
                                       style="margin-left:10px;margin-top:10px;display:inline-block">55</span>%
                                 <div class="easypie-text"><button class="btn btn-link m-t-n-small"
                                                                   data-toggle="class:pie"><i
-                                            class="icon-play text-active text-muted"></i><i
-                                            class="icon-pause text text-muted"></i></button></div>
+                                            class="fa fa-play text-active text-muted"></i><i
+                                            class="fa fa-pause text text-muted"></i></button></div>
                             </div>
                         </div>
                     </div>
@@ -76,7 +76,7 @@
         <section class="panel">
             <header class="panel-heading">
                 <ul class="nav nav-pills pull-right">
-                    <li><a href="#" data-loading-text="loading..."><i class="icon-retweet"></i></a></li>
+                    <li><a href="#" data-loading-text="loading..."><i class="fa fa-retweet"></i></a></li>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                             <span class="text">Day</span> <span class="caret"></span>
@@ -139,7 +139,7 @@
                         </div>
 
                         <div class="pull-right hidden-sm text-right m-t">
-                            <b class="badge" data-toggle="tooltip" data-title="Awaiting">120<i class="icon-plane"></i>
+                            <b class="badge" data-toggle="tooltip" data-title="Awaiting">120<i class="fa fa-plane"></i>
                             </b>
                         </div>
 
@@ -166,8 +166,8 @@
                 <ul class="nav nav-pills pull-right">
                     <li>
                         <a href="#" class="panel-toggle text-muted"><i
-                                class="icon-caret-down icon-large text-active"></i><i
-                                class="icon-caret-up icon-large text"></i></a>
+                                class="fa fa-caret-down icon-large text-active"></i><i
+                                class="fa fa-caret-up icon-large text"></i></a>
                     </li>
                 </ul>
                 <span class="label label-large bg-default">15</span> Inbox
@@ -191,7 +191,7 @@
 
                 <div class="line pull-in"></div>
                 <article class="media">
-                    <span class="pull-left thumb-small"><i class="icon-user icon-2x text-muted"></i></span>
+                    <span class="pull-left thumb-small"><i class="fa fa-user icon-2x text-muted"></i></span>
 
                     <div class="media-body">
                         <div class="pull-right media-mini text-center text-muted">
@@ -231,12 +231,12 @@
                 <li class="list-group-item" data-toggle="class:active" data-target="#todo-1">
                     <div class="media">
                         <span class="pull-left thumb-small m-t-mini">
-                            <i class="icon-code icon-xlarge text-default"></i>
+                            <i class="fa fa-code icon-xlarge text-default"></i>
                         </span>
 
                         <div id="todo-1" class="pull-right text-primary m-t-small">
-                            <i class="icon-circle icon-large text text-default"></i>
-                            <i class="icon-ok-sign icon-large text-active text-primary"></i>
+                            <i class="fa fa-circle icon-large text text-default"></i>
+                            <i class="fa fa-ok-sign icon-large text-active text-primary"></i>
                         </div>
 
                         <div class="media-body">
@@ -248,12 +248,12 @@
                 <li class="list-group-item bg" data-toggle="class:active" data-target="#todo-2">
                     <div class="media">
                         <span class="pull-left thumb-small m-t-mini">
-                            <i class="icon-reply icon-xlarge text-default"></i>
+                            <i class="fa fa-reply icon-xlarge text-default"></i>
                         </span>
 
                         <div id="todo-2" class="pull-right text-primary m-t-small">
-                            <i class="icon-circle icon-large text text-default"></i>
-                            <i class="icon-ok-sign icon-large text-active text-primary"></i>
+                            <i class="fa fa-circle icon-large text text-default"></i>
+                            <i class="fa fa-ok-sign icon-large text-active text-primary"></i>
                         </div>
 
                         <div class="media-body">
@@ -265,12 +265,12 @@
                 <li class="list-group-item" data-toggle="class:active" data-target="#todo-3">
                     <div class="media">
                         <span class="pull-left thumb-small m-t-mini">
-                            <i class="icon-coffee icon-xlarge text-default"></i>
+                            <i class="fa fa-coffee icon-xlarge text-default"></i>
                         </span>
 
                         <div id="todo-3" class="pull-right text-primary m-t-small">
-                            <i class="icon-circle icon-large text text-default"></i>
-                            <i class="icon-ok-sign icon-large text-active text-primary"></i>
+                            <i class="fa fa-circle icon-large text text-default"></i>
+                            <i class="fa fa-ok-sign icon-large text-active text-primary"></i>
                         </div>
 
                         <div class="media-body">
@@ -282,12 +282,12 @@
                 <li class="list-group-item bg" data-toggle="class:active" data-target="#todo-4">
                     <div class="media">
                         <span class="pull-left thumb-small m-t-mini">
-                            <i class="icon-music icon-xlarge text-default"></i>
+                            <i class="fa fa-music icon-xlarge text-default"></i>
                         </span>
 
                         <div id="todo-4" class="pull-right text-primary m-t-small">
-                            <i class="icon-circle icon-large text text-default"></i>
-                            <i class="icon-ok-sign icon-large text-active text-primary"></i>
+                            <i class="fa fa-circle icon-large text text-default"></i>
+                            <i class="fa fa-ok-sign icon-large text-active text-primary"></i>
                         </div>
 
                         <div class="media-body">
@@ -311,7 +311,7 @@
                 <section class="media-body panel">
                     <header class="panel-heading clearfix">
                         <a href="#">John smith</a><label class="label bg-info m-l-mini">Editor</label> <span
-                            class="text-muted m-l-small pull-right"><i class="icon-time"></i>24 minutes ago</span>
+                            class="text-muted m-l-small pull-right"><i class="fa fa-time"></i>24 minutes ago</span>
                     </header>
 
                     <div class="panel-body">
@@ -319,23 +319,23 @@
 
                         <div class="comment-action m-t-small">
                             <a href="#" data-toggle="class" class="btn btn-white btn-xs active"><i
-                                    class="icon-star-empty text-muted text"></i><i
-                                    class="icon-star text-danger text-active"></i>Like</a>
+                                    class="fa fa-star-empty text-muted text"></i><i
+                                    class="fa fa-star text-danger text-active"></i>Like</a>
                             <a href="#comment-form" class="btn btn-white btn-xs"><i
-                                    class="icon-mail-reply text-muted"></i>Reply</a>
+                                    class="fa fa-mail-reply text-muted"></i>Reply</a>
                         </div>
                     </div>
                 </section>
             </article>
             <!-- .comment-reply -->
             <article id="comment-id-2" class="comment-item comment-reply media arrow arrow-left">
-                <a class="pull-left thumb-small"><span class="btn btn-circle btn-white btn-xs"><i class="icon-user"></i>
+                <a class="pull-left thumb-small"><span class="btn btn-circle btn-white btn-xs"><i class="fa fa-user"></i>
                 </span></a>
                 <section class="media-body panel text-small">
                     <div class="panel-body">
                         <a href="#">Mika Sam</a><label
                             class="label bg-inverse m-l-mini">Admin</label> Report this comment is helpful <span
-                            class="text-muted m-l-small pull-right"><i class="icon-time"></i>10 minutes ago</span>
+                            class="text-muted m-l-small pull-right"><i class="fa fa-time"></i>10 minutes ago</span>
                     </div>
                 </section>
             </article>
@@ -345,7 +345,7 @@
                 <section class="media-body panel">
                     <header class="panel-heading clearfix">
                         <a href="#">By me</a><label class="label bg-default m-l-mini">User</label> <span
-                            class="text-muted m-l-small pull-right"><i class="icon-time"></i>about 1 hour ago</span>
+                            class="text-muted m-l-small pull-right"><i class="fa fa-time"></i>about 1 hour ago</span>
                     </header>
 
                     <div class="panel-body">
@@ -353,7 +353,7 @@
 
                         <div class="comment-action m-t-small">
                             <a href="#comment-id-3" data-dismiss="alert" class="btn btn-white btn-xs"><i
-                                    class="icon-trash text-muted"></i>Remove</a>
+                                    class="fa fa-trash text-muted"></i>Remove</a>
                         </div>
                     </div>
                 </section>
@@ -363,7 +363,7 @@
                 <section class="media-body panel">
                     <header class="panel-heading clearfix">
                         <a href="#">Peter</a><label class="label bg-primary m-l-mini">Vip</label> <span
-                            class="text-muted m-l-small pull-right"><i class="icon-time"></i>2 hours ago</span>
+                            class="text-muted m-l-small pull-right"><i class="fa fa-time"></i>2 hours ago</span>
                     </header>
 
                     <div class="panel-body">
@@ -376,10 +376,10 @@
 
                         <div class="comment-action m-t-small">
                             <a href="#" data-toggle="class" class="btn btn-white btn-xs"><i
-                                    class="icon-star-empty text-muted text"></i><i
-                                    class="icon-star text-danger text-active"></i>Like</a>
+                                    class="fa fa-star-empty text-muted text"></i><i
+                                    class="fa fa-star text-danger text-active"></i>Like</a>
                             <a href="#comment-form" class="btn btn-white btn-xs"><i
-                                    class="icon-mail-reply text-muted"></i>Reply</a>
+                                    class="fa fa-mail-reply text-muted"></i>Reply</a>
                         </div>
                     </div>
                 </section>

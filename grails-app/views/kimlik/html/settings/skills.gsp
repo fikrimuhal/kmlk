@@ -40,7 +40,7 @@ skills
     </td>
     <td>
         <button class="btn btn-white active" ng-class="{'active':skill.visible}" ng-click="toggleVisibility(skill)">
-           <i class="icon-lightbulb text-active text-warning ng-scope"></i>
+           <i class="fa fa-lightbulb-o text-active text-warning ng-scope"></i>
        
         </button>
     </td>
@@ -65,7 +65,7 @@ skills
     </td>
     <td>
         <button class="btn btn-white active" ng-class="{'active':skill.visible}" ng-click="toggleVisibility(skill)">
-           <i class="icon-lightbulb text-active text-warning ng-scope"></i>
+           <i class="fa fa-lightbulb-o text-active text-warning ng-scope"></i>
        
         </button>
     </td>
@@ -90,7 +90,7 @@ skills
     </td>
     <td>
         <button class="btn btn-white active" ng-class="{'active':skill.visible}" ng-click="toggleVisibility(skill)">
-           <i class="icon-lightbulb text-active text-warning ng-scope"></i>
+           <i class="fa fa-lightbulb-o text-active text-warning ng-scope"></i>
        
         </button>
     </td>
@@ -115,7 +115,7 @@ skills
     </td>
     <td>
         <button class="btn btn-white active" ng-class="{'active':skill.visible}" ng-click="toggleVisibility(skill)">
-           <i class="icon-lightbulb text-active text-warning ng-scope"></i>
+           <i class="fa fa-lightbulb-o text-active text-warning ng-scope"></i>
        
         </button>
     </td>
@@ -140,7 +140,7 @@ skills
     </td>
     <td>
         <button class="btn btn-white active" ng-class="{'active':skill.visible}" ng-click="toggleVisibility(skill)">
-           <i class="icon-lightbulb text-active text-warning ng-scope"></i>
+           <i class="fa fa-lightbulb-o text-active text-warning ng-scope"></i>
        
         </button>
     </td>
@@ -165,7 +165,7 @@ skills
     </td>
     <td>
         <button class="btn btn-white active" ng-class="{'active':skill.visible}" ng-click="toggleVisibility(skill)">
-           <i class="icon-lightbulb text-active text-warning ng-scope"></i>
+           <i class="fa fa-lightbulb-o text-active text-warning ng-scope"></i>
        
         </button>
     </td>
@@ -190,7 +190,7 @@ skills
     </td>
     <td>
         <button class="btn btn-white active" ng-class="{'active':skill.visible}" ng-click="toggleVisibility(skill)">
-           <i class="icon-lightbulb text-active text-warning ng-scope"></i>
+           <i class="fa fa-lightbulb-o text-active text-warning ng-scope"></i>
        
         </button>
     </td>
@@ -215,7 +215,7 @@ skills
     </td>
     <td>
         <button class="btn btn-white active" ng-class="{'active':skill.visible}" ng-click="toggleVisibility(skill)">
-           <i class="icon-lightbulb text-active text-warning ng-scope"></i>
+           <i class="fa fa-lightbulb-o text-active text-warning ng-scope"></i>
        
         </button>
     </td>
@@ -240,7 +240,7 @@ skills
     </td>
     <td>
         <button class="btn btn-white active" ng-class="{'active':skill.visible}" ng-click="toggleVisibility(skill)">
-           <i class="icon-lightbulb text-active text-warning ng-scope"></i>
+           <i class="fa fa-lightbulb-o text-active text-warning ng-scope"></i>
        
         </button>
     </td>
@@ -265,7 +265,7 @@ skills
     </td>
     <td>
         <button class="btn btn-white active" ng-class="{'active':skill.visible}" ng-click="toggleVisibility(skill)">
-           <i class="icon-lightbulb text-active text-warning ng-scope"></i>
+           <i class="fa fa-lightbulb-o text-active text-warning ng-scope"></i>
        
         </button>
     </td>
@@ -291,7 +291,7 @@ skills
     <td>
         <button class="btn btn-white" ng-class="{'active':skill.visible}" ng-click="toggleVisibility(skill)">
            
-           <i ng-if="!skill.visible" class="icon-eye-close text-active text-danger ng-scope"></i><!-- end ngIf: !skill.visible -->
+           <i ng-if="!skill.visible" class="fa fa-eye-slash text-active text-danger ng-scope"></i><!-- end ngIf: !skill.visible -->
         </button>
     </td>
     <td>
@@ -315,7 +315,7 @@ skills
     </td>
     <td>
         <button class="btn btn-white active" ng-class="{'active':skill.visible}" ng-click="toggleVisibility(skill)">
-           <i class="icon-lightbulb text-active text-warning ng-scope"></i>
+           <i class="fa fa-lightbulb-o text-active text-warning ng-scope"></i>
        
         </button>
     </td>
@@ -340,7 +340,7 @@ skills
     </td>
     <td>
         <button class="btn btn-white active" ng-class="{'active':skill.visible}" ng-click="toggleVisibility(skill)">
-           <i class="icon-lightbulb text-active text-warning ng-scope"></i>
+           <i class="fa fa-lightbulb-o text-active text-warning ng-scope"></i>
        
         </button>
     </td>
@@ -365,7 +365,7 @@ skills
     </td>
     <td>
         <button class="btn btn-white active" ng-class="{'active':skill.visible}" ng-click="toggleVisibility(skill)">
-           <i class="icon-lightbulb text-active text-warning ng-scope"></i>
+           <i class="fa fa-lightbulb-o text-active text-warning ng-scope"></i>
        
         </button>
     </td>
@@ -390,7 +390,7 @@ skills
     </td>
     <td>
         <button class="btn btn-white active" ng-class="{'active':skill.visible}" ng-click="toggleVisibility(skill)">
-           <i class="icon-lightbulb text-active text-warning ng-scope"></i>
+           <i class="fa fa-lightbulb-o text-active text-warning ng-scope"></i>
        
         </button>
     </td>
@@ -415,7 +415,7 @@ skills
     </td>
     <td>
         <button class="btn btn-white active" ng-class="{'active':skill.visible}" ng-click="toggleVisibility(skill)">
-           <i class="icon-lightbulb text-active text-warning ng-scope"></i>
+           <i class="fa fa-lightbulb-o text-active text-warning ng-scope"></i>
        
         </button>
     </td>
@@ -440,7 +440,7 @@ skills
     </td>
     <td>
         <button class="btn btn-white active" ng-class="{'active':skill.visible}" ng-click="toggleVisibility(skill)">
-           <i class="icon-lightbulb text-active text-warning ng-scope"></i>
+           <i class="fa fa-lightbulb-o text-active text-warning ng-scope"></i>
        
         </button>
     </td>
@@ -465,7 +465,7 @@ skills
     </td>
     <td>
         <button class="btn btn-white active" ng-class="{'active':skill.visible}" ng-click="toggleVisibility(skill)">
-           <i class="icon-lightbulb text-active text-warning ng-scope"></i>
+           <i class="fa fa-lightbulb-o text-active text-warning ng-scope"></i>
        
         </button>
     </td>
@@ -490,7 +490,7 @@ skills
     </td>
     <td>
         <button class="btn btn-white active" ng-class="{'active':skill.visible}" ng-click="toggleVisibility(skill)">
-           <i class="icon-lightbulb text-active text-warning ng-scope"></i>
+           <i class="fa fa-lightbulb-o text-active text-warning ng-scope"></i>
        
         </button>
     </td>
@@ -516,7 +516,7 @@ skills
     <td>
         <button class="btn btn-white" ng-class="{'active':skill.visible}" ng-click="toggleVisibility(skill)">
            
-           <i ng-if="!skill.visible" class="icon-eye-close text-active text-danger ng-scope"></i><!-- end ngIf: !skill.visible -->
+           <i ng-if="!skill.visible" class="fa fa-eye-slash text-active text-danger ng-scope"></i><!-- end ngIf: !skill.visible -->
         </button>
     </td>
     <td>
@@ -540,7 +540,7 @@ skills
     </td>
     <td>
         <button class="btn btn-white active" ng-class="{'active':skill.visible}" ng-click="toggleVisibility(skill)">
-           <i class="icon-lightbulb text-active text-warning ng-scope"></i>
+           <i class="fa fa-lightbulb-o text-active text-warning ng-scope"></i>
        
         </button>
     </td>
@@ -565,7 +565,7 @@ skills
     </td>
     <td>
         <button class="btn btn-white active" ng-class="{'active':skill.visible}" ng-click="toggleVisibility(skill)">
-           <i class="icon-lightbulb text-active text-warning ng-scope"></i>
+           <i class="fa fa-lightbulb-o text-active text-warning ng-scope"></i>
        
         </button>
     </td>
@@ -591,7 +591,7 @@ skills
     <td>
         <button class="btn btn-white" ng-class="{'active':skill.visible}" ng-click="toggleVisibility(skill)">
            
-           <i ng-if="!skill.visible" class="icon-eye-close text-active text-danger ng-scope"></i><!-- end ngIf: !skill.visible -->
+           <i ng-if="!skill.visible" class="fa fa-eye-slash text-active text-danger ng-scope"></i><!-- end ngIf: !skill.visible -->
         </button>
     </td>
     <td>
@@ -616,7 +616,7 @@ skills
     <td>
         <button class="btn btn-white" ng-class="{'active':skill.visible}" ng-click="toggleVisibility(skill)">
            
-           <i ng-if="!skill.visible" class="icon-eye-close text-active text-danger ng-scope"></i><!-- end ngIf: !skill.visible -->
+           <i ng-if="!skill.visible" class="fa fa-eye-slash text-active text-danger ng-scope"></i><!-- end ngIf: !skill.visible -->
         </button>
     </td>
     <td>
@@ -640,7 +640,7 @@ skills
     </td>
     <td>
         <button class="btn btn-white active" ng-class="{'active':skill.visible}" ng-click="toggleVisibility(skill)">
-           <i class="icon-lightbulb text-active text-warning ng-scope"></i>
+           <i class="fa fa-lightbulb-o text-active text-warning ng-scope"></i>
        
         </button>
     </td>
@@ -665,7 +665,7 @@ skills
     </td>
     <td>
         <button class="btn btn-white active" ng-class="{'active':skill.visible}" ng-click="toggleVisibility(skill)">
-           <i class="icon-lightbulb text-active text-warning ng-scope"></i>
+           <i class="fa fa-lightbulb-o text-active text-warning ng-scope"></i>
        
         </button>
     </td>
@@ -690,7 +690,7 @@ skills
     </td>
     <td>
         <button class="btn btn-white active" ng-class="{'active':skill.visible}" ng-click="toggleVisibility(skill)">
-           <i class="icon-lightbulb text-active text-warning ng-scope"></i>
+           <i class="fa fa-lightbulb-o text-active text-warning ng-scope"></i>
        
         </button>
     </td>
@@ -715,7 +715,7 @@ skills
     </td>
     <td>
         <button class="btn btn-white active" ng-class="{'active':skill.visible}" ng-click="toggleVisibility(skill)">
-           <i class="icon-lightbulb text-active text-warning ng-scope"></i>
+           <i class="fa fa-lightbulb-o text-active text-warning ng-scope"></i>
        
         </button>
     </td>
@@ -740,7 +740,7 @@ skills
     </td>
     <td>
         <button class="btn btn-white active" ng-class="{'active':skill.visible}" ng-click="toggleVisibility(skill)">
-           <i class="icon-lightbulb text-active text-warning ng-scope"></i>
+           <i class="fa fa-lightbulb-o text-active text-warning ng-scope"></i>
        
         </button>
     </td>

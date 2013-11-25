@@ -6,7 +6,7 @@
             <header class="panel-heading text-right">
                 <ul class="nav nav-tabs pull-left">
 
-                    <li ng-class="{active: $routeSegment.contains('contacts')}"><a href="/kimlik/{{user_name}}/contacts"> <i class="icon-home icon-large text-default"></i>Addres defterim</a></li>
+                    <li ng-class="{active: $routeSegment.contains('contacts')}"><a href="/kimlik/{{user_name}}/contacts"> <i class="fa fa-home icon-large text-default"></i>Addres defterim</a></li>
 
                 </ul>
                 <span class="hidden-sm hidden-xs hidden-phone">Kişiler</span>

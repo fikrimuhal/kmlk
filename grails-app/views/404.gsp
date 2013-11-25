@@ -20,17 +20,17 @@
                 </div>
                 <div class="list-group m-b-small">
                     <a href="/" target="_self" class="list-group-item">
-                        <i class="icon-chevron-right"></i>
-                        <i class="icon-home"></i> Ana sayfaya dön
+                        <i class="fa fa-chevron-right"></i>
+                        <i class="fa fa-home"></i> Ana sayfaya dön
                     </a>
                     <a href="/" target="_self" class="list-group-item">
-                        <i class="icon-chevron-right"></i>
-                        <i class="icon-question"></i> Bu hatta hakkında bize yazmak isterseniz...
+                        <i class="fa fa-chevron-right"></i>
+                        <i class="fa fa-question"></i> Bu hatta hakkında bize yazmak isterseniz...
                     </a>
                     <a href="#" class="list-group-item">
-                        <i class="icon-chevron-right"></i>
+                        <i class="fa fa-chevron-right"></i>
                         <span class="badge">0216-111-2223</span>
-                        <i class="icon-phone"></i> Ouuuugk!
+                        <i class="fa fa-phone"></i> Ouuuugk!
                     </a>
                 </div>
             </div>

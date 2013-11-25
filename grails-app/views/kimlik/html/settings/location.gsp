@@ -140,9 +140,9 @@
         </section>
 
         <div class="alert alert-info alert-block" ng-show="address.city">
-            <button type="button" class="close" data-dismiss="alert"><i class="icon-remove"></i></button>
+            <button type="button" class="close" data-dismiss="alert"><i class="fa fa-remove"></i></button>
 
-            <h4><i class="icon-map-marker icon-2x"></i>
+            <h4><i class="fa fa-map-marker icon-2x"></i>
                 {{markerIsJumping?'Zıplayan':'Zıplamayan'}} işaret hakkında!</h4>
 
             <p>

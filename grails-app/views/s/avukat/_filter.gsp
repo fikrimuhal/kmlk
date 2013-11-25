@@ -1,4 +1,4 @@
-<h2 class="margin-none separator bottom"><i class="icon-external-link-sign icon-fixed-width text-primary"></i>Filtrele</h2>
+<h2 class="margin-none separator bottom"><i class="fa fa-external-link-sign icon-fixed-width text-primary"></i>Filtrele</h2>
 <ul>
     <li><a href="">Sehir sec</a></li>
     <li><a href="">Fiyat araligi</a></li>
@@ -8,7 +8,7 @@
 
 <div class="separator bottom"></div>
 
-<h2 class="margin-none separator bottom"><i class="icon-external-link-sign icon-fixed-width text-primary"></i>Filtrele</h2>
+<h2 class="margin-none separator bottom"><i class="fa fa-external-link-sign icon-fixed-width text-primary"></i>Filtrele</h2>
 <ul>
     <li><a href="">Sehir sec</a></li>
     <li><a href="">Fiyat araligi</a></li>

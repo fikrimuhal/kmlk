@@ -13,7 +13,7 @@
 <body>
 <!-- header -->
 <header id="header" class="navbar bg bg-black">
-    <a href="" class="btn btn-link pull-right m-t-mini"><i class="icon-question icon-xlarge text-default"></i>
+    <a href="" class="btn btn-link pull-right m-t-mini"><i class="fa fa-question icon-xlarge text-default"></i>
     </a>
     <a class="navbar-brand" href="/">kimlik</a>
 </header>
@@ -32,19 +32,19 @@
 
                         <oauth:connect provider="facebook" id="facebook-connect-link"
                                        class="btn btn-facebook btn-block m-b-small"><i
-                                class="icon-facebook pull-left"></i>Facebook ile giriş yap</oauth:connect>
+                                class="fa fa-facebook pull-left"></i>Facebook ile giriş yap</oauth:connect>
 
                         <oauth:connect provider="twitter" id="twitter-connect-link"
                                        class="btn btn-twitter btn-block"><i
-                                class="icon-twitter pull-left"></i>Twitter ile giriş yap</oauth:connect>
+                                class="fa fa-twitter pull-left"></i>Twitter ile giriş yap</oauth:connect>
 
                         <oauth:connect provider="google" id="google-connect-link"
                                        class="btn btn-gplus btn-block"><i
-                                class="icon-google-plus pull-left"></i>Google ile giriş yap</oauth:connect>
+                                class="fa fa-google-plus pull-left"></i>Google ile giriş yap</oauth:connect>
 
                         <oauth:connect provider="linkedin" id="linkedin-connect-link"
                                        class="btn btn-linkedin btn-block"><i
-                                class="icon-linkedin pull-left"></i>Linkedin ile giriş yap</oauth:connect>
+                                class="fa fa-linkedin pull-left"></i>Linkedin ile giriş yap</oauth:connect>
 
 
                         <div class="line line-dashed"></div>

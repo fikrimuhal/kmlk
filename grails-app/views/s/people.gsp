@@ -16,7 +16,7 @@
 <ul class="breadcrumb">
     <li>Bulunduğunuz sayfa</li>
     <li><a href="/" class="glyphicons home"><i></i>Ana sayfa</a></li>
-    <li class="divider"><i class="icon-caret-right"></i></li>
+    <li class="divider"><i class="fa fa-caret-right"></i></li>
     <li><a href="/people">Profiller</a></li>
 </ul>
 

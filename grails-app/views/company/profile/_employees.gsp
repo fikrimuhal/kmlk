@@ -15,9 +15,9 @@
                     <div class="caption">
                         <h4>Ilgaz Şumnulu
                             <div class="pull-right">
-                                <a href="/kimlik/profile/sumnulu" class="btn btn-circle btn-xs btn-twitter" title="Profile git"><i class="icon-twitter"></i></a>
-                                %{--<a href="/kimlik/profile/sumnulu" class="btn btn-circle btn-xs btn-facebook" title="Profile git"><i class="icon-facebook"></i></a>--}%
-                                <a href="/kimlik/profile/sumnulu" class="btn btn-circle btn-xs" title="Profile git"><i class="icon-male"></i></a>
+                                <a href="/kimlik/profile/sumnulu" class="btn btn-circle btn-xs btn-twitter" title="Profile git"><i class="fa fa-twitter"></i></a>
+                                %{--<a href="/kimlik/profile/sumnulu" class="btn btn-circle btn-xs btn-facebook" title="Profile git"><i class="fa fa-facebook"></i></a>--}%
+                                <a href="/kimlik/profile/sumnulu" class="btn btn-circle btn-xs" title="Profile git"><i class="fa fa-male"></i></a>
                             </div>
                         </h4>
 
@@ -32,7 +32,7 @@
 
                     <div class="caption">
                         <h4>Jack Sparrow
-                            <a href="/kimlik/profile/sumnulu" class="btn btn-circle btn-xs pull-right" title="Profile git"><i class="icon-male"></i></a>
+                            <a href="/kimlik/profile/sumnulu" class="btn btn-circle btn-xs pull-right" title="Profile git"><i class="fa fa-male"></i></a>
                         </h4>
 
                         <p>Bilkent Fizik mezunu. Sheldon Cooper’ın 3. göbekten kuzeni, mucit, fikirlerin arkasındaki adam.</p>
@@ -47,7 +47,7 @@
 
                     <div class="caption">
                         <h4>Mustafa Topaloglu
-                            <a href="/kimlik/profile/sumnulu" class="btn btn-circle btn-xs pull-right" title="Profile git"><i class="icon-male"></i></a>
+                            <a href="/kimlik/profile/sumnulu" class="btn btn-circle btn-xs pull-right" title="Profile git"><i class="fa fa-male"></i></a>
                         </h4>
 
                         <p>Bilkent Fizik mezunu. Sheldon Cooper’ın 3. göbekten kuzeni, mucit, fikirlerin arkasındaki adam.</p>

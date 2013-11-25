@@ -16,7 +16,7 @@
                 <article class="timeline-item">
                     <div class="timeline-caption">
                         <div class="panel arrow arrow-left">
-                            <span class="timeline-icon"><i class="icon-mobile-phone time-icon bg-primary"></i></span>
+                            <span class="timeline-icon"><i class="fa fa-mobile-phone time-icon bg-primary"></i></span>
                             <span class="timeline-date">18/12/2013</span>
                             <h5>
                                 <span>İş</span>
@@ -28,7 +28,7 @@
                 <article class="timeline-item alt">
                     <div class="timeline-caption">
                         <div class="panel arrow arrow-right">
-                            <span class="timeline-icon"><i class="icon-building time-icon bg-warning"></i></span>
+                            <span class="timeline-icon"><i class="fa fa-building-o time-icon bg-warning"></i></span>
                             <span class="timeline-date">14/12/2013</span>
                             <h5>
                                 <span>Egitim</span>
@@ -42,7 +42,7 @@
                 <article class="timeline-item">
                     <div class="timeline-caption">
                         <div class="panel arrow arrow-left">
-                            <span class="timeline-icon"><i class="icon-mobile-phone time-icon bg-primary"></i></span>
+                            <span class="timeline-icon"><i class="fa fa-mobile-phone time-icon bg-primary"></i></span>
                             <span class="timeline-date">18/12/2013</span>
                             <h5>
                                 <span>İş</span>
@@ -54,7 +54,7 @@
                 <article class="timeline-item alt">
                     <div class="timeline-caption">
                         <div class="panel arrow arrow-right">
-                            <span class="timeline-icon"><i class="icon-dollar time-icon bg-info"></i></span>
+                            <span class="timeline-icon"><i class="fa fa-dollar time-icon bg-info"></i></span>
                             <span class="timeline-date">6/4/2013</span>
                             <h5>
                                 <span>Eğitim</span>
@@ -68,7 +68,7 @@
                 <article class="timeline-item alt">
                     <div class="timeline-caption">
                         <div class="panel arrow arrow-right">
-                            <span class="timeline-icon"><i class="icon-dollar time-icon bg-info"></i></span>
+                            <span class="timeline-icon"><i class="fa fa-dollar time-icon bg-info"></i></span>
                             <span class="timeline-date">6/4/2013</span>
                             <h5>
                                 <span>Eğitim</span>
@@ -82,7 +82,7 @@
                 <article class="timeline-item">
                     <div class="timeline-caption">
                         <div class="panel arrow arrow-left">
-                            <span class="timeline-icon"><i class="icon-home time-icon"></i></span>
+                            <span class="timeline-icon"><i class="fa fa-home time-icon"></i></span>
                             <span class="timeline-date">1/4/2013</span>
                             <h5>
                                 <span>Hello World!</span>
@@ -94,7 +94,7 @@
                     </div>
                 </article>
 
-                <div class="timeline-footer"><a href="#"><i class="icon-plus time-icon inline-block bg-default"></i></a>
+                <div class="timeline-footer"><a href="#"><i class="fa fa-plus time-icon inline-block bg-default"></i></a>
                 </div>
             </div>
         </div>

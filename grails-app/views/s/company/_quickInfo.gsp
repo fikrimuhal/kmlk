@@ -1,5 +1,5 @@
 <!-- Activity/List Widget -->
-<h2 class="margin-none separator bottom"><i class="icon-signal text-primary icon-fixed-width"></i> Hızlı İstatistikler
+<h2 class="margin-none separator bottom"><i class="fa fa-signal text-primary icon-fixed-width"></i> Hızlı İstatistikler
 </h2>
 
 <div class="widget widget-heading-simple widget-body-gray" data-toggle="collapse-widget">

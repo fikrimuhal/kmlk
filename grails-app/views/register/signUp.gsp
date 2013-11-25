@@ -12,7 +12,7 @@
 <body>
 <!-- header -->
 <header id="header" class="navbar bg bg-black">
-    <a href="" class="btn btn-link pull-right m-t-mini"><i class="icon-question icon-xlarge text-default"></i></a>
+    <a href="" class="btn btn-link pull-right m-t-mini"><i class="fa fa-question icon-xlarge text-default"></i></a>
     <a class="navbar-brand" href="#">kimlik</a>
 </header>
 <!-- / header -->
@@ -43,10 +43,10 @@
                         <div class="line line-dashed"></div>
                         <div class="row">
                             <div class="col-sm-6 text-center">
-                                <a href="#" class="btn btn-facebook btn-circle btn-sm"><i class="icon-facebook"></i>facebook</a>
+                                <a href="#" class="btn btn-facebook btn-circle btn-sm"><i class="fa fa-facebook"></i>facebook</a>
                             </div>
                             <div class="col-sm-6 text-center">
-                                <a href="#" class="btn btn-twitter btn-circle btn-sm"><i class="icon-twitter"></i>Twitter</a>
+                                <a href="#" class="btn btn-twitter btn-circle btn-sm"><i class="fa fa-twitter"></i>Twitter</a>
                             </div>
                         </div>
                         <div class="line line-dashed"></div>

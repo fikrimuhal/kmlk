@@ -2,7 +2,7 @@
 
 
 <div class="heading-buttons">
-    <h2 class="font-thin"><i class="icon-tags"></i>Bilgi ve Yeterlilikler  <small><br/>Bu uzmanlıklar analatik olarak hesaplanmıştır.
+    <h2 class="font-thin"><i class="fa fa-tags"></i>Bilgi ve Yeterlilikler  <small><br/>Bu uzmanlıklar analatik olarak hesaplanmıştır.
         Daha fazla bilgi için <a href="#">tıklayın</a>.</small></h2>
 </div>
 
@@ -53,7 +53,7 @@
         </div>
     </g:if>
     <div class="col-lg-4 col-sm-4">
-        <p class="text-center"><span class="btn btn-circle btn-lg btn-default"><i class="icon-refresh"></i>
+        <p class="text-center"><span class="btn btn-circle btn-lg btn-default"><i class="fa fa-refresh"></i>
         </span></p>
 
         <div>

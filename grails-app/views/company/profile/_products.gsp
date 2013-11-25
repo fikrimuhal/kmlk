@@ -11,7 +11,7 @@
                 <div class="col-lg-4 col-sm-4">
                     <a href="${it.url}" target="_blank">
                         <p class="text-center"><span class="btn btn-circle btn-lg btn-info"><i
-                                class="icon-bookmark"></i></span>
+                                class="fa fa-bookmark"></i></span>
                         </p>
 
                         <div>

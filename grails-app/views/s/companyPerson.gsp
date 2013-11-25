@@ -17,9 +17,9 @@
 <ul class="breadcrumb">
     <li>Bulunduğunuz sayfa</li>
     <li><a href="/company" class="glyphicons home"><i></i> Fikrimuhal</a></li>
-    <li class="divider"><i class="icon-caret-right"></i></li>
+    <li class="divider"><i class="fa fa-caret-right"></i></li>
     <li><a href="/company/people">Çalışanlar</a></li>
-    <li class="divider"><i class="icon-caret-right"></i></li>
+    <li class="divider"><i class="fa fa-caret-right"></i></li>
     <li><a href="/company/people/ilgaz">Ilgaz Şumnulu</a></li>
 </ul>
 
@@ -37,7 +37,7 @@
 
         <g:render template="/s/profile/contact"></g:render>
         <g:render template="/s/profile/skills"></g:render>
-        <p class="separator text-center"><i class="icon-ellipsis-horizontal icon-3x"></i></p>
+        <p class="separator text-center"><i class="fa fa-ellipsis-horizontal icon-3x"></i></p>
 
         <g:render template="/s/profile/certifates"></g:render>
 

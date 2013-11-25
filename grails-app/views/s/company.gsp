@@ -17,9 +17,9 @@
 <ul class="breadcrumb">
     <li>Bulunduğunuz sayfa</li>
     <li><a href="/dashboard" class="glyphicons dashboard"><i></i> Şirket</a></li>
-    <li class="divider"><i class="icon-caret-right"></i></li>
+    <li class="divider"><i class="fa fa-caret-right"></i></li>
     <li><a href="/">Projeler</a></li>
-    <li class="divider"><i class="icon-caret-right"></i></li>
+    <li class="divider"><i class="fa fa-caret-right"></i></li>
     <li><a href="/">Proje listesi</a></li>
 </ul>
 
@@ -88,7 +88,7 @@
 
 </div>
 <!-- Google maps end -->
-<p class="separator text-center"><i class="icon-ellipsis-horizontal icon-3x"></i></p>
+<p class="separator text-center"><i class="fa fa-ellipsis-horizontal icon-3x"></i></p>
 
 
 <h3 class="glyphicons circle_info margin-none"><i></i>Kim? <span><a href="/company/people">Hepsini göster</a></span></h3>
@@ -190,11 +190,11 @@
 </div>
 <!-- // Row END -->
 
-<p class="separator text-center"><i class="icon-ellipsis-horizontal icon-3x"></i></p>
+<p class="separator text-center"><i class="fa fa-ellipsis-horizontal icon-3x"></i></p>
 
 <div class="separator bottom"></div>
 
-<h2 class="margin-none separator bottom"><i class="icon-group text-primary icon-fixed-width"></i> Ürünler / Projeler
+<h2 class="margin-none separator bottom"><i class="fa fa-group text-primary icon-fixed-width"></i> Ürünler / Projeler
 </h2>
 <div class="row-fluid">
 
@@ -263,7 +263,7 @@
 </div>
 
 
-<p class="separator text-center"><i class="icon-ellipsis-horizontal icon-3x"></i></p>
+<p class="separator text-center"><i class="fa fa-ellipsis-horizontal icon-3x"></i></p>
 
 <div class="innerLR innerB">
 
@@ -271,10 +271,10 @@
         <div class="span9 tablet-column-reset">
 
             <g:render template="/s/company/timeline"/>
-            <p class="separator text-center"><i class="icon-ellipsis-horizontal icon-3x"></i></p>
+            <p class="separator text-center"><i class="fa fa-ellipsis-horizontal icon-3x"></i></p>
 
             <g:render template="/s/company/skills"/>
-            <p class="separator text-center"><i class="icon-ellipsis-horizontal icon-3x"></i></p>
+            <p class="separator text-center"><i class="fa fa-ellipsis-horizontal icon-3x"></i></p>
 
             <g:render template="/shared/comps/span9/chat"/>
 
@@ -284,13 +284,13 @@
 
         <div class="span3 tablet-column-reset">
 
-            <h2 class="margin-none separator bottom"><i class="icon-external-link-sign icon-fixed-width text-primary"></i>İstatistikler</h2>
+            <h2 class="margin-none separator bottom"><i class="fa fa-external-link-sign icon-fixed-width text-primary"></i>İstatistikler</h2>
 
             <g:render template="/s/company/siralama"/>
             <div class="separator bottom"></div>
 
             <g:render template="/shared/comps/span3/visits"/>
-            <p class="separator text-center"><i class="icon-ellipsis-horizontal icon-3x"></i></p>
+            <p class="separator text-center"><i class="fa fa-ellipsis-horizontal icon-3x"></i></p>
 
             <g:render template="/s/company/quickInfo"/>
 
@@ -305,11 +305,11 @@
 
 <div class="innerAll">
 
-    <p class="separator text-center"><i class="icon-ellipsis-horizontal icon-3x"></i></p>
+    <p class="separator text-center"><i class="fa fa-ellipsis-horizontal icon-3x"></i></p>
 
     <div class="row-fluid">
         <div class="span6">
-            <h2 class="margin-none separator bottom"><i class="icon-group text-primary icon-fixed-width"></i>Resimler</h2>
+            <h2 class="margin-none separator bottom"><i class="fa fa-group text-primary icon-fixed-width"></i>Resimler</h2>
 
             <!-- Carousel -->
             <div class="widget widget-heading-simple widget-body-simple">
@@ -388,7 +388,7 @@
         </div>
 
         <div class="span6">
-            <h2 class="margin-none separator bottom"><i class="icon-group text-primary icon-fixed-width"></i> Blog Yazilari</h2>
+            <h2 class="margin-none separator bottom"><i class="fa fa-group text-primary icon-fixed-width"></i> Blog Yazilari</h2>
 
             <!-- Media item -->
             <div class="media">
@@ -426,7 +426,7 @@
         </div>
     </div>
 </div>
-<p class="separator text-center"><i class="icon-ellipsis-horizontal icon-3x"></i></p>
+<p class="separator text-center"><i class="fa fa-ellipsis-horizontal icon-3x"></i></p>
 
 
 <div class="innerLR widget widget-heading-simple widget-body-white">
