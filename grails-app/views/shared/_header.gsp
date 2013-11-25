@@ -40,7 +40,7 @@
         <li>
             <div class="m-t m-b-small" id="panel-notifications">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
-                        class="fa fa-comment-alt icon-xlarge text-default"></i><b
+                        class="fa fa-comment-o icon-xlarge text-default"></i><b
                         class="badge badge-notes bg-danger count-n">2</b></a>
                 <section class="dropdown-menu m-l-small m-t-mini">
                     <section class="panel panel-large arrow arrow-top">
