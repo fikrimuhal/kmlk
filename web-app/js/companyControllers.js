@@ -304,6 +304,12 @@ kimlik
         }
     ])
 
+
+    .controller('CompanyTimelineCtrl', [ '$scope', '$http', function ($scope, $http) {
+        console.log('CompanyTimelineCtrl start');
+
+    }
+    ])
     .controller('FileDestroyController', [
         '$scope', '$http',
         function ($scope, $http) {

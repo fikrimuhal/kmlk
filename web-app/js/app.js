@@ -116,7 +116,9 @@ kimlik.config(['$routeSegmentProvider', '$locationProvider',
         $routeSegmentProvider.
             when('/company/:company_name/timeline', 'company.timeline').
             within('company').segment('timeline', {
-                templateUrl: '/html/company/timeline/timeline.html'});
+                templateUrl: '/html/company/timeline/timeline.html',
+                controller: 'CompanyTimelineCtrl'});
+
 
 
         // Personal profiles start

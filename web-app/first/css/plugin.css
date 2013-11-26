@@ -1032,7 +1032,7 @@ table.fc-border-separate {
 .timeline-item .panel{padding: 15px}
 .timeline-date{position: absolute;width: 150px;left: -200px;top: 3px;text-align: right;}
 .timeline-icon{position: absolute;left: -41px;top: -2px;}
-.time-icon{width: 30px;height: 30px;padding-top: 5px;display:inline-block !important;z-index: 10;border:2px solid #fff;border-radius: 20px;text-align: center;background-color: #898989}
+.time-icon{width: 30px;height: 30px;padding-top: 6px;display:inline-block !important;z-index: 10;border:2px solid #fff;border-radius: 20px;text-align: center;background-color: #898989}
 .time-icon:before{font-size: 16px;margin-top: 5px;color: #fff}
 .timeline-caption .panel{display: inline-block;position: relative;margin-left: 25px;position: relative;text-align: left;}
 .timeline-item.alt{text-align: right;}
