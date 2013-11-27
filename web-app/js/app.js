@@ -225,9 +225,9 @@ kimlik.factory('companyService', function ($resource, $rootScope) {
     }
 
     function getUserCompanyList() {
-//         alert(_settings.baseUrl)
         //todo urlleri merkezi biryerde yaz hepsini burdan consttant a eris sadece
-        var api = $resource(_settings.baseUrl + 'company/userCompanyList');
+        var api = $resource('/api/company/userCompanyList');
+//         alert(_settings.baseUrl)
         return api.query({}, {});
     }
 

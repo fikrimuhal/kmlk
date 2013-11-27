@@ -288,9 +288,9 @@ kimlik
                 url: url,
                 formData: {companyId: $scope.company._id}
             };
-            console.log($scope.company)
+            console.log($scope.company);
 
-            $scope.officePictures = $scope.company.officePictures
+            $scope.officePictures = $scope.company.officePictures;
             $scope.deletePicture = function (file) {
                 console.log(file._id)
                 var result = api.delete({pictureId: file._id, companyId: $scope.company._id})
@@ -305,14 +305,91 @@ kimlik
     ])
 
 
-    .controller('CompanyTimelineCtrl', [ '$scope', '$http', function ($scope, $http) {
+    .controller('CompanyTimelineCtrl', [ '$scope', '$resource', function ($scope, $resource) {
         console.log('CompanyTimelineCtrl start');
+        var api = $resource('/api/company/:verb', {},
+            {
+                'save': {method: 'POST', params: {verb: 'timeline'}},
+                'delete': {method: 'DELETE', params: {verb: 'timeline'}}
+            });
+        var type = {
+            project: {key: 'project', friendly: 'Proje', color: 'bg-warning', icon: 'fa-bookmark-o'},
+            news: {key: 'news', friendly: 'Haber', color: '', icon: 'fa-calendar'},
+            office: {key: 'office', friendly: 'Ofis değişikliği', color: 'bg-warning', icon: 'fa-building-o'},
+            finance: {key: 'finance', friendly: 'Sermaye', color: 'bg-info', icon: 'fa-dollar'},
+            inception: {key: 'inception', friendly: 'Kuruluş', color: '', icon: 'fa-home'},
+            other: {key: 'other', friendly: 'Diğer', color: '', icon: 'fa-square-o'}
+        };
+        $scope.availableTypes = type;
 
-    }
-    ])
+        $scope.selected = {};
+        $scope.entities = $scope.company.timeline;
+
+        $scope.new = function () {
+            $scope.selected = {}
+        };
+
+        $scope.doSelectType = function (t) {
+            $scope.selected.typeKey = t.key;
+        };
+
+        $scope.getType = function (t) {
+
+            return type[t.typeKey];
+        };
+
+        $scope.isEntitySelected = function (e) {
+            if ($scope.selected && $scope.selected._id == e._id) {
+                return 'bg-lighter';
+            } else {
+                return null
+            }
+        };
+
+        $scope.edit = function (t) {
+            $scope.selected = angular.copy(t);
+        };
+
+        $scope.save = function (entity) {
+            console.log(entity);
+            if (!entity._id) {
+                //new entity
+//                entity._id = testId++;
+                $scope.entities.push(entity);
+
+            } else {
+                //update
+
+                var idx = _($scope.entities).findIndex({_id: entity._id});
+
+                angular.extend($scope.entities[idx], entity);
+
+
+            }
+            var result = api.save({companyId: $scope.company._id}, entity);
+            $scope.selected = {};
+
+        };
+
+        $scope.doDelete = function (entity) {
+            console.log(entity);
+            if (entity._id) {
+                console.debug({_id: entity._id})
+                var result = api.delete({companyId: $scope.company._id, entityId: entity._id});
+
+                $scope.entities = _($scope.entities).reject({_id: entity._id}).value();
+
+            }
+            $scope.selected = {};
+
+
+        }
+
+
+    }])
     .controller('FileDestroyController', [
-        '$scope', '$http',
-        function ($scope, $http) {
+        '$scope',
+        function ($scope) {
             var file = $scope.file,
                 state;
             if (file.url) {

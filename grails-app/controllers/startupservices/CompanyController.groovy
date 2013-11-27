@@ -37,7 +37,13 @@ class CompanyController {
                 skills2 = skills.subList(midIdx, skills.size())
             }
         }
-        [company: company, isCrawler: isCrawler, skills1: skills1, skills2: skills2]
+        def timeline = company.timeline.findAll { it.visible }
+        timeline.each {
+            it.type = getTimelineType(it.typeKey)
+        }
+
+
+        [company: company, isCrawler: isCrawler, skills1: skills1, skills2: skills2, timeline: timeline]
     }
 
 //REST - API
@@ -136,6 +142,45 @@ class CompanyController {
         render result as JSON
     }
 
+
+    def timeline() {
+        //todo AA
+
+        ObjectId companyId = ObjectId.massageToObjectId(params.companyId)
+        log.debug(companyId)
+        log.debug(request.JSON)
+        log.debug(params.entityId)
+        switch (request.method) {
+            case 'POST':
+                companyService.saveTimeline(request.JSON, companyId)
+                break
+
+            case 'DELETE':
+                ObjectId entityId = ObjectId.massageToObjectId(params.entityId)
+                companyService.deleteTimeline(entityId, companyId)
+                break
+
+            case 'GET':
+                break
+
+        }
+        def result = [:]
+        render result as JSON
+
+    }
+
+    def TYPES = [
+            project: [key: 'project', friendly: 'Proje', color: 'bg-warning', icon: 'fa-bookmark-o'],
+            news: [key: 'news', friendly: 'Haber', color: '', icon: 'fa-calendar'],
+            office: [key: 'office', friendly: 'Ofis değişikliği', color: 'bg-warning', icon: 'fa-building-o'],
+            finance: [key: 'finance', friendly: 'Sermaye', color: 'bg-info', icon: 'fa-dollar'],
+            inception: [key: 'inception', friendly: 'Kuruluş', color: '', icon: 'fa-home'],
+            other: [key: 'other', friendly: 'Diğer', color: '', icon: 'fa-square-o']
+    ]
+    private getTimelineType(String type) {
+
+        return TYPES[type]?:[:]
+    }
 
 }
 

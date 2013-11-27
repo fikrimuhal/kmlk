@@ -56,7 +56,8 @@ class BootStrap {
                     www: 'http://www.fikrimuhal.com',
                     about: 'Fikrimuhal Teknoloji hakkinda uzuuun uzuun ama cok uzun olmayan bio about as yazisi.',
                     employees: [sumnulu],
-                    products: []
+                    products: [],
+                    timeline: []
             ).save(flush: true, failOnError: true)
 
             new Company(
@@ -78,7 +79,8 @@ class BootStrap {
                     www: 'http://www.acikdemokrasi.org',
                     about: 'Acik demokrasi hakkinda uzuuun uzuun ama cok uzun olmayan bio about as yazisi.',
                     employees: [sumnulu],
-                    products: []
+                    products: [],
+                    timeline: []
             ).save(flush: true, failOnError: true)
         }
 

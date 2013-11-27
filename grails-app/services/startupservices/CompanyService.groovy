@@ -377,4 +377,50 @@ class CompanyService {
 
     }
 
+
+
+
+    def saveTimeline(def entity, ObjectId companyId) {
+        log.debug(entity)
+        def documentMap = [
+                _id: ObjectId.massageToObjectId(entity._id) ?: new ObjectId(),
+                content: entity.content?:'',
+                sDate: entity.sDate?:'',
+                eDate: entity.eDate?:'',
+                visible: entity.visible as boolean,
+                typeKey:entity.typeKey,
+                title: entity.title?:'',
+        ]
+        log.info(documentMap)
+        DBCollection col = Company.collection
+
+        def _QUERY = [_id: companyId]
+        if (entity._id) _QUERY.'timeline._id' = ObjectId.massageToObjectId(entity._id)
+
+        def _OPS = [:]
+
+        if (!entity._id) _OPS.'$addToSet' = ['timeline': documentMap]
+        else _OPS.'$set' = ['timeline.$': documentMap]
+
+        log.debug col.update(_QUERY, _OPS, false, false, WriteConcern.SAFE)
+
+    }
+
+    def deleteTimeline(ObjectId entityId, companyId) {
+        log.debug entityId
+        log.debug companyId
+        DBCollection col = Company.collection
+
+
+        def _QUERY = [
+                _id: companyId,
+                'timeline._id': entityId
+        ]
+
+        def _OPS = [:]
+
+        _OPS.'$pull' = ['timeline': ['_id': entityId]]
+        log.debug col.update(_QUERY, _OPS, false, false, WriteConcern.SAFE)
+    }
+
 }

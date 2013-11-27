@@ -8,7 +8,7 @@ import startupservices.Picture
 import startupservices.Profile
 
 class Company {
-    static embedded = ['location', 'officePictures', 'products', 'name', 'skills']
+    static embedded = ['location', 'officePictures', 'products', 'name', 'skills', 'timeline']
 
     ObjectId id
 
@@ -57,6 +57,7 @@ class Company {
     List<Picture> officePictures
     List<Product> products
     List<CompanySkill> skills = new ArrayList<CompanySkill>()
+    List<TimelineEntity> timeline
 
     static constraints = {
     }

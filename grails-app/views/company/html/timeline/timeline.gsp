@@ -1,90 +1,44 @@
 <!-- hr -->
+<style type="text/css">
+.animationTest {
+    -webkit-transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+    transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
+}
+</style>
+
 <div class="row">
     <div class="col-lg-12">
-
-
 
         <section class="content-sidebar  panel">
             <!-- .main -->
             <section class="main">
                 <div class="padder m-t m-b">
-                    <button class="btn btn-sm btn-primary pull-right">Yeni</button>
+                    <button class="btn btn-sm btn-primary pull-right" ng-click="new()">Yeni</button>
 
-                    <div class="timeline">
-                        <article class="timeline-item">
+                    <div class="timeline ">
+
+                        <article  class=" timeline-item" ng-repeat="e in entities %{--| orderBy:'1':false--}%"
+                                 ng-class-even="'alt'">
                             <div class="timeline-caption">
-                                <div class="panel arrow arrow-left">
-                                    <span class="timeline-icon"><i class="fa fa-mobile-phone time-icon bg-primary"></i>
+                                <div class="panel arrow animationTest" ng-class-odd="'arrow-left'" ng-class-even="'arrow-right'"
+                                     ng-class="isEntitySelected(e)" ng-click="edit(e)">
+                                    <span class="timeline-icon"><i
+                                            class="fa time-icon {{getType(e).icon + ' ' + getType(e).color}}"></i>
                                     </span>
-                                    <span class="timeline-date">18/12/2013</span>
-                                    <h5>
-                                        <span>Proje</span>
-                                        Yeni proje lansmanı
-                                    </h5>
-                                </div>
-                            </div>
-                        </article>
-                        <article class="timeline-item alt">
-                            <div class="timeline-caption">
-                                <div class="panel arrow arrow-right">
-                                    <span class="timeline-icon"><i class="fa fa-building-o time-icon bg-warning"></i>
+                                    <span class="timeline-date">{{e.sDate}} <br/>
+                                        <a ng-click="edit(e)" href="#" ><i
+                                                class="fa fa-pencil-square-o"></i>düzenle</a>
                                     </span>
-                                    <span class="timeline-date">14/12/2013</span>
                                     <h5>
-                                        <span>Ofis</span>
-                                        Taşindik
+                                        <span>{{getType(e).friendly}}</span>
+                                        {{e.title}}
                                     </h5>
 
-                                    <p>
-                                        Mimar Sinan Mah. Çavuşbaşı Cad.
-                                        Ethem sk. Zin D iş mer. N.5/5
-                                        34782
-                                        Istanbul, Turkey</p>
+                                    <p>{{e.content}}</p>
                                 </div>
                             </div>
                         </article>
-                        <article class="timeline-item">
-                            <div class="timeline-caption">
-                                <div class="panel arrow arrow-left">
-                                    <span class="timeline-icon"><i class="fa fa-calendar time-icon"></i></span>
-                                    <span class="timeline-date">1/6/2013</span>
-                                    <h5>
-                                        <span>Haber</span>
-                                        Radikal
-                                    </h5>
 
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry....</p>
-                                </div>
-                            </div>
-                        </article>
-                        <article class="timeline-item alt">
-                            <div class="timeline-caption">
-                                <div class="panel arrow arrow-right">
-                                    <span class="timeline-icon"><i class="fa fa-dollar time-icon bg-info"></i></span>
-                                    <span class="timeline-date">6/4/2013</span>
-                                    <h5>
-                                        <span>Yatırım</span>
-                                        Tekno girişim Desteği
-                                    </h5>
-
-                                    <p>96.000 TL</p>
-                                </div>
-                            </div>
-                        </article>
-                        <article class="timeline-item">
-                            <div class="timeline-caption">
-                                <div class="panel arrow arrow-left">
-                                    <span class="timeline-icon"><i class="fa fa-home time-icon"></i></span>
-                                    <span class="timeline-date">1/4/2013</span>
-                                    <h5>
-                                        <span>Kuruluş</span>
-
-                                    </h5>
-
-                                    <p>Fikrimuhal Teknoloji kuruldu</p>
-                                </div>
-                            </div>
-                        </article>
 
                         <div class="timeline-footer"><a href="#"><i
                                 class="fa fa-plus time-icon inline-block bg-default"></i></a></div>
@@ -100,31 +54,45 @@
 
                 <form>
                     <label>Başlık</label>
-                    <input type="text" placeholder="Günce başlıği" class="input-sm form-control">
+                    <input type="text" placeholder="Günce başlıği" class="input-sm form-control"
+                           ng-model="selected.title">
                     <label class="m-t-mini">Tarih</label>
-                    <input type="text" placeholder="1/2/2013" class=" input-sm form-control">
+                    <input type="date" placeholder="1/2/2013" class=" input-sm form-control" ng-model="selected.sDate">
                     <label class="m-t-mini">İçerik</label>
-                    <textarea type="text" class="input-sm form-control" placeholder="Kisaca açıklama"></textarea>
+                    <textarea type="text" class="input-sm form-control" placeholder="Kisaca açıklama"
+                              ng-model="selected.content"></textarea>
                     <label class="m-t-mini">Tür</label>
 
                     <div>
                         <div class="btn-group">
-                            <button data-toggle="dropdown" class="btn btn-sm btn-white dropdown-toggle">
-                                <span class="dropdown-label">Günce Türünü seçiniz</span>
+                            <button class="btn btn-sm btn-white dropdown-toggle">
+                                <span class="dropdown-label"><i
+                                        class="fa {{selected.type.icon}}"></i> {{selected.type.friendly || 'Günce Türünü seçiniz'}}
+                                </span>
                                 <span class="caret"></span>
                             </button>
-                            <ul class="dropdown-menu dropdown-select">
-                                <li><a href="#"><input type="radio" name="d-s-r">Haber</a></li>
-                                <li class=""><a href="#"><input type="radio" name="d-s-r">Proje</a></li>
-                                <li class=""><a href="#"><input type="radio" name="d-s-r">Ofis değişikliği</a></li>
-                                <li class=""><a href="#"><input type="radio" name="d-s-r">Finans</a></li>
-                                <li class=""><a href="#"><input type="radio" name="d-s-r">Kuruluş</a></li>
+                            <ul class="dropdown-menu dropdown-select ">
+                                <li ng-repeat="t in availableTypes"><a href="#" ng-click="doSelectType(t)"><input
+                                        type="radio" name="d-s-r"/><i class="fa {{t.icon}}"></i> {{t.friendly}}</a></li>
                             </ul>
                         </div>
                     </div>
+                    <label class="m-t-mini">Görünürlük</label>
+                    <div class="checkbox">
 
-                    <div class="m-t"><button class="btn btn-sm btn-info">Kaydet</button></div>
+                        <label>
+                            <input type="checkbox" ng-model="selected.visible">
+                            Herkez tarafından görülebilinir
+                        </label>
+                    </div>
+
+                    <div class="m-t"><button class="btn btn-sm btn-info"
+                                             ng-click="save(selected)">Kaydet</button> <button
+                            class="btn btn-sm btn-danger" ng-click="doDelete(selected)">Sil</button></div>
                 </form>
+                <pre>
+                    {{selected | json}}
+                </pre>
             </aside>
             <!-- /.sidebar -->
         </section>
