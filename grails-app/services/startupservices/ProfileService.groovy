@@ -202,8 +202,28 @@ class ProfileService {
 
         def _QUERY = [_id: profileId]
         def _OPS = [:]
-            _OPS.'$set' = ['profilePicture.defaultPicture': pictureMap]
+        _OPS.'$set' = ['profilePicture.defaultPicture': pictureMap]
         col.update(_QUERY, _OPS, false, false, WriteConcern.SAFE)
 
+    }
+
+    def getProfilesByIds(def ids) {
+        DBCollection col = Profile.collection
+        def _QUERY = [_id: ['$in': ids]]
+
+        def result = []
+        col.find(_QUERY).each {
+
+            if (it.accounts?.facebook?.remoteId) {
+                it.profilePictureUrl = "http://graph.facebook.com/${it.accounts.facebook.remoteId}/picture?height=400".toString()
+            } else if (it.accounts?.linkedin?.remoteId) {
+                it.profilePictureUrl = it.accounts?.linkedin?.picture_url
+            }
+            it.profileUrl = '/kimlik/profile/' + (it.username ?: it._id)
+
+            result << it
+        }
+
+        return result
     }
 }

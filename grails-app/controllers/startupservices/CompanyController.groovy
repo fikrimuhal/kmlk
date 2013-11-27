@@ -7,6 +7,7 @@ class CompanyController {
     def authenticationService
     def companyService
     def domainService
+    def profileService
 
     /**
      * todo cache able
@@ -21,6 +22,7 @@ class CompanyController {
 
         if (!company) return (redirect(uri: '/'))
 
+/*****************************************skill************************************************/
         def skills = company.skills?.findAll { it.visible }?.sort { it.order }
         //sirket yetkilisinin izin verdigi skiller
         //skilleri 2 ayri DIV icinde gosteriyoruz
@@ -37,13 +39,34 @@ class CompanyController {
                 skills2 = skills.subList(midIdx, skills.size())
             }
         }
+/*****************************************skill************************************************/
+
+/**************************************timeline************************************************/
         def timeline = company.timeline.findAll { it.visible }
         timeline.each {
             it.type = getTimelineType(it.typeKey)
         }
+/**************************************timeline************************************************/
+
+/**************************************employees************************************************/
+        def employeeIds = []
+         company.employees.each { employeeIds << ObjectId.massageToObjectId(it.toString()) }
+
+        def employees = profileService.getProfilesByIds(employeeIds)
 
 
-        [company: company, isCrawler: isCrawler, skills1: skills1, skills2: skills2, timeline: timeline]
+/**************************************employees************************************************/
+
+
+
+
+        [/*model*/
+                company: company,
+                isCrawler: isCrawler,
+                skills1: skills1, skills2: skills2,
+                timeline: timeline,
+                employees: employees
+        ]
     }
 
 //REST - API
@@ -177,9 +200,10 @@ class CompanyController {
             inception: [key: 'inception', friendly: 'Kuruluş', color: '', icon: 'fa-home'],
             other: [key: 'other', friendly: 'Diğer', color: '', icon: 'fa-square-o']
     ]
+
     private getTimelineType(String type) {
 
-        return TYPES[type]?:[:]
+        return TYPES[type] ?: [:]
     }
 
 }

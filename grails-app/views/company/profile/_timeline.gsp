@@ -15,7 +15,7 @@
                                     </span>
                                     <span class="timeline-date">${it.sDate} ${(it.eDate)?'/ '+it.eDate:''}</span>
                                     <h5>
-                                        <span>${it.friendly}</span>
+                                        <span>${it.type.friendly}</span>
                                         ${it.title}
                                     </h5>
                                     <p>${it.content}</p>

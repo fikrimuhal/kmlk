@@ -22,7 +22,7 @@
 
 <section id="content">
     <g:render template="profile/banner" model="[company: company]"></g:render>
-    <g:render template="profile/employees" model="[company: company]"></g:render>
+    <g:render template="profile/employees" model="[company: company, employees:employees]"></g:render>
     <g:render template="profile/office" model="[company: company]"></g:render>
 
     <div class="row bg-white" id="2column">

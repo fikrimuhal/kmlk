@@ -154,23 +154,7 @@ class KimlikController {
     def getProfilesByIds() {
         def ids = []
         request.JSON.ids.each { ids << ObjectId.massageToObjectId(it) }
-
-        DBCollection col = Profile.collection
-        def _QUERY = [_id: ['$in': ids]]
-
-        log.debug(ids)
-        def result = []
-                col.find(_QUERY).each {
-
-                        if (it.accounts?.facebook?.remoteId) {
-                            it.profilePictureUrl = "http://graph.facebook.com/${it.accounts.facebook.remoteId}/picture?height=400"
-                        } else if (it.accounts?.linkedin?.remoteId) {
-                            it.profilePictureUrl = it.accounts?.linkedin?.picture_url
-                        }
-                    it.profileUrl = '/kimlik/profile/' + (it.username?:it._id)
-
-                    result << it
-                }
+        def result = profileService.getProfilesByIds(ids)
 
         render result as JSON
     }
