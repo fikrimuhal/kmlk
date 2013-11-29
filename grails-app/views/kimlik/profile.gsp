@@ -79,7 +79,13 @@
         username: '${profile.username}',
         isSelfProfile: ${g.isSelfProfile([profile:profile])}
     };
+
+    var _currentProfile = {
+        username: '${profile.username}',
+        _id: '${profile.id}'
+    };
 </script>
+<g:render template="/shared/modals"/>
 
 <g:render template="/shared/footer"/>
 

@@ -42,6 +42,7 @@
     <g:render template="profile/footer"></g:render>
 
 </section>
+<g:render template="/shared/modals"/>
 
 </body>
 </html>

@@ -120,24 +120,56 @@ function CompanyListCtrl($scope) {
 }
 
 
-function CompanyEmployeeCtrl($scope) {
-    $scope.employmentRequests = [
-        {  profile: 11111,
-            company: 2222222233,
-            requestedByCompany: false},
-        {  profile: 11111,
-            company: 2222222233,
-            requestedByCompany: true},
-        {  profile: 11111,
-            company: 2222222233,
-            requestedByCompany: true},
-        {  profile: 11111,
-            company: 2222222233,
-            requestedByCompany: false},
-        {  profile: 11111,
-            company: 2222222233,
-            requestedByCompany: false}
-    ]
+function CompanyEmployeeCtrl($scope, profileService, $resource) {
+    var employeeIds = $scope.company.employees;
+    $scope.employeeIds = employeeIds;
+    profileService.prefetchProfilesByIds(_.chain(employeeIds).flatten().uniq().value());
+
+
+    $scope.getFullName = function (id) {
+        var u = profileService.getProfileById(id);
+        return u.first_name + ' ' + u.last_name;
+
+    };
+
+    $scope.getProfile = function (id) {
+        return profileService.getProfileById(id);
+    };
+
+    var api = $resource('/api/company/:verb', {},
+        {
+            'verify': {method: 'POST', params: {verb: 'employeeRequest'}},
+            'delete': {method: 'DELETE', params: {verb: 'employeeRequest'}},
+            'query': {method: 'GET', params: {verb: 'employeeRequest'}, isArray: true}
+        });
+
+
+    $scope.employmentRequests = api.query({companyId: $scope.company._id}, function (d) {
+        profileService.prefetchProfilesByIds(_.chain(d).map('profile').flatten().uniq().value());
+    });
+
+    $scope.verify = function (request) {
+        console.log('verify');
+        var reqId = request._id;
+
+        api.verify({companyId: $scope.company._id}, {requestId: reqId}, function (d) {
+            console.log('verify success', d);
+            $scope.employmentRequests = _($scope.employmentRequests).reject({_id:reqId}).value();
+
+        });
+    };
+
+    $scope.delete = function (request) {
+        console.log('delete');
+        var reqId = request._id;
+         //todo companyId: $scope.company._id, buna gerek yok, api doc u kontrol et
+        api.delete({companyId: $scope.company._id, requestId: reqId}, function (d) {
+            console.log('delete success', d);
+            $scope.employmentRequests = _($scope.employmentRequests).reject({_id:reqId}).value();
+
+        });
+
+    }
 
 }
 

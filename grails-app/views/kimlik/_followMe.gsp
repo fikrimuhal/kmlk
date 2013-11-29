@@ -1,5 +1,6 @@
-<h3 class="font-thin"><i class="fa fa-share"></i>Takip et</h3>
+<h3 class="font-thin"><i class="fa fa-share"></i>Takip et <small> Bana ulasabiliceğiniz sosyal ağlar.</small> </h3>
 <div class="separator line"></div>
+
 <br/>
 <div class="row">
     <div class="col-lg-6">
@@ -26,7 +27,11 @@
     </div>
 
     <div class="col-lg-6">
-        <p class="lead">Takip ettigim ve bana ulasabiliceginiz sosyal aglar.</p>
+        %{--<p class="lead">Takip ettigim ve bana ulasabiliceginiz sosyal aglar.</p>--}%
+        <blockquote class="pull-right">
+            <p>${profile.aboutText}</p>
+            %{--<small>${profile.name}</small>--}%
+        </blockquote>
     </div>
 </div>
 <br/>

@@ -231,32 +231,7 @@ function employmentController($scope, employmentService) {
 
 
 }
-function personalInfoController($rootScope, $scope, userService, $resource) {
-    $scope.model = {}
-    if (userService.isLoggedIn()) {
-        populateForm();
-    } else {
-        $scope.$on('userAuthenticated', populateForm)
-    }
 
-    function populateForm() {
-        var newValue = userService.getLoggedInUser()
-        $scope.model.first_name = newValue.first_name
-        $scope.model.last_name = newValue.last_name
-        $scope.model.middle_name = newValue.middle_name
-        $scope.model.aboutText = newValue.aboutText
-        $scope.model.webSite = newValue.contactInfo.webSite
-    }
-
-    $scope.save = function () {
-        var api = $resource('/kimlik/' + config.username + '/ajaxSaveBasicInfo')
-        api.save($scope.model, {}, function () {
-            document.location = '/kimlik/' + userService.getLoggedInUser().username
-        })
-    }
-
-
-}
 
 /**
  * @deprecated

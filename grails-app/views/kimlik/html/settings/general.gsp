@@ -6,7 +6,7 @@
 
                 <div class="col-lg-9">
                     <input type="text" class="form-control" id="fullName"
-                           placeholder="Ilgaz">
+                            ng-model="model.first_name">
                     <span class="help-block"></span>
 
                 </div>
@@ -16,7 +16,7 @@
                 <label for="sortName" class="col-lg-3 control-label">Soyad</label>
 
                 <div class="col-lg-9">
-                    <input type="text" class="form-control" id="sortName" placeholder="Şumnulu">
+                    <input type="text" class="form-control" id="sortName"  ng-model="model.last_name">
                     <span class="help-block"></span>
 
                 </div>
@@ -26,7 +26,7 @@
                 <label class="col-lg-3 control-label">Ortanca Ad</label>
 
                 <div class="col-lg-9">
-                    <input type="text" class="form-control" id="inputPassword12" placeholder="">
+                    <input type="text" class="form-control"  ng-model="model.middle_name">
                     <span class="help-block"></span>
                 </div>
             </div>
@@ -47,8 +47,8 @@
                 <label class="col-lg-3 control-label">Hakkımda</label>
 
                 <div class="col-lg-9">
-                    <textarea rows="5" class="form-control" id="s" placeholder=""></textarea>
-                    <span class="help-block">xxx</span>
+                    <textarea rows="5" class="form-control" ng-model="model.aboutText"></textarea>
+                    <span class="help-block">Kısaca kendinizden bahsedin</span>
                 </div>
             </div>
 
@@ -64,7 +64,7 @@
                 <label class="col-lg-3 control-label">Web</label>
 
                 <div class="col-lg-9">
-                    <input type="text" class="form-control" id="w" placeholder="http://">
+                    <input type="text" class="form-control" id="w"  ng-model="model.webSite">
                     <span class="help-block">http://www.xxxx.com</span>
                 </div>
             </div>
@@ -88,7 +88,7 @@
 
             <div class="form-group">
                 <div class="col-lg-9 col-lg-offset-3">
-                    <button type="button" class="btn btn-primary pull-right">Kaydet</button>
+                    <button type="button" class="btn btn-primary pull-right" ng-click="save(model)">Kaydet</button>
                     <span class="help-block"></span>
                 </div>
             </div>

@@ -29,9 +29,9 @@ function UserController($scope, userService) {
 
 
 function KimlikContactsCtrl($scope, userService, profileService) {
-    console.log('KimlikContactsCtrl ready')
+    console.log('KimlikContactsCtrl ready');
     $scope.profiles = [];
-    var user = userService.getLoggedInUser()
+    var user = userService.getLoggedInUser();
     user.$promise.then(function (d) {
         console.log('cacheee ', profileService.prefetchProfilesByIds(_.chain(user.friends).map('id').value()));
         _.chain(user.friends).map('id').uniq().forEach(function (id) {
@@ -41,6 +41,67 @@ function KimlikContactsCtrl($scope, userService, profileService) {
 
     });
 
+
+}
+
+
+function LeftMenuController($rootScope, $scope, userService) {
+    console.log('LeftMenuController ready');
+
+    $scope.isVisible = {
+        showAddEmployeeModal: userService.isLoggedIn(),
+        claimMyProfile: false
+    };
+
+    $scope.showAddEmployeeModal = function () {
+        console.log('showAddEmployeeModal')
+        $('#AddEmployeeModal').modal('show')
+    };
+
+
+}
+
+
+function addEmployeeModalController(companyService, $scope, $resource, userService) {
+    var loggedInUser = userService.getLoggedInUser();
+    var selectedCompany;
+    var elm = $('#AddEmployeeModal')
+    elm.on('show.bs.modal', function () {
+        //re-initialize
+        selectedCompany = null;
+    });
+    var api = $resource('/api/company/:verb', {},
+        {
+            'newRequest': {method: 'PUT', params: {verb: 'employeeRequest'}}
+
+        });
+
+    console.log('LeftMenuController ready')
+
+    $scope.companies = companyService.getUserCompanyList();
+
+    $scope.selectCompany = function (company) {
+        var toId = _currentProfile._id; /*global inline*/
+
+        selectedCompany = company;
+        console.log('selectedCompany ', company._id)
+        console.log('user ', _currentProfile)
+
+        //todo bug toId suanda bakilan profil olmali
+        api.newRequest({}, {toId: toId, fromId: company._id, requestedByCompany: true}, function (d) {
+            elm.modal('hide');
+        });
+
+    };
+
+    $scope.isActive = function (company) {
+        if (selectedCompany && (selectedCompany._id == company._id)) {
+            return 'active'
+        } else {
+            return ''
+        }
+
+    }
 
 }
 
@@ -62,8 +123,6 @@ function KimlikCtrl($scope, $routeSegment) {
         $scope.user_name = $routeSegment.$routeParams.user_name; //todo bunun adi pageName olsa daha iyi
 //   $scope.company = _.find($scope.companies, {page_name: $scope.company_name })
     });
-
-
 
 
 }
@@ -210,6 +269,32 @@ kimlik.controller('KimlikSettingsLocationCtrl', ['$scope', '$resource', 'userSer
 }]);
 
 
+function KimlikSettingsGeneralCtrl($scope, userService, $resource) {
+    console.log('Settings general Ready')
+
+    $scope.model = {}
+    if (userService.isLoggedIn()) {
+        populateForm();
+    } else {
+        $scope.$on('userAuthenticated', populateForm)
+    }
+
+    function populateForm() {
+        var newValue = userService.getLoggedInUser()
+        $scope.model.first_name = newValue.first_name
+        $scope.model.last_name = newValue.last_name
+        $scope.model.middle_name = newValue.middle_name
+        $scope.model.aboutText = newValue.aboutText
+        $scope.model.webSite = newValue.contactInfo.webSite
+    }
+
+    $scope.save = function (model) {
+        console.log(model)
+        var api = $resource('/api/kimlik/ajaxSaveBasicInfo')
+        api.save(model, {}, function () {
+            console.log('TODO: reload/update profile');
+        });
+    }
 
 
-
+}

@@ -142,7 +142,8 @@ kimlik.config(['$routeSegmentProvider', '$locationProvider',
             segment('settings', {
                 templateUrl: '/html/kimlik/settings/settings.html'}).
             within().
-            segment('general', {templateUrl: '/html/kimlik/settings/general.html'}).
+            segment('general', {templateUrl: '/html/kimlik/settings/general.html',
+                controller: 'KimlikSettingsGeneralCtrl'}).
             segment('profilePicture', {templateUrl: '/html/kimlik/settings/profilePicture.html'}).
             segment('location', {templateUrl: '/html/kimlik/settings/location.html',
                 controller: 'KimlikSettingsLocationCtrl'}).

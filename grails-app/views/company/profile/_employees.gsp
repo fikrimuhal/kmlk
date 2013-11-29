@@ -44,6 +44,7 @@
                             </h4>
 
                             <p><a href="/register/signIn">Bizim ile çalışmak istermisin?</a></p>
+                        <br/>
                         </div>
                     </div>
                 </div>

@@ -3,6 +3,7 @@ package startupservices
 import com.mongodb.DBCollection
 import com.mongodb.WriteConcern
 import kimlik.company.Company
+import kimlik.company.EmployeeRequest
 import org.bson.types.ObjectId
 
 class CompanyService {
@@ -378,18 +379,16 @@ class CompanyService {
     }
 
 
-
-
     def saveTimeline(def entity, ObjectId companyId) {
         log.debug(entity)
         def documentMap = [
                 _id: ObjectId.massageToObjectId(entity._id) ?: new ObjectId(),
-                content: entity.content?:'',
-                sDate: entity.sDate?:'',
-                eDate: entity.eDate?:'',
+                content: entity.content ?: '',
+                sDate: entity.sDate ?: '',
+                eDate: entity.eDate ?: '',
                 visible: entity.visible as boolean,
-                typeKey:entity.typeKey,
-                title: entity.title?:'',
+                typeKey: entity.typeKey,
+                title: entity.title ?: '',
         ]
         log.info(documentMap)
         DBCollection col = Company.collection
@@ -423,4 +422,85 @@ class CompanyService {
         log.debug col.update(_QUERY, _OPS, false, false, WriteConcern.SAFE)
     }
 
+    def getEmploymentRequests(ObjectId companyId) {
+
+        DBCollection col = EmployeeRequest.collection
+
+        def _QUERY = [company: companyId]
+
+        return col.find(_QUERY).toArray()
+
+    }
+
+    def newEmploymentRequests(ObjectId fromId, ObjectId toId, boolean requestedByCompany) {
+        assert requestedByCompany
+
+        DBCollection col = EmployeeRequest.collection
+        def _QUERY = [profile: toId, company: fromId]
+        def _OPS = [:]
+
+        def existingReq = col.findOne(_QUERY)
+        if (existingReq) {
+            //daha onceden bir request var sirket yada kullanicidan
+            if (!existingReq.requestedByCompany) {
+                //kullanicida zaten request de bulunmus
+                //eski kayit i sil( verify etmis olduk aslinda)
+                //todo profil i update et
+                //todo notification lari yolla
+                //todo company employees i update et
+                log.info("request verified oldu , siliyorum eski kaydi")
+                col.remove([profile: toId, company: fromId, requestedByCompany: false], WriteConcern.SAFE)
+
+
+            } else {
+                //company daha onceden requestte bulunmus
+                //hic birsey yapmayalim
+            }
+        } else {
+            //daha onceden bir request yok
+            log.info("yeni employment request")
+
+            col.insert([profile: toId, company: fromId, requestedByCompany: true, date: new Date()], WriteConcern.SAFE)
+        }
+
+
+    }
+
+    def deleteEmploymentRequests(ObjectId requestId) {
+        DBCollection col = EmployeeRequest.collection
+        //todo burada kullanicinin companyleri arasida mi diye kontrol et $in operatoru gibi
+
+        col.remove([_id: requestId], WriteConcern.SAFE)
+        log.info("employment request sirket istegi uzwerine silindi")
+
+
+    }
 }
+
+/*
+
+
+
+
+
+
+
+
+
+
+
+                                    [KASITLI OLARAK BOS BIRAKILDI]
+
+
+
+
+
+
+
+
+
+
+
+
+
+*/

@@ -62,42 +62,7 @@
 <div app-view-segment="0"></div>
 
 
-<!-- .modal -->
-<div id="modal" class="modal fade">
-    <form class="m-b-none">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal"><i class="fa fa-remove"></i></button>
-                    <h4 class="modal-title" id="myModalLabel">Geri bildirim ve İstekler</h4>
-                </div>
-
-                <div class="modal-body">
-                    <div class="block">
-                        <label class="control-label">Kısaca...</label>
-                        <input type="text" class="form-control" placeholder="Konu başlığı">
-                    </div>
-
-                    <div class="block">
-                        <label class="control-label">Mesaj</label>
-                        <textarea class="form-control"
-                                  placeholder="Size çok daha iyi hizmet verebilmek için istek, önerileri ve şikayetlerinizi dinliyoruz."
-                                  rows="5"></textarea>
-                    </div>
-
-                </div>
-
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Vazgeçtim</button>
-                    <button type="button" class="btn btn-sm btn-primary"
-                            data-loading-text="Publishing...">Gönder</button>
-                </div>
-            </div><!-- /.modal-content -->
-        </div>
-    </form>
-</div>
-<!-- / .modal -->
-
+<g:render template="/shared/modals"/>
 <g:render template="/shared/footer"/>
 
 <a href="#" class="hide slide-nav-block" data-toggle="class:slide-nav slide-nav-left" data-target="body"></a>

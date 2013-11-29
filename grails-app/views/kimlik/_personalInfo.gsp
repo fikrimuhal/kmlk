@@ -37,7 +37,7 @@
             <div class="row">
                 <div class="col-lg-3"><strong>Web</strong></div>
 
-                <div class="col-lg-9"><a href="#">http://sumnulu.kimlik.io</a></div>
+                <div class="col-lg-9"><a href="${profile?.contactInfo?.webSite}">${profile?.contactInfo?.webSite}</a></div>
             </div>
         <br/>
     </div>

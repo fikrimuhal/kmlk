@@ -50,10 +50,9 @@ class CompanyController {
 
 /**************************************employees************************************************/
         def employeeIds = []
-         company.employees.each { employeeIds << ObjectId.massageToObjectId(it.toString()) }
+        company.employees.each { employeeIds << ObjectId.massageToObjectId(it.toString()) }
 
         def employees = profileService.getProfilesByIds(employeeIds)
-
 
 /**************************************employees************************************************/
 
@@ -192,6 +191,54 @@ class CompanyController {
 
     }
 
+    def employeeRequest() {
+        def result
+
+        log.debug("Employee request: ${request.method}")
+        switch (request.method) {
+            case 'POST':
+                //verify
+                log.debug('verify')
+                log.debug(request.JSON.requestId)
+                result = [status: 'success']
+                break
+
+            case 'PUT':
+                //verify
+                log.debug('new employment request');
+                ObjectId toId = ObjectId.massageToObjectId(request.JSON.toId)
+                ObjectId fromId = ObjectId.massageToObjectId(request.JSON.fromId)
+                boolean requestedByCompany = request.JSON.requestedByCompany as boolean
+
+                //todo employeeRequest kaydi olustur
+                //todo kullaniciya notification yolla, eger daha once kayit yok ise
+
+                companyService.newEmploymentRequests(fromId,toId,requestedByCompany)
+
+                result = [status: 'success']
+                break
+
+            case 'DELETE':
+
+                ObjectId requestId = ObjectId.massageToObjectId(params.requestId)
+                companyService.deleteEmploymentRequests(requestId)
+                result = [status: 'success']
+                break
+
+            case 'GET':
+                ObjectId companyId = ObjectId.massageToObjectId(params.companyId)
+
+                result = companyService.getEmploymentRequests(companyId)
+                break
+
+            default:
+                result = [status: 'error']
+
+        }
+        render result as JSON
+    }
+
+
     def TYPES = [
             project: [key: 'project', friendly: 'Proje', color: 'bg-warning', icon: 'fa-bookmark-o'],
             news: [key: 'news', friendly: 'Haber', color: '', icon: 'fa-calendar'],
@@ -207,6 +254,8 @@ class CompanyController {
     }
 
 }
+
+
 
 
 
