@@ -45,6 +45,8 @@
 
                             <p><a href="/register/signIn">Bizim ile çalışmak istermisin?</a></p>
                         <br/>
+                        <br class="hidden-lg"/>
+                        <br class="visible-sm"/>
                         </div>
                     </div>
                 </div>
