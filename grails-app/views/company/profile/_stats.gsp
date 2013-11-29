@@ -3,7 +3,20 @@
 
         <div class=" m-t-large m-b-none">
 
-            <h2 class="font-thin"><i class="fa fa-signal"></i>Istatistikler</h2>
+            <h2 class="font-thin"><i class="fa fa-info"></i> Hakkında
+
+                <div class="btn-group pull-right" ng-controller="companyLoggedInUserMenuController" ng-cloak ng-show="isMenuVisible">
+                    <button type="button" class="btn btn-white dropdown-toggle" data-toggle="dropdown">
+                        <i class="fa fa-cog"></i>
+                        <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu ">
+                        <li><a href="#" ng-click="iWorkHere()"><i class="fa fa-user fa-fw"></i> Bu şirkette çalışıyorum</a></li>
+                        <li><a href="#" ng-click="reportProblem()"><i class="fa fa-flag fa-fw"></i> Sorun bildir</a></li>
+
+                    </ul>
+                </div>
+            </h2>
 
             <div class="bg-primary">
                 <div class="container">
@@ -23,7 +36,7 @@
 <div class="bg-white-desktop" id="featuresxx">
     <div class="container">
         <div class=" m-t-large m-b-none">
-            <h2 class="font-thin"><i class="fa fa-briefcase"></i>Hızlı Istatistikler</h2>
+            <h2 class="font-thin"><i class="fa fa-briefcase"></i> Hızlı Istatistikler</h2>
 
             <table class="table  m-b-none text-small bg-light">
 
@@ -96,14 +109,14 @@
     <div class="container">
 
         <div class="m-none">
-            <h2 class="font-thin"><i class="fa fa-tags"></i>Faliyet alanları</h2>
+            <h2 class="font-thin"><i class="fa fa-tags"></i> Faliyet alanları</h2>
 
             <div id="MyPillbox" class="pillbox clearfix m-b">
                 <ul>
                     <g:each in="${company.tags}" var="tag">
-                        <li class="label bg-info"> ${tag} </li>
+                        <li class="label bg-info">${tag}</li>
                     </g:each>
-                    %{--<input type="text" placeholder="add a pill">--}%
+                %{--<input type="text" placeholder="add a pill">--}%
                 </ul>
             </div>
 
@@ -135,3 +148,4 @@
 
     </div>
 </div>
+

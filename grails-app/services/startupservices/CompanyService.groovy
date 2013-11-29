@@ -432,8 +432,14 @@ class CompanyService {
 
     }
 
+    /**
+     * Bunu company de cagira bilir login olmus company ye ayit olmayan kullanicida
+     * @param fromId
+     * @param toId
+     * @param requestedByCompany
+     * @return
+     */
     def newEmploymentRequests(ObjectId fromId, ObjectId toId, boolean requestedByCompany) {
-        assert requestedByCompany
 
         DBCollection col = EmployeeRequest.collection
         def _QUERY = [profile: toId, company: fromId]
@@ -442,25 +448,37 @@ class CompanyService {
         def existingReq = col.findOne(_QUERY)
         if (existingReq) {
             //daha onceden bir request var sirket yada kullanicidan
-            if (!existingReq.requestedByCompany) {
+            if (!existingReq.requestedByCompany && requestedByCompany) {
                 //kullanicida zaten request de bulunmus
                 //eski kayit i sil( verify etmis olduk aslinda)
                 //todo profil i update et
                 //todo notification lari yolla
-                //todo company employees i update et
-                log.info("request verified oldu , siliyorum eski kaydi")
+                log.info("request verified oldu  (sirket tarafindan), siliyorum eski kaydi")
+                addNewEmployee(fromId,toId)
                 col.remove([profile: toId, company: fromId, requestedByCompany: false], WriteConcern.SAFE)
 
 
-            } else {
-                //company daha onceden requestte bulunmus
-                //hic birsey yapmayalim
+            } else if(existingReq.requestedByCompany && !requestedByCompany){
+
+                //Sirket daha onceden requestte bulunmus, direk onaylayalim
+                //todo notification lari yolla
+                log.info("request verified oldu (kullanici tarafindan) , siliyorum eski kaydi")
+                addNewEmployee(fromId,toId)
+                col.remove([profile: toId, company: fromId, requestedByCompany: true], WriteConcern.SAFE)
+
+            }else{
+                log.info("Zaten daha onceden tek tarafli olarak request yapilmis hicbir sey yapmiyorum")
+
             }
         } else {
             //daha onceden bir request yok
             log.info("yeni employment request")
-
-            col.insert([profile: toId, company: fromId, requestedByCompany: true, date: new Date()], WriteConcern.SAFE)
+            if (requestedByCompany) {
+                //istek sirket tarafindan olusturuldu
+            } else {
+                //istek kullanici tarafindan olusturuldu
+            }
+            col.insert([profile: toId, company: fromId, requestedByCompany: requestedByCompany, date: new Date()], WriteConcern.SAFE)
         }
 
 
@@ -473,6 +491,18 @@ class CompanyService {
         col.remove([_id: requestId], WriteConcern.SAFE)
         log.info("employment request sirket istegi uzwerine silindi")
 
+
+    }
+
+
+    def addNewEmployee(ObjectId companyId, ObjectId profileId) {
+        DBCollection col = Company.collection
+        //todo burada kullanicinin companyleri arasida mi diye kontrol et $in operatoru gibi
+        log.debug('Sirkete yeni calisan eklendi!')
+        def _OPS = ['$addToSet' : ['employees': profileId]]
+
+
+        log.debug col.update([_id:companyId], _OPS, false, false, WriteConcern.SAFE)
 
     }
 }

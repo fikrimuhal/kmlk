@@ -73,7 +73,6 @@ function addEmployeeModalController(companyService, $scope, $resource, userServi
     var api = $resource('/api/company/:verb', {},
         {
             'newRequest': {method: 'PUT', params: {verb: 'employeeRequest'}}
-
         });
 
     console.log('LeftMenuController ready')

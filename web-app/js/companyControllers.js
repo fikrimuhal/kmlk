@@ -8,6 +8,31 @@ function CompanyDashboardCtrl($scope, $routeSegment) {
 
 }
 
+function companyLoggedInUserMenuController($scope, userService, $resource) {
+    var loggedInUser = userService.getLoggedInUser();
+    $scope.isMenuVisible = userService.isLoggedIn();
+    var api = $resource('/api/company/:verb', {},
+        {'newRequest': {method: 'PUT', params: {verb: 'employeeRequest'}}});
+
+
+    $scope.reportProblem = function () {
+        console.error('not implemented yet!');
+    };
+    $scope.iWorkHere = function () {
+        var toId = loggedInUser.id;
+        var fromId = _currentCompany._id
+
+        console.log('user ', toId)
+        console.log('company ', fromId)
+
+        //todo bug toId suanda bakilan profil olmali
+        api.newRequest({}, {toId: toId, fromId: fromId, requestedByCompany: false}, function (d) {
+            alert('Şirket yetkilisine bildirildi, teşekkürler!');
+        });
+    };
+
+}
+
 function CompanySkillsCtrl($scope, $resource, profileService) {
     var api = $resource(_settings.baseUrl + 'company/skillUpdate');
 
@@ -138,7 +163,9 @@ function CompanyEmployeeCtrl($scope, profileService, $resource) {
 
     var api = $resource('/api/company/:verb', {},
         {
-            'verify': {method: 'POST', params: {verb: 'employeeRequest'}},
+            /*alias of newRequest*/
+            'verify': {method: 'PUT', params: {verb: 'employeeRequest'}},
+            'newRequest': {method: 'PUT', params: {verb: 'employeeRequest'}},
             'delete': {method: 'DELETE', params: {verb: 'employeeRequest'}},
             'query': {method: 'GET', params: {verb: 'employeeRequest'}, isArray: true}
         });
@@ -149,12 +176,14 @@ function CompanyEmployeeCtrl($scope, profileService, $resource) {
     });
 
     $scope.verify = function (request) {
-        console.log('verify');
+        console.log('verify', request);
+        var toId = request.profile;
         var reqId = request._id;
 
-        api.verify({companyId: $scope.company._id}, {requestId: reqId}, function (d) {
+        api.verify({}, {toId: toId, fromId: $scope.company._id, requestedByCompany: true}, function (d) {
+
             console.log('verify success', d);
-            $scope.employmentRequests = _($scope.employmentRequests).reject({_id:reqId}).value();
+            $scope.employmentRequests = _($scope.employmentRequests).reject({_id: reqId}).value();
 
         });
     };
@@ -162,10 +191,10 @@ function CompanyEmployeeCtrl($scope, profileService, $resource) {
     $scope.delete = function (request) {
         console.log('delete');
         var reqId = request._id;
-         //todo companyId: $scope.company._id, buna gerek yok, api doc u kontrol et
+        //todo companyId: $scope.company._id, buna gerek yok, api doc u kontrol et
         api.delete({companyId: $scope.company._id, requestId: reqId}, function (d) {
             console.log('delete success', d);
-            $scope.employmentRequests = _($scope.employmentRequests).reject({_id:reqId}).value();
+            $scope.employmentRequests = _($scope.employmentRequests).reject({_id: reqId}).value();
 
         });
 

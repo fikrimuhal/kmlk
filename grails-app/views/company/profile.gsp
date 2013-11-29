@@ -12,7 +12,13 @@
 
     <script type="text/javascript">
         _settings.staticMode = true // i.e. locationProvider should not use html5Mode
+
+
+        var _currentCompany = {
+            _id: '${company._id}'
+        };
     </script>
+
 </head>
 
 <body data-spy="scroll" data-target="#header" class="landing" id="body">
@@ -42,6 +48,8 @@
     <g:render template="profile/footer"></g:render>
 
 </section>
+
+
 <g:render template="/shared/modals"/>
 
 </body>
