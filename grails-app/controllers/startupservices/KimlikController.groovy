@@ -17,17 +17,41 @@ class KimlikController {
 //        render 'ok'
     }
 
+    def updateLocation() {
+        org.codehaus.groovy.grails.web.json.JSONObject data =request.JSON
+        data.remove('id')
+        println '____'
+        println data as Map
+        println '____'
+        def result = [status: profileService.updateLocation(data, authenticationService.authenticatedUserId)]
+        render result as JSON
+    }
 
     def ajaxSkills() {
         def data = []
-        authenticationService.authenticatedUser.skills.each {
+        def EMPTY_ARRAY = []
+        println authenticationService.authenticatedUserId
+        DBCollection col = Profile.collection
+
+        def _QUERY = [_id: authenticationService.authenticatedUserId]
+        def skills = col.findOne(_QUERY, [skills:1])?.skills
+         println skills.dump()
+
+
+
+        skills.each {
+//            if(it.name == 'J2EE'){
+                println it.dump()
+                println ' '
+                println ' '
+//            }
             data << [
                     name: it.name,
                     self_score: it.self_score,
                     profiles: [
-                            better: it.betterThanMe*.id*.toStringMongod(),
-                            same: it.sameAsMe*.id*.toStringMongod(),
-                            worst: it.worstThanMe*.id*.toStringMongod()
+                            better: it.betterThanMe?:EMPTY_ARRAY,
+                            same: it.sameAsMe?:EMPTY_ARRAY,
+                            worst: it.worstThanMe?:EMPTY_ARRAY
                     ]
             ]
         }
@@ -106,10 +130,13 @@ class KimlikController {
         def profile = authenticationService.authenticatedUser
 
         profile.first_name = params.first_name
+        profile.birthDate = params.birthDate
         profile.last_name = params.last_name
         profile.middle_name = params.middle_name
         profile.aboutText = params.aboutText
         profile.contactInfo.webSite = params.webSite
+        profile.contactInfo.publicEmail = params.publicEmail
+        profile.contactInfo.publicTel = params.publicTel
         profile.save()
         def result = [result: 'success']
         render result as JSON

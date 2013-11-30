@@ -25,7 +25,7 @@ function TypeaheadCtrl($scope, $http, filterFilter, $resource, skillService) {
                 skills[idx].self_score = value;
             }
         }
-        var api = $resource('/kimlik/' + config.username + '/ajaxRateSelf');
+        var api = $resource('/api/kimlik/ajaxRateSelf');
         api.get({skillName: skillName, value: value})
 
     }
@@ -55,7 +55,7 @@ function TypeaheadCtrl($scope, $http, filterFilter, $resource, skillService) {
 
         if (jQuery.inArray(friendId, bucket) === -1) {
             bucket.push(friendId)
-            var api = $resource('/kimlik/' + config.username + '/ajaxRateFriend')
+            var api = $resource('/api/kimlik/ajaxRateFriend')
             api.get({skillName: skillName, value: value, friendId: friendId});
         }
 
@@ -75,7 +75,7 @@ function TypeaheadCtrl($scope, $http, filterFilter, $resource, skillService) {
                 _bucket.splice(profileIDX, 1)
             }
         }
-        var api = $resource('/kimlik/' + config.username + '/ajaxRateFriend')
+        var api = $resource('/api/kimlik/ajaxRateFriend')
         api.get({skillName: skillName, value: 'delete', friendId: friendId});
 
     }
@@ -202,7 +202,7 @@ function RegisterController($scope, $resource) {
 
         function onSuccess(result) {
             var username = result.username
-            document.location = '/kimlik/' + username;
+            document.location = '/kimlik/profile/' + username;
         }
 
         function onError(result) {

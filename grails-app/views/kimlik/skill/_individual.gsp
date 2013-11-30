@@ -1,4 +1,8 @@
+<div class="pull-right">
+    <a href="#" ng-click="togglePanel(skill)"><i class="fa fa-minus-square-o"></i> kapat </a>
+</div>
 <div class="row">
+
     <div class="col-lg-2 ">
         <label>Seviyeniz:</label>
     </div>
@@ -75,5 +79,5 @@
 
 
 <div class="buttons pull-right">
-    <a ng-click="removeSkill(skill)" href="" class=""><i class="fa fa-times"></i> SİL</a>
+    <a ng-click="removeSkill(skill)" href="" class=""><i class="fa fa-trash-o text-danger"></i> sil</a>
 </div>

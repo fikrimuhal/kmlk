@@ -36,7 +36,7 @@ class Profile {
     String first_name
     String last_name
     String middle_name
-    Date birthDate
+    String birthDate
 
     static hasMany = [
             friends: Profile,

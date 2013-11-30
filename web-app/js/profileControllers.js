@@ -143,9 +143,7 @@ kimlik.controller('KimlikSettingsLocationCtrl', ['$scope', '$resource', 'userSer
     google.maps.visualRefresh = true;
     $scope.user = userService.getLoggedInUser();
 
-    $scope.address = {
-        latLng: {lat: 0, lng: 0}
-    }
+    $scope.address = $scope.user.contactInfo.address
     console.log($scope.address)
 
 
@@ -273,7 +271,7 @@ kimlik.controller('KimlikSettingsLocationCtrl', ['$scope', '$resource', 'userSer
 
 
     $scope.save = function (address) {
-        var result = api.save({companyId: $scope.company._id}, address)
+        var result = api.save({}, address)
 
     }
     console.log('Settings location Ready')
@@ -296,14 +294,19 @@ function KimlikSettingsGeneralCtrl($scope, userService, $resource) {
         $scope.model.first_name = newValue.first_name
         $scope.model.last_name = newValue.last_name
         $scope.model.middle_name = newValue.middle_name
+        $scope.model.birthDate = newValue.birthDate
         $scope.model.aboutText = newValue.aboutText
         $scope.model.webSite = newValue.contactInfo.webSite
+        $scope.model.publicTel = newValue.contactInfo.publicTel
+        $scope.model.publicEmail = newValue.contactInfo.publicEmail
     }
 
     $scope.save = function (model) {
         console.log(model)
         var api = $resource('/api/kimlik/ajaxSaveBasicInfo')
         api.save(model, {}, function () {
+            alert('todo: sayfayi 2 kere yenile lutfen, 1. si benden:)')
+            document.location.reload()
             console.log('TODO: reload/update profile');
         });
     }

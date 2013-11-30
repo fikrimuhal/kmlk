@@ -1,5 +1,7 @@
 package kimlik.account
 
+import startupservices.Location
+
 class ContactInfo {
     static embedded = ['address']
     Set<String> authenticatedEmails = new HashSet<String>()
@@ -10,7 +12,7 @@ class ContactInfo {
     String privateTel
     String publicTel
 
-    Address address  = new Address()
+    Location address  = new Location()
     String webSite
 
 

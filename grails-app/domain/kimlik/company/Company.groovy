@@ -1,6 +1,5 @@
 package kimlik.company
 
-import kimlik.account.Address
 import org.bson.types.ObjectId
 import startupservices.DomainToPage
 import startupservices.Location

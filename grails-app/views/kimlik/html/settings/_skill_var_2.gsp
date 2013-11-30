@@ -34,11 +34,13 @@
         <div class="text-small padder">
             <div class="block clearfix"></div>
 
-            <p>Mr. Soe</p>
+            <p>butonlar</p>
 
-            <p></p>
+            <p>sayilar</p>
 
-            <p>Best Regards<br>Mical</p>
+            <p>aciklamalar</p>
+
+            <p>arkadaslar</p>
 
 
             <p class="text-white">

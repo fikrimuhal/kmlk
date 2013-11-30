@@ -10,7 +10,7 @@ class Location {
     String avenue//: 'Cavusbasi',
     String street//: 'ethem',
     String formatted_address//: '', //calculated
-    String display_address//: '', //fulladdress
+    String display_address//: '', //fulladdress (publik olarak gosterilirken bu kullanilacak)
 
 
     LatLng latLng = new LatLng()

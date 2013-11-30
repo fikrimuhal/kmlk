@@ -33,7 +33,7 @@
 
     <div class="span6">
 
-        <table class="table table-condensed">
+        <table class="table table-condensed" ng-controller="NewSkillCtrl">
             <tbody>
             <tr>
                 <td class="right muted">Yeni yetenek:</td>

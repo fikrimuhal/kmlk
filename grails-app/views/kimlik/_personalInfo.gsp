@@ -13,25 +13,25 @@
             <div class="row">
                 <div class="col-lg-3"><strong>Email</strong></div>
 
-                <div class="col-lg-9"><a href="#">sumnulu@gmail.com</a></div>
+                <div class="col-lg-9"><a href="#">${profile.contactInfo?.publicEmail}</a></div>
             </div>
 
             <div class="row">
                 <div class="col-lg-3"><strong>Doğum Tarihi</strong></div>
 
-                <div class="col-lg-9">16/10/1985</div>
+                <div class="col-lg-9">${profile.birthDate}</div>
             </div>
 
             <div class="row">
                 <div class="col-lg-3"><strong>Adres</strong></div>
 
-                <div class="col-lg-9"><a href="#">Elysium garden k4, alemdag, cekmekoy, istanbul, turkiye</a></div>
+                <div class="col-lg-9"><a href="#">${profile.contactInfo?.address?.display_address?:' Görebilmek için login olun'}</a></div>
             </div>
 
             <div class="row">
                 <div class="col-lg-3"><strong>Tel</strong></div>
 
-                <div class="col-lg-9">+90 533 640 61 20</div>
+                <div class="col-lg-9">${profile.contactInfo?.publicTel}</div>
             </div>
 
             <div class="row">

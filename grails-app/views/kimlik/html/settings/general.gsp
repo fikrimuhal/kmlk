@@ -32,6 +32,15 @@
             </div>
 
             <div class="form-group">
+                <label class="col-lg-3 control-label">Doğum Tarihiniz</label>
+
+                <div class="col-lg-9">
+                    <input type="text" class="form-control"  ng-model="model.birthDate">
+                    <span class="help-block">Acik olarak gozukecek</span>
+                </div>
+            </div>
+
+            <div class="form-group">
                 <label  class="col-lg-3 control-label">Cinsiyet</label>
 
                 <div class="col-lg-9">
@@ -72,7 +81,7 @@
                 <label class="col-lg-3 control-label">Açık Email</label>
 
                 <div class="col-lg-9">
-                    <input type="text" class="form-control" id="h" placeholder="email adresiniz">
+                    <input type="text" class="form-control" id="h" ng-model="model.publicEmail">
                     <span class="help-block">Ziyaretcilere görünür</span>
                 </div>
             </div>
@@ -80,7 +89,7 @@
                 <label class="col-lg-3 control-label">Tel</label>
 
                 <div class="col-lg-9">
-                    <input type="text" class="form-control" id="v" placeholder="Telefon numariniz">
+                    <input type="text" class="form-control" id="v" ng-model="model.publicTel">
                     <span class="help-block">Ziyaretcilere görünür</span>
                 </div>
             </div>
