@@ -99,7 +99,7 @@ class RegisterController {
     }
 
     private redirectToProfile(String username) {
-        redirect(controller: 'kimlik', params: [username: username], fragment: '')
+        redirect(controller: 'kimlik',action: 'profile', params: [id: username], fragment: '')
     }
 
     /**

@@ -42,6 +42,19 @@ function KimlikContactsCtrl($scope, userService, profileService) {
     });
 
 
+}function KimlikSkillsCtrl($scope, skillService) {
+    console.log('KimlikSkillsCtrl ready');
+    var selected
+    var isPanelVisible = function(s){
+        return selected && selected.name == s.name
+    }
+    $scope.isPanelVisible = isPanelVisible;
+
+    $scope.togglePanel = function(s){
+        selected = (isPanelVisible(s))?null:s
+    }
+
+
 }
 
 

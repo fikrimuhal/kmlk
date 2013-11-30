@@ -1,9 +1,11 @@
 function TypeaheadCtrl($scope, $http, filterFilter, $resource, skillService) {
     var friends = {}
-
+    var config = {username:'sumnulu'}
 
     $scope.getFriends = function (input) { //todo : bunun yerine friends den search yapalim
-        var promise = $http.get("/kimlik/" + config.username + "/ajaxFriends", {cache: true}).then(function (response) {
+        console.error('DEPRECATED getFriends')
+
+        var promise = $http.get("/api/kimlik/ajaxFriends", {cache: true}).then(function (response) {
             return filterFilter(response.data, input)
         });
         promise.$$v = promise;
@@ -85,7 +87,9 @@ function TypeaheadCtrl($scope, $http, filterFilter, $resource, skillService) {
     }
 
     function fetchFriends() {
-        var apiFriends = $resource('/kimlik/' + config.username + '/ajaxFriends')
+        console.error('DEPRECATED,','fetchFriends')
+
+        var apiFriends = $resource('/api/kimlik/ajaxFriends')
         apiFriends.query({}, {}, function (r) {
             for (var idx in r) {
 //                    angular.extend(friends[r[idx].id] , r[idx] );

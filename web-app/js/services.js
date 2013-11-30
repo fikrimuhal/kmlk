@@ -1,9 +1,10 @@
 kimlik.factory('skillService', function ($resource, $rootScope) {
     $rootScope.skills = [];    //users skills
     $rootScope.allSkills = undefined  //all skills
+    var config = {username:'sumnulu'}
 
     function fetchSkills() {
-        var apiSkills = $resource('/kimlik/' + config.username + '/ajaxSkills');
+        var apiSkills = $resource('/api/kimlik/ajaxSkills');
         $rootScope.skills = apiSkills.query({}, {}, function (r) {
         });
     }

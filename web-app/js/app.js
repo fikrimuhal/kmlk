@@ -148,7 +148,8 @@ kimlik.config(['$routeSegmentProvider', '$locationProvider',
             segment('location', {templateUrl: '/html/kimlik/settings/location.html',
                 controller: 'KimlikSettingsLocationCtrl'}).
             segment('history', {templateUrl: '/html/kimlik/settings/history.html'}).
-            segment('skills', {templateUrl: '/html/kimlik/settings/skills.html'}).
+            segment('skills', {templateUrl: '/html/kimlik/settings/skills.html',
+                controller: KimlikSkillsCtrl}).
             segment('social', {templateUrl: '/html/kimlik/settings/social.html'}).
             segment('notifications', {templateUrl: '/html/kimlik/settings/notifications.html'});
 
