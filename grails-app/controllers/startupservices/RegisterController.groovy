@@ -116,7 +116,7 @@ class RegisterController {
         //todo
         if (result?.registered == true) {
             authenticationService.authenticatedUserId = result._id
-            redirect(controller: 'kimlik', params: [username: result.username], fragment: '')
+            redirectToProfile(result.username)
         } else {
             session.linkedinRaw = data
             session._reg_profile = result
@@ -133,7 +133,7 @@ class RegisterController {
         //todo
         if (result?.registered) {
             authenticationService.authenticatedUserId = result._id
-            redirect(controller: 'kimlik', params: [username: result.username], fragment: '')
+            redirectToProfile(result.username)
         } else {
             session.facebookRaw = data
             session._reg_profile = result

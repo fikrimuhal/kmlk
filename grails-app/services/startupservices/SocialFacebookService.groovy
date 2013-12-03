@@ -34,15 +34,18 @@ class SocialFacebookService {
 
     private updateFriends(Profile profile, def data) {
         log.debug('updating updateFriends')
-        profile
-        data.friends.data.each {
-            def friendsData = [
-                    id: it.id,
-                    first_name: it.first_name,
-                    middle_name: it.middle_name,
-                    last_name: it.last_name,
-            ]
-            profileService.addFriend(profile.id, friendsData, 'facebook')
+        println data
+        if (data.friends) {
+
+            data.friends.data.each {
+                def friendsData = [
+                        id: it.id,
+                        first_name: it.first_name,
+                        middle_name: it.middle_name,
+                        last_name: it.last_name,
+                ]
+                profileService.addFriend(profile.id, friendsData, 'facebook')
+            }
         }
     }
 

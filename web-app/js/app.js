@@ -120,7 +120,6 @@ kimlik.config(['$routeSegmentProvider', '$locationProvider',
                 controller: 'CompanyTimelineCtrl'});
 
 
-
         // Personal profiles start
         $routeSegmentProvider.
             when('/kimlik/:user_name/settings', 'kimlik.settings.general').
@@ -184,7 +183,7 @@ kimlik.config(['$routeSegmentProvider', '$locationProvider',
 ]);
 
 // run blocks
-kimlik.run(function ($rootScope,$routeSegment) {
+kimlik.run(function ($rootScope, $routeSegment) {
 
     $rootScope.$on('routeSegmentChange', function () {
         //broadcast de company_name i aliyoruz boylece resolved oldugundan eminiz parametrenin.
@@ -218,6 +217,7 @@ function NavBarCtrl($scope, companyService, userService) {
     $scope.$on('userAuthenticated', initialize);
 
     console.log('NAV_BAR Ready');
+
 }
 
 kimlik.factory('companyService', function ($resource, $rootScope) {

@@ -53,6 +53,18 @@
         _settings.staticMode = false; // i.e. locationProvider should USE html5Mode
     </script>
 
+
+    <script type="text/javascript" src="http://jira.ofis.fikrimuhal.com/s/en_US-h69050-1988229788/6099/11/1.4.0-m3/_/download/batch/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector/com.atlassian.jira.collector.plugin.jira-issue-collector-plugin:issuecollector.js?collectorId=2717829b"></script>
+    <script type="text/javascript">window.ATL_JQ_PAGE_PROPS =  {
+        "triggerFunction": function(showCollectorDialog) {
+            //Requries that jQuery is available!
+            jQuery("#showFeedBackDialog").click(function(e) {
+                e.preventDefault();
+                showCollectorDialog();
+            });
+        }};</script>
+
+
 </head>
 
 <body>

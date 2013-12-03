@@ -1,138 +1,64 @@
+<%@ page contentType="text/html;charset=UTF-8" %>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta name="layout" content="frontKimlik"/>
-    <script src="http://code.angularjs.org/1.0.8/angular-resource.min.js"></script>
-    <style type="text/css">
+    <meta name="layout" content="first"/>
+    <r:require modules="first_deprecated"/>
 
-    .animate-if.ng-enter, .animate-if.ng-leave {
-        -webkit-transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
-        -moz-transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
-        -o-transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
-        transition: all cubic-bezier(0.250, 0.460, 0.450, 0.940) 0.5s;
-    }
-
-    .animate-if.ng-enter,
-    .animate-if.ng-leave.ng-leave-active {
-        opacity: 0;
-    }
-
-    .animate-if.ng-enter.ng-enter-active,
-    .animate-if.ng-leave {
-        opacity: 1;
-    }
-    </style>
-    <r:require modules="kimlik_register"/>
+    <script type="text/javascript">
+        _settings.staticMode = true // i.e. locationProvider should not use html5Mode
+    </script>
 </head>
-
 <body>
-
-<div id="login">
-    <h1>KIMLIK.IO/<small style="font-style: italic">AdınSoyadın</small></h1>
-    <br>
-
-    <div class="wrapper signup" ng-controller="RegisterController">
-        <h1 class="glyphicons user_add">Kayıt ol <i></i> <small><br>Kulanici adininizi seçiniz. Kullanici adinizi sectikten sonra bir daha degistiremezsiniz.
-        </small></h1>
-        <!-- Box -->
-        <div class="widget widget-heading-simple">
-            <div class="widget-body">
-                <!-- Form -->
-                <form method="post" action="">
-
-                    <!-- Row -->
-                    <div class="row-fluid ">
-
-                        <!-- Column -->
-                        <div class="span8">
-                            <h5>http://kimlik.io/ <small><input ng-model="username" ng-change="checkUsername(username)"
-                                                                name="checkUsername(username)" type="text" class=""
-                                                                placeholder="Kullanici adiniz"/></small></h5>
-                            %{--<h5>Email adresiniz <small><input name="email" type="text" class="" placeholder="email adresiniz"/></small></h5>--}%
-
-                            <button ng-disabled="submitButtonIsDisabled()" ng-click="createProfile()"
-                                    class="btn btn-icon-stacked btn-block btn-primary glyphicons user_add span6 pull-right"><i></i><span>Profilimi oluştur</span><span
-                                    class="strong">Kayıt ol</span></button>
+<!-- header -->
+<header id="header" class="navbar bg bg-black">
+    <a href="" class="btn btn-link pull-right m-t-mini"><i class="fa fa-question icon-xlarge text-default"></i></a>
+    <a class="navbar-brand" href="#">kimlik</a>
+</header>
+<!-- / header -->
+<section id="content" ng-controller="RegisterController">
+    <div class="main padder">
+        <div class="row">
+            <div class="col-lg-4 col-lg-offset-4 m-t-large">
+                <section class="panel">
+                    <header class="panel-heading text-center">
+                        Kayit ol
+                    </header>
+                    <form action="/" class="panel-body">
+                        <div class="block">
+                            <label class="control-label">Kullanıcı Adı</label>
+                            <input type="text" ng-model="username" ng-change="checkUsername(username)"
+                                   name="checkUsername(username)"
+                                   placeholder="" class="form-control">
+                            <span class="help-block">Kullanıcı adınız <em>AdSoyad</em> tarzında yazmanızı öneririz</span>
+                            <span ng-show='username' class="help-block">http://kimlik.io/{{username}}</span>
                         </div>
 
-                        <!-- // Column END -->    <!-- Column -->
-                        <div class="span4" ng-switch on="submitButtonIsDisabled()">
-                            <span ng-switch-when="true" class=" text-error">{{userNameMessage}}</span>
-                            <span ng-switch-when="false" class="text-success">{{userNameMessage}}</span>
+                        %{--<button ng-disabled="submitButtonIsDisabled()" ng-click="createProfile()" ng-class="{'disabled':submitButtonIsDisabled(), 'btn-primary':!submitButtonIsDisabled()}" class="btn btn-block ">Profilimi oluştur</button>--}%
+                        <div class="line line-dashed"></div>
+                        <div class="row">
+                            <div class="col-sm-12 text-center" ng-switch on="submitButtonIsDisabled()">
+
+                                <h4 ng-hide='username' class=" text-info">Kişisel hesabınız için lütfen kullanıcı adı seçiniz...</h4>
+                                <h4 ng-switch-when="true" class=" text-danger">{{userNameMessage}}</h4>
+                                <h4 ng-switch-when="false" class="text-success">{{userNameMessage}}</h4>
+                            </div>
                         </div>
-                        <!-- // Column END -->
-
-                    </div>
-                    <!-- // Row END -->
-
-                </form>
-                <!-- // Form END -->
-
+                        <div class="line line-dashed"></div>
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox"> Kullanım sözleşmesini kabulet. Okumak için <a href="#">tiklayin</a>
+                            </label>
+                        </div>
+                        <a href="#" ng-disabled="submitButtonIsDisabled()" ng-click="createProfile()" ng-class="{'disabled':submitButtonIsDisabled(), 'btn-primary':!submitButtonIsDisabled()}" class="btn btn-block ">Profilimi oluştur</a>
+                    </form>
+                </section>
             </div>
-            <!-- // Box END -->
-
         </div>
-
-        %{--Normal kayit ol basla--}%
-        %{--<br><br>--}%
-        %{--<h1 class="glyphicons icon-chevron-down"> - Yada<i></i> <small>email adresin ile...</small></h1>--}%
-
-        %{--<!-- Box -->--}%
-        %{--<div class="widget widget-heading-simple">--}%
-        %{--<div class="widget-body">--}%
-
-        %{--<!-- Form -->--}%
-        %{--<form method="post" action="">--}%
-
-        %{--<!-- Row -->--}%
-        %{--<div class="row-fluid row-merge">--}%
-
-        %{--<!-- Column -->--}%
-        %{--<div class="span6">--}%
-        %{--<div class="innerR">--}%
-        %{--<label class="strong">Ad</label>--}%
-        %{--<input type="text" class="input-block-level" placeholder="Adiniz"/>--}%
-        %{--<label class="strong">Soyad</label>--}%
-        %{--<input type="password" class="input-block-level" placeholder="Soyadiniz"/>--}%
-        %{--<label class="strong">Parola</label>--}%
-        %{--<input type="password" class="input-block-level" placeholder="Parolaniz"/>--}%
-        %{--</div>--}%
-        %{--</div>--}%
-        %{--<!-- // Column END -->--}%
-
-        %{--<!-- Column -->--}%
-        %{--<div class="span6">--}%
-        %{--<div class="innerL">--}%
-        %{--<label class="strong">Email</label>--}%
-        %{--<input type="text" class="input-block-level" placeholder="Email adresiniz"/>--}%
-        %{--<label class="strong">Tekrar Email</label>--}%
-        %{--<input type="text" class="input-block-level" placeholder="Yukarıda yazan email adresinizin tekrarı"/>--}%
-        %{--<a href=""--}%
-        %{--class="btn btn-icon-stacked btn-block btn-primary glyphicons user_add"><i></i><span>Email adresiniz ile</span><span--}%
-        %{--class="strong">Kayıt ol</span></a>--}%
-
-
-        %{--<p>Bir sorun mu var? <a href="/help">Yardim edelim</a></p>--}%
-        %{--</div>--}%
-        %{--</div>--}%
-        %{--<!-- // Column END -->--}%
-
-        %{--</div>--}%
-        %{--<!-- // Row END -->--}%
-
-        %{--</form>--}%
-        %{--<!-- // Form END -->--}%
-
-        %{--</div>--}%
-        %{--<!-- // Box END -->--}%
-
-        %{--</div>--}%
-
-        <br><br>
-
     </div>
-
-</div>
+</section>
+<g:render template="/shared/footer"/>
 
 </body>
 </html>
+

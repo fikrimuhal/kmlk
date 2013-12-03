@@ -73,7 +73,7 @@
         </li>
 
 
-        <li><div class="m-t-small"><a class="btn btn-sm btn-info" data-toggle="modal" href="#modal"><i
+        <li><div class="m-t-small"><a class="btn btn-sm btn-info" id="showFeedBackDialog" href="#"><i
                 class="fa fa-lightbulb"></i> Geri bildirim</a></div></li>
 
 
