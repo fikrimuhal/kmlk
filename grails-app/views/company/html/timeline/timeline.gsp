@@ -90,9 +90,9 @@
                                              ng-click="save(selected)">Kaydet</button> <button
                             class="btn btn-sm btn-danger" ng-click="doDelete(selected)">Sil</button></div>
                 </form>
-                <pre>
-                    {{selected | json}}
-                </pre>
+                %{--<pre>--}%
+                    %{--{{selected | json}}--}%
+                %{--</pre>--}%
             </aside>
             <!-- /.sidebar -->
         </section>
