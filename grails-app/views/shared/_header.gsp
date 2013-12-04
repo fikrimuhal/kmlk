@@ -85,26 +85,26 @@
                 <li><a href="/company/my/list">Şirketlerim</a></li>
                 <li><a href="/company/my/new">Yeni şirket ekle</a></li>
 
-                <li>
-                    <a href="#" data-toggle="class:navbar-fixed" data-target='body'>Navigasyon
-                        <span class="text-active">otomatik</span>
-                        <span class="text">sabit</span>
-                    </a>
-                </li>
-                <li class="divider hidden-xs"></li>
-                <li class="dropdown-header">Renkler</li>
-                <li>
-                    <a href="#" data-toggle="class:bg bg-black" data-target='.navbar'>Navigasyon
-                        <span class="text-active">beyaz</span>
-                        <span class="text">siyah</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" data-toggle="class:bg-light" data-target='#nav'>Navigasyon 2
-                        <span class="text-active">sihay</span>
-                        <span class="text">beyaz</span>
-                    </a>
-                </li>
+                %{--<li>--}%
+                    %{--<a href="#" data-toggle="class:navbar-fixed" data-target='body'>Navigasyon--}%
+                        %{--<span class="text-active">otomatik</span>--}%
+                        %{--<span class="text">sabit</span>--}%
+                    %{--</a>--}%
+                %{--</li>--}%
+                %{--<li class="divider hidden-xs"></li>--}%
+                %{--<li class="dropdown-header">Renkler</li>--}%
+                %{--<li>--}%
+                    %{--<a href="#" data-toggle="class:bg bg-black" data-target='.navbar'>Navigasyon--}%
+                        %{--<span class="text-active">beyaz</span>--}%
+                        %{--<span class="text">siyah</span>--}%
+                    %{--</a>--}%
+                %{--</li>--}%
+                %{--<li>--}%
+                    %{--<a href="#" data-toggle="class:bg-light" data-target='#nav'>Navigasyon 2--}%
+                        %{--<span class="text-active">sihay</span>--}%
+                        %{--<span class="text">beyaz</span>--}%
+                    %{--</a>--}%
+                %{--</li>--}%
             </ul>
         </li>
 
