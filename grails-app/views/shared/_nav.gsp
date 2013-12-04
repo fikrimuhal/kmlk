@@ -1,7 +1,7 @@
 <!-- nav -->
 <nav id="nav" class="nav-primary hidden-xs nav-vertical">
     <ul class="nav" data-spy="affix" data-offset-top="50">
-        <li ng-class="{active: $routeSegment.contains('dashboard')}"><a href="%{--/company/{{company_name}}/dashboard--}%"><i class="fa fa-dashboard icon-xlarge"></i><span>Dashboard</span></a></li>
+        %{--<li ng-class="{active: $routeSegment.contains('dashboard')}"><a href="--}%%{--/company/{{company_name}}/dashboard--}%%{--"><i class="fa fa-dashboard icon-xlarge"></i><span>Dashboard</span></a></li>--}%
         <li ng-class="{active: $routeSegment.contains('timeline')}"><a href="/company/{{company_name}}/timeline"><i class="fa fa-book icon-xlarge"></i><span>Şirket Güncesi</span></a></li>
         <li ng-class="{active: $routeSegment.contains('hr')}"><a href="/company/{{company_name}}/hr"><i class="fa fa-th icon-xlarge"></i><span>Insan kaynakları</span></a></li>
         <li ng-class="{active: $routeSegment.contains('skills')}"><a href="/company/{{company_name}}/skills"><i class="fa fa-list icon-xlarge"></i><span>Şirket yetenekleri</span></a></li>

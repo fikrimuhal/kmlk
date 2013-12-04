@@ -112,7 +112,7 @@
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{c.short_name}} <b class="caret"></b></a>
             <ul class="dropdown-menu" role="menu">
                 <li><a href="/company/profile/{{c.page_name}}" target="_top">Web Sayfası</a></li>
-                <li><a href="/company/{{c.page_name}}/dashboard">Şirket paneli</a></li>
+                %{--<li><a href="/company/{{c.page_name}}/dashboard">Şirket paneli</a></li>--}%
                 <li><a href="/company/{{c.page_name}}/hr">Insan kaynakları</a></li>
                 <li><a href="/company/{{c.page_name}}/skills">Şirket yetenekleri</a></li>
                 <li><a href="/company/{{c.page_name}}/products">Ürünler ve Projeler</a></li>
@@ -123,9 +123,9 @@
 
     </ul>
 
-    <form class="navbar-form pull-left shift" action="" data-toggle="shift:appendTo" data-target=".nav-primary">
-        <i class="fa fa-search text-muted"></i>
-        <input type="text" class="input-sm form-control" placeholder="Search">
-    </form>
+    %{--<form class="navbar-form pull-left shift" action="" data-toggle="shift:appendTo" data-target=".nav-primary">--}%
+        %{--<i class="fa fa-search text-muted"></i>--}%
+        %{--<input type="text" class="input-sm form-control" placeholder="Search">--}%
+    %{--</form>--}%
 </header>
 <!-- / header -->
