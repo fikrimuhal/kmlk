@@ -215,6 +215,21 @@ function NavBarCtrl($scope, companyService, userService) {
 
     initialize();
     $scope.$on('userAuthenticated', initialize);
+    $scope.getProfilePictureUrl = function (loggedinUser) {
+        if (loggedinUser &&
+            loggedinUser.profilePicture &&
+            loggedinUser.profilePicture.defaultPicture &&
+            loggedinUser.profilePicture.defaultPicture.url) {
+            return loggedinUser.profilePicture.defaultPicture.url
+        } else if (loggedinUser &&
+            loggedinUser.accounts &&
+            loggedinUser.accounts.facebook &&
+            loggedinUser.accounts.facebook.remoteId) {
+            return "http://graph.facebook.com/" + loggedinUser.accounts.facebook.remoteId + "/picture?height=400"
+        }else{
+
+        }
+    };
 
     console.log('NAV_BAR Ready');
 
