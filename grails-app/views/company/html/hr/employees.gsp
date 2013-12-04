@@ -1,6 +1,17 @@
 <div class="row">
     <div class="col-sm-4 col-md-4" ng-repeat="id in employeeIds">
         <div class="thumbnail">
+            <div class="btn-group pull-right ">
+                <button type="button" class="btn btn-white dropdown-toggle" data-toggle="dropdown">
+                    <i class="fa fa-cog"></i>
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu ">
+                    <li><a href="javascript:alert('todo alpha 2');return false;" ><i class="fa fa-trash-o fa-fw"></i> Bu kişiyi işten çıkart</a></li>
+                    <li><a href="{{getProfile(id).profileUrl}}" target="_self" ><i class="fa fa-user fa-fw"></i> Profile git</a></li>
+
+                </ul>
+            </div>
             <img ng-src="{{getProfile(id).profilePicture.defaultPicture.url}}" alt="" style="height: 200px;"/>
 
             <div class="caption">
