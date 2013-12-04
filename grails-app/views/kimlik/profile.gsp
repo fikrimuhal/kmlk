@@ -21,14 +21,14 @@
         <div class="bg-light padder padder-v">
             <span class="h4">${profile.name}</span>
             <small class="block m-t-mini">${profile.workHistory?.lastEntity?.position}</small>
-            <button class="btn btn-primary btn-sm active" data-toggle="button">
-                <span class="text">
-                    <i class="fa fa-eye"></i> ODOT
-                </span>
-                <span class="text-active">
-                    <i class="fa fa-eye"></i> NOT IMP. YET
-                </span>
-            </button>
+            %{--<button class="btn btn-primary btn-sm active" data-toggle="button">--}%
+                %{--<span class="text">--}%
+                    %{--<i class="fa fa-eye"></i> ODOT--}%
+                %{--</span>--}%
+                %{--<span class="text-active">--}%
+                    %{--<i class="fa fa-eye"></i> NOT IMP. YET--}%
+                %{--</span>--}%
+            %{--</button>--}%
         </div>
 
     <g:render template="leftNav"/>

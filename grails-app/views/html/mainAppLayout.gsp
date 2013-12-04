@@ -23,21 +23,21 @@
     <aside class="sidebar bg-lighter sidebar">
         <div class="text-center clearfix bg-white">
             <a href="/kimlik/profile/sumnulu" target="_self">
-            <img ng-src="{{loggedinUser.profilePicture.defaultPicture.url}}">
+            <img ng-src="{{getProfilePictureUrl(loggedinUser)}}">
             </a>
         </div>
 
         <div class="bg-light padder padder-v">
-            <a href="/kimlik/profile/{{user_name}}" target="_self"> <span class="h4"> Ilgaz şumnulu </span></a>
-            <small class="block m-t-mini">CTO</small>
-            <button class="btn btn-primary btn-sm active" data-toggle="button">
-                <span class="text">
-                    <i class="fa fa-eye-open"></i> TODO
-                </span>
-                <span class="text-active">
-                    <i class="fa fa-eye-open"></i> ODOT
-                </span>
-            </button>
+            <a href="/kimlik/profile/{{user_name}}" target="_self"> <span class="h4">{{loggedinUser.first_name}} {{loggedinUser.last_name}}</span></a>
+            <!--<small class="block m-t-mini">todo</small>-->
+            <!--<button class="btn btn-primary btn-sm active" data-toggle="button">-->
+                <!--<span class="text">-->
+                    <!--<i class="fa fa-eye-open"></i> TODO-->
+                <!--</span>-->
+                <!--<span class="text-active">-->
+                    <!--<i class="fa fa-eye-open"></i> ODOT-->
+                <!--</span>-->
+            <!--</button>-->
         </div>
     <g:render template="/kimlik/leftNav"/>
 

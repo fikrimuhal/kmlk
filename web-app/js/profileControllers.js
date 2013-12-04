@@ -137,6 +137,7 @@ function KimlikCtrl($scope, $routeSegment) {
     });
 
 
+
 }
 
 kimlik.controller('KimlikSettingsLocationCtrl', ['$scope', '$resource', 'userService', function ($scope, $resource, userService) {
