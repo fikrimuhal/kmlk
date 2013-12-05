@@ -207,7 +207,7 @@ kimlik.run(function ($rootScope, $routeSegment) {
             loggedinUser.accounts.facebook &&
             loggedinUser.accounts.facebook.remoteId) {
             return "http://graph.facebook.com/" + loggedinUser.accounts.facebook.remoteId + "/picture?height=400"
-        }else{
+        } else {
 
         }
     };
@@ -234,6 +234,29 @@ function NavBarCtrl($scope, companyService, userService) {
 
 
     console.log('NAV_BAR Ready');
+
+}
+
+function NotificationCtrl($scope, companyService, userService) {
+    $scope.getNumberOfNewNotifications = function(){
+     return items.length
+    };
+
+    $scope.items = [
+        {_id: 1, title:'Bootstrap 3.0 a geçtik süper!', message:'Bootstrap 3.0 a geçtik süper!', date:'23 June 13' , isRead:true},
+        {_id: 2, title:'Bootstrap 2.0 a geçtik süper!', message:'Aaaa bbbbBootstrap 2.0 a geçtik süper!', date:'22 June 03' , isRead:true},
+        {_id: 2, title:'Bootstrap 2.0 a geçtik süper!', message:'Aaaa bbbb cccccBootstrap 2.0 a geçtik süper!', date:'22 June 03' , isRead:true},
+        {_id: 2, title:'Bootstrap 2.0 a geçtik süper!', message:'Aaaa bbbb ccccc  ddddddBootstrap 2.0 a geçtik süper!', date:'22 June 03' , isRead:false},
+        {_id: 2, title:'Bootstrap 2.0 a geçtik süper!', message:'Aaaa bbbb ccccc  dddddd eeeee Bootstrap 2.0 a geçtik süper!', date:'22 June 03' , isRead:true},
+        {_id: 2, title:'Bootstrap 2.0 a geçtik süper!', message:'Aaaa bbbb ccccc  dddddd eeeee Bootstrap 2.0 a geçtik süper!', date:'22 June 03' , isRead:true},
+        {_id: 2, title:'Bootstrap 2.0 a geçtik süper!', message:'Aaaa bbbb ccccc  ddddddBootstrap 2.0 a geçtik süper!', date:'22 June 03' , isRead:true},
+        {_id: 2, title:'Bootstrap 2.0 a geçtik süper!', message:'Aaaa bbbb cccccBootstrap 2.0 a geçtik süper!', date:'22 June 03' , isRead:true},
+        {_id: 2, title:'Bootstrap 2.0 a geçtik süper!', message:'Aaaa bbbbBootstrap 2.0 a geçtik süper!', date:'22 June 03' , isRead:false},
+        {_id: 3, title:'Bootstrap 1.0 a geçtik süper!', message:'Bootstrap 1.0 a geçtik süper!', date:'21 June 03' , isRead:false}
+    ];
+    var items =  $scope.items;
+
+    console.log('NotificationCtrl Ready');
 
 }
 

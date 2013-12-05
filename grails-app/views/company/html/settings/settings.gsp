@@ -14,9 +14,9 @@
                     <li ng-class="{active: $routeSegment.contains('general')}"><a href="/company/{{company_name}}/settings/general">Genel</a></li>
                     <li ng-class="{active: $routeSegment.contains('location')}"><a href="/company/{{company_name}}/settings/location">Lokasyon</a></li>
                     <li ng-class="{active: $routeSegment.contains('images')}"><a href="/company/{{company_name}}/settings/images">Görseller</a></li>
-                    <li ng-class="{active: $routeSegment.contains('security')}"><a href="/company/{{company_name}}/settings/security">Güvenlik ve İzinler</a></li>
-                    <li ng-class="{active: $routeSegment.contains('notifications')}"><a href="/company/{{company_name}}/settings/notifications">Bildirimler</a></li>
-                    <li ng-class="{active: $routeSegment.contains('social')}"><a href="/company/{{company_name}}/settings/social">Sosyal</a></li>
+                    <li class="disabled" ng-class="{active: $routeSegment.contains('security')}"><a href="#/company/{{company_name}}/settings/security">Güvenlik ve İzinler</a></li>
+                    <li class="disabled" ng-class="{active: $routeSegment.contains('notifications')}"><a href="#/company/{{company_name}}/settings/notifications">Bildirimler</a></li>
+                    <li class="disabled" ng-class="{active: $routeSegment.contains('social')}"><a href="#/company/{{company_name}}/settings/social">Sosyal</a></li>
                     <li ng-class="{active: $routeSegment.contains('www')}"><a href="/company/{{company_name}}/settings/www">Web Sayfası</a></li>
 
                 </ul>

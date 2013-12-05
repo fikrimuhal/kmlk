@@ -47,10 +47,10 @@
                                 class="fa fa-linkedin pull-left"></i>Linkedin ile giriş yap</oauth:connect>
 
 
-                        <div class="line line-dashed"></div>
+                        %{--<div class="line line-dashed"></div>--}%
 
-                        <p class="text-muted text-center"><small>Hesabin henüz yok mu?</small></p>
-                        <a href="/register/signUp" target="_self" class="btn btn-white btn-block">Ücretsiz hemen hesap oluştur</a>
+                        %{--<p class="text-muted text-center"><small>Hesabin henüz yok mu?</small></p>--}%
+                        %{--<a href="/register/signUp" target="_self" class="btn btn-white btn-block">Ücretsiz hemen hesap oluştur</a>--}%
                     </form>
                 </section>
             </div>

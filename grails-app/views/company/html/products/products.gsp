@@ -3,9 +3,9 @@
     <div class="col-lg-12">
 
         <ul class="breadcrumb hidden-sm hidden-xs hidden-phone">
-            <li><a href="#"><i class="fa fa-home"></i>Fikrimuhal</a></li>
-            <li><a href="#"><i class="fa fa-list-ul"></i>İnsan Kaynakları</a></li>
-            <li class="active">Çalışanlar</li>
+            %{--<li><a href="#"><i class="fa fa-home"></i>Fikrimuhal</a></li>--}%
+            %{--<li><a href="#"><i class="fa fa-list-ul"></i>İnsan Kaynakları</a></li>--}%
+            %{--<li class="active">Çalışanlar</li>--}%
         </ul>
 
 
@@ -15,8 +15,8 @@
                     <li class="active"><a
                             href="/company/{{company_name}}/products"><i
                                 class="fa fa-home icon-large text-default"></i>Ürunler ve Projeler</a></li>
-                    <li><a
-                            href="/company/{{company_name}}/services"><i
+                    <li class="disabled"><a
+                             href="#/company/{{company_name}}/services"><i
                                 class="fa fa-group icon-large text-default"></i>Hizmetler</a></li>
 
                 </ul>
