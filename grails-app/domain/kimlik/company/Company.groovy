@@ -1,5 +1,6 @@
 package kimlik.company
 
+import notification.NotificationInbox
 import org.bson.types.ObjectId
 import startupservices.DomainToPage
 import startupservices.Location
@@ -7,7 +8,13 @@ import startupservices.Picture
 import startupservices.Profile
 
 class Company {
-    static embedded = ['location', 'officePictures', 'products', 'name', 'skills', 'timeline']
+    static embedded = ['location',
+            'officePictures',
+            'products',
+            'name',
+            'skills',
+            'timeline',
+            'notificationInbox']
 
     ObjectId id
 
@@ -54,9 +61,14 @@ class Company {
     DomainToPage domainToPage
 
     List<Picture> officePictures
+
     List<Product> products
+
     List<CompanySkill> skills = new ArrayList<CompanySkill>()
+
     List<TimelineEntity> timeline
+
+    NotificationInbox notificationInbox
 
     static constraints = {
     }

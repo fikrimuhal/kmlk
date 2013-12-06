@@ -237,18 +237,31 @@ function NavBarCtrl($scope, companyService, userService) {
 
 }
 
-function NotificationCtrl($scope, $resource) {
+function NotificationCtrl($scope, $resource,userService) {
+    var notifications
+
     var api = $resource('/api/notification/:verb', {}, {
-        'query': {method: 'POST', params: {verb: 'getInbox'}, isArray: true}
+        'query': {method: 'POST', params: {verb: 'getInbox'}/*, isArray: true*/}
     });
 
     $scope.getNumberOfNewNotifications = function () {
-        return items.length
+        return 5//items.length
     };
 
-    $scope.items = api.query({}, {inboxId: '5253388e0fb8a098ad784d84'}, function (d) {
-         console.log(d.length);
+
+    $scope.companies.$promise.then(function (companies) {
+        notifications = _(companies)
+            .map('notificationInbox')
+            .compact()
+            .map('notifications')
+            .flatten()
+            .union(notifications)
+            .compact()
+            .value()
+        console.debug('yyyy', notifications)
     });
+    console.debug('xcccddd',userService.getLoggedInUser())
+
     var items = $scope.items;
 
     console.log('NotificationCtrl Ready');

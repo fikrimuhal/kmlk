@@ -1,9 +1,11 @@
 package startupservices
 
 import com.mongodb.DBCollection
+import com.mongodb.DBRef
 import com.mongodb.WriteConcern
 import kimlik.company.Company
 import kimlik.company.EmployeeRequest
+import notification.Notification
 import org.bson.types.ObjectId
 
 class CompanyService {
@@ -109,118 +111,6 @@ class CompanyService {
                     numberOfTechnical: 2,
                     numberOfManagment: 2
             ]
-//            ,
-//            skills: [
-//
-//                    [name: 'Java',
-//                            percent: 65,
-//                            skill: new ObjectId(),
-//                            cssClass: 'bg-primary'],
-//                    [name: 'HTML',
-//                            percent: 80,
-//                            skill: new ObjectId(),
-//                            cssClass: 'bg-success'],
-//                    [name: 'jQuery',
-//                            percent: 35,
-//                            skill: new ObjectId(),
-//                            cssClass: 'bg-info'],
-//                    [name: 'PHP',
-//                            percent: 85,
-//                            skill: new ObjectId(),
-//                            cssClass: 'bg-warning'],
-//                    [name: 'WP',
-//                            percent: 95,
-//                            skill: new ObjectId(),
-//                            cssClass: 'bg-danger'],
-//                    [name: 'SEO',
-//                            percent: 45,
-//                            skill: new ObjectId(),
-//                            cssClass: 'bg-primary'],
-//                    [name: 'Proje Yönetimi',
-//                            percent: 85,
-//                            skill: new ObjectId(),
-//                            cssClass: 'bg-default'],
-//                    [name: 'Groovy',
-//                            percent: 75,
-//                            skill: new ObjectId(),
-//                            cssClass: 'bg-success'],
-//                    [name: 'Grails',
-//                            percent: 85,
-//                            skill: new ObjectId(),
-//                            cssClass: 'bg-success'],
-//                    [name: 'UX Design',
-//                            percent: 35,
-//                            skill: new ObjectId(),
-//                            cssClass: 'bg-success'],
-//                    [name: 'Amazon Web Services',
-//                            percent: 75,
-//                            skill: new ObjectId(),
-//                            cssClass: 'bg-info'],
-//                    [name: 'Startup Management',
-//                            percent: 65,
-//                            skill: new ObjectId(),
-//                            cssClass: 'bg-warning'],
-//                    [name: 'Git',
-//                            percent: 63,
-//                            skill: new ObjectId(),
-//                            cssClass: 'bg-primary'],
-//                    [name: 'AngularJs',
-//                            percent: 91,
-//                            skill: new ObjectId(),
-//                            cssClass: 'bg-danger'],
-//
-//            ].each {
-//
-//                def rand = new java.util.Random()
-//                def ids = [
-//                        new ObjectId('5253388f0fb8a098ad784d85'),
-//                        new ObjectId('5253388f0fb8a098ad784d86'),
-//                        new ObjectId('5253388f0fb8a098ad784d87'),
-//                        new ObjectId('5253388f0fb8a098ad784d88'),
-//                        new ObjectId('5253388f0fb8a098ad784d89'),
-//                        new ObjectId('5253388f0fb8a098ad784d8a'),
-//                        new ObjectId('5253388f0fb8a098ad784d8b'),
-//                        new ObjectId('525338900fb8a098ad784d8c'),
-//                        new ObjectId('525338900fb8a098ad784d8d'),
-//                        new ObjectId('525338900fb8a098ad784d8e'),
-//                        new ObjectId('525338900fb8a098ad784d8f'),
-//                        new ObjectId('525338900fb8a098ad784d90'),
-//                        new ObjectId('525338900fb8a098ad784d91'),
-//                        new ObjectId('525338900fb8a098ad784d92'),
-//                        new ObjectId('525338900fb8a098ad784d93'),
-//                        new ObjectId('525338900fb8a098ad784d94'),
-//                        new ObjectId('525338900fb8a098ad784d95'),
-//                        new ObjectId('525338900fb8a098ad784d96'),
-//                        new ObjectId('525338900fb8a098ad784d97'),
-//                        new ObjectId('525338900fb8a098ad784d98'),
-//                        new ObjectId("525338900fb8a098ad784d99"),
-//                        new ObjectId("525338900fb8a098ad784d9a"),
-//                        new ObjectId("525338900fb8a098ad784d9b"),
-//                        new ObjectId("525338900fb8a098ad784d9c"),
-//                        new ObjectId("525338900fb8a098ad784d9d"),
-//                        new ObjectId("525338900fb8a098ad784d9e"),
-//                        new ObjectId("525338900fb8a098ad784d9f"),
-//                        new ObjectId("525338900fb8a098ad784da0"),
-//                        new ObjectId("525338900fb8a098ad784da1"),
-//                        new ObjectId("525338900fb8a098ad784da2"),
-//                        new ObjectId("525338900fb8a098ad784da3"),
-//                        new ObjectId("525338900fb8a098ad784da4"),
-//                        new ObjectId("525338900fb8a098ad784da5"),
-//                        new ObjectId("525338900fb8a098ad784da6"),
-//                        new ObjectId("525338900fb8a098ad784da7"),
-//                        new ObjectId("525338900fb8a098ad784da8"),
-//                        new ObjectId("525338900fb8a098ad784da9"),
-//                        new ObjectId("525338900fb8a098ad784daa"),
-//                        new ObjectId("525338900fb8a098ad784dab"),
-//                        new ObjectId("525338900fb8a098ad784dac"),
-//
-//
-//                ]
-//                it.contributors = []
-//                (rand.nextInt(5)).times { o -> it.contributors << ids[rand.nextInt(40)] }
-//                it.order = rand.nextInt(100)
-//                it.visibility = rand.nextBoolean()
-//            }
     ]
 
     def saveProduct(def product, ObjectId companyId) {
@@ -455,7 +345,9 @@ class CompanyService {
                 //todo profil i update et
                 //todo notification lari yolla
                 log.info("request verified oldu  (sirket tarafindan), siliyorum eski kaydi")
-                notificationService.send('Y sirketi sizi calisan olarak ekledi', toId)
+                notificationService.sendToProfile(new Notification(
+                        title: 'Y sirketi sizi calisan olarak ekledi',
+                        from: new DBRef(null,'company',fromId)), toId)
                 addNewEmployee(fromId,toId)
                 col.remove([profile: toId, company: fromId, requestedByCompany: false], WriteConcern.SAFE)
 
@@ -466,7 +358,9 @@ class CompanyService {
                 //todo notification lari yolla
                 log.info("request verified oldu (kullanici tarafindan) , siliyorum eski kaydi")
                 addNewEmployee(fromId,toId)
-                notificationService.send('X kisisi, Y sirketi icin calisan olarak eklendi', fromId)
+                notificationService.sendToCompany(new Notification(
+                        title: 'X kisisi, Y sirketi icin calisan olarak eklendi',
+                        from: new DBRef(null,'profile',toId)), fromId)
 
                 col.remove([profile: toId, company: fromId, requestedByCompany: true], WriteConcern.SAFE)
 
@@ -479,11 +373,15 @@ class CompanyService {
             log.info("yeni employment request")
             if (requestedByCompany) {
                 //istek sirket tarafindan olusturuldu
-                notificationService.send('Sirket X, sizi calisan olarak eklemek istiyor', toId)
+                notificationService.sendToProfile(new Notification(
+                        title: 'Sirket X, sizi calisan olarak eklemek istiyor',
+                        from: new DBRef(null,'company',fromId)), toId)
 
             } else {
                 //istek kullanici tarafindan olusturuldu
-                notificationService.send('X kisisi, Y sirketin calisan olarak eklenmek istiyor', fromId)
+                notificationService.sendToCompany(new Notification(
+                        title: 'X kisisi, Y sirketin calisan olarak eklenmek istiyor',
+                        from: new DBRef(null,'profile',toId)), fromId)
             }
             col.insert([profile: toId, company: fromId, requestedByCompany: requestedByCompany, date: new Date()], WriteConcern.SAFE)
         }
@@ -513,6 +411,10 @@ class CompanyService {
         log.debug col.update([_id:companyId], _OPS, false, false, WriteConcern.SAFE)
 
     }
+
+
+
+
 }
 
 /*

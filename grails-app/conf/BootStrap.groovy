@@ -1,3 +1,4 @@
+import com.mongodb.DBRef
 import grails.converters.JSON
 import kimlik.company.Company
 import kimlik.company.CompanyName
@@ -63,7 +64,7 @@ class BootStrap {
             new Company(
                     owner: sumnulu,
                     name: new CompanyName(
-                      oneWord: 'Acikdemokrasi',
+                            oneWord: 'Acikdemokrasi',
                             significantPart: 'Acikdemokrasi ',
                             legalType: 'A.Ş.',
                             pageName: 'acikdemokrasi',
@@ -112,6 +113,11 @@ class BootStrap {
         JSON.registerObjectMarshaller(ObjectId) {
             it.toString()
         }
+
+        JSON.registerObjectMarshaller(DBRef) {
+            [ref: it.ref, id: it.id]
+        }
+
     }
 }
 

@@ -14,7 +14,7 @@ class AuthController {
 
         def data = authenticationService.authenticatedUser
         if (data) {
-
+            data.notificationInbox = null
             render data as JSON
         } else {
             render status: 401
