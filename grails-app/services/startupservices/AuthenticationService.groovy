@@ -1,5 +1,6 @@
 package startupservices
 
+import com.mongodb.DBCollection
 import org.bson.types.ObjectId
 import org.codehaus.groovy.grails.web.util.WebUtils
 
@@ -17,7 +18,13 @@ class AuthenticationService {
     }
 
     def getAuthenticatedUser() {
-        Profile.findById(authenticatedUserId)
+        DBCollection col = Profile.collection
+        return col.findOne([_id: authenticatedUserId]).toMap()
+    }
+
+    @Deprecated
+    def getAuthenticatedUserWithGorm() {
+        return Profile.findById(authenticatedUserId)
     }
 
     def logout() {

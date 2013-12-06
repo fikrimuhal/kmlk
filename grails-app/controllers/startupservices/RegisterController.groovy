@@ -30,7 +30,7 @@ class RegisterController {
     //social callback
     def success() {
         if (authenticationService.loggedIn) {
-            def profile = authenticationService.authenticatedUser
+            def profile = authenticationService.authenticatedUserWithGorm
             log.debug 'session da kullanıcı var, hesaba yeni account ekleyelim'
             switch (params.id) {
                 case 'facebook':

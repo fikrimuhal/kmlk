@@ -7,7 +7,7 @@ import notification.NotificationInbox
 import org.bson.types.ObjectId
 
 class Profile {
-    static embedded = ['accounts', 'contactInfo', 'workHistory', 'educationHistory', 'skills', 'profilePicture','notificationInbox']
+    static embedded = ['accounts', 'contactInfo', 'workHistory', 'educationHistory', 'skills', 'profilePicture'/*,'notificationInbox'*/]
 
     static transients = ['profilePictureUrl','name','profileUrl']
             ObjectId id
@@ -31,7 +31,7 @@ class Profile {
     List<Profile> friends = new ArrayList<Profile>()
     List<ProfileMerge> contactMerges = new ArrayList<ProfileMerge>()
 
-    NotificationInbox notificationInbox
+//    NotificationInbox notificationInbox
 
     String username
     String aboutText

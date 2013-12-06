@@ -127,7 +127,7 @@ class KimlikController {
             return
         }
 
-        def profile = authenticationService.authenticatedUser
+        def profile = authenticationService.authenticatedUserWithGorm
 
         profile.first_name = params.first_name
         profile.birthDate = params.birthDate

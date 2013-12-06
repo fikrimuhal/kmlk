@@ -26,7 +26,7 @@ class TestController {
         println result
 
         println authenticationService.getAuthenticatedUserId()
-        println authenticationService.authenticatedUser
+        println authenticationService.authenticatedUserWithGorm
 
         render 'ok'
     }
