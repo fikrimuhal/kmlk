@@ -7,6 +7,7 @@ import kimlik.company.EmployeeRequest
 import org.bson.types.ObjectId
 
 class CompanyService {
+    def notificationService
 
     def list() {
         Company.list()
@@ -434,8 +435,8 @@ class CompanyService {
 
     /**
      * Bunu company de cagira bilir login olmus company ye ayit olmayan kullanicida
-     * @param fromId
-     * @param toId
+     * @param fromId company
+     * @param toId profile
      * @param requestedByCompany
      * @return
      */
@@ -454,6 +455,7 @@ class CompanyService {
                 //todo profil i update et
                 //todo notification lari yolla
                 log.info("request verified oldu  (sirket tarafindan), siliyorum eski kaydi")
+                notificationService.send('Y sirketi sizi calisan olarak ekledi', toId)
                 addNewEmployee(fromId,toId)
                 col.remove([profile: toId, company: fromId, requestedByCompany: false], WriteConcern.SAFE)
 
@@ -464,6 +466,8 @@ class CompanyService {
                 //todo notification lari yolla
                 log.info("request verified oldu (kullanici tarafindan) , siliyorum eski kaydi")
                 addNewEmployee(fromId,toId)
+                notificationService.send('X kisisi, Y sirketi icin calisan olarak eklendi', fromId)
+
                 col.remove([profile: toId, company: fromId, requestedByCompany: true], WriteConcern.SAFE)
 
             }else{
@@ -475,8 +479,11 @@ class CompanyService {
             log.info("yeni employment request")
             if (requestedByCompany) {
                 //istek sirket tarafindan olusturuldu
+                notificationService.send('Sirket X, sizi calisan olarak eklemek istiyor', toId)
+
             } else {
                 //istek kullanici tarafindan olusturuldu
+                notificationService.send('X kisisi, Y sirketin calisan olarak eklenmek istiyor', fromId)
             }
             col.insert([profile: toId, company: fromId, requestedByCompany: requestedByCompany, date: new Date()], WriteConcern.SAFE)
         }
@@ -499,6 +506,7 @@ class CompanyService {
         DBCollection col = Company.collection
         //todo burada kullanicinin companyleri arasida mi diye kontrol et $in operatoru gibi
         log.debug('Sirkete yeni calisan eklendi!')
+
         def _OPS = ['$addToSet' : ['employees': profileId]]
 
 

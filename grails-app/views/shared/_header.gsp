@@ -26,8 +26,8 @@
                 <li><a href="/kimlik/{{user_name}}/settings">Profilimi düzenle</a></li>
                 <li><g:link controller="auth" action="logout" target="_self">Oturumu kapat</g:link></li>
 
-                <li><a href="/kimlik/{{user_name}}/notifications"><span
-                        class="badge bg-danger pull-right">3</span>Bildirimler</a></li>
+                %{--<li><a href="/kimlik/{{user_name}}/notifications"><span--}%
+                        %{--class="badge bg-danger pull-right">3</span>Bildirimler</a></li>--}%
             </ul>
         </li>
     </ul>

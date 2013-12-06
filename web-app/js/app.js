@@ -237,24 +237,19 @@ function NavBarCtrl($scope, companyService, userService) {
 
 }
 
-function NotificationCtrl($scope, companyService, userService) {
-    $scope.getNumberOfNewNotifications = function(){
-     return items.length
+function NotificationCtrl($scope, $resource) {
+    var api = $resource('/api/notification/:verb', {}, {
+        'query': {method: 'POST', params: {verb: 'getInbox'}, isArray: true}
+    });
+
+    $scope.getNumberOfNewNotifications = function () {
+        return items.length
     };
 
-    $scope.items = [
-        {_id: 1, title:'Bootstrap 3.0 a geçtik süper!', message:'Bootstrap 3.0 a geçtik süper!', date:'23 June 13' , isRead:true},
-        {_id: 2, title:'Bootstrap 2.0 a geçtik süper!', message:'Aaaa bbbbBootstrap 2.0 a geçtik süper!', date:'22 June 03' , isRead:true},
-        {_id: 2, title:'Bootstrap 2.0 a geçtik süper!', message:'Aaaa bbbb cccccBootstrap 2.0 a geçtik süper!', date:'22 June 03' , isRead:true},
-        {_id: 2, title:'Bootstrap 2.0 a geçtik süper!', message:'Aaaa bbbb ccccc  ddddddBootstrap 2.0 a geçtik süper!', date:'22 June 03' , isRead:false},
-        {_id: 2, title:'Bootstrap 2.0 a geçtik süper!', message:'Aaaa bbbb ccccc  dddddd eeeee Bootstrap 2.0 a geçtik süper!', date:'22 June 03' , isRead:true},
-        {_id: 2, title:'Bootstrap 2.0 a geçtik süper!', message:'Aaaa bbbb ccccc  dddddd eeeee Bootstrap 2.0 a geçtik süper!', date:'22 June 03' , isRead:true},
-        {_id: 2, title:'Bootstrap 2.0 a geçtik süper!', message:'Aaaa bbbb ccccc  ddddddBootstrap 2.0 a geçtik süper!', date:'22 June 03' , isRead:true},
-        {_id: 2, title:'Bootstrap 2.0 a geçtik süper!', message:'Aaaa bbbb cccccBootstrap 2.0 a geçtik süper!', date:'22 June 03' , isRead:true},
-        {_id: 2, title:'Bootstrap 2.0 a geçtik süper!', message:'Aaaa bbbbBootstrap 2.0 a geçtik süper!', date:'22 June 03' , isRead:false},
-        {_id: 3, title:'Bootstrap 1.0 a geçtik süper!', message:'Bootstrap 1.0 a geçtik süper!', date:'21 June 03' , isRead:false}
-    ];
-    var items =  $scope.items;
+    $scope.items = api.query({}, {inboxId: '5253388e0fb8a098ad784d84'}, function (d) {
+         console.log(d.length);
+    });
+    var items = $scope.items;
 
     console.log('NotificationCtrl Ready');
 

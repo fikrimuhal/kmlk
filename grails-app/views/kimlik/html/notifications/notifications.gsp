@@ -8,7 +8,7 @@
             <article class="media" ng-repeat-start="it in items">
                 <span class="pull-left thumb-small">
                     <i class="fa text-center fa-2x m-t-small"
-                       ng-class="{'fa-check-circle  text-muted' : !it.isRead, 'fa-circle text-primary' : it.isRead}"></i>
+                       ng-class="{'fa-check-circle  text-muted' : it.isRead, 'fa-circle text-primary' : !it.isRead}"></i>
                 </span>
 
                 <div class="media-body">
