@@ -19,7 +19,7 @@ function companyLoggedInUserMenuController($scope, userService, $resource) {
         console.error('not implemented yet!');
     };
     $scope.iWorkHere = function () {
-        var toId = loggedInUser.id;
+        var toId = loggedInUser._id;
         var fromId = _currentCompany._id
 
         console.log('user ', toId)

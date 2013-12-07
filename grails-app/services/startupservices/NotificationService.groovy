@@ -1,5 +1,6 @@
 package startupservices
 
+import com.mongodb.DB
 import com.mongodb.DBCollection
 import com.mongodb.DBRef
 import com.mongodb.WriteConcern
@@ -29,6 +30,7 @@ class NotificationService {
                 data: notification.data,
                 date: new Date(),
                 from: notification.from,
+                to: notification.to,
                 isRead: false
         ]
 
@@ -52,29 +54,63 @@ class NotificationService {
     }
 
     def sendToCompany(Notification notification, ObjectId toId) {
+        notification.to = new DBRef(null, 'company', toId)
         send notification, 'company', toId
     }
 
     def sendToProfile(Notification notification, ObjectId toId) {
+        notification.to = new DBRef(null, 'profile', toId)
         send notification, 'profile', toId
     }
 
-    def getInbox(ObjectId id) {
-        return m2
+    /**
+     * TODO
+     * Mongonun allah...
+     * Dikkat... Bu butun collection a READ WRITE Lock koyuyor (ama hizli calisiyor (sanirim))
+     * @param ids
+     */
+    def markAsRead(def ids) {
+        println ids
+
+        // database i alalim. not: herhangi baska bir colelction da olurdu
+        DB db = Company.collection.getDB()
+
+        println db.doEval(MARK_AS_READ_CODE, ids);
+
     }
 
 
-    def m1 = [
-            [_id: 1, title: 'Bootstrap 3.0 a geçtik süper!', message: 'Bootstrap 3.0 a geçtik süper!', date: '23 June 13', isRead: true],
-            [_id: 2, title: 'Bootstrap 2.0 a geçtik süper!', message: 'Aaaa bbbbBootstrap 2.0 a geçtik süper!', date: '22 June 03', isRead: false],
-    ]
+    /**
+     * Biraz clientdan hint alsak iyi olur aslinda, en azindan id lerin yaninda to inbox field i de olabilir
+     * @param ids
+     * @return
+     */
+    def deleteNotifications(def ids) {
+        println ids
+        DBCollection col
 
-    def m2 = [
-            _id: new ObjectId(),
-            notifications: [
-                    [_id: 2, title: 'Bootstrap 2.0 a geçtik süper!', message: 'Aaaa bbbbBootstrap 2.0 a geçtik süper!', date: '22 June 03', isRead: false]
-            ],
-            owner: new DBRef(null, 'company', new ObjectId("5284d3dfef86d6dccf71619f")),
+        def _QUERY = ['notificationInbox.notifications._id': ['$in': ids]]
+        def _OPS = [:]
+        _OPS.'$pull' = ['notificationInbox.notifications': ['_id': ['$in': ids]]]
+        _OPS.'$inc' = ['notificationInbox.eTag': 1]
 
-    ]
+        [Company, Profile].each {
+            col = it.collection
+            println col
+            println _QUERY
+            println col.update(_QUERY, _OPS, false, true, WriteConcern.SAFE)
+        }
+    }
+
+
+    final String MARK_AS_READ_CODE =
+            '''function (ids) {
+               for (var idx in ids) {
+                   var q = {'notificationInbox.notifications._id': ids[idx]},
+                       op = {$set: {'notificationInbox.notifications.$.isRead': true}};
+                   db.company.update(q, op);
+                   db.profile.update(q, op);
+                 }
+               }'''
 }
+

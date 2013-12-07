@@ -137,7 +137,7 @@ kimlik.factory('userService', function ($resource, $rootScope) {
     }
 
     function getLoggedInUser() {
-        console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
+//        console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
       // alert(getCachedProfile().username)
         return user
     }
@@ -196,7 +196,7 @@ kimlik.factory('profileService', function ($resource) {
 
         api.getProfilesByIds({}, {ids: ids}, function (result) {
             _(result).each(function (it) {
-                angular.extend(_profileCache[it._id || it.id ], it)
+                angular.extend(_profileCache[it._id], it)
             });
         });
 

@@ -237,33 +237,49 @@ function NavBarCtrl($scope, companyService, userService) {
 
 }
 
-function NotificationCtrl($scope, $resource,userService) {
-    var notifications
-
+function NotificationCtrl($scope, $resource, userService, companyService) {
+    $scope.items = []
     var api = $resource('/api/notification/:verb', {}, {
-        'query': {method: 'POST', params: {verb: 'getInbox'}/*, isArray: true*/}
+        'query': {method: 'POST', params: {verb: 'getInbox'}/*, isArray: true*/},
+        'markAsRead': {method: 'POST', params: {verb: 'markAsRead'}/*, isArray: true*/},
+        'deleteNotifications': {method: 'POST', params: {verb: 'deleteNotifications'}/*, isArray: true*/}
     });
 
     $scope.getNumberOfNewNotifications = function () {
-        return 5//items.length
+        return $scope.items.length
     };
 
-
-    $scope.companies.$promise.then(function (companies) {
-        notifications = _(companies)
+    var companies = $scope.companies || companyService.getUserCompanyList();
+    companies.$promise.then(function (companies) {
+        $scope.items = _(companies)
             .map('notificationInbox')
             .compact()
             .map('notifications')
             .flatten()
-            .union(notifications)
+            .union($scope.items)
             .compact()
             .value()
-        console.debug('yyyy', notifications)
     });
-    console.debug('xcccddd',userService.getLoggedInUser())
 
-    var items = $scope.items;
+    //notificationInbox diye bir field gelmeye bilir, kontrol edelim
+    if (userService.getLoggedInUser().notificationInbox) {
+        var profile_notifications = userService.getLoggedInUser().notificationInbox.notifications;
+        $scope.items = _.union(profile_notifications, $scope.items);
+    }
 
+
+    $scope.markAllAsRead = function () {
+        var ids = _($scope.items).reject('isRead').collect('_id').value();
+        api.markAsRead({}, {ids: ids});
+        _($scope.items).forEach(function(it){it.isRead=true});
+
+    };
+
+    $scope.deleteNotifications = function () {
+        var ids = _.collect($scope.items, '_id');
+        api.deleteNotifications({}, {ids: ids});
+        $scope.items = []
+    };
     console.log('NotificationCtrl Ready');
 
 }

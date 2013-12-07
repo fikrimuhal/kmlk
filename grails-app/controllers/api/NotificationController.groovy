@@ -8,29 +8,18 @@ class NotificationController {
 
     def index() {}
 
-    def getInbox() {
-        ObjectId inboxId = ObjectId.massageToObjectId(request.JSON.inboxId)
-        def result = notificationService.getInbox(inboxId)
-        render result as JSON
 
-    }
-
-
-    def deleteReadNotifications() {
-        def result = [status: 'ok']
-        render result as JSON
-    }
 
     def deleteNotifications() {
-        println request.JSON.notificationIds
+        notificationService.deleteNotifications(request.JSON.ids.collect({ObjectId.massageToObjectId(it)}))
+
         def result = [status: 'ok']
         render result as JSON
     }
 
-    def markAs() {
-        println request.JSON.notificationId
-        println request.JSON.read
-
+    def markAsRead() {
+        //todo AA needed
+        notificationService.markAsRead(request.JSON.ids.collect({ObjectId.massageToObjectId(it)}))
         def result = [status: 'ok']
         render result as JSON
     }

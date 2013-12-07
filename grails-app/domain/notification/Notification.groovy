@@ -10,6 +10,7 @@ class Notification {
     Map data
     Date date
     DBRef from
+    DBRef to
     Boolean isRead
 
 
