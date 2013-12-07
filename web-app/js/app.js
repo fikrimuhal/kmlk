@@ -262,7 +262,7 @@ function NotificationCtrl($scope, $resource, userService, companyService) {
     });
 
     //notificationInbox diye bir field gelmeye bilir, kontrol edelim
-    if (userService.getLoggedInUser().notificationInbox) {
+    if (userService.isLoggedIn() && userService.getLoggedInUser().notificationInbox) {
         var profile_notifications = userService.getLoggedInUser().notificationInbox.notifications;
         $scope.items = _.union(profile_notifications, $scope.items);
     }
