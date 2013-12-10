@@ -223,6 +223,9 @@
             <p>&nbsp;</p>
             <a href="#content"><i class="fa fa-arrow-up"></i><br>Tepeye dön</a>
         </div>
+
+        <g:render template="/shared/footer"></g:render>
+
     </div>
 </section>
 <!-- / header -->

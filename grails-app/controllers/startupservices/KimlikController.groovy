@@ -18,7 +18,7 @@ class KimlikController {
     }
 
     def updateLocation() {
-        org.codehaus.groovy.grails.web.json.JSONObject data =request.JSON
+        org.codehaus.groovy.grails.web.json.JSONObject data = request.JSON
         data.remove('id')
         println '____'
         println data as Map
@@ -34,24 +34,24 @@ class KimlikController {
         DBCollection col = Profile.collection
 
         def _QUERY = [_id: authenticationService.authenticatedUserId]
-        def skills = col.findOne(_QUERY, [skills:1])?.skills
-         println skills.dump()
+        def skills = col.findOne(_QUERY, [skills: 1])?.skills
+        println skills.dump()
 
 
 
         skills.each {
 //            if(it.name == 'J2EE'){
-                println it.dump()
-                println ' '
-                println ' '
+            println it.dump()
+            println ' '
+            println ' '
 //            }
             data << [
                     name: it.name,
                     self_score: it.self_score,
                     profiles: [
-                            better: it.betterThanMe?:EMPTY_ARRAY,
-                            same: it.sameAsMe?:EMPTY_ARRAY,
-                            worst: it.worstThanMe?:EMPTY_ARRAY
+                            better: it.betterThanMe ?: EMPTY_ARRAY,
+                            same: it.sameAsMe ?: EMPTY_ARRAY,
+                            worst: it.worstThanMe ?: EMPTY_ARRAY
                     ]
             ]
         }
@@ -122,7 +122,7 @@ class KimlikController {
     }
 
     def ajaxSaveBasicInfo() {
-        if (!authenticationService.loggedIn){
+        if (!authenticationService.loggedIn) {
             render status: 401
             return
         }
@@ -147,7 +147,6 @@ class KimlikController {
 
         session._responseCommitedExceptionWorkAround = 'force to create new session'
         def profile = fetchProfile()
-        log.debug profile
         def skills = profile.skills.sort { it.percent ? -1 * it.percent : 0 } //sirket yetkilisinin izin verdigi skiller
         //skilleri 2 ayri DIV icinde gosteriyoruz
         def skills1, skills2
@@ -160,8 +159,38 @@ class KimlikController {
 
             skills2 = skills.subList(midIdx, skills.size())
         }
+        def ADDRESS_PRIVACY_LEVELS = [
+                COUNTRY: 100,
+                CITY: 200,
+                DISTRICT: 300,
+                FULL_ADDRESS: 1000]
 
-        [profile: profile, skills1: skills1, skills2: skills2]
+        def location = [
+                //default hidden address
+                privacyLevel: profile.contactInfo?.address.privacyLevel?:100, //todo
+                display_address :''
+        ]
+        //noinspection GroovyFallthrough
+        switch (location.privacyLevel) {
+            case ADDRESS_PRIVACY_LEVELS.FULL_ADDRESS:
+                location.lat = profile.contactInfo?.address?.latLng?.lat
+                location.lng = profile.contactInfo?.address?.latLng?.lng
+            case ADDRESS_PRIVACY_LEVELS.DISTRICT:
+                location.district = profile?.contactInfo?.address?.district
+                location.display_address += location.district + ', '
+            case ADDRESS_PRIVACY_LEVELS.CITY:
+                location.city = profile?.contactInfo?.address?.city
+                location.display_address += location.city + ', '
+            case ADDRESS_PRIVACY_LEVELS.COUNTRY:
+                location.country = profile?.contactInfo?.address?.country?:'Türkiye' //todo
+                location.display_address += location.country
+        }
+
+        if(location.privacyLevel == ADDRESS_PRIVACY_LEVELS.FULL_ADDRESS)
+            location.display_address = profile?.contactInfo?.address?.display_address
+
+
+        [profile: profile, skills1: skills1, skills2: skills2, location: location]
 
     }
     /**

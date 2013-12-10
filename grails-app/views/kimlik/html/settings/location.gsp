@@ -84,30 +84,37 @@
 
                     <span class="help-block">Profilinize bakan kişilerin ev adresinizi hangi seviyeye kadar görebileceğini seçiniz</span>
 
-                    <div class="radio">
-                        <label>
-                            <input type="radio" name="optionsRadios" id="optionsRadios0" value="0" checked>
-                            Gizli &mdash; Adres bilgisi gösterilmez
-                        </label>
-                    </div>
+                    %{--<div class="radio">--}%
+                        %{--<label>--}%
+                            %{--<input type="radio" ng-model="address.privacyLevel" value="0">--}%
+                            %{--Gizli &mdash; Adres bilgisi gösterilmez--}%
+                        %{--</label>--}%
+                    %{--</div>--}%
 
                     <div class="radio">
                         <label>
-                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="1">
+                            <input type="radio" ng-model="address.privacyLevel" value="100">
                             Ülke &mdash; Sadece ülke bilgisi gözükürür
                         </label>
                     </div>
 
                     <div class="radio">
                         <label>
-                            <input type="radio" name="optionsRadios" id="optionsRadios2" value="2">
+                            <input type="radio"  ng-model="address.privacyLevel" value="200">
                             Şehir &mdash; Sadece ülke ve şehir bilgisi gözükürür
                         </label>
                     </div>
 
                     <div class="radio">
                         <label>
-                            <input type="radio" name="optionsRadios" id="optionsRadios3" value="3">
+                            <input type="radio"  ng-model="address.privacyLevel" value="300">
+                            İlçe &mdash; Sadece ülke, şehir ve ilçe bilgisi gözükürür (Tavsiye edilen)
+                        </label>
+                    </div>
+
+                    <div class="radio">
+                        <label>
+                            <input type="radio" ng-model="address.privacyLevel" value="1000">
                             Hepsi &mdash; Açık adresiniz gözükür
                         </label>
                     </div>
@@ -154,7 +161,7 @@
     </div>
 
 </div>
-<pre>
+%{--<pre>--}%
 
-    {{user | json}}
-</pre>
+    %{--{{user | json}}--}%
+%{--</pre>--}%

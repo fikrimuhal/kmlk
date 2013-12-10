@@ -232,6 +232,7 @@ class ProfileService {
         log.debug(location)
 
         def documentMap = [
+                privacyLevel: location.privacyLevel as int?:0,
                 country: location.country?:'',
                 city: location.city?:'',
                 district: location.district?:'',

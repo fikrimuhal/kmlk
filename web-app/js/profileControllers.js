@@ -33,8 +33,9 @@ function KimlikContactsCtrl($scope, userService, profileService) {
     $scope.profiles = [];
     var user = userService.getLoggedInUser();
     user.$promise.then(function (d) {
-        console.log('cacheee ', profileService.prefetchProfilesByIds(_.chain(user.friends).map('id').value()));
-        _.chain(user.friends).map('id').uniq().forEach(function (id) {
+//    console.debug('user friends',user.friends)
+//        console.log('cacheee ', profileService.prefetchProfilesByIds(user.friends));
+        _.chain(user.friends).uniq().forEach(function (id) {
             $scope.profiles.push(profileService.getProfileById(id))
         });
 
@@ -42,16 +43,17 @@ function KimlikContactsCtrl($scope, userService, profileService) {
     });
 
 
-}function KimlikSkillsCtrl($scope, skillService) {
+}
+function KimlikSkillsCtrl($scope, skillService) {
     console.log('KimlikSkillsCtrl ready');
     var selected
-    var isPanelVisible = function(s){
+    var isPanelVisible = function (s) {
         return selected && selected.name == s.name
     }
     $scope.isPanelVisible = isPanelVisible;
 
-    $scope.togglePanel = function(s){
-        selected = (isPanelVisible(s))?null:s
+    $scope.togglePanel = function (s) {
+        selected = (isPanelVisible(s)) ? null : s
     }
 
 
@@ -93,7 +95,8 @@ function addEmployeeModalController(companyService, $scope, $resource, userServi
     $scope.companies = companyService.getUserCompanyList();
 
     $scope.selectCompany = function (company) {
-        var toId = _currentProfile._id; /*global inline*/
+        var toId = _currentProfile._id;
+        /*global inline*/
 
         selectedCompany = company;
         console.log('selectedCompany ', company._id)
@@ -137,15 +140,18 @@ function KimlikCtrl($scope, $routeSegment) {
     });
 
 
-
 }
 
 kimlik.controller('KimlikSettingsLocationCtrl', ['$scope', '$resource', 'userService', function ($scope, $resource, userService) {
     google.maps.visualRefresh = true;
     $scope.user = userService.getLoggedInUser();
 
-    $scope.address = $scope.user.contactInfo.address
-    console.log($scope.address)
+    $scope.address = $scope.user.contactInfo.address;
+
+    //default privacy
+    if ($scope.address.privacyLevel === undefined)$scope.address.privacyLevel = 300;
+
+    console.log($scope.address);
 
 
     var api = $resource(_settings.baseUrl + 'api/kimlik/updateLocation');
@@ -153,9 +159,9 @@ kimlik.controller('KimlikSettingsLocationCtrl', ['$scope', '$resource', 'userSer
     var map;
     var geocoder;
     var marker;
-    var myLatlng = new google.maps.LatLng($scope.address.latLng.lat, $scope.address.latLng.lng)
-    var markerLocation = new google.maps.LatLng($scope.address.latLng.lat, $scope.address.latLng.lng)
-    var zoomLevel = _.min([$scope.address.latLng.zoomLevel , 12])
+    var myLatlng = new google.maps.LatLng($scope.address.latLng.lat, $scope.address.latLng.lng);
+    var markerLocation = new google.maps.LatLng($scope.address.latLng.lat, $scope.address.latLng.lng);
+    var zoomLevel = _.min([$scope.address.latLng.zoomLevel , 12]);
     $scope.markerIsJumping = !($scope.address && $scope.address.latLng && $scope.address.latLng.lat && $scope.address.latLng.lng);  //kozmetik
 
     var markerDragListener = function () {

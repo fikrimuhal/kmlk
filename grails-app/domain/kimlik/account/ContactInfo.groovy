@@ -16,6 +16,8 @@ class ContactInfo {
     String webSite
 
 
+
+
     static constraints = {
         authenticatedEmails nullable: true
         unAuthenticatedEmails nullable: true

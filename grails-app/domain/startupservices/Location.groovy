@@ -3,7 +3,7 @@ package startupservices
 
 class Location {
     static embedded = ['latLng']
-    String country//: 'Türkiye',
+    String country = 'Turkey'//: 'Türkiye',
     String city//: 'İstanbul',
     String district//: 'Cekmekoy',
     String quarter//: 'Mimar sinan',
@@ -14,6 +14,8 @@ class Location {
 
 
     LatLng latLng = new LatLng()
+
+    Integer privacyLevel =300
 
     static constraints = {
         country nullable: true
