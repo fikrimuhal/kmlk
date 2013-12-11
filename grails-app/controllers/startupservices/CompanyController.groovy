@@ -84,9 +84,6 @@ class CompanyController {
         render result as JSON
     }
 
-    def addEmployee() {}
-
-    def removeEmployee() {}
 
     def listRequests() {
         ObjectId companyId = ObjectId.massageToObjectId(authenticationService.authenticatedUserId)
@@ -214,7 +211,7 @@ class CompanyController {
                 //todo employeeRequest kaydi olustur
                 //todo kullaniciya notification yolla, eger daha once kayit yok ise
 
-                companyService.newEmploymentRequests(fromId,toId,requestedByCompany)
+                companyService.newEmploymentRequests(fromId, toId, requestedByCompany)
 
                 result = [status: 'success']
                 break
@@ -236,6 +233,29 @@ class CompanyController {
                 result = [status: 'error']
 
         }
+        render result as JSON
+    }
+
+
+    def saveBasicInfo() {
+        if (!authenticationService.loggedIn) {
+            render status: 401
+            return
+        }
+
+        ObjectId companyId = ObjectId.massageToObjectId(params.companyId)
+
+        def data = [:]
+
+        data.'name.fullLegal' = request.JSON.name.fullLegal
+        data.'name.legalType' = request.JSON.name.legalType
+//        data.'name.oneWord' = request.JSON.name.pageName
+//        data.'name.pageName' = request.JSON.name.pageName
+        data.'name.significantPart' = request.JSON.name.significantPart
+
+        companyService.updateFields(companyId, data)
+
+        def result = [result: 'success']
         render result as JSON
     }
 

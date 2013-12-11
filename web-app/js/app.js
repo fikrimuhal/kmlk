@@ -34,7 +34,8 @@ kimlik.config(['$routeSegmentProvider', '$locationProvider',
                 templateUrl: '/html/company/settings/settings.html',
                 controller: CompanySettingsCtrl}).
             within().
-            segment('general', {templateUrl: '/html/company/settings/general.html'}).
+            segment('general', {templateUrl: '/html/company/settings/general.html',
+                controller: 'CompanySettingsGeneralCtrl'}).
             segment('location', {templateUrl: '/html/company/settings/location.html',
                 controller: 'CompanySettingsLocationCtrl'}).
             segment('images', {templateUrl: '/html/company/settings/images.html'}).

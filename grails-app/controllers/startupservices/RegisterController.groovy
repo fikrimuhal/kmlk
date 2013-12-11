@@ -99,7 +99,7 @@ class RegisterController {
     }
 
     private redirectToProfile(String username) {
-        redirect(controller: 'kimlik',action: 'profile', params: [id: username], fragment: '')
+        redirect(controller: 'kimlik', action: 'profile', params: [id: username], fragment: '')
     }
 
     /**
@@ -204,14 +204,14 @@ class RegisterController {
     Token getFacebookToken() {
 
         String sessionKey = oauthService.findSessionKeyForAccessToken('facebook')
-        return session[sessionKey]
+        return (Token) session[sessionKey]
 
     }
 
     Token getLinkedinToken() {
 
         String sessionKey = oauthService.findSessionKeyForAccessToken('linkedin')
-        return session[sessionKey]
+        return (Token) session[sessionKey]
 
     }
 

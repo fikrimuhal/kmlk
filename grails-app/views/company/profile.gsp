@@ -51,6 +51,5 @@
 
 
 <g:render template="/shared/modals"/>
-
 </body>
 </html>

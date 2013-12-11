@@ -448,34 +448,44 @@ kimlik
 
 
     }])
-    .controller('FileDestroyController', [
-        '$scope',
-        function ($scope) {
-            var file = $scope.file,
-                state;
-            if (file.url) {
-                file.$state = function () {
-                    return state;
-                };
-                file.$destroy = function () {
-                    state = 'pending';
-                    return $scope.deletePicture(file).$promise.then(
-                        function () {
-                            state = 'resolved';
-                            $scope.clear(file);
-                        },
-                        function () {
-                            state = 'rejected';
-                        }
-                    );
-                };
-            } else if (!file.$cancel && !file._index) {
-                file.$cancel = function () {
-                    $scope.clear(file);
-                };
-            }
+    .controller('FileDestroyController', ['$scope', function ($scope) {
+        var file = $scope.file,
+            state;
+        if (file.url) {
+            file.$state = function () {
+                return state;
+            };
+            file.$destroy = function () {
+                state = 'pending';
+                return $scope.deletePicture(file).$promise.then(
+                    function () {
+                        state = 'resolved';
+                        $scope.clear(file);
+                    },
+                    function () {
+                        state = 'rejected';
+                    }
+                );
+            };
+        } else if (!file.$cancel && !file._index) {
+            file.$cancel = function () {
+                $scope.clear(file);
+            };
         }
-    ])
+    }])
+
+    .controller('CompanySettingsGeneralCtrl', ['$scope', '$resource','userService', function ($scope, $resource,userService) {
+        console.debug('CompanySettingsGeneralCtrl ready');
+        $scope.model = $scope.company.name
+        var api = $resource('/api/company/saveBasicInfo');
+        $scope.owner = userService.getLoggedInUser(); //todo company.owner olmasi lazim bunun
+        $scope.save = function () {
+            var model = $scope.model;
+            api.save({companyId: $scope.company._id}, {name: model}, function () {
+                console.warn('TODO: reload/update company');
+            });
+        }
+    }])
 
 
     .controller('CompanySettingsLocationCtrl', ['$scope', '$resource', function ($scope, $resource) {
@@ -489,7 +499,7 @@ kimlik
         var marker;
         var myLatlng = new google.maps.LatLng($scope.address.latLng.lat, $scope.address.latLng.lng)
         var markerLocation = new google.maps.LatLng($scope.address.latLng.lat, $scope.address.latLng.lng)
-        var zoomLevel = _.min([$scope.address.latLng.zoomLevel , 12])
+        var zoomLevel = _.min([$scope.address.latLng.zoomLevel , 12]);
         $scope.markerIsJumping = !($scope.address && $scope.address.latLng && $scope.address.latLng.lat && $scope.address.latLng.lng);  //kozmetik
 
         var markerDragListener = function () {

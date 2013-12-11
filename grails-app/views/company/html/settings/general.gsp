@@ -2,21 +2,20 @@
     <div class="col-sm-6">
         <form class="form-horizontal" role="form">
             <div class="form-group">
-                <label for="fullName" class="col-lg-3 control-label">Şirketin tam ünvanı</label>
+                <label class="col-lg-3 control-label">Şirketin tam ünvanı</label>
 
                 <div class="col-lg-9">
-                    <input type="text" class="form-control" id="fullName"
-                           placeholder="Fikrimuhal Teknoloji Araştırma Geliştirme LTD. ŞTİ.">
+                    <input type="text" class="form-control" ng-model="model.fullLegal"/>
                     <span class="help-block">Şirketinizin yasal tam adı</span>
 
                 </div>
             </div>
 
             <div class="form-group">
-                <label for="sortName" class="col-lg-3 control-label">Kisa ad</label>
+                <label class="col-lg-3 control-label">Kisa ad</label>
 
                 <div class="col-lg-9">
-                    <input type="text" class="form-control" id="sortName" placeholder="Fikrimuhal">
+                    <input type="text" class="form-control" ng-model="model.significantPart">
                     <span class="help-block">Yasal olarak kullanılabilecek en kısa adı. genelde 2 kelime sonuna LTD. ŞTİ eklemeyiniz. </span>
 
                 </div>
@@ -26,7 +25,8 @@
                 <label class="col-lg-3 control-label">Sayfa adi</label>
 
                 <div class="col-lg-9">
-                    <input type="text" class="form-control" id="inputPassword12" placeholder="Fikrimuhal">
+                    <p class="form-control-static">{{model.pageName}}</p>
+
                     <span class="help-block">Http://kimlik.io/[SAYFA_ADI] şeklinde kullanicak ad. Şirket unvaninin Ilk parcasini kullaniniz. Boşluk Kullanmayiniz</span>
                 </div>
             </div>
@@ -35,12 +35,12 @@
                 <label  class="col-lg-3 control-label">Şirket Türu</label>
 
                 <div class="col-lg-9">
-                    <select id="disabledSelect" class="form-control">
-                        <option>Lütfen seçiniz...</option>
-                        <option>LTD. ŞTİ.</option>
-                        <option>A.Ş.</option>
-                        <option>Şahıs Şirketi</option>
-                        <option>Henüz resmi olarak kurulmadı</option>
+                    <select ng-model="model.legalType" class="form-control">
+                        <option disabled selected>Lütfen seçiniz...</option>
+                        <option value="Ltd. Şti.">LTD. ŞTİ.</option>
+                        <option value="A.Ş.">A.Ş.</option>
+                        <option value="">Şahıs Şirketi</option>
+                        <option value="">Henüz resmi olarak kurulmadı</option>
                     </select>
                 </div>
             </div>
@@ -49,15 +49,15 @@
                 <label class="col-lg-3 control-label">Yetkili kişi</label>
 
                 <div class="col-lg-9">
-                    <p class="form-control-static">Ilgaz Şumnulu</p>
-                    <span class="help-block">Daha sonra başka kişiler ekleye bilirsiniz, yada yonetici haklarini düzenleye bilirsiniz.</span>
+                    <p class="form-control-static">{{owner.first_name}} {{owner.last_name}}</p>
+                    %{--<span class="help-block">Daha sonra başka kişiler ekleye bilirsiniz, yada yonetici haklarini düzenleye bilirsiniz.</span>--}%
                 </div>
             </div>
 
 
             <div class="form-group">
                 <div class="col-lg-9 col-lg-offset-3">
-                    <button type="button" class="btn btn-primary pull-right">Kaydet</button>
+                    <button type="button" class="btn btn-primary pull-right" ng-click="save()">Kaydet</button>
                     <span class="help-block"></span>
                 </div>
             </div>
@@ -66,7 +66,4 @@
     </div>
 
 
-
-
 </div>
-

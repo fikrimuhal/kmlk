@@ -412,9 +412,18 @@ class CompanyService {
 
     }
 
+    def updateFields(ObjectId companyId, LinkedHashMap fieldMap) {
 
+        DBCollection col = Company.collection
 
+        def _QUERY = [_id: companyId]
 
+        def _OPS = [:]
+
+        _OPS.'$set' = fieldMap
+
+        return col.update(_QUERY, _OPS, false, false, WriteConcern.SAFE)
+    }
 }
 
 /*
