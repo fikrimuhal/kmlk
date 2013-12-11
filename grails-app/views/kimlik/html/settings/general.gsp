@@ -44,9 +44,10 @@
                 <label  class="col-lg-3 control-label">Cinsiyet</label>
 
                 <div class="col-lg-9">
-                    <select id="disabledSelect" class="form-control">
-                        <option>Erkek</option>
-                        <option>Kadin</option>
+                    <select ng-model="model.gender"  class="form-control">
+                        <option value="" disabled selected>Select your option</option>
+                        <option value="male">Erkek</option>
+                        <option value="female">Kadin</option>
                     </select>
                 </div>
             </div>
@@ -62,11 +63,11 @@
             </div>
 
             <div class="form-group">
-                <label class="col-lg-3 control-label">Sayfa Adi</label>
+                <label class="col-lg-3 control-label">Sayfa/Kullanici Adı</label>
 
                 <div class="col-lg-9">
-                    <input type="text" class="form-control" id="d" placeholder="sumnulu">
-                    <span class="help-block">kimlik.io/sumnulu</span>
+                    <p class="form-control-static">{{username}}</p>
+                    <span class="help-block">kimlik.io/profile/{{username}}</span>
                 </div>
             </div>
             <div class="form-group">

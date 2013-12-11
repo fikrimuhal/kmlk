@@ -211,6 +211,10 @@ kimlik.run(function ($rootScope, $routeSegment) {
 
         }
     };
+
+    $rootScope.$watch(function () {
+        console.debug('%c digest ', 'color: #bada55')
+    });
 });
 
 
@@ -246,7 +250,7 @@ function NotificationCtrl($scope, $resource, userService, companyService) {
     });
 
     $scope.getNumberOfNewNotifications = function () {
-        return $scope.items.length
+        _.reject($scope.items, 'isRead').length
     };
 
     var companies = $scope.companies || companyService.getUserCompanyList();
@@ -271,7 +275,9 @@ function NotificationCtrl($scope, $resource, userService, companyService) {
     $scope.markAllAsRead = function () {
         var ids = _($scope.items).reject('isRead').collect('_id').value();
         api.markAsRead({}, {ids: ids});
-        _($scope.items).forEach(function(it){it.isRead=true});
+        _($scope.items).forEach(function (it) {
+            it.isRead = true
+        });
 
     };
 

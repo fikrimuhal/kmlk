@@ -72,7 +72,7 @@ class KimlikController {
         render result as JSON
     }
     /**
-     * @param value{delete | worst | same | better}*
+     * @param value {delete | worst | same | better}*
      * @return
      */
     def ajaxRateFriend() {
@@ -127,17 +127,19 @@ class KimlikController {
             return
         }
 
-        def profile = authenticationService.authenticatedUserWithGorm
+        def profile = [:]
 
         profile.first_name = params.first_name
         profile.birthDate = params.birthDate
         profile.last_name = params.last_name
         profile.middle_name = params.middle_name
+        profile.gender = params.gender
         profile.aboutText = params.aboutText
-        profile.contactInfo.webSite = params.webSite
-        profile.contactInfo.publicEmail = params.publicEmail
-        profile.contactInfo.publicTel = params.publicTel
-        profile.save()
+        profile.'contactInfo.webSite' = params.webSite
+        profile.'contactInfo.publicEmail' = params.publicEmail
+        profile.'contactInfo.publicTel' = params.publicTel
+        profileService.updateFields(authenticationService.authenticatedUserId, profile)
+
         def result = [result: 'success']
         render result as JSON
     }
@@ -145,7 +147,7 @@ class KimlikController {
     def profile() {
         cache("public_3600")
 
-        session._responseCommitedExceptionWorkAround = 'force to create new session'
+        session._responseCommitedExceptionWorkAround = 'force to create new session with very this assignment'
         def profile = fetchProfile()
         def skills = profile.skills.sort { it.percent ? -1 * it.percent : 0 } //sirket yetkilisinin izin verdigi skiller
         //skilleri 2 ayri DIV icinde gosteriyoruz
@@ -167,8 +169,8 @@ class KimlikController {
 
         def location = [
                 //default hidden address
-                privacyLevel: profile.contactInfo?.address.privacyLevel?:100, //todo
-                display_address :''
+                privacyLevel: profile.contactInfo?.address.privacyLevel ?: 100, //todo
+                display_address: ''
         ]
         //noinspection GroovyFallthrough
         switch (location.privacyLevel) {
@@ -182,11 +184,11 @@ class KimlikController {
                 location.city = profile?.contactInfo?.address?.city
                 location.display_address += location.city + ', '
             case ADDRESS_PRIVACY_LEVELS.COUNTRY:
-                location.country = profile?.contactInfo?.address?.country?:'Türkiye' //todo
+                location.country = profile?.contactInfo?.address?.country ?: 'Türkiye' //todo
                 location.display_address += location.country
         }
 
-        if(location.privacyLevel == ADDRESS_PRIVACY_LEVELS.FULL_ADDRESS)
+        if (location.privacyLevel == ADDRESS_PRIVACY_LEVELS.FULL_ADDRESS)
             location.display_address = profile?.contactInfo?.address?.display_address
 
 

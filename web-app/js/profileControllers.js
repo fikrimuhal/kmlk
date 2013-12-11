@@ -143,6 +143,7 @@ function KimlikCtrl($scope, $routeSegment) {
 }
 
 kimlik.controller('KimlikSettingsLocationCtrl', ['$scope', '$resource', 'userService', function ($scope, $resource, userService) {
+    //yeni google maps style, buton'lar flat
     google.maps.visualRefresh = true;
     $scope.user = userService.getLoggedInUser();
 
@@ -303,18 +304,21 @@ function KimlikSettingsGeneralCtrl($scope, userService, $resource) {
         $scope.model.middle_name = newValue.middle_name
         $scope.model.birthDate = newValue.birthDate
         $scope.model.aboutText = newValue.aboutText
+        $scope.model.gender = newValue.gender
         $scope.model.webSite = newValue.contactInfo.webSite
         $scope.model.publicTel = newValue.contactInfo.publicTel
         $scope.model.publicEmail = newValue.contactInfo.publicEmail
+
+        $scope.username = newValue.username
+
+
     }
 
     $scope.save = function (model) {
-        console.log(model)
-        var api = $resource('/api/kimlik/ajaxSaveBasicInfo')
+        console.debug('model',model);
+        var api = $resource('/api/kimlik/ajaxSaveBasicInfo') ;
         api.save(model, {}, function () {
-            alert('todo: sayfayi 2 kere yenile lutfen, 1. si benden:)')
-            document.location.reload()
-            console.log('TODO: reload/update profile');
+            console.warn('TODO: reload/update profile');
         });
     }
 

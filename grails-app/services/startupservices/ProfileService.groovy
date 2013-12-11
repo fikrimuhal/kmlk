@@ -232,18 +232,18 @@ class ProfileService {
         log.debug(location)
 
         def documentMap = [
-                privacyLevel: location.privacyLevel as int?:0,
-                country: location.country?:'',
-                city: location.city?:'',
-                district: location.district?:'',
-                quarter: location.quarter?:'',
-                avenue: location.avenue?:'',
-                street: location.street?:'',
-                display_address: location.display_address?:'',
+                privacyLevel: location.privacyLevel as int ?: 0,
+                country: location.country ?: '',
+                city: location.city ?: '',
+                district: location.district ?: '',
+                quarter: location.quarter ?: '',
+                avenue: location.avenue ?: '',
+                street: location.street ?: '',
+                display_address: location.display_address ?: '',
                 latLng: [
-                        lat: location.latLng?.lat?:0,
-                        lng: location.latLng?.lng?:0,
-                        zoomLevel: location.latLng?.zoomLevel?:0
+                        lat: location.latLng?.lat ?: 0,
+                        lng: location.latLng?.lng ?: 0,
+                        zoomLevel: location.latLng?.zoomLevel ?: 0
                 ]
         ]
         DBCollection col = Profile.collection
@@ -256,5 +256,17 @@ class ProfileService {
 
         return col.update(_QUERY, _OPS, false, false, WriteConcern.SAFE)
 
+    }
+
+    def updateFields(ObjectId profileId, LinkedHashMap fieldMap) {
+        DBCollection col = Profile.collection
+
+        def _QUERY = [_id: profileId]
+
+        def _OPS = [:]
+
+        _OPS.'$set' = fieldMap
+
+        return col.update(_QUERY, _OPS, false, false, WriteConcern.SAFE)
     }
 }
