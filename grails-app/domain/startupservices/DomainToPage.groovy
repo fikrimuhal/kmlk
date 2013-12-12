@@ -6,7 +6,7 @@ class DomainToPage {
 
     ObjectId id // buna gerek yok
 
-    String[] domains
+    String[] domains = []
     String pageName
     boolean isCompany
     boolean isProfile

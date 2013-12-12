@@ -1,18 +1,34 @@
 package startupservices
 
 import com.mongodb.DBCollection
+import com.mongodb.DBObject
 import com.mongodb.DBRef
 import com.mongodb.WriteConcern
 import kimlik.company.Company
+import kimlik.company.CompanyName
 import kimlik.company.EmployeeRequest
 import notification.Notification
 import org.bson.types.ObjectId
 
+import java.util.regex.Pattern
+
 class CompanyService {
     def notificationService
+    //only alphanumeric chars. white space will not match
+    final Pattern onlyAlphaNumericPattern = Pattern.compile("[\\p{Alnum},.']*");
 
     def list() {
         Company.list()
+    }
+
+    /**
+     * @deprecated
+     */
+    def addDeprecatedFields = {
+        it.page_name = it.name.pageName
+        it.short_name = it.name.oneWord
+        it.full_name = it.name.fullLegal
+        return it
     }
 
     def listByOwner(ObjectId owner) {
@@ -20,7 +36,7 @@ class CompanyService {
         DBCollection col = Company.collection
         def _QUERY = [owner: owner]
         col.find(_QUERY).each {
-            result << it + mockExtraData
+            result << addDeprecatedFields(it) + mockExtraData
         }
         return result
     }
@@ -45,7 +61,7 @@ class CompanyService {
         def result = col.findOne(_QUERY)
         result << mockExtraData
 
-        return result
+        return addDeprecatedFields(result)
     }
 
 
@@ -53,11 +69,11 @@ class CompanyService {
         if (!pageName) return null
 
         DBCollection col = Company.collection
-        def _QUERY = [page_name: pageName]
+        def _QUERY = ['name.pageName': pageName]
         def result = col.findOne(_QUERY)
         result << mockExtraData
 
-        return result
+        return addDeprecatedFields(result)
     }
 
 
@@ -347,24 +363,24 @@ class CompanyService {
                 log.info("request verified oldu  (sirket tarafindan), siliyorum eski kaydi")
                 notificationService.sendToProfile(new Notification(
                         title: 'Y sirketi sizi calisan olarak ekledi',
-                        from: new DBRef(null,'company',fromId)), toId)
-                addNewEmployee(fromId,toId)
+                        from: new DBRef(null, 'company', fromId)), toId)
+                addNewEmployee(fromId, toId)
                 col.remove([profile: toId, company: fromId, requestedByCompany: false], WriteConcern.SAFE)
 
 
-            } else if(existingReq.requestedByCompany && !requestedByCompany){
+            } else if (existingReq.requestedByCompany && !requestedByCompany) {
 
                 //Sirket daha onceden requestte bulunmus, direk onaylayalim
                 //todo notification lari yolla
                 log.info("request verified oldu (kullanici tarafindan) , siliyorum eski kaydi")
-                addNewEmployee(fromId,toId)
+                addNewEmployee(fromId, toId)
                 notificationService.sendToCompany(new Notification(
                         title: 'X kisisi, Y sirketi icin calisan olarak eklendi',
-                        from: new DBRef(null,'profile',toId)), fromId)
+                        from: new DBRef(null, 'profile', toId)), fromId)
 
                 col.remove([profile: toId, company: fromId, requestedByCompany: true], WriteConcern.SAFE)
 
-            }else{
+            } else {
                 log.info("Zaten daha onceden tek tarafli olarak request yapilmis hicbir sey yapmiyorum")
 
             }
@@ -375,13 +391,13 @@ class CompanyService {
                 //istek sirket tarafindan olusturuldu
                 notificationService.sendToProfile(new Notification(
                         title: 'Sirket X, sizi calisan olarak eklemek istiyor',
-                        from: new DBRef(null,'company',fromId)), toId)
+                        from: new DBRef(null, 'company', fromId)), toId)
 
             } else {
                 //istek kullanici tarafindan olusturuldu
                 notificationService.sendToCompany(new Notification(
                         title: 'X kisisi, Y sirketin calisan olarak eklenmek istiyor',
-                        from: new DBRef(null,'profile',toId)), fromId)
+                        from: new DBRef(null, 'profile', toId)), fromId)
             }
             col.insert([profile: toId, company: fromId, requestedByCompany: requestedByCompany, date: new Date()], WriteConcern.SAFE)
         }
@@ -405,10 +421,10 @@ class CompanyService {
         //todo burada kullanicinin companyleri arasida mi diye kontrol et $in operatoru gibi
         log.debug('Sirkete yeni calisan eklendi!')
 
-        def _OPS = ['$addToSet' : ['employees': profileId]]
+        def _OPS = ['$addToSet': ['employees': profileId]]
 
 
-        log.debug col.update([_id:companyId], _OPS, false, false, WriteConcern.SAFE)
+        log.debug col.update([_id: companyId], _OPS, false, false, WriteConcern.SAFE)
 
     }
 
@@ -423,6 +439,49 @@ class CompanyService {
         _OPS.'$set' = fieldMap
 
         return col.update(_QUERY, _OPS, false, false, WriteConcern.SAFE)
+    }
+
+    boolean isPageNameValid(String pageName) {
+        def normalizedName = pageName.toLowerCase()
+
+        boolean valid = normalizedName.matches(onlyAlphaNumericPattern);
+        if (valid) {
+            DBCollection col = Company.collection
+            def _QUERY = ['name.pageName': normalizedName]
+            return col.count(_QUERY) == 0
+
+        } else {
+            return false
+        }
+    }
+
+    def createNewCompany(def data) {
+        DBCollection col = Company.collection
+        def document = [
+                owner: data.owner,
+                name: [
+                        oneWord: data.'name.pageName'.capitalize(),
+                        significantPart: data.'name.significantPart',
+                        legalType: data.'name.legalType',
+                        pageName: data.'name.pageName',
+                        fullLegal: data.'name.fullLegal'
+                ],
+                industry: '',
+                tags: [],
+                email: '',
+                tel: '',
+                www: '',
+                about: '',
+                employees: [data.owner],
+                products: [],
+                timeline: [],
+
+        ]
+
+
+        def result = col.save(document, WriteConcern.SAFE)
+        println result
+        return result
     }
 }
 

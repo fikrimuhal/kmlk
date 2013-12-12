@@ -94,11 +94,37 @@ class CompanyController {
         //todo get de show
         //todo post da save/update
         //todo AA
-        log.debug(params.companyId)
+        def result
         ObjectId companyId = ObjectId.massageToObjectId(params.companyId)
         def company = companyService.getCompany(companyId)
         def domainId = company.domainToPage
-        def result = domainService.get(domainId)
+
+        switch (request.method) {
+            case 'POST':
+                println request.JSON
+                if (domainId) {
+                    //AA check todo do not use assert please
+                    assert domainId == ObjectId.massageToObjectId(request.JSON.id ?: request.JSON._id)
+                    println 'update www s'
+                    result = domainService.update(request.JSON)
+                } else {
+                    println 'create www s'
+                    result = domainService.createForCompany(company, request.JSON)
+
+                }
+                break
+
+
+            case 'GET':
+
+
+
+                result = domainService.get(domainId) ?: new DomainToPage()
+
+                break
+
+        }
+
 
         render result as JSON
     }
@@ -249,13 +275,52 @@ class CompanyController {
 
         data.'name.fullLegal' = request.JSON.name.fullLegal
         data.'name.legalType' = request.JSON.name.legalType
-//        data.'name.oneWord' = request.JSON.name.pageName
+//        data.'name.oneWord' = 'Fikrimuhal'
 //        data.'name.pageName' = request.JSON.name.pageName
         data.'name.significantPart' = request.JSON.name.significantPart
 
         companyService.updateFields(companyId, data)
 
         def result = [result: 'success']
+        render result as JSON
+    }
+
+
+    def isPageNameAvailable() {
+        Boolean pageNameValid = companyService.isPageNameValid(params.pageName)
+        log.debug(params.pageName)
+
+        def data = [
+                available: pageNameValid,
+                username: params.username
+        ]
+        render(data as JSON)
+    }
+
+
+    def createNewCompany() {
+        if (!authenticationService.loggedIn) {
+            render status: 401
+            return
+        }
+
+        if (!companyService.isPageNameValid(request.JSON.name.pageName as String)) {
+            render status: 404 //todo uygun status code lutfen
+            return
+        }
+        log.debug(request.JSON)
+        println '__+===____'
+        def data = [:]
+        data.'name.fullLegal' = request.JSON.name.fullLegal
+        data.'name.legalType' = request.JSON.name.legalType
+//        data.'name.oneWord' = request.JSON.name.pageName
+        data.'name.pageName' = request.JSON.name.pageName.toLowerCase()
+        data.'name.significantPart' = request.JSON.name.significantPart
+        data.owner = authenticationService.authenticatedUserId
+
+        companyService.createNewCompany(data)
+
+        def result = [result: 'success', test: data]
         render result as JSON
     }
 

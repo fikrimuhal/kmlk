@@ -75,11 +75,13 @@ function CompanySettingsWwwCtrl($scope, $resource) {
 
     var api = $resource(_settings.baseUrl + 'company/domainSettings');
     var domain = api.get({companyId: $scope.company._id}, {});
+    console.debug(domain)
     $scope.domain = domain;
     console.log('domain : ', domain)
 
-    $scope.save = function (domain) {
-        var result = api.save({companyId: $scope.company._id}, domain);
+    $scope.save = function (domain2Save) {
+
+        var result = api.save({companyId: $scope.company._id}, domain2Save);
     }
 }
 
@@ -90,9 +92,65 @@ function CompanySettingsCtrl($scope) {
 }
 
 
-function CompanyNewCtrl($scope, $routeSegment) {
+function CompanyNewCtrl($scope, userService, $resource) {
+    console.debug('CompanyNewCtrl ready');
+    var CSS = {ERROR: 'has-error', SUCCESS: 'has-success', DEFAULT: ''};
+    var pageNameValid = false,
+        submitInProgress = false,
+        checkInProgress = false,
+        checkAgain = false;
+
+    var api = $resource('/api/company/:verb', {},
+        {
+            'isPageNameValid': {method: 'GET', params: {verb: 'isPageNameAvailable'}},
+            'create': {method: 'PUT', params: {verb: 'createNewCompany'}}
+        });
+    //css success or error classes
+    $scope.formStatusClass = {};
+    $scope.model = {};
+    $scope.owner = userService.getLoggedInUser(); //todo company.owner olmasi lazim bunun
 
 
+    $scope.validatePageName = function (pageName) {
+
+        function processResult(result) {
+            console.log('result.available', result.available);
+            console.log('result.pageName', result.pageName);
+
+            if (result.available) {
+                $scope.formStatusClass.pageName = CSS.SUCCESS;
+                pageNameValid = true;
+            } else {
+                $scope.formStatusClass.pageName = CSS.ERROR;
+                pageNameValid = false;
+            }
+            checkInProgress = false;
+            if (checkAgain) {
+                checkAgain = false;
+                $scope.validatePageName($scope.model.pageName)
+            }
+        }
+
+        if (!checkInProgress) {
+            checkInProgress = true;
+            api.isPageNameValid({pageName:pageName}, processResult);
+        } else {
+            checkAgain = true;  //because the model changed and we did not checked the new value just yet.
+        }
+
+
+
+
+        console.log('pagename: ', pageName);
+    };
+
+    $scope.save = function () {
+        var model = $scope.model;
+        api.create({}, {name: model}, function (result) {
+            console.warn(result);
+            console.warn('TODO: reload/update company');
+        });
+    }
 }
 
 
@@ -474,7 +532,7 @@ kimlik
         }
     }])
 
-    .controller('CompanySettingsGeneralCtrl', ['$scope', '$resource','userService', function ($scope, $resource,userService) {
+    .controller('CompanySettingsGeneralCtrl', ['$scope', '$resource', 'userService', function ($scope, $resource, userService) {
         console.debug('CompanySettingsGeneralCtrl ready');
         $scope.model = $scope.company.name
         var api = $resource('/api/company/saveBasicInfo');

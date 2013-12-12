@@ -133,11 +133,13 @@ function NewSkillCtrl($scope, skillService) {
         console.log('item to selected:', $scope.selected);
 
         skillService.addSkill($scope.selected)
-        $scope.selected = ''
-        // return ['aaaa', 'bbbbb', 'ccccc', 'ababab', 'acacacac', 'cbcbcbcb']
+        $scope.selected = '';
     }
 
-
+    /**
+     * @deprecated
+     * @param skillName
+     */
     $scope.scrollToSkill = function (skillName) {
         console.log('_skill_' + skillName);
 

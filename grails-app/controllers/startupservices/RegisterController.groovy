@@ -6,6 +6,8 @@ import org.bson.types.ObjectId
 import org.scribe.model.Token
 import uk.co.desirableobjects.oauth.scribe.OauthService
 
+import java.util.regex.Pattern
+
 
 class RegisterController {
     def authenticationService
@@ -190,10 +192,17 @@ class RegisterController {
         render(data as JSON)
     }
 
+    final Pattern onlyAlphaNumericPattern = Pattern.compile("[\\p{Alnum},.']*");
+
     def ajaxCheckUsername() {
-        Boolean userNameExists = Profile.countByUsername(params.username) != 0
+        String normalizedName = params.username.toLowerCase()
+
+        boolean valid = normalizedName.matches(onlyAlphaNumericPattern);
+        if (valid) {
+            valid = Profile.countByUsername(normalizedName) == 0
+        }
         def data = [
-                available: !userNameExists,
+                available: valid,
                 username: params.username
         ]
         render(data as JSON)

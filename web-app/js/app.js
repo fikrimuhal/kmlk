@@ -251,7 +251,7 @@ function NotificationCtrl($scope, $resource, userService, companyService) {
     });
 
     $scope.getNumberOfNewNotifications = function () {
-        _.reject($scope.items, 'isRead').length
+       return  _.reject($scope.items, 'isRead').length
     };
 
     var companies = $scope.companies || companyService.getUserCompanyList();
