@@ -19,7 +19,7 @@ class AuthenticationService {
 
     def getAuthenticatedUser() {
         DBCollection col = Profile.collection
-        return col.findOne([_id: authenticatedUserId]).toMap()
+        return fixDeprecatedProfileFields(col.findOne([_id: authenticatedUserId]).toMap())
     }
 
     @Deprecated
@@ -77,5 +77,32 @@ class AuthenticationService {
      */
     void registerPersistentLoginService(PersistentLoginService persistentLoginService) {
         persistentLoginSRV = persistentLoginService
+    }
+    /**
+     * @deprecated
+     * @param it
+     * @return
+     */
+    private static fixDeprecatedProfileFields(Map it) {
+        def timeline = []
+
+        def addToTimeline = { typeKey, i ->
+            timeline << [
+                    _id: i._id, //todo fix this id must be unique.
+                    typeKey: typeKey,
+                    data: i,
+                    content: '',
+                    title: "$i.entity - $i.position",
+                    visible: true,
+                    sDate: i.startDate,
+                    eDate: i.endDate
+            ]
+        }
+
+        it.workHistory.history.each addToTimeline.curry('work')
+        it.educationHistory.history.each addToTimeline.curry('education')
+
+        it.timeline = timeline
+        return it
     }
 }

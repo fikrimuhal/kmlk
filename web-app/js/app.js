@@ -147,7 +147,8 @@ kimlik.config(['$routeSegmentProvider', '$locationProvider',
             segment('profilePicture', {templateUrl: '/html/kimlik/settings/profilePicture.html'}).
             segment('location', {templateUrl: '/html/kimlik/settings/location.html',
                 controller: 'KimlikSettingsLocationCtrl'}).
-            segment('history', {templateUrl: '/html/kimlik/settings/history.html'}).
+            segment('history', {templateUrl: '/html/kimlik/settings/history.html',
+                controller: 'KimlikTimelineCtrl'}).
             segment('skills', {templateUrl: '/html/kimlik/settings/skills.html',
                 controller: KimlikSkillsCtrl}).
             segment('social', {templateUrl: '/html/kimlik/settings/social.html'}).
@@ -189,7 +190,7 @@ kimlik.run(function ($rootScope, $routeSegment) {
     $rootScope.$on('routeSegmentChange', function () {
         //broadcast de company_name i aliyoruz boylece resolved oldugundan eminiz parametrenin.
 
-        $rootScope.company_name = $routeSegment.$routeParams.company_name //todo bunun adi pageName olsa daha iyi
+        $rootScope.company_name = $routeSegment.$routeParams.company_name; //todo bunun adi pageName olsa daha iyi
 
         console.log('* route change event')
 

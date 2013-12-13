@@ -41,9 +41,97 @@ function KimlikContactsCtrl($scope, userService, profileService) {
 
 
     });
-
-
 }
+
+kimlik.controller('KimlikTimelineCtrl', [ '$scope', '$resource', 'userService', function ($scope, $resource, userService) {
+    console.log('CompanyTimelineCtrl start');
+    var api = $resource('/api/employment/:verb', {},
+        {
+            'save': {method: 'POST', params: {verb: 'save'}},
+            'delete': {method: 'DELETE', params: {verb: 'save'}},
+            'query': {method: 'GET', params: {verb: 'list'}}
+        });
+    var type = {
+        work: {key: 'work', friendly: 'İş', color: 'bg-warning', icon: 'fa-bookmark-o'},
+        education: {key: 'education', friendly: 'Eğitim', color: '', icon: 'fa-calendar'}
+//        other: {key: 'other', friendly: 'Diğer', color: '', icon: 'fa-square-o'}
+    };
+
+
+    $scope.availableTypes = type;
+
+    $scope.selected = {};
+    $scope.entities = userService.getLoggedInUser().timeline
+    console.log(' $scope ', $scope.entities);
+
+    $scope.new = function () {
+        $scope.selected = {}
+    };
+
+    $scope.doSelectType = function (t) {
+        $scope.selected.typeKey = t.key;
+    };
+
+    $scope.getType = function (t) {
+
+        return type[t.typeKey];
+    };
+
+    $scope.isEntitySelected = function (e) {
+        if ($scope.selected && $scope.selected._id == e._id) {
+            return 'bg-lighter';
+        } else {
+            return null
+        }
+    };
+
+    $scope.edit = function (t) {
+        $scope.selected = angular.copy(t);
+    };
+
+    $scope.save = function (entity) {
+        console.log(entity);
+        var result;
+        if (!entity.typeKey) {
+            alert('Lütfen günce türünü seçiniz');
+            return
+        }
+        if (!entity._id) {
+            //new entity
+            $scope.entities.push(entity);
+
+        } else {
+            //update
+
+            var idx = _($scope.entities).findIndex({_id: entity._id});
+
+            angular.extend($scope.entities[idx], entity);
+
+        }
+
+        result = api.save({type: entity.typeKey}, entity);
+        $scope.selected = {};
+
+    };
+
+    $scope.doDelete = function (entity) {
+        console.log(entity);
+        if (entity._id) {
+            console.debug({_id: entity._id})
+            var result = api.delete({entityId: entity._id, typeKey: entity.typeKey});
+
+            $scope.entities = _($scope.entities).reject({_id: entity._id, typeKey: entity.typeKey}).value();
+
+        }
+        $scope.selected = {};
+
+
+    }
+
+
+}])
+
+
 function KimlikSkillsCtrl($scope, skillService) {
     console.log('KimlikSkillsCtrl ready');
     var selected
@@ -315,8 +403,8 @@ function KimlikSettingsGeneralCtrl($scope, userService, $resource) {
     }
 
     $scope.save = function (model) {
-        console.debug('model',model);
-        var api = $resource('/api/kimlik/ajaxSaveBasicInfo') ;
+        console.debug('model', model);
+        var api = $resource('/api/kimlik/ajaxSaveBasicInfo');
         api.save(model, {}, function () {
             console.warn('TODO: reload/update profile');
         });

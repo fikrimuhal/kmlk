@@ -3,7 +3,7 @@
     <section class="main">
         <div class="padder m-t m-b">
             <div class="pull-right">
-                <button class="btn btn-sm btn-primary ">Yeni</button>
+                <button class="btn btn-sm btn-primary" ng-click="new()">Yeni</button>
 
             </div>
             <div class="pull-left">
@@ -12,125 +12,94 @@
 
             </div>
 
-            <div class="timeline">
-                <article class="timeline-item">
+            <div class="timeline ">
+
+                <article  class=" timeline-item" ng-repeat="e in entities %{--| orderBy:'1':false--}%"
+                          ng-class-even="'alt'">
                     <div class="timeline-caption">
-                        <div class="panel arrow arrow-left">
-                            <span class="timeline-icon"><i class="fa fa-mobile-phone time-icon bg-primary"></i></span>
-                            <span class="timeline-date">18/12/2013</span>
+                        <div class="panel arrow animationTest" ng-class-odd="'arrow-left'" ng-class-even="'arrow-right'"
+                             ng-class="isEntitySelected(e)" ng-click="edit(e)">
+                            <span class="timeline-icon"><i
+                                    class="fa time-icon {{getType(e).icon + ' ' + getType(e).color}}"></i>
+                            </span>
+                            <span class="timeline-date">{{e.sDate}} <br/>
+                                <a ng-click="edit(e)" href="#" ><i
+                                        class="fa fa-pencil-square-o"></i>düzenle</a>
+                            </span>
                             <h5>
-                                <span>İş</span>
-                                Fikrimuhal - CEO
-                            </h5>
-                        </div>
-                    </div>
-                </article>
-                <article class="timeline-item alt">
-                    <div class="timeline-caption">
-                        <div class="panel arrow arrow-right">
-                            <span class="timeline-icon"><i class="fa fa-building-o time-icon bg-warning"></i></span>
-                            <span class="timeline-date">14/12/2013</span>
-                            <h5>
-                                <span>Egitim</span>
-                                İTÜ
+                                <span>{{getType(e).friendly}}</span>
+                                {{e.title}}
                             </h5>
 
-                            <p></p>
-                        </div>
-                    </div>
-                </article>
-                <article class="timeline-item">
-                    <div class="timeline-caption">
-                        <div class="panel arrow arrow-left">
-                            <span class="timeline-icon"><i class="fa fa-mobile-phone time-icon bg-primary"></i></span>
-                            <span class="timeline-date">18/12/2013</span>
-                            <h5>
-                                <span>İş</span>
-                                Fikrimuhal - CTO
-                            </h5>
-                        </div>
-                    </div>
-                </article>
-                <article class="timeline-item alt">
-                    <div class="timeline-caption">
-                        <div class="panel arrow arrow-right">
-                            <span class="timeline-icon"><i class="fa fa-dollar time-icon bg-info"></i></span>
-                            <span class="timeline-date">6/4/2013</span>
-                            <h5>
-                                <span>Eğitim</span>
-                                Bilkent
-                            </h5>
-
-                            <p></p>
-                        </div>
-                    </div>
-                </article>
-                <article class="timeline-item alt">
-                    <div class="timeline-caption">
-                        <div class="panel arrow arrow-right">
-                            <span class="timeline-icon"><i class="fa fa-dollar time-icon bg-info"></i></span>
-                            <span class="timeline-date">6/4/2013</span>
-                            <h5>
-                                <span>Eğitim</span>
-                                T.E.D Ankara Koleji
-                            </h5>
-
-                            <p></p>
-                        </div>
-                    </div>
-                </article>
-                <article class="timeline-item">
-                    <div class="timeline-caption">
-                        <div class="panel arrow arrow-left">
-                            <span class="timeline-icon"><i class="fa fa-home time-icon"></i></span>
-                            <span class="timeline-date">1/4/2013</span>
-                            <h5>
-                                <span>Hello World!</span>
-                                Dogum gunumu
-                            </h5>
-
-                            <p></p>
+                            <p>{{e.content}}</p>
                         </div>
                     </div>
                 </article>
 
-                <div class="timeline-footer"><a href="#"><i class="fa fa-plus time-icon inline-block bg-default"></i></a>
-                </div>
+
+                <div class="timeline-footer"><a href="#"><i
+                        class="fa fa-plus time-icon inline-block bg-default"></i></a></div>
             </div>
+
+
         </div>
     </section>
     <!-- /.main -->
+
+
+
     <!-- .sidebar -->
     <aside class="sidebar sidebar-large bg-lighter padder clearfix">
         <h5>Günce</h5>
 
         <div class="line"></div>
 
-        <form>
-            <label>Başlık</label>
-            <input type="text" placeholder="Günce başlıği" class="input-sm form-control">
-            <label class="m-t-mini">Tarih</label>
-            <input type="text" placeholder="1/2/2013" class=" input-sm form-control">
-            <label class="m-t-mini">İçerik</label>
-            <textarea type="text" class="input-sm form-control" placeholder="Kisaca açıklama"></textarea>
-            <label class="m-t-mini">Tür</label>
+    <form>
+        <label>Kurum</label>
+        <input type="text" placeholder="Şirket yada  Okul adı" class="input-sm form-control"
+               ng-model="selected.data.entity">
 
-            <div>
-                <div class="btn-group">
-                    <button data-toggle="dropdown" class="btn btn-sm btn-white dropdown-toggle">
-                        <span class="dropdown-label">Günce Türünü seçiniz</span>
-                        <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu dropdown-select">
-                        <li><a href="#"><input type="radio" name="d-s-r">İş</a></li>
-                        <li class=""><a href="#"><input type="radio" name="d-s-r">Eğitim</a></li>
-                        <li class=""><a href="#"><input type="radio" name="d-s-r">Diğer</a></li>
-                    </ul>
-                </div>
+        <label class="m-t-mini">Baslangıç Tarihi</label>
+        <input type="date"  class=" input-sm form-control" ng-model="selected.data.startDate">
+
+        <label class="m-t-mini">Pozisyon / Bölüm</label>
+        <input type="text" placeholder="Pozisyon adı, yada bölüm" class="input-sm form-control"
+               ng-model="selected.data.position">
+
+        <label class="m-t-mini">Tür</label>
+
+        <div>
+            <div class="btn-group">
+                <button class="btn btn-sm btn-white dropdown-toggle">
+                    <span class="dropdown-label"><i
+                            class="fa {{getType(selected).icon}}"></i> {{getType(selected).friendly || 'Günce Türünü seçiniz'}}
+                    </span>
+                    <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu dropdown-select ">
+                    <li ng-repeat="t in availableTypes"><a href="#" ng-click="doSelectType(t)"><input
+                            type="radio" name="d-s-r"/><i class="fa {{t.icon}}"></i> {{t.friendly}}</a></li>
+                </ul>
             </div>
+        </div>
+        <label class="m-t-mini">Görünürlük</label>
+        <div class="checkbox">
 
-            <div class="m-t"><button class="btn btn-sm btn-info">Kaydet</button></div>
-        </form>
-    </aside>
+            <label>
+                <input type="checkbox" ng-model="selected.visible">
+                Herkez tarafından görülebilinir
+            </label>
+        </div>
+
+        <div class="m-t"><button class="btn btn-sm btn-info"
+                                 ng-click="save(selected)">Kaydet</button> <button
+                class="btn btn-sm btn-danger" ng-click="doDelete(selected)">Sil</button></div>
+    </form>
+
+</aside>
     <!-- /.sidebar -->
 </section>
+
+<pre>
+    {{entities | json}}
+</pre>
