@@ -148,7 +148,8 @@ function CompanyNewCtrl($scope, userService, $resource) {
         var model = $scope.model;
         api.create({}, {name: model}, function (result) {
             console.warn(result);
-            console.warn('TODO: reload/update company');
+            document.location = '/company/profile/' + result.pageName;
+
         });
     }
 }

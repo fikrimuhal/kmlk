@@ -320,7 +320,7 @@ class CompanyController {
 
         companyService.createNewCompany(data)
 
-        def result = [result: 'success', test: data]
+        def result = [result: 'success', pageName: data.'name.pageName']
         render result as JSON
     }
 
