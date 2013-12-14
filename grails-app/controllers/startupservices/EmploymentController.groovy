@@ -8,6 +8,7 @@ import kimlik.account.history.HistoryEntity
 import org.bson.types.ObjectId
 
 import java.text.DateFormat
+import java.text.SimpleDateFormat
 
 class EmploymentController {
     def profileService
@@ -76,15 +77,24 @@ class EmploymentController {
         } else {
             return
         }
+        String format = "yyyy-MM-dd";
+        Date sDate
+        Date eDate
+        try {
+            sDate = new SimpleDateFormat(format).parse(entity.startDate ?: '')
+            eDate = new SimpleDateFormat(format).parse(entity.endDate ?: '')
 
+        } catch (Exception e) {
+            println 'x23'
+        }
         def documentMap = [
                 _id: ObjectId.massageToObjectId(entity._id) ?: new ObjectId(),
                 entity: entity.entity,
                 position: entity.position ?: '',
                 note: entity.note ?: '',
                 socialMeta: [source: entity.socialMeta?.source ?: 'user', editedByUser: true, upstreamFetchDate: new Date()],
-                startDate: entity.startDate ?: new Date(),
-                endDate: new Date()//endDate
+                startDate: sDate,
+                endDate: eDate
         ]
 
 

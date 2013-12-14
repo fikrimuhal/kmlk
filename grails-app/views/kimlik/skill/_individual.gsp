@@ -34,11 +34,13 @@
             <p>deneyimsiz olan kisiler</p>
             <div id="MyPillbox1" class="pillbox clearfix m-b bg-white">
                 <ul>
-                    <li  ng-repeat="id in skill.profiles.worst" class="label bg-danger text-small font-thin">{{profile(id).name}}</li>
+                    <li  ng-repeat="id in skill.profiles.worst" class="label bg-danger text-small font-thin"> {{profile(id).name}}
+                        <span class="remove" ng-click="rateFriendRemove(skill,id)">x</span>
+                    </li>
                     <input type="text" class="" placeholder="ekle" ng-model="skill.selected"
                            typeahead-editable="false"
                            typeahead-on-select="rateFriend(skill,$item,'worst',$model)"
-                           typeahead="profile as profile.name for profile in getFriends($viewValue) | filter:$viewValue %{--| limitTo:8--}%">
+                           typeahead="profile as profile.name for profile in getFriends($viewValue,skill.profiles.worst) | filter:$viewValue %{--| limitTo:8--}%">
                 </ul>
             </div>
         </div>
@@ -49,11 +51,13 @@
             <p>benzer seviyede olan kisiler</p>
             <div id="MyPillbox2" class="pillbox clearfix m-b bg-white">
                 <ul>
-                    <li  ng-repeat="id in skill.profiles.same" class="label bg-info text-small font-thin">{{profile(id).name}}</li>
+                    <li  ng-repeat="id in skill.profiles.same" class="label bg-info text-small font-thin">{{profile(id).name}}
+                        <span class="remove" ng-click="rateFriendRemove(skill,id)">x</span>
+                    </li>
                     <input type="text" class="" placeholder="ekle" ng-model="skill.selected"
                            typeahead-editable="false"
                            typeahead-on-select="rateFriend(skill,$item,'same',$model)"
-                           typeahead="profile as profile.name for profile in getFriends($viewValue) | filter:$viewValue %{--| limitTo:8--}%">
+                           typeahead="profile as profile.name for profile in getFriends($viewValue,skill.profiles.same) | filter:$viewValue %{--| limitTo:8--}%">
                 </ul>
             </div>
         </div>
@@ -64,11 +68,13 @@
             <p>daha deneyimli olan kisiler</p>
             <div id="MyPillbox3" class="pillbox clearfix m-b bg-white">
                 <ul>
-                    <li  ng-repeat="id in skill.profiles.better" class="label bg-primary text-small font-thin">{{profile(id).name}}</li>
+                    <li  ng-repeat="id in skill.profiles.better" class="label bg-primary text-small font-thin">{{profile(id).name}}
+                        <span class="remove" ng-click="rateFriendRemove(skill,id)">x</span>
+                    </li>
                     <input type="text" class="" placeholder="ekle" ng-model="skill.selected"
                            typeahead-editable="false"
                            typeahead-on-select="rateFriend(skill,$item,'better',$model)"
-                           typeahead="profile as profile.name for profile in getFriends($viewValue) | filter:$viewValue %{--| limitTo:8--}%">
+                           typeahead="profile as profile.name for profile in getFriends($viewValue,skill.profiles.better) | filter:$viewValue %{--| limitTo:8--}%">
                 </ul>
             </div>
         </div>

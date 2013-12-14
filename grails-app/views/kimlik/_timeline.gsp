@@ -38,7 +38,7 @@
                                     <div class="timeline-caption">
                                         <div class="panel arrow arrow-right">
                                             <span class="timeline-icon"><i class="fa fa-calendar time-icon"></i></span>
-                                            <span class="timeline-date">${it.startDate?.year} - ${it.endDate?.year}</span>
+                                            <span class="timeline-date">${(it.startDate) ? 1900 + it.startDate.year : ''} - ${(it.endDate) ? 1900 + it.endDate.year : ''}</span>
                                             <h5>
                                                 <span>Eğitim</span>
                                                 ${it.position} @${it.entity}

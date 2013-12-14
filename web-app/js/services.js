@@ -1,7 +1,7 @@
 kimlik.factory('skillService', function ($resource, $rootScope) {
     $rootScope.skills = [];    //users skills
     $rootScope.allSkills = undefined  //all skills
-    var config = {username:'sumnulu'}
+    var config = {username: 'sumnulu'}
 
     function fetchSkills() {
         var apiSkills = $resource('/api/kimlik/ajaxSkills');
@@ -113,10 +113,11 @@ kimlik.factory('userService', function ($resource, $rootScope) {
     //$rootScope.loggedinUser;
     var _cacheKey = 'loggedInProfile';
     var user;
+
     function getCachedProfile() {
         var p;
         try {
-           p = angular.fromJson(localStorage.getItem(_cacheKey));
+            p = angular.fromJson(localStorage.getItem(_cacheKey));
             console.log('getCachedProfile')
         } catch (e) {
             console.warn('localStorage cached profile is corrupted (purge everything!!!)');
@@ -138,7 +139,7 @@ kimlik.factory('userService', function ($resource, $rootScope) {
 
     function getLoggedInUser() {
 //        console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx')
-      // alert(getCachedProfile().username)
+        // alert(getCachedProfile().username)
         return user
     }
 
@@ -152,7 +153,7 @@ kimlik.factory('userService', function ($resource, $rootScope) {
         api.get({}, {}, function (d) {
             console.log('server authenticated the user');
             setCachedProfile(d);
-            user = d ;
+            user = d;
             $rootScope.loggedinUser = d; //deprecate
 
             $rootScope.$broadcast('userAuthenticated')
@@ -173,7 +174,6 @@ kimlik.factory('profileService', function ($resource) {
     var _profileCache = {}
     var api = $resource('/api/kimlik/:verb', {},
         {
-            //@deprecated
             'getProfileById': {method: 'GET', params: {verb: 'getProfileById'}},
 
             'getProfilesByIds': {method: 'POST', params: {verb: 'getProfilesByIds'}, isArray: true}
@@ -196,6 +196,10 @@ kimlik.factory('profileService', function ($resource) {
 
         api.getProfilesByIds({}, {ids: ids}, function (result) {
             _(result).each(function (it) {
+                var names = [it.first_name, it.middle_name, it.last_name]
+                it.name = _.reduce(names, function (ac, n) {
+                    return ac + (n?n+' ':'')
+                }, '');
                 angular.extend(_profileCache[it._id], it)
             });
         });

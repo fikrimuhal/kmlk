@@ -1,16 +1,21 @@
-function TypeaheadCtrl($scope, $http, filterFilter, $resource, skillService) {
-    var friends = {}
-    var config = {username:'sumnulu'}
+function TypeaheadCtrl($scope, $http, filterFilter, $resource, skillService, profileService, userService) {
+    var friendIds = userService.getLoggedInUser().friends;
 
-    $scope.getFriends = function (input) { //todo : bunun yerine friends den search yapalim
-        console.error('DEPRECATED getFriends')
+    var friends = _.toArray(profileService.prefetchProfilesByIds(friendIds));
+    console.log('user::: ', friends);
 
-        var promise = $http.get("/api/kimlik/ajaxFriends", {cache: true}).then(function (response) {
-            return filterFilter(response.data, input)
-        });
-        promise.$$v = promise;
-        return promise;
-    }
+    /**
+     *
+     * @param input
+     * @param exclude , do not include these ids in the result
+     * @returns {*}
+     */
+    $scope.getFriends = function (input, exclude) { //todo : bunun yerine friends den search yapalim
+        return _.reduce(exclude, function (ac, it) {
+            return _.reject(ac, {_id: it})
+        }, filterFilter(friends, input));
+    };
+
 
     /**
      *
@@ -42,7 +47,7 @@ function TypeaheadCtrl($scope, $http, filterFilter, $resource, skillService) {
 
         console.debug(skill, friend, value);
 
-        var friendId = friend.id;
+        var friendId = friend._id;
         var skillName = skill.name;
         var bucket = skill.profiles[value];
         for (var idx in skill.profiles) {
@@ -58,15 +63,16 @@ function TypeaheadCtrl($scope, $http, filterFilter, $resource, skillService) {
             var api = $resource('/api/kimlik/ajaxRateFriend')
             api.get({skillName: skillName, value: value, friendId: friendId});
         }
+        console.debug('thiss: ', this.skill.selected)
+        this.skill.selected = {name: ''};
+//        model.name = ''
 
-        model.name = ''
-
-    }
+    };
     $scope.rateFriendRemove = function (skill, friendId) {
         console.debug(skill.name, friendId);
 
 
-        var skillName = skillName;
+        var skillName = skill.name;
 
         for (var idx in skill.profiles) {
             var _bucket = skill.profiles[idx];
@@ -82,32 +88,8 @@ function TypeaheadCtrl($scope, $http, filterFilter, $resource, skillService) {
 
 //    $scope.skills = [];
 
-    function fetchSkills() {
-        skillService.fetchSkills();
-    }
-
-    function fetchFriends() {
-        console.error('DEPRECATED,','fetchFriends')
-
-        var apiFriends = $resource('/api/kimlik/ajaxFriends')
-        apiFriends.query({}, {}, function (r) {
-            for (var idx in r) {
-//                    angular.extend(friends[r[idx].id] , r[idx] );
-//                    console.log(friends[r[idx].id])
-                friends[r[idx].id] = r[idx];
-
-            }
-        })
-    }
-
-    fetchFriends();
-
     $scope.profile = function (id) {
-        if (friends[id] == undefined) {
-            friends[id] = {name: 'loading...'}
-        }
-//            console.log(id)
-        return friends[id]
+        return profileService.getProfileById(id);
     }
 
 
@@ -118,6 +100,7 @@ function TypeaheadCtrl($scope, $http, filterFilter, $resource, skillService) {
 
 
 }
+
 
 function NewSkillCtrl($scope, skillService) {
 
@@ -219,26 +202,6 @@ function RegisterController($scope, $resource) {
 }
 
 
-function employmentController($scope, employmentService) {
-
-    $scope.getEmploymentHistory = function () {
-        return $scope.employment
-    }
-
-    $scope.addWork = function (work) {
-        employmentService.addNew(work)
-    }
-
-    $scope.save = function (work) {
-        work.showEdit = false
-        employmentService.save(work)
-        //employmentService.addNew(work)
-    }
-
-
-}
-
-
 /**
  * @deprecated
  * @refactor router cagirsin bu kontroller i
@@ -260,8 +223,8 @@ function positionInboxController($rootScope, $scope, userService, $resource, $mo
 
     $scope.toggleDetails = function (it) {
         var id = it._id;
-        console.log('details',id)
-        console.log('details1',visibleDetailsMap[id])
+        console.log('details', id)
+        console.log('details1', visibleDetailsMap[id])
         visibleDetailsMap[id] = !visibleDetailsMap[id]
     };
 

@@ -60,7 +60,10 @@
                ng-model="selected.data.entity">
 
         <label class="m-t-mini">Baslangıç Tarihi</label>
-        <input type="date"  class=" input-sm form-control" ng-model="selected.data.startDate">
+        <input type="text"  placeholder="yyyy-MM-dd" class=" input-sm form-control" ng-model="selected.data.startDate">
+
+        <label class="m-t-mini">Bitiş Tarihi</label>
+        <input type="text"  placeholder="yyyy-MM-dd" class=" input-sm form-control" ng-model="selected.data.endDate">
 
         <label class="m-t-mini">Pozisyon / Bölüm</label>
         <input type="text" placeholder="Pozisyon adı, yada bölüm" class="input-sm form-control"

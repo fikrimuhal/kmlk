@@ -16,7 +16,7 @@
 .pillbox{border: 1px solid #e0e4e8;padding: 10px;border-radius: 4px}
 .pillbox ul{margin: 0;list-style: none;padding:0;}
 .pillbox li{display: inline-block;font-size:12px;color: #fff;;padding: 6px 8px;cursor: pointer;margin:2px;float: left;}
-.pillbox li:after{content: " x";font-size: 11px;font-weight: normal;opacity: 0.6;filter: alpha(opacity=60);}
+.pillbox li .remove{content: " x";font-size: 11px;font-weight: normal;opacity: 0.6;filter: alpha(opacity=60);}
 .pillbox li:hover:after{opacity: 0.9;filter: alpha(opacity=90);}
 .pillbox input{border:none;outline:0;min-height: 24px;width: auto;display: inline-block;box-shadow: none;background: transparent;}
 
