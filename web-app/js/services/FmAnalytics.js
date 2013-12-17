@@ -44,10 +44,11 @@ angular.module('fm.analytics', []).run(['$rootScope', '$location', function ($ro
             previousAbsUrl = absUrl;
 
             ga('send', 'pageview', {
-                'page': path,
-                'title': absUrl   //todo change to this title, and add absUrl to different place
+                'page': window.location.pathname ,
+                'title': window.location.pathname
             });
-            console.debug('track url sent', absUrl)
+
+            console.debug('track url sent', window.location.pathname)
 //        console.log('------>event', event);
 //        console.log('---->next', next);
 //        console.log('--->current', current);

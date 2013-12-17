@@ -56,8 +56,21 @@ class TestController {
 
     }
 
+    def randomSayilar(){
+        def r = new Random()
+        def result = new LinkedHashSet(100)
+        while(100 != result.size()){
+           result << r.nextInt()
+        }
+        render result as JSON
+
+
+    }
 
     def hashTest() {
+        List list = new LinkedList();
+        list.add(1);
+
         render 'OK :) <br/>'
         render "_escaped_fragment_ = ${params._escaped_fragment_}"
     }

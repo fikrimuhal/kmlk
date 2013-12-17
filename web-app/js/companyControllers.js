@@ -92,6 +92,7 @@ function CompanySettingsCtrl($scope) {
 }
 
 
+
 function CompanyNewCtrl($scope, userService, $resource) {
     console.debug('CompanyNewCtrl ready');
     var CSS = {ERROR: 'has-error', SUCCESS: 'has-success', DEFAULT: ''};
@@ -148,7 +149,7 @@ function CompanyNewCtrl($scope, userService, $resource) {
         var model = $scope.model;
         api.create({}, {name: model}, function (result) {
             console.warn(result);
-            document.location = '/company/profile/' + result.pageName;
+            document.location = '/company/new/success/' + result.pageName;
 
         });
     }

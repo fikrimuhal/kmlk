@@ -103,9 +103,13 @@ kimlik.config(['$routeSegmentProvider', '$locationProvider',
 
         $routeSegmentProvider.
             when('/company/my/new', 'company.new').
-            within('company').segment('new', {
+            when('/company/my/new/success/:company_name', 'company.newSuccess').
+            within('company').
+            segment('new', {
                 templateUrl: '/html/company/new.html',
-                controller: CompanyNewCtrl});
+                controller: CompanyNewCtrl}).
+            segment('newSuccess', {
+                templateUrl: '/html/company/newSuccess.html'})
 
 
         $routeSegmentProvider.

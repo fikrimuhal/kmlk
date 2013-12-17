@@ -15,11 +15,12 @@ class Location {
 
     LatLng latLng = new LatLng()
 
-    Integer privacyLevel =300
+    Integer privacyLevel = 300
 
     static constraints = {
         country nullable: true
         city nullable: true
+        privacyLevel nullable: true
         district nullable: true
         quarter nullable: true
         avenue nullable: true
