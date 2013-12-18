@@ -278,6 +278,7 @@ class CompanyController {
 //        data.'name.oneWord' = 'Fikrimuhal'
 //        data.'name.pageName' = request.JSON.name.pageName
         data.'name.significantPart' = request.JSON.name.significantPart
+        data.'tags' = request.JSON.tags
 
         companyService.updateFields(companyId, data)
 

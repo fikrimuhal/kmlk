@@ -56,12 +56,15 @@ class TestController {
 
     }
 
-    def randomSayilar(){
-        def r = new Random()
-        def result = new LinkedHashSet(100)
-        while(100 != result.size()){
-           result << r.nextInt()
-        }
+    def randomSayilar() {
+
+        def a = [1, 2, 9, 5, 13],
+            b = [2, 4, 8, 6, 0, -3]
+        def result = (a + b).sort()
+
+        assert result instanceof ArrayList
+        def i = 1
+        println i++
         render result as JSON
 
 
@@ -81,7 +84,7 @@ class TestController {
         log.debug 'method: ' + request.method
         log.debug 'getjson: ' + request.getJSON()
         log.debug 'getparts: ' + request.parts
-        def file =  params.files
+        def file = params.files
         assert file instanceof CommonsMultipartFile
         file.contentType
 

@@ -34,13 +34,13 @@
                                        class="btn btn-facebook btn-block m-b-small"><i
                                 class="fa fa-facebook pull-left"></i>Facebook ile giriş yap</oauth:connect>
 
-                        <oauth:connect provider="twitter" id="twitter-connect-link"
-                                       class="btn btn-twitter btn-block"><i
-                                class="fa fa-twitter pull-left"></i>Twitter ile giriş yap</oauth:connect>
+                        %{--<oauth:connect provider="twitter" id="twitter-connect-link"--}%
+                                       %{--class="btn btn-twitter btn-block"><i--}%
+                                %{--class="fa fa-twitter pull-left"></i>Twitter ile giriş yap</oauth:connect>--}%
 
-                        <oauth:connect provider="google" id="google-connect-link"
-                                       class="btn btn-gplus btn-block"><i
-                                class="fa fa-google-plus pull-left"></i>Google ile giriş yap</oauth:connect>
+                        %{--<oauth:connect provider="google" id="google-connect-link"--}%
+                                       %{--class="btn btn-gplus btn-block"><i--}%
+                                %{--class="fa fa-google-plus pull-left"></i>Google ile giriş yap</oauth:connect>--}%
 
                         <oauth:connect provider="linkedin" id="linkedin-connect-link"
                                        class="btn btn-linkedin btn-block"><i

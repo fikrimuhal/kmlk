@@ -92,7 +92,6 @@ function CompanySettingsCtrl($scope) {
 }
 
 
-
 function CompanyNewCtrl($scope, userService, $resource) {
     console.debug('CompanyNewCtrl ready');
     var CSS = {ERROR: 'has-error', SUCCESS: 'has-success', DEFAULT: ''};
@@ -134,12 +133,10 @@ function CompanyNewCtrl($scope, userService, $resource) {
 
         if (!checkInProgress) {
             checkInProgress = true;
-            api.isPageNameValid({pageName:pageName}, processResult);
+            api.isPageNameValid({pageName: pageName}, processResult);
         } else {
             checkAgain = true;  //because the model changed and we did not checked the new value just yet.
         }
-
-
 
 
         console.log('pagename: ', pageName);
@@ -536,12 +533,15 @@ kimlik
 
     .controller('CompanySettingsGeneralCtrl', ['$scope', '$resource', 'userService', function ($scope, $resource, userService) {
         console.debug('CompanySettingsGeneralCtrl ready');
-        $scope.model = $scope.company.name
+        $scope.model = $scope.company.name ;
+        $scope.tags = $scope.company.tags  ;
+
+
         var api = $resource('/api/company/saveBasicInfo');
         $scope.owner = userService.getLoggedInUser(); //todo company.owner olmasi lazim bunun
         $scope.save = function () {
             var model = $scope.model;
-            api.save({companyId: $scope.company._id}, {name: model}, function () {
+            api.save({companyId: $scope.company._id}, {name: model, tags:$scope.tags}, function () {
                 console.warn('TODO: reload/update company');
             });
         }

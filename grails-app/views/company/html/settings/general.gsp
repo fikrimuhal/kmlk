@@ -56,6 +56,18 @@
 
 
             <div class="form-group">
+                <label class="col-lg-3 control-label">Faliyet alanları</label>
+
+                <div class="col-lg-9">
+                    <textarea rows="3" class="form-control" ng-model="tags"  ng-list> </textarea>
+                    <span class="help-block">Şirketinizin faliyet alanları, örnegin: internet, saas, muhendislik, tasarım <br/>
+                    birden fazla tag girerken aralara ',' virgül koyunuz
+                    </span>
+
+                </div>
+            </div>
+
+            <div class="form-group">
                 <div class="col-lg-9 col-lg-offset-3">
                     <button type="button" class="btn btn-primary pull-right" ng-click="save()">Kaydet</button>
                     <span class="help-block"></span>
@@ -64,6 +76,5 @@
 
         </form>
     </div>
-
 
 </div>

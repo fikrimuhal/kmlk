@@ -92,7 +92,7 @@
                 <li><a href="/company/{{c.page_name}}/hr">Insan kaynakları</a></li>
                 <li><a href="/company/{{c.page_name}}/skills">Şirket yetenekleri</a></li>
                 <li><a href="/company/{{c.page_name}}/products">Ürünler ve Projeler</a></li>
-                <li><a href="/company/{{c.page_name}}/notifications">Bildiriler</a></li>
+                %{--<li><a href="/company/{{c.page_name}}/notifications">Bildiriler</a></li>--}%
                 <li><a href="/company/{{c.page_name}}/settings">Ayarlar</a></li>
             </ul>
         </li>

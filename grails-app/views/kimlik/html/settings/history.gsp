@@ -7,7 +7,7 @@
 
             </div>
             <div class="pull-left">
-                <button class="btn btn-sm btn-default ">Sosyal Hesaplarim ile Eşleştir</button>
+                <button class="btn btn-sm btn-default disabled ">Sosyal Hesaplarim ile Eşleştir</button>
 
 
             </div>
@@ -103,6 +103,6 @@
     <!-- /.sidebar -->
 </section>
 
-<pre>
-    {{entities | json}}
-</pre>
+%{--<pre>--}%
+    %{--{{entities | json}}--}%
+%{--</pre>--}%
