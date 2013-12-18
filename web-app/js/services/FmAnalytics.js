@@ -30,7 +30,17 @@ angular.module('fm.analytics', []).run(['$rootScope', '$location', function ($ro
     ga('create', 'UA-41123168-4', 'kimlik.io');
     console.log('google analytics initialized');
 
-    var previousAbsUrl
+    var previousAbsUrl;
+
+    /**
+     * todo: pageView yollanmadan once status u bulsak iyi olur
+     * suanda ilk pageView annoymous olarak gidiyor.
+     */
+    function setLoginStatusAsRegistered() {
+        ga('set', 'dimension1', 'registered');
+        console.error('hellooooo2oo23o32o3o2o32o23o2')
+    }
+
     /**
      *
      * @param event
@@ -44,7 +54,7 @@ angular.module('fm.analytics', []).run(['$rootScope', '$location', function ($ro
             previousAbsUrl = absUrl;
 
             ga('send', 'pageview', {
-                'page': window.location.pathname ,
+                'page': window.location.pathname,
                 'title': window.location.pathname
             });
 
@@ -59,6 +69,7 @@ angular.module('fm.analytics', []).run(['$rootScope', '$location', function ($ro
 
     //track every stage change
     $rootScope.$on("$routeChangeStart", track);
+    $rootScope.$on("userAuthenticated", setLoginStatusAsRegistered);
     //ui route ile
 //    $rootScope.$on('$stateChangeSuccess', track);
 

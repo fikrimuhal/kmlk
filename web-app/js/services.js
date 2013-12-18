@@ -156,7 +156,7 @@ kimlik.factory('userService', function ($resource, $rootScope) {
             user = d;
             $rootScope.loggedinUser = d; //deprecate
 
-            $rootScope.$broadcast('userAuthenticated')
+            $rootScope.$broadcast('userAuthenticated');  //kullanici authenticated ise broadcast
         });
     }
 
