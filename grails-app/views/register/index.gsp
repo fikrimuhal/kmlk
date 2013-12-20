@@ -40,7 +40,7 @@
     <div class="main-visual">
         <div class="bg-inverse">
             <div class="container text-center">
-                <h1 class="animated fadeInUp">Kurumsal ve Kisisel Saas Araçları<br> <small>Pre-alpha release</small>
+                <h1 class="animated fadeInUp">Kurumsal ve Kisisel Saas Araçlar<br> <small>Pre-alpha release</small>
                 </h1>
 
                 <p>
@@ -242,7 +242,7 @@
             </div>
 
             <div class="col-lg-4 col-sm-4">
-                <p class="text-center"><span class="btn btn-circle btn-lg btn-success"><i class="fa fa-heart"></i>
+                <p class="text-center"><span class="btn btn-circle btn-lg btn-danger"><i class="fa fa-heart"></i>
                 </span></p>
 
                 <div>
@@ -264,41 +264,41 @@
             </div>
         </div>
 
-        <div class="row m-large">
+        %{--<div class="row m-large">--}%
 
 
-            <div class="col-lg-4 col-sm-4">
-                <p class="text-center"><span class="btn btn-circle btn-lg btn-danger"><i class="fa fa-tablet"></i>
-                </span></p>
+            %{--<div class="col-lg-4 col-sm-4">--}%
+                %{--<p class="text-center"><span class="btn btn-circle btn-lg btn-danger"><i class="fa fa-tablet"></i>--}%
+                %{--</span></p>--}%
 
-                <div>
-                    <h3 class="text-center">Mobil Cihaz Uyumlu</h3>
+                %{--<div>--}%
+                    %{--<h3 class="text-center">Mobil Cihaz Uyumlu</h3>--}%
 
-                    <p>IPhone, IPad ve diğer akkıllı telefonlar ile kusursuz uyum. Ziyaretcileriniz ekran çözürlüğüne göre kendini adapde eden responsive tasarım! </p>
-                </div>
-            </div>
+                    %{--<p>IPhone, IPad ve diğer akkıllı telefonlar ile kusursuz uyum. Ziyaretcileriniz ekran çözürlüğüne göre kendini adapde eden responsive tasarım! </p>--}%
+                %{--</div>--}%
+            %{--</div>--}%
 
-            <div class="col-lg-4 col-sm-4">
-                <p class="text-center"><span class="btn btn-circle btn-lg btn-twitter"><i class="fa fa-cloud"></i>
-                </span></p>
+            %{--<div class="col-lg-4 col-sm-4">--}%
+                %{--<p class="text-center"><span class="btn btn-circle btn-lg btn-twitter"><i class="fa fa-cloud"></i>--}%
+                %{--</span></p>--}%
 
-                <div>
-                    <h3 class="text-center">Bulut Tabanlı</h3>
+                %{--<div>--}%
+                    %{--<h3 class="text-center">Bulut Tabanlı</h3>--}%
 
-                    <p>Web siteniz dünyanın 14 farklı lokasyonundan yayınlama imkanı. Ziyaretcileriniz dünyanin neresinde olursa olsun size en hızlı yoldan ulaşabilecek. Yada aynı anda yüzlerce ziyaretciniz olsa bile.</p>
-                </div>
-            </div>
-            <div class="col-lg-4 col-sm-4">
-                <p class="text-center"><span class="btn btn-circle btn-lg btn-white"><i class="fa fa-rss"></i>
-                </span></p>
+                    %{--<p>Web siteniz dünyanın 14 farklı lokasyonundan yayınlama imkanı. Ziyaretcileriniz dünyanin neresinde olursa olsun size en hızlı yoldan ulaşabilecek. Yada aynı anda yüzlerce ziyaretciniz olsa bile.</p>--}%
+                %{--</div>--}%
+            %{--</div>--}%
+            %{--<div class="col-lg-4 col-sm-4">--}%
+                %{--<p class="text-center"><span class="btn btn-circle btn-lg btn-white"><i class="fa fa-rss"></i>--}%
+                %{--</span></p>--}%
 
-                <div>
-                    <h3 class="text-center">Kendi Alan Adınız</h3>
+                %{--<div>--}%
+                    %{--<h3 class="text-center">Kendi Alan Adınız</h3>--}%
 
-                    <p>Arama motorları ve sosyal medya için optimize edilmiş ve kendi alan adınızı kullandığınız  kişel web siteniz 5 dakika için de yayında olsun.</p>
-                </div>
-            </div>
-        </div>
+                    %{--<p>Arama motorları ve sosyal medya için optimize edilmiş ve kendi alan adınızı kullandığınız  kişel web siteniz 5 dakika için de yayında olsun.</p>--}%
+                %{--</div>--}%
+            %{--</div>--}%
+        %{--</div>--}%
     </div>
 </div>
 
@@ -307,11 +307,11 @@
             <div class="text-center m-large">
                 <h2 class="font-thin">Örnekler</h2>
 
-                <p>todo: link yerine screen shot daha guzel olur, ve modal da gösterilmeli</p>
-                <p>todo: bu sayfa da cok tekrar eden eleman var</p>
+                %{--<p>todo: link yerine screen shot daha guzel olur, ve modal da gösterilmeli</p>--}%
+                %{--<p>todo: bu sayfa da cok tekrar eden eleman var</p>--}%
 
-                <p>Kimlik.IO! yu kullanan bir kaç şirket; Aşağida ki linkler şirketlerin profil sayfasina gider. <small>(geri gelmeyi unutmayın)</small>
-                </p>
+                %{--<p>Kimlik.IO! yu kullanan bir kaç şirket; Aşağida ki linkler şirketlerin profil sayfasina gider. <small>(geri gelmeyi unutmayın)</small>--}%
+                %{--</p>--}%
             </div>
 
             <div class="row m-large gallery  ">
