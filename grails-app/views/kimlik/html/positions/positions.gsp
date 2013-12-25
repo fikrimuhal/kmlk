@@ -1,8 +1,18 @@
+<section id="content" class="content-sidebar bg-white"  app-view-segment="2" ng-controller="positionInboxController">
+
+
+</section>
+
+
+%{--
+
 <!-- hr -->
 <div class="row">
     <div class="col-lg-12">
 
-        %{--<section class="panel">--}%
+        --}%
+%{--<section class="panel">--}%%{--
+
         <header class="panel-heading text-right">
             <ul class="nav nav-tabs pull-left">
 
@@ -23,9 +33,12 @@
 
             </div>
         </div>
-        %{--</section>--}%
+        --}%
+%{--</section>--}%%{--
+
 
     </div>
 </div>
 <!-- / hr -->
 
+--}%
