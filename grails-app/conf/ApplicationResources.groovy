@@ -103,28 +103,6 @@ modules = {
     }
 
 
-    kimlik {
-        dependsOn(['lodash', 'angularjs'])
-
-
-        resource url: 'js/app.js'
-        resource url: 'js/companyControllers.js'
-        resource url: 'js/profileControllers.js'
-        resource url: 'js/controllers.js'
-        resource url: 'js/services.js'
-        resource url: 'js/filters.js'
-        resource url: 'js/directives.js'
-    }
-
-    kimlik_register {
-        dependsOn(['angularjs'])
-        resource url: 'js/app.js'
-        resource url: 'js/controllers.js'
-        resource url: 'js/services.js'
-        resource url: 'js/filters.js'
-        resource url: 'js/directives.js'
-    }
-
     angularjs {
         dependsOn('jquery')
         resource url: 'js/lib/angular/angular.min.js', disposition: 'head'
