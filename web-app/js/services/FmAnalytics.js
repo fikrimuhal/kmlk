@@ -38,7 +38,6 @@ angular.module('fm.analytics', []).run(['$rootScope', '$location', function ($ro
      */
     function setLoginStatusAsRegistered() {
         ga('set', 'dimension1', 'registered');
-        console.error('hellooooo2oo23o32o3o2o32o23o2')
     }
 
     /**
