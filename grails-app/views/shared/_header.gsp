@@ -14,9 +14,9 @@
                 <li><a href="/kimlik/profile/{{user_name}}" target="_self">Profilime git</a></li>
                 <li><a href="/company/my/list">Şirket profilime git</a></li>
                 <li class="divider"></li>
-                <li><a href="/kimlik/{{user_name}}/positions/inbox">İlginizi Çekecek Şirketler</a>
+                <li class="disabled"><a href="%{--/kimlik/{{user_name}}/positions/inbox--}%">İlginizi Çekecek Şirketler</a>
                 </li>
-                <li><a href="/kimlik/{{user_name}}/positions/settings">Şirketler Kiriterlerim</a>
+                <li class="disabled"><a href="%{--/kimlik/#{{user_name}}/positions/settings--}%">Şirketler Kiriterlerim</a>
                 </li>
                 <li class="divider"></li>
                 <li><a href="/kimlik/{{user_name}}/contacts">Adres Defterim</a></li>
