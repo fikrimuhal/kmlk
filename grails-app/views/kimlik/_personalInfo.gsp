@@ -44,7 +44,7 @@
     <div class="col-lg-6">
         <div class="bg-white-desktop m-l-n m-r-n m-b-n m-t-n" style="margin-bottom: -90px;">
 
-            <div id="gmap_geocoding" style="height:308px;"> </div>
+            <div id="gmap_geocoding" style="height:305px;"> </div>
         </div>
     </div>
 </div>
