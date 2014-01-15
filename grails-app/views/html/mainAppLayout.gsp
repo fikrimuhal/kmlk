@@ -4,6 +4,16 @@
     <meta name="layout" content="first"/>
     <r:require modules="company,first_deprecated,sparkline,easypiechart,googleMaps, landing,fileUpload"/>
 
+    <script type="text/ng-template" id="_template/admin.inline">
+
+        <g:render template="/admin/html/adminNav"/>
+
+                <section id="content">
+                    <section class="main padder" app-view-segment="1"></section>
+                </section>
+
+    </script>
+
     <script type="text/ng-template" id="_template/company.inline">
 
         <g:render template="/shared/nav"/>

@@ -125,7 +125,7 @@ kimlik.config(['$routeSegmentProvider', '$locationProvider',
                 controller: 'CompanyTimelineCtrl'});
 
 
-        // Personal profiles start
+        /*                   #########  Personal profiles start   ###########                                */
         $routeSegmentProvider.
             when('/kimlik/:user_name/settings', 'kimlik.settings.general').
             when('/kimlik/:user_name/settings/general', 'kimlik.settings.general').
@@ -182,6 +182,35 @@ kimlik.config(['$routeSegmentProvider', '$locationProvider',
             within().
             segment('inbox', {templateUrl: '/html/kimlik/positions/inbox.html'}).
             segment('settings', {templateUrl: '/html/kimlik/positions/settings.html'});
+
+
+        /*                   #########  Management start   ###########                                */
+
+        $routeSegmentProvider.
+            when('/admin', 'admin.dashboard').
+            when('/admin/dashboard', 'admin.dashboard').
+            when('/admin/settings', 'admin.settings.general').
+            when('/admin/settings/general', 'admin.settings.general').
+            when('/admin/companies', 'admin.companies').
+            when('/admin/users', 'admin.users').
+
+            segment('admin', {
+                templateUrl: '_template/admin.inline',
+                controller: AdminCtrl
+            });
+
+        $routeSegmentProvider.within('admin').
+            segment('dashboard', {templateUrl: '/html/admin/dashboard.html'}).
+            segment('companies', {templateUrl: '/html/admin/companies/companies.html',
+                controller: AdminCompaniesCtrl}).
+            segment('users', {templateUrl: '/html/admin/users/users.html',
+                controller: AdminUsersCtrl});
+
+        $routeSegmentProvider.within('admin').
+            segment('settings', {
+                templateUrl: '/html/admin/settings/settings.html'}).
+            within().
+            segment('general', {templateUrl: '/html/admin/settings/general.html'});
 
 
         console.log('App config block finished')
@@ -256,7 +285,7 @@ function NotificationCtrl($scope, $resource, userService, companyService) {
     });
 
     $scope.getNumberOfNewNotifications = function () {
-       return  _.reject($scope.items, 'isRead').length
+        return  _.reject($scope.items, 'isRead').length
     };
 
     var companies = $scope.companies || companyService.getUserCompanyList();

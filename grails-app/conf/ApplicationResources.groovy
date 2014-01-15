@@ -96,6 +96,7 @@ modules = {
         resource url: 'js/app.js'
         resource url: 'js/companyControllers.js'
         resource url: 'js/profileControllers.js'
+        resource url: 'js/adminControllers.js'
         resource url: 'js/controllers.js'
         resource url: 'js/services.js'
         resource url: 'js/filters.js'
@@ -111,7 +112,8 @@ modules = {
 //        resource url: 'js/lib/angular/angular-cookies.min.js', disposition: 'head'
         resource url: 'js/lib/angular/angular-sanitize.min.js', disposition: 'head'
         resource url: 'js/lib/angular/angular-touch.min.js', disposition: 'head'
-        resource url: 'js/lib/angular-ui/ui-bootstrap-tpls-0.6.0.min.js', disposition: 'head'
+
+        resource url: 'js/lib/angular-ui/ui-bootstrap-tpls-0.10.0.min.js', disposition: 'head'
 
         resource url: 'js/lib/angular/angular-route.min.js', disposition: 'head'
         resource url: 'js/lib/angular-route-segment/angular-route-segment.min.js'

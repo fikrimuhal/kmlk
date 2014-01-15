@@ -1,6 +1,7 @@
 package startupservices
 
 import com.mongodb.DBCollection
+import com.mongodb.DBCursor
 import com.mongodb.DBObject
 import com.mongodb.DBRef
 import com.mongodb.WriteConcern
@@ -14,12 +15,45 @@ import java.util.regex.Pattern
 
 class CompanyService {
     def notificationService
+
     //only alphanumeric chars. white space will not match
     final Pattern onlyAlphaNumericPattern = Pattern.compile("[\\p{Alnum},.']*");
 
+    @Deprecated
     def list() {
         Company.list()
     }
+
+
+    def list(def params) {
+        params.page = params.page ?: 1
+        params.itemPerPage = params.itemPerPage ?: 20
+
+        DBCollection col = Company.collection
+        def _QUERY = [:]
+
+        int skip = (params.page - 1) * params.itemPerPage
+        int limit = params.itemPerPage
+
+
+        def data = []
+
+        DBCursor cursor = col.find(_QUERY)
+
+        cursor.sort([_id:1]).skip(skip).limit(limit).each {
+            data << addDeprecatedFields(it) + mockExtraData
+        }
+
+        return [
+                totalItems: cursor.count(),
+                currentPage: params.page,
+                itemsPerPage: params.itemPerPage,
+                filterBy: params.filterBy,
+                data: data
+        ]
+
+    }
+
 
     /**
      * @deprecated

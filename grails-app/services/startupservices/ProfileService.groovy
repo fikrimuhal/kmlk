@@ -1,6 +1,7 @@
 package startupservices
 
 import com.mongodb.DBCollection
+import com.mongodb.DBCursor
 import com.mongodb.WriteConcern
 import kimlik.account.Accounts
 import kimlik.account.SocialAccount
@@ -225,6 +226,46 @@ class ProfileService {
         }
 
         return result
+    }
+
+    def list(def params) {
+        params.page = params.page ?: 1
+        params.itemPerPage = params.itemPerPage ?: 20
+
+        DBCollection col = Profile.collection
+        def _QUERY = [:]
+
+        switch (params.filterBy) {
+            case 'REGISTERED':
+                _QUERY.registered = true
+                break
+            case 'UNREGISTERED':
+                _QUERY.registered = false
+                break
+        // default ALL
+        }
+
+        int skip = (params.page - 1) * params.itemPerPage
+        int limit = params.itemPerPage
+
+
+        def data = []
+
+        DBCursor cursor = col.find(_QUERY)
+
+        cursor.sort([_id:1]).skip(skip).limit(limit).each {
+            it.profileUrl = '/kimlik/profile/' + (it.username ?: it._id)
+            data << it
+        }
+
+        return [
+                totalItems: cursor.count(),
+                currentPage: params.page,
+                itemsPerPage: params.itemPerPage,
+                filterBy: params.filterBy,
+                data: data
+        ]
+
     }
 
 

@@ -171,7 +171,7 @@ kimlik.factory('userService', function ($resource, $rootScope) {
 
 kimlik.factory('profileService', function ($resource) {
     var todoCount = 0;
-    var _profileCache = {}
+    var _profileCache = {};
     var api = $resource('/api/kimlik/:verb', {},
         {
             'getProfileById': {method: 'GET', params: {verb: 'getProfileById'}},

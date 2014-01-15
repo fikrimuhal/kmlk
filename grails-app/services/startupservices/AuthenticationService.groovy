@@ -19,7 +19,13 @@ class AuthenticationService {
 
     def getAuthenticatedUser() {
         DBCollection col = Profile.collection
-        return fixDeprecatedProfileFields(col.findOne([_id: authenticatedUserId]).toMap())
+        def r = col.findOne([_id: authenticatedUserId])
+
+        if (r) {
+            return fixDeprecatedProfileFields(r.toMap())
+        } else {
+            return null
+        }
     }
 
     @Deprecated
