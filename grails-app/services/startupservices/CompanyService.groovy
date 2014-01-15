@@ -40,7 +40,7 @@ class CompanyService {
 
         DBCursor cursor = col.find(_QUERY)
 
-        cursor.sort([_id:1]).skip(skip).limit(limit).each {
+        cursor.sort([_id: 1]).skip(skip).limit(limit).each {
             data << addDeprecatedFields(it) + mockExtraData
         }
 
@@ -53,7 +53,6 @@ class CompanyService {
         ]
 
     }
-
 
     /**
      * @deprecated
@@ -165,6 +164,12 @@ class CompanyService {
 
     def saveProduct(def product, ObjectId companyId) {
         log.debug(product)
+
+        // If url does not contain protocol assume and add http://
+        String normalizedUrl = product.url.toLowerCase()
+        if (!(normalizedUrl.startsWith('http://') || normalizedUrl.startsWith('https://')))
+            product.url = 'http://' + product.url
+
         def documentMap = [
                 _id: ObjectId.massageToObjectId(product._id) ?: new ObjectId(),
                 about: product.about,
