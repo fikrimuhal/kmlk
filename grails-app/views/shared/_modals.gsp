@@ -48,24 +48,37 @@
                 </div>
 
                 <div class="modal-body">
-                    <div class="block">
-                        <label class="control-label">Kısaca...</label>
-                        <input type="text" class="form-control" placeholder="Konu başlığı">
-                    </div>
 
-                    <div class="block">
-                        <label class="control-label">Mesaj</label>
-                        <textarea class="form-control"
-                                  placeholder="Size çok daha iyi hizmet verebilmek için istek, önerileri ve şikayetlerinizi dinliyoruz."
-                                  rows="5"></textarea>
+                    <div class="container text-center">
+                        <h2 class="font-thin">Tekrar merhaba ve teşekkürler,</h2>
+
+                        <div class="row">
+
+                            <div class="col-lg-offset-3 col-lg-6 font-thin">
+
+                                <i class="fa fa-quote-left fa-2x pull-left"></i>
+                                <i class="fa fa-quote-right fa-2x pull-right"></i>
+
+                                Kimlik.Io şu anda test asamasindadır.
+                                Üye olduktan sonra facebook grubumuza katılıp,
+                                bizim ile olmasını istediğiniz özellikler yada karşılaştığınız hatalar hakkında sohbet edebilirsiniz,
+                                yada herhangi başka bir konu hakkında.
+
+                                <br/>
+
+                            </div>
+                        </div>
+
+                        <p>&nbsp;</p>
+                        <a href="https://www.facebook.com/groups/kimlik.io/" target="_blank" class="text-primary"><i class="fa fa-users"></i><br>Sorularınız için Facebook grubu</a>
+
                     </div>
 
                 </div>
 
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Vazgeçtim</button>
-                    <button type="button" class="btn btn-sm btn-primary"
-                            data-loading-text="Publishing...">Gönder</button>
+                    <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Kapat</button>
+                    <a target="_blank"  href="https://www.facebook.com/groups/kimlik.io/" class="btn btn-sm btn-primary">Destek Sayfası</a>
                 </div>
             </div><!-- /.modal-content -->
         </div>

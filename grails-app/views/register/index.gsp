@@ -60,7 +60,7 @@
             <div class="text-center m-large">
                 <h2 class="font-thin">Hemde bedava!</h2>
 
-                <p>Beta teste kayıt olanlar bütun servisleri 1 yıl bedava kullanabilecek. ...evet şuanda test aşamasındayız :)</p>
+                <p>Beta teste kayıt olanlar bütun servisleri 1 yıl bedava kullanabilecek . ..evet şuanda test aşamasındayız :)</p>
 
             </div>
 
@@ -371,6 +371,7 @@
     </div>
 </section>
 <!-- / header -->
+<g:render template="/shared/modals"></g:render>
 
 </body>
 

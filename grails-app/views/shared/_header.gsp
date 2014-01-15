@@ -48,8 +48,8 @@
 
         <g:render template="/shared/header/notifications"/>
 
-        <li><div class="m-t-small"><a class="btn btn-sm btn-info" id="showFeedBackDialog" href="#"><i
-                class="fa fa-lightbulb"></i> Geri bildirim</a></div></li>
+        <li><div class="m-t-small"><a class="btn btn-sm btn-info" id="showFeedBackDialog" data-toggle="modal" href="#modal" ><i
+                class="fa fa-lightbulb-o"></i> Geri bildirim</a></div></li>
 
 
         <li class="dropdown">
