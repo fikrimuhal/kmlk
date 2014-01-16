@@ -148,11 +148,11 @@ function KimlikSkillsCtrl($scope, skillService) {
 }
 
 
-function LeftMenuController($rootScope, $scope, userService) {
+function LeftMenuController($rootScope, $scope, userService, companyService) {
     console.log('LeftMenuController ready');
 
     $scope.isVisible = {
-        showAddEmployeeModal: userService.isLoggedIn(),
+        showAddEmployeeModal: false,
         claimMyProfile: false
     };
 
@@ -161,7 +161,15 @@ function LeftMenuController($rootScope, $scope, userService) {
         $('#AddEmployeeModal').modal('show')
     };
 
-
+    /* */
+    companyService.getUserCompanyList().$promise.then(function (companies) {
+        if (!companies.length) {
+            console.debug('current user does not have any company hide showAddEmployeeModal')
+            $scope.isVisible.showAddEmployeeModal = false;
+        } else {
+            $scope.isVisible.showAddEmployeeModal = true;
+        }
+    });
 }
 
 
@@ -178,7 +186,6 @@ function addEmployeeModalController(companyService, $scope, $resource, userServi
             'newRequest': {method: 'PUT', params: {verb: 'employeeRequest'}}
         });
 
-    console.log('LeftMenuController ready')
 
     $scope.companies = companyService.getUserCompanyList();
 

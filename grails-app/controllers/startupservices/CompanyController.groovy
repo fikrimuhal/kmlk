@@ -72,7 +72,6 @@ class CompanyController {
 //REST - API
 
     def userCompanyList() {
-
         ObjectId loggedInUser = ObjectId.massageToObjectId(authenticationService.authenticatedUserId)
         if (!loggedInUser) {
             render status: 401

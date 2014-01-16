@@ -325,21 +325,29 @@ function NotificationCtrl($scope, $resource, userService, companyService) {
 
 }
 
-kimlik.factory('companyService', function ($resource, $rootScope) {
+kimlik.factory('companyService', function ($resource) {
+    var currentUserCompanyList;
 
     function todo() {
         alert('todo')
     }
 
+    //todo urlleri merkezi biryerde yaz hepsini burdan constant a eris sadece
+    var api = $resource('/api/company/userCompanyList');
+
     function getUserCompanyList() {
-        //todo urlleri merkezi biryerde yaz hepsini burdan consttant a eris sadece
-        var api = $resource('/api/company/userCompanyList');
-//         alert(_settings.baseUrl)
-        return api.query({}, {});
+        return api.query({}, {}, function (data) {
+            currentUserCompanyList = data;
+        });
+    }
+
+
+    function getUserCompanyListCached() {
+        return currentUserCompanyList || getUserCompanyList();
     }
 
     return{
-        getUserCompanyList: getUserCompanyList
+        getUserCompanyList: getUserCompanyListCached
     };
 });
 
