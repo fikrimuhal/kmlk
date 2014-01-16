@@ -34,7 +34,8 @@ class AuthenticationFilters {
                 String requestedHost = request.getHeader('Host').toLowerCase()
 
                 if (requestedHost.endsWith(domain)) return
-                //this is not external request (anymore, maybe requested inside iframe)
+
+                //this is external request ( maybe requested inside iframe)
 
                 boolean isCrawler = webRequest.params._escaped_fragment_ != null
                 if (isCrawler) {

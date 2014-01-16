@@ -5,11 +5,23 @@
 var kimlik = angular.module('kimlik');
 
 
-function UserController($scope, userService) {
+function ProfileSettingsWwwCtrl($scope, $resource) {
+    console.log('ProfileSettingsWwwCtrl')
 
-    $scope.isLoggedIn = function () {
-        return userService.isLoggedIn()
-    };
+    var api = $resource('/kimlik/domainSettings');
+    var domain = api.get();
+    $scope.domain = domain;
+    console.log('domain : ', domain)
+
+    $scope.save = function (domain2Save) {
+        var result = api.save({}, domain2Save,function(){
+            alert('Kaydedildi');
+        });
+    }
+}
+
+
+function UserController($scope, userService) {
 
     $scope.isLoggedIn = function () {
         return userService.isLoggedIn()

@@ -184,7 +184,10 @@
   <component name="ProjectDictionaryState">
     <dictionary name="sumnulu">
       <words>
+        <w>adimsoyadim</w>
         <w>adres</w>
+        <w>adresleri</w>
+        <w>aktif</w>
         <w>alnum</w>
         <w>anasayfaya</w>
         <w>anladım</w>
@@ -192,26 +195,48 @@
         <w>avukatlar</w>
         <w>baskan</w>
         <w>başlığı</w>
+        <w>başvur</w>
+        <w>başında</w>
         <w>bildiriler</w>
         <w>bildirimler</w>
         <w>birakildi</w>
         <w>blueimp</w>
+        <w>cname</w>
         <w>defterim</w>
+        <w>diğer</w>
+        <w>domain'im</w>
         <w>easypiechart</w>
+        <w>eklemeniz</w>
         <w>eklendi</w>
         <w>ekleyelim</w>
+        <w>eğitim</w>
+        <w>gereken</w>
         <w>gerekli</w>
+        <w>gerekmektedir</w>
+        <w>getir</w>
+        <w>girdiğiniz</w>
+        <w>girmeniz</w>
         <w>güncesi</w>
         <w>hakkında</w>
         <w>hesaba</w>
         <w>hesap</w>
         <w>ilgili</w>
         <w>ilginizi</w>
+        <w>iptal</w>
+        <w>istiyorum</w>
+        <w>için</w>
         <w>kapat</w>
         <w>kasitli</w>
+        <w>kaydedildi</w>
+        <w>kaydet</w>
+        <w>kaydı</w>
         <w>kayıt</w>
+        <w>kayıtları</w>
+        <w>kendi</w>
         <w>kimlik</w>
         <w>kiriterlerim</w>
+        <w>kişisel</w>
+        <w>kullanmak</w>
         <w>kullanıcı</w>
         <w>kutum</w>
         <w>lightbulb</w>
@@ -221,8 +246,11 @@
         <w>mesaj</w>
         <w>navbar</w>
         <w>nullable</w>
+        <w>numarasi</w>
         <w>okudum</w>
+        <w>olacak</w>
         <w>olarak</w>
+        <w>olmadan</w>
         <w>olmuş</w>
         <w>oluşturalım</w>
         <w>oturumu</w>
@@ -235,10 +263,16 @@
         <w>rememberme</w>
         <w>resmi</w>
         <w>resmim</w>
+        <w>sayfamı</w>
+        <w>sayfanız</w>
         <w>seçiniz</w>
+        <w>sirketim</w>
+        <w>siteniz</w>
         <w>sparkline</w>
         <w>startupservices</w>
+        <w>sunucunuza</w>
         <w>sözleşmeyi</w>
+        <w>takib</w>
         <w>tavsan</w>
         <w>themer</w>
         <w>timeline</w>
@@ -246,12 +280,16 @@
         <w>upsert</w>
         <w>uzmanlıklar</w>
         <w>yeni</w>
+        <w>yerine</w>
         <w>yetenekler</w>
         <w>yolla</w>
+        <w>yukarıda</w>
         <w>yönetimi</w>
+        <w>yönlendirmeyi</w>
         <w>çalışiyorum</w>
         <w>çalışıyorum</w>
         <w>çekecek</w>
+        <w>örnek</w>
         <w>şahıs</w>
         <w>şirket</w>
         <w>şirketi</w>

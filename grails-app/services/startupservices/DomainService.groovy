@@ -5,6 +5,7 @@ import org.bson.types.ObjectId
 
 class DomainService {
     def companyService
+    def profileService
 
     def domain2Page(String domain) {
         DBCollection col = DomainToPage.collection
@@ -14,7 +15,7 @@ class DomainService {
 
 
     def update(def obj) {
-        def existing = DomainToPage.get(obj.id?:obj._id)
+        def existing = DomainToPage.get(obj.id ?: obj._id)
         assert existing
 
 //        existing.isCompany = obj.isCompany
@@ -45,6 +46,27 @@ class DomainService {
         assert existing.id
 
         companyService.updateFields(company._id, [domainToPage: existing.id])
+        return existing
+    }
+
+    def createForProfile(def profile, def obj) {
+        def existing = new DomainToPage()
+
+        assert profile?.username
+        assert profile._id instanceof ObjectId
+
+        existing.isCompany = false
+        existing.isProfile = true
+        existing.enabled = obj.enabled
+
+        existing.pageName = profile.username
+        existing.domains = obj.domains
+
+        existing = existing.save(failOnError: true, flush: true)
+
+        assert existing.id
+
+        profileService.updateFields(profile._id, [domainToPage: existing.id])
         return existing
     }
 

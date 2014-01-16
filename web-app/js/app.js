@@ -134,6 +134,7 @@ kimlik.config(['$routeSegmentProvider', '$locationProvider',
             when('/kimlik/:user_name/settings/history', 'kimlik.settings.history').
             when('/kimlik/:user_name/settings/skills', 'kimlik.settings.skills').
             when('/kimlik/:user_name/settings/social', 'kimlik.settings.social').
+            when('/kimlik/:user_name/settings/www', 'kimlik.settings.www').
             when('/kimlik/:user_name/settings/notifications', 'kimlik.settings.notifications').
 
 
@@ -156,6 +157,8 @@ kimlik.config(['$routeSegmentProvider', '$locationProvider',
             segment('skills', {templateUrl: '/html/kimlik/settings/skills.html',
                 controller: KimlikSkillsCtrl}).
             segment('social', {templateUrl: '/html/kimlik/settings/social.html'}).
+            segment('www', {templateUrl: '/html/kimlik/settings/www.html',
+                controller: ProfileSettingsWwwCtrl}).
             segment('notifications', {templateUrl: '/html/kimlik/settings/notifications.html'});
 
 

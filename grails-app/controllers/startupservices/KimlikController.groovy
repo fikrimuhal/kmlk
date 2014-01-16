@@ -10,6 +10,7 @@ class KimlikController {
     def profileService
     def authenticationService
     def skillService
+    def domainService
 
     def ajaxFriends() {
         def data = shallowUser(authenticationService.authenticatedUser.friends)
@@ -72,7 +73,7 @@ class KimlikController {
         render result as JSON
     }
     /**
-     * @param value {delete | worst | same | better}*
+     * @param value{delete | worst | same | better}*
      * @return
      */
     def ajaxRateFriend() {
@@ -222,6 +223,37 @@ class KimlikController {
 
         render result as JSON
     }
+
+
+    def domainSettings() {
+        def result = [:]
+        def profile = authenticationService.authenticatedUser
+        def domainId = profile.domainToPage
+
+        switch (request.method) {
+            case 'POST':
+                println request.JSON
+                if (domainId) {
+                    //AA check todo do not use assert please
+                    assert domainId == ObjectId.massageToObjectId(request.JSON.id ?: request.JSON._id)
+                    println 'update www s'
+                    result = domainService.update(request.JSON)
+                } else {
+                    println 'create www s'
+                    result = domainService.createForProfile(profile, request.JSON)
+
+                }
+                break
+            case 'GET':
+                result = domainService.get(domainId) ?: new DomainToPage()
+                break
+
+        }
+
+
+        render result as JSON
+    }
+
 
     private fetchProfile() {
         def profile = Profile.findByUsername(params.id)
