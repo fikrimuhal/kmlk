@@ -5,29 +5,33 @@
 
             <h2 class="font-thin"><i class="fa fa-info"></i> Hakkında
 
-                <div class="btn-group pull-right" ng-controller="companyLoggedInUserMenuController" ng-cloak ng-show="isMenuVisible">
+                <div class="btn-group pull-right" ng-controller="companyLoggedInUserMenuController" ng-cloak
+                     ng-show="isMenuVisible">
                     <button type="button" class="btn btn-white dropdown-toggle" data-toggle="dropdown">
                         <i class="fa fa-cog"></i>
                         <span class="caret"></span>
                     </button>
                     <ul class="dropdown-menu ">
-                        <li><a href="#" ng-click="iWorkHere()"><i class="fa fa-user fa-fw"></i> Bu şirkette çalışıyorum</a></li>
-                        <li><a href="#" ng-click="reportProblem()"><i class="fa fa-flag fa-fw"></i> Sorun bildir</a></li>
+                        <li><a href="#" ng-click="iWorkHere()"><i class="fa fa-user fa-fw"></i> Bu şirkette çalışıyorum
+                        </a></li>
+                        <li><a href="#" ng-click="reportProblem()"><i class="fa fa-flag fa-fw"></i> Sorun bildir</a>
+                        </li>
 
                     </ul>
                 </div>
             </h2>
+            <a href="#" ng-click="showModal()" ng-controller="companyWorkWithUsController">
+                <div class="bg-primary">
+                    <div class="container">
+                        <div class="text-center m-large">
+                            <h2 class="font-thin"><i class="fa fa-group"></i>İş Başvurusu</h2>
 
-            <div class="bg-primary">
-                <div class="container">
-                    <div class="text-center m-large">
-                        <h2 class="font-thin"><i class="fa fa-group"></i>İş Başvurusu</h2>
+                            <p>Bizim ile çalışmak istermisin?</p>
+                        </div>
 
-                        <p>Bizim ile çalışmak istermisin?</p>
                     </div>
-
                 </div>
-            </div>
+            </a>
         </div>
     </div>
 </div>

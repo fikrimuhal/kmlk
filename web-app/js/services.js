@@ -188,7 +188,7 @@ kimlik.factory('profileService', function ($resource) {
         _(ids).each(function (id) {
             if (!_profileCache[id]) {
 //                console.log('cachede id yok: ', id);
-                _profileCache[id] = {}
+                _profileCache[id] = {};
             } else {
 //                console.log('cachede id var: ', _profileCache[id]);
             }

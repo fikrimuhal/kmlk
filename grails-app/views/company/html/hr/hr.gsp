@@ -16,9 +16,9 @@
                     %{--<li ng-class="{active: $routeSegment.contains('positions')}"><a--}%
                             %{--href="/company/{{company_name}}/hr/positions"><i--}%
                                 %{--class="fa fa-group icon-large text-default"></i>Pozisyonlar</a></li>--}%
-                    %{--<li ng-class="{active: $routeSegment.contains('applicants')}"><a--}%
-                            %{--href="/company/{{company_name}}/hr/applicants"><i--}%
-                                %{--class="fa fa-user icon-large text-default"></i>Adaylar</a></li>--}%
+                    <li ng-class="{active: $routeSegment.contains('applicants')}"><a
+                            href="/company/{{company_name}}/hr/applicants"><i
+                                class="fa fa-user icon-large text-default"></i>Adaylar</a></li>
                     %{--<li ng-class="{active: $routeSegment.contains('notifications')}"><a--}%
                             %{--href="/company/{{company_name}}/hr/notifications"><i--}%
                                 %{--class="fa fa-comments icon-large text-default"></i>Bildiriler</a></li>--}%

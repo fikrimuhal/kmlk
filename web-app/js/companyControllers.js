@@ -25,11 +25,46 @@ function companyLoggedInUserMenuController($scope, userService, $resource) {
         console.log('user ', toId)
         console.log('company ', fromId)
 
-        //todo bug toId suanda bakilan profil olmali
         api.newRequest({}, {toId: toId, fromId: fromId, requestedByCompany: false}, function (d) {
             alert('Şirket yetkilisine bildirildi, teşekkürler!');
         });
     };
+
+}
+function companyWorkWithUsController($scope, $resource) {
+    var elm = $('#workWithUsModal');
+
+    var api = $resource('/api/hr/:verb', {},
+        {
+            'apply': {method: 'POST', params: {verb: 'apply'}, isArray: false }
+        });
+
+
+    elm.on('show.bs.modal', function () {
+        //re-initialize
+    });
+    $scope.showModal = function () {
+        elm.modal('toggle');
+    };
+
+    /**
+     * @typedef {Object} Model
+     * @property {String} userNote - ön yazı , kullanıcı notu
+     *
+     * @param {Model} model  to be saved
+     *
+     */
+    $scope.apply = function (model) {
+        elm.modal('hide');
+        var model = $scope.model
+
+        model.companyId = _currentCompany._id;
+        api.apply({}, model, function success() {
+            alert('Başvuru gönderildi.')
+            delete $scope.model
+        });
+    };
+
 
 }
 
@@ -315,60 +350,48 @@ function CompanyPositionCtrl($scope, $routeSegment) {
     $scope.page.show = ($scope.position && $scope.position.id);
 }
 
-function CompanyApplicantsCtrl($scope, $routeSegment) {
+
+function CompanyApplicantsCtrl($scope, $routeSegment, $resource, profileService) {
     var pid = $routeSegment.$routeParams.pid;
     if (pid === "new") {
         $scope.isNew = true
     } else {
         $scope.position_id = pid
     }
+    var api = $resource('/api/hr/:verb', {},
+        {
+            'applicants': {method: 'GET', params: {verb: 'listApplicantsForCompany'}, isArray: true }
+        });
 
-    $scope.applicants = [
-        {  id: '52684f4def861e456dac75b1',
-            company: 2222222233,
-            fullName: 'Ilgaz Şumnulu'},
-        {  id: '52684f4def861e456dac75b2',
-            company: 2222222233,
-            fullName: 'Ahmet mehmet'},
-        {  id: '52684f4def861e456dac75b3',
-            company: 2222222233,
-            fullName: 'Abuzer kadayif'},
-        {  id: '52684f4def861e456dac75b4',
-            company: 2222222233,
-            fullName: 'Mark otaa'},
-        {  id: '52684f4def861e456dac75b5',
-            company: 2222222233,
-            fullName: 'Abdullah Guneydas'},
-        {  id: '52684f4def861e456dac75b6',
-            company: 2222222233,
-            fullName: 'Yeter dursun Kadayif'},
-        {  id: '52684f4def861e456dac75b7',
-            company: 2222222233,
-            fullName: 'Coskun kilic'},
-        {  id: '52684f4def861e456dac75b8',
-            company: 2222222233,
-            fullName: 'Bende varum'},
-        {  id: '52684f4def861e456dac75b9',
-            company: 2222222233,
-            fullName: 'Mac hintosh'}
-
-    ];
+    $scope.applicants = api.applicants({companyId: $scope.company._id}, function success(data) {
+        profileService.prefetchProfilesByIds(_.chain(data).map('profile').flatten().uniq().value());
+    });
 
     $scope.getApplicant = function () {
-        if (pid == '52684f4def861e456dac75b1') {
-            return {
-                pictureUrl: '/images/photos/ilgaz2.jpg'
-            }
-        } else if (pid == '52684f4def861e456dac75b2') {
-            return {
-                pictureUrl: '/images/photos/ilgaz3.jpg'
-            }
-        } else {
-            return {
-                pictureUrl: '/images/photos/ilgaz4.jpg'
-            }
+        return profileService.getProfileById(pid)
+    };
+
+    $scope.getApplication = function () {
+        return _.find($scope.applicants, {profile: pid});
+    };
+
+    $scope.getProfilePicture = function (profile) {
+        var url;
+        try {
+            url = profile.profilePicture.defaultPicture.url
+        } catch (e) {
+            url = profile.profilePictureUrl
         }
-    }
+        return url
+    };
+
+
+    $scope.getFullName = function (id) {
+        var u = profileService.getProfileById(id)
+        return u.first_name + ' ' + u.last_name;
+
+    };
+
 
 }
 
@@ -533,15 +556,15 @@ kimlik
 
     .controller('CompanySettingsGeneralCtrl', ['$scope', '$resource', 'userService', function ($scope, $resource, userService) {
         console.debug('CompanySettingsGeneralCtrl ready');
-        $scope.model = $scope.company.name ;
-        $scope.tags = $scope.company.tags  ;
+        $scope.model = $scope.company.name;
+        $scope.tags = $scope.company.tags;
 
 
         var api = $resource('/api/company/saveBasicInfo');
         $scope.owner = userService.getLoggedInUser(); //todo company.owner olmasi lazim bunun
         $scope.save = function () {
             var model = $scope.model;
-            api.save({companyId: $scope.company._id}, {name: model, tags:$scope.tags}, function () {
+            api.save({companyId: $scope.company._id}, {name: model, tags: $scope.tags}, function () {
                 console.warn('TODO: reload/update company');
             });
         }
