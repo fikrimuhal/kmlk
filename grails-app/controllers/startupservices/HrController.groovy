@@ -20,12 +20,18 @@ class HrController {
 
     def apply() {
         ObjectId companyId = ObjectId.massageToObjectId(request.JSON.companyId)
-        ObjectId loggedInUserId = authenticationService.authenticatedUserId
-        String userNote = request.JSON.userNote
 
-        hrService.applyForCompany(companyId, loggedInUserId, userNote)
+        if (authenticationService.isLoggedIn() && companyId) {
+            ObjectId loggedInUserId = authenticationService.authenticatedUserId
+            String userNote = request.JSON.userNote
 
-        def result = [:]
-        render result as JSON
+            hrService.applyForCompany(companyId, loggedInUserId, userNote)
+
+            def result = [:]
+            render result as JSON
+
+        } else {
+            render status: 401
+        }
     }
 }
