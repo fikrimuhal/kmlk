@@ -31,7 +31,7 @@ function companyLoggedInUserMenuController($scope, userService, $resource) {
     };
 
 }
-function companyWorkWithUsController($scope, $resource) {
+function companyWorkWithUsController($scope, $resource, userService) {
     var elm = $('#workWithUsModal');
 
     var api = $resource('/api/hr/:verb', {},
@@ -39,10 +39,16 @@ function companyWorkWithUsController($scope, $resource) {
             'apply': {method: 'POST', params: {verb: 'apply'}, isArray: false }
         });
 
+    /**
+     * if user is not logged show login links
+     * @type {boolean}
+     */
+    $scope.userIsLoggedIn = userService.isLoggedIn();
 
     elm.on('show.bs.modal', function () {
         //re-initialize
     });
+
     $scope.showModal = function () {
         elm.modal('toggle');
     };

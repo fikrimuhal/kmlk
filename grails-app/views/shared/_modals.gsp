@@ -49,38 +49,39 @@
         <div class="modal-content">
             <div class="modal-header bg bg-primary">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                <h4 class="modal-title">[SIRKET ADI] Bizim ile çalışın</h4>
+                <h4 class="modal-title">Bizim ile çalışın</h4>
             </div>
 
-            <div class="modal-body">
-               <p>
-                   asdasdasdsadsa
-               </p>
-
-                todo:
-                <ul>
-                    <li>Eger Kullanici login degilse; login optionlarini goster</li>
-                    <li>Eger Kullanici login degilse; basvuru butonu ve text area yi gosterme</li>
-                    <li>Eger Kullanici login olmus ise, textfield + submit butonunu goster</li>
-                    <li>
-                        Login olmamis kullaniciya fikrimuhal'in basvuru kabulu kimlik.io tarafindan yonetilmektedir. <br/>
-                        Özel bilgileriniz Başvuru yaptiğiniz sirkete gosterilmeyecek.           <br/>
-                        login olduktan sonra gizlik ayarlarini daha detayli yapabilirsiniz <br/>
-                        Izniniz olmadan mesaj atmiyacagiz
-
-                    </li>
-                <li>Basvur butonuna bastiktan sonra butonu disabled yap loading yaz sonra modal i kapat</li>
-
-                </ul>
+            <div class="modal-body" ng-show="userIsLoggedIn">
+                <p>
+                    Başvuru yapmadan önce profilinizin güncel olduğundan emin olun.
+                </p>
                 <h4>Ön yazı <small>opsiyonel</small></h4>
                 <form role="form">
                     <textarea class="form-control" style="resize: vertical;" rows="4" ng-model="model.userNote" placeholder="Başvuru yaparken eklemek istedğiniz bir mesaj not var ise buraya yazabilirsiniz"></textarea>
                 </form>
             </div>
 
+            <div class="modal-body" ng-hide="userIsLoggedIn">
+                <p>
+                    Bu şirketin iş başvuruları <a href="http://kimlik.io" target="_blank"><b>kimlik.io</b></a> tarafından yönetilmektedir. <br/>
+                    Başvuru yapmak için aşağıda ki yönetemler ile giriş yapmanız gerekmektedir. <br/> <br/>
+
+                    Daha önceden profil oluşturmadıysanız giriş yaptıktan sonra profilinizi oluşturabilirsiniz <br/>
+                    Özel bilgileriniz başvuru yaptığınız şirkete yollanmaz.
+                </p>
+
+                <oauth:connect provider="facebook" id="facebook-connect-link"
+                               class="btn btn-facebook btn-block m-b-small"><i
+                        class="fa fa-facebook pull-left"></i>Facebook ile giriş yap</oauth:connect>
+                <oauth:connect provider="linkedin" id="linkedin-connect-link"
+                               class="btn btn-linkedin btn-block"><i
+                        class="fa fa-linkedin pull-left"></i>Linkedin ile giriş yap</oauth:connect>
+            </div>
+
             <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">İptal</button>
-                <button type="button" class="btn btn-primary" ng-click="apply()">Başvur</button>
+                <button type="button" class="btn btn-primary"  ng-show="userIsLoggedIn" ng-click="apply()">Başvur</button>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->
