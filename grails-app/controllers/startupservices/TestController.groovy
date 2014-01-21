@@ -79,6 +79,7 @@ class TestController {
     }
 
     def upload2() {
+        assert false
         log.debug 'params: ' + params
         log.debug 'params.files: ' + params.files?.dump()
         log.debug 'method: ' + request.method

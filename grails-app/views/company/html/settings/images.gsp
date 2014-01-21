@@ -1,6 +1,6 @@
 <h3>Ofis Resimleri <small>Eklediğiniz fotoğraflar web siteniz de gösterilecek</small></h3>
 <!-- The file upload form used as target for the file upload widget -->
-<form id="fileupload" action="/test/upload2" method="POST" enctype="multipart/form-data"
+<form id="fileupload"
       ng-controller="OfficePicturesController" file-upload="options"
       ng-class="{'fileupload-processing': processing() || loadingFiles}">
 
@@ -9,16 +9,16 @@
         <div class="col-lg-7">
             <!-- The fileinput-button span is used to style the file input field as button -->
             <span class="btn btn-success fileinput-button" ng-class="{disabled: disabled}">
-                <i class="glyphicon glyphicon-plus"></i>
+                <i class="fa fa-plus"></i>
                 <span>Resim seç...</span>
                 <input type="file" name="files" multiple ng-disabled="disabled" accept="image/*" capture="camera">
             </span>
             <button type="button" class="btn btn-primary start" ng-click="submit()">
-                <i class="glyphicon glyphicon-upload"></i>
+                <i class="fa fa-upload"></i>
                 <span>Server'a yolla ve kaydet</span>
             </button>
             <button type="button" class="btn btn-warning cancel" ng-click="cancel()">
-                <i class="glyphicon glyphicon-ban-circle"></i>
+                <i class="fa fa-ban"></i>
                 <span>Iptal et</span>
             </button>
             <!-- The global file processing state -->
@@ -73,16 +73,16 @@
                 <button type="button" class="btn btn-primary start" ng-click="file.$submit()"
                         ng-hide="!file.$submit || options.autoUpload"
                         ng-disabled="file.$state() == 'pending' || file.$state() == 'rejected'">
-                    <i class="glyphicon glyphicon-upload"></i>
+                    <i class="fa fa-upload"></i>
                     <span>Kaydet</span>
                 </button>
                 <button type="button" class="btn btn-warning cancel" ng-click="file.$cancel()" ng-hide="!file.$cancel">
-                    <i class="glyphicon glyphicon-ban-circle"></i>
+                    <i class="fa fa-ban"></i>
                     <span>İptal</span>
                 </button>
-                <button ng-controller="FileDestroyController" type="button" class="btn btn-danger destroy"
+                <button ng-controller="FileDestroyController" type="button" class="btn btn-danger destroy pull-right"
                         ng-click="file.$destroy()" ng-hide="!file.$destroy">
-                    <i class="glyphicon glyphicon-trash"></i>
+                    <i class="fa fa-trash-o"></i>
                     <span>Sil</span>
                 </button>
             </td>
@@ -108,9 +108,9 @@
             </td>
             <td>
 
-                <button type="button" class="btn btn-danger destroy"
+                <button type="button" class="btn btn-danger destroy  pull-right"
                         ng-click="deletePicture(file)">
-                    <i class="glyphicon glyphicon-trash"></i>
+                    <i class="fa fa-trash-o"></i>
                     <span>Sil</span>
                 </button>
             </td>

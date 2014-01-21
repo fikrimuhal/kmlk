@@ -431,3 +431,34 @@ function KimlikSettingsGeneralCtrl($scope, userService, $resource) {
 
 
 }
+
+
+var url = '/picture/ajaxUpload';
+kimlik
+    .controller('KimlikSettingsProfilePicCtrl', [
+        '$scope', '$resource','userService',
+        function ($scope, $resource,userService) {
+            var api = $resource(_settings.baseUrl + 'picture/ajaxDelete!!!!!!!!');
+
+
+            $scope.options = {
+                url: url,
+                formData: {/*companyId: $scope.company._id*/}
+            };
+
+            console.log('profilePictures',userService.getLoggedInUser().profilePicture);
+            $scope.profilePictures = userService.getLoggedInUser().profilePicture.pictures
+
+
+            $scope.deletePicture = function (file) {
+                console.log(file._id)
+                var result = api.delete({pictureId: file._id, companyId: $scope.company._id})
+
+                //todo: api result i mi beklesek...
+                $scope.officePictures = _.reject($scope.officePictures, {_id: file._id})
+                console.log($scope.company.officePictures)
+                return result
+            }
+
+        }
+    ])

@@ -354,5 +354,36 @@ kimlik.factory('companyService', function ($resource) {
     };
 });
 
+kimlik.
+/**
+ * Office pictures
+ * Profile picture
+ */
+    controller('FileDestroyController', ['$scope', function ($scope) {
+        var file = $scope.file,
+            state;
+        if (file.url) {
+            file.$state = function () {
+                return state;
+            };
+            file.$destroy = function () {
+                state = 'pending';
+                return $scope.deletePicture(file).$promise.then(
+                    function () {
+                        state = 'resolved';
+                        $scope.clear(file);
+                    },
+                    function () {
+                        state = 'rejected';
+                    }
+                );
+            };
+        } else if (!file.$cancel && !file._index) {
+            file.$cancel = function () {
+                $scope.clear(file);
+            };
+        }
+    }])
+
 
 //end
