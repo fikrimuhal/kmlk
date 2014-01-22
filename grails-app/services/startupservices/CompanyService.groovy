@@ -522,6 +522,30 @@ class CompanyService {
         println result
         return result
     }
+    /**
+     *
+     * @param companyId
+     * @param employeeId this employee will be deleted
+     * @param ownerId for basic permission check
+     */
+    def deleteEmployee(ObjectId companyId, ObjectId employeeId, ObjectId ownerId) {
+        log.debug employeeId
+        log.debug companyId
+
+        // owner cannot fire them self
+        if (employeeId == ownerId) return
+        DBCollection col = Company.collection
+
+        def _QUERY = [
+                _id: companyId,
+                owner: ownerId
+        ]
+
+        def _OPS = [:]
+
+        _OPS.'$pull' = ['employees': employeeId]
+        log.debug col.update(_QUERY, _OPS, false, false, WriteConcern.SAFE)
+    }
 }
 
 /*

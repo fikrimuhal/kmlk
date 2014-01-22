@@ -77,6 +77,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="PROVIDED" name="sass-stdlib" level="application" />
     <orderEntry type="library" scope="PROVIDED" name="grails-2.3.2" level="application" />
+    <orderEntry type="library" scope="PROVIDED" name="angular" level="application" />
     <orderEntry type="module-library" exported="">
       <library name="Grails User Library (startupServices-grailsPlugins)">
         <CLASSES>

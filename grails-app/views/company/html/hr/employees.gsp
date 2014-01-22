@@ -7,7 +7,7 @@
                     <span class="caret"></span>
                 </button>
                 <ul class="dropdown-menu ">
-                    <li><a href="javascript:alert('todo alpha 2');return false;" ><i class="fa fa-trash-o fa-fw"></i> Bu kişiyi işten çıkart</a></li>
+                    <li><a href="#" ng-click="removeEmployee(id)"><i class="fa fa-trash-o fa-fw"></i> Bu kişiyi işten çıkart</a></li>
                     <li><a href="{{getProfile(id).profileUrl}}" target="_self" ><i class="fa fa-user fa-fw"></i> Profile git</a></li>
 
                 </ul>

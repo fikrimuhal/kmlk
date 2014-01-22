@@ -244,6 +244,16 @@ function CompanyListCtrl($scope) {
 
 
 function CompanyEmployeeCtrl($scope, profileService, $resource) {
+    var api = $resource('/api/company/:verb', {},
+        {
+            /*alias of newRequest*/
+            'verify': {method: 'PUT', params: {verb: 'employeeRequest'}},
+            'newRequest': {method: 'PUT', params: {verb: 'employeeRequest'}},
+            'delete': {method: 'DELETE', params: {verb: 'employeeRequest'}},
+            'query': {method: 'GET', params: {verb: 'employeeRequest'}, isArray: true},
+            'deleteEmployee': {method: 'POST', params: {verb: 'employeeDelete'}}
+        });
+
     var employeeIds = $scope.company.employees;
     $scope.employeeIds = employeeIds;
     profileService.prefetchProfilesByIds(_.chain(employeeIds).flatten().uniq().value());
@@ -255,18 +265,18 @@ function CompanyEmployeeCtrl($scope, profileService, $resource) {
 
     };
 
+    $scope.removeEmployee = function (id) {
+
+        api.deleteEmployee({},{companyId: $scope.company._id, employeeId: id}, function (d) {
+            $scope.employeeIds = _.without($scope.employeeIds, id);
+
+        });
+
+    };
+
     $scope.getProfile = function (id) {
         return profileService.getProfileById(id);
     };
-
-    var api = $resource('/api/company/:verb', {},
-        {
-            /*alias of newRequest*/
-            'verify': {method: 'PUT', params: {verb: 'employeeRequest'}},
-            'newRequest': {method: 'PUT', params: {verb: 'employeeRequest'}},
-            'delete': {method: 'DELETE', params: {verb: 'employeeRequest'}},
-            'query': {method: 'GET', params: {verb: 'employeeRequest'}, isArray: true}
-        });
 
 
     $scope.employmentRequests = api.query({companyId: $scope.company._id}, function (d) {

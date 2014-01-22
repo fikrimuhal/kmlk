@@ -148,6 +148,7 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="angular" level="application" />
   </component>
 </module>
 

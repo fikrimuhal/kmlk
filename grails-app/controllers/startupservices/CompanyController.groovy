@@ -216,6 +216,10 @@ class CompanyController {
 
     def employeeRequest() {
         def result
+        if (!authenticationService.loggedIn) {
+            render status: 401
+            return
+        }
 
         log.debug("Employee request: ${request.method}")
         switch (request.method) {
@@ -252,6 +256,33 @@ class CompanyController {
                 ObjectId companyId = ObjectId.massageToObjectId(params.companyId)
 
                 result = companyService.getEmploymentRequests(companyId)
+                break
+
+            default:
+                result = [status: 'error']
+
+        }
+        render result as JSON
+    }
+
+    def employeeDelete() {
+        def result
+        if (!authenticationService.loggedIn) {
+            render status: 401
+            return
+        }
+        log.debug("Employee : ${request.method}")
+        log.debug("Employee : ${request.JSON.companyId}")
+        switch (request.method) {
+
+            case 'POST':
+
+                ObjectId companyId = ObjectId.massageToObjectId(request.JSON.companyId)
+                ObjectId employeeId = ObjectId.massageToObjectId(request.JSON.employeeId)
+                 assert companyId
+                 assert employeeId
+                companyService.deleteEmployee(companyId, employeeId, authenticationService.authenticatedUserId)
+                result = [status: 'success']
                 break
 
             default:
