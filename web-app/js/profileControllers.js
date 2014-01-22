@@ -14,7 +14,7 @@ function ProfileSettingsWwwCtrl($scope, $resource) {
     console.log('domain : ', domain)
 
     $scope.save = function (domain2Save) {
-        var result = api.save({}, domain2Save,function(){
+        var result = api.save({}, domain2Save, function () {
             alert('Kaydedildi');
         });
     }
@@ -73,7 +73,7 @@ kimlik.controller('KimlikTimelineCtrl', [ '$scope', '$resource', 'userService', 
     $scope.availableTypes = type;
 
     $scope.selected = {};
-    $scope.entities = userService.getLoggedInUser().timeline
+    $scope.entities = userService.getLoggedInUser().timeline;
     console.log(' $scope ', $scope.entities);
 
     $scope.new = function () {
@@ -129,7 +129,7 @@ kimlik.controller('KimlikTimelineCtrl', [ '$scope', '$resource', 'userService', 
     $scope.doDelete = function (entity) {
         console.log(entity);
         if (entity._id) {
-            console.debug({_id: entity._id})
+            console.debug({_id: entity._id});
             var result = api.delete({entityId: entity._id, typeKey: entity.typeKey});
 
             $scope.entities = _($scope.entities).reject({_id: entity._id, typeKey: entity.typeKey}).value();
@@ -146,10 +146,10 @@ kimlik.controller('KimlikTimelineCtrl', [ '$scope', '$resource', 'userService', 
 
 function KimlikSkillsCtrl($scope, skillService) {
     console.log('KimlikSkillsCtrl ready');
-    var selected
+    var selected;
     var isPanelVisible = function (s) {
         return selected && selected.name == s.name
-    }
+    };
     $scope.isPanelVisible = isPanelVisible;
 
     $scope.togglePanel = function (s) {
@@ -169,7 +169,7 @@ function LeftMenuController($rootScope, $scope, userService, companyService) {
     };
 
     $scope.showAddEmployeeModal = function () {
-        console.log('showAddEmployeeModal')
+        console.log('showAddEmployeeModal');
         $('#AddEmployeeModal').modal('show')
     };
 
@@ -188,7 +188,7 @@ function LeftMenuController($rootScope, $scope, userService, companyService) {
 function addEmployeeModalController(companyService, $scope, $resource, userService) {
     var loggedInUser = userService.getLoggedInUser();
     var selectedCompany;
-    var elm = $('#AddEmployeeModal')
+    var elm = $('#AddEmployeeModal');
     elm.on('show.bs.modal', function () {
         //re-initialize
         selectedCompany = null;
@@ -206,8 +206,8 @@ function addEmployeeModalController(companyService, $scope, $resource, userServi
         /*global inline*/
 
         selectedCompany = company;
-        console.log('selectedCompany ', company._id)
-        console.log('user ', _currentProfile)
+        console.log('selectedCompany ', company._id);
+        console.log('user ', _currentProfile);
 
         //todo bug toId suanda bakilan profil olmali
         api.newRequest({}, {toId: toId, fromId: company._id, requestedByCompany: true}, function (d) {
@@ -288,12 +288,12 @@ kimlik.controller('KimlikSettingsLocationCtrl', ['$scope', '$resource', 'userSer
             lat: marker.getPosition().lat(),
             lng: marker.getPosition().lng(),
             zoomLevel: map.getZoom()
-        }
+        };
         /*Vodoo END!*/
     };
 
     var markerDragStartListener = function () {
-        console.log('.')
+        console.log('.');
         marker.setAnimation(google.maps.Animation.BOUNCE);
         $scope.$apply(function () {
             $scope.markerIsJumping = true
@@ -303,7 +303,7 @@ kimlik.controller('KimlikSettingsLocationCtrl', ['$scope', '$resource', 'userSer
     };
 
     function initialize() {
-        console.log('google maps init')
+        console.log('google maps init');
 
 
         var mapOptions = {
@@ -386,37 +386,37 @@ kimlik.controller('KimlikSettingsLocationCtrl', ['$scope', '$resource', 'userSer
 
 
     $scope.save = function (address) {
-        var result = api.save({}, address)
+        var result = api.save({}, address);
 
     }
-    console.log('Settings location Ready')
+    console.log('Settings location Ready');
 
 }]);
 
 
 function KimlikSettingsGeneralCtrl($scope, userService, $resource) {
-    console.log('Settings general Ready')
+    console.log('Settings general Ready');
 
     $scope.model = {}
     if (userService.isLoggedIn()) {
         populateForm();
     } else {
-        $scope.$on('userAuthenticated', populateForm)
+        $scope.$on('userAuthenticated', populateForm);
     }
 
     function populateForm() {
-        var newValue = userService.getLoggedInUser()
-        $scope.model.first_name = newValue.first_name
-        $scope.model.last_name = newValue.last_name
-        $scope.model.middle_name = newValue.middle_name
-        $scope.model.birthDate = newValue.birthDate
-        $scope.model.aboutText = newValue.aboutText
-        $scope.model.gender = newValue.gender
-        $scope.model.webSite = newValue.contactInfo.webSite
-        $scope.model.publicTel = newValue.contactInfo.publicTel
-        $scope.model.publicEmail = newValue.contactInfo.publicEmail
+        var newValue = userService.getLoggedInUser();
+        $scope.model.first_name = newValue.first_name;
+        $scope.model.last_name = newValue.last_name;
+        $scope.model.middle_name = newValue.middle_name;
+        $scope.model.birthDate = newValue.birthDate;
+        $scope.model.aboutText = newValue.aboutText;
+        $scope.model.gender = newValue.gender;
+        $scope.model.webSite = newValue.contactInfo.webSite;
+        $scope.model.publicTel = newValue.contactInfo.publicTel;
+        $scope.model.publicEmail = newValue.contactInfo.publicEmail;
 
-        $scope.username = newValue.username
+        $scope.username = newValue.username;
 
 
     }
@@ -433,32 +433,50 @@ function KimlikSettingsGeneralCtrl($scope, userService, $resource) {
 }
 
 
-var url = '/picture/ajaxUpload';
 kimlik
     .controller('KimlikSettingsProfilePicCtrl', [
-        '$scope', '$resource','userService',
-        function ($scope, $resource,userService) {
-            var api = $resource(_settings.baseUrl + 'picture/ajaxDelete!!!!!!!!');
-
+        '$scope', '$resource', 'userService',
+        function ($scope, $resource, userService) {
+            var url = '/picture/ajaxUploadProfile';
+            var api = $resource('/api/picture/:verb', {},
+                {
+                    'delete': {method: 'DELETE', params: {verb: 'ajaxDeleteProfile'}},
+                    'makeDefault': {method: 'POST', params: {verb: 'makeDefaultProfilePicture'}}
+                });
 
             $scope.options = {
                 url: url,
                 formData: {/*companyId: $scope.company._id*/}
             };
 
-            console.log('profilePictures',userService.getLoggedInUser().profilePicture);
-            $scope.profilePictures = userService.getLoggedInUser().profilePicture.pictures
+            $scope.profilePicture = userService.getLoggedInUser().profilePicture;
+            console.log('profilePicture', $scope.profilePicture);
 
 
             $scope.deletePicture = function (file) {
-                console.log(file._id)
-                var result = api.delete({pictureId: file._id, companyId: $scope.company._id})
+                console.log('picture to be delete', file);
+                var result = api.delete({pictureId: file._id});
 
                 //todo: api result i mi beklesek...
-                $scope.officePictures = _.reject($scope.officePictures, {_id: file._id})
-                console.log($scope.company.officePictures)
+                $scope.profilePicture.pictures = _.reject($scope.profilePicture.pictures, {_id: file._id});
+
                 return result
+            };
+
+            $scope.makeDefault = function (file) {
+                console.log(file._id)
+                var result = api.makeDefault({}, {url: file.url});
+                $scope.profilePicture.url = file.url
+            }
+
+            $scope.isThisDefaultPicture = function (picture) {
+                return picture.url == $scope.profilePicture.url
+            }
+
+
+            $scope.canBeDeleted = function (picture) {
+                return picture.source == 'upload'
             }
 
         }
-    ])
+    ]);

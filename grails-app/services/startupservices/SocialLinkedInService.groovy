@@ -12,6 +12,8 @@ import java.text.SimpleDateFormat
 class SocialLinkedInService {
     OauthService oauthService // or new OauthService() would work if you're not in a spring-managed class.
     def profileService
+    def pictureService
+
 
     def addToProfile(def profile, Token token) {
 
@@ -117,11 +119,16 @@ class SocialLinkedInService {
                 first_name: data.firstName,
                 last_name: data.lastName,
                 token: token.token,
-                token_secret: token.secret ,
+                token_secret: token.secret,
                 picture_url: data.pictureUrls?.values?.getAt(0),
 
         )
-        profile.save(failOnError: true)
+        profile = profile.save(failOnError: true)
+
+        //If we have linkedin profile picture fetch and save
+        if (data.pictureUrls?.values?.getAt(0)) {
+            pictureService.upload2Aws(new URL((String) data.pictureUrls?.values?.getAt(0)), 'linkedin', profile.id)
+        }
 
 
     }

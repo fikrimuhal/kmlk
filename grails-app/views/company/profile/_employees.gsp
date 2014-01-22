@@ -10,7 +10,7 @@
             <g:each in="${employees}" var="e" status="i">
                 <div class="col-sm-4 col-md-4 ">
                     <div class="thumbnail">
-                        <img src="${e.profilePicture.defaultPicture.url}" style="height: 200px;"/>
+                        <img src="${e.profilePicture.url}" style="height: 200px;"/>
 
                         <div class="caption">
                             <h4>${e.first_name} ${e.last_name}

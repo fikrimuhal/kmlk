@@ -6,7 +6,13 @@ class ProfilePicture {
 
 
     Set<Picture> pictures = new HashSet<Picture>()
+
+    /**
+     * @Deprecated
+     */
     Picture defaultPicture
+
+    String url //default Picture
 
     static hasMany = [
             pictures: Picture,
@@ -16,12 +22,7 @@ class ProfilePicture {
 
 
     String getProfilePictureUrl() {
-       if(defaultPicture){
-           return defaultPicture.url
-       }else{
-           return null
-       }
-
+      url
     }
 
 

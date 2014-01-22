@@ -3,14 +3,19 @@ package startupservices
 import com.mongodb.DBCollection
 import com.mongodb.DBCursor
 import com.mongodb.WriteConcern
+import kimlik.ProfileUtils
 import kimlik.account.Accounts
 import kimlik.account.SocialAccount
 import kimlik.account.SocialMeta
 import kimlik.account.history.HistoryEntity
+import kimlik.company.Company
 import org.bson.types.ObjectId
+
+import static kimlik.ProfileUtils.postProcessProfile
 
 class ProfileService {
     def skillService
+    def pictureService
 
     def addWorkHistory(ObjectId profileId, HistoryEntity historyEntity) {
         log.debug("Work eklenecek profileId:${profileId}, work:${historyEntity.entity}")
@@ -147,6 +152,12 @@ class ProfileService {
 
             }
             friend = friend.save(flush: true, failOnError: true)
+
+            //save linkedin picture
+            if (accountType == 'linkedin') {
+                pictureService.upload2Aws(new URL((String) friendData.picture_url), 'linkedin', friend.id)
+            }
+
             //END --- CREATE NEW GLOBAL PROFILE
         } else {
             log.debug "friend zaten sisteme daha onceden eklenmis ${friend._id}, ${friend.first_name}"
@@ -181,32 +192,60 @@ class ProfileService {
         def _QUERY = [_id: profileId]
         def _OPS = [:]
         if (isDefault) {
-            _OPS.'$set' = ['profilePicture.defaultPicture': pictureMap]
+            _OPS.'$set' = ['profilePicture.url': picture.url]
         }
         _OPS.'$addToSet' = ['profilePicture.pictures': pictureMap]
         col.update(_QUERY, _OPS, false, false, WriteConcern.SAFE)
 
     }
 
-    def makeDefaultProfilePicture(Picture picture, ObjectId profileId) {
+    def deleteProfilePicture(ObjectId pictureId, profileId) {
 
-        def pictureMap = [
-                _id: picture.id,
-                path: picture.path,
-                bucket: picture.bucket,
-                url: picture.url,
-                owner: picture.owner.id,
-                broken: picture.broken,
-                source: picture.source
-        ]
         DBCollection col = Profile.collection
 
-        def _QUERY = [_id: profileId]
+
+        def _QUERY = [
+                _id: profileId,
+                'profilePicture.pictures._id': pictureId
+        ]
+
         def _OPS = [:]
-        _OPS.'$set' = ['profilePicture.defaultPicture': pictureMap]
+
+        _OPS.'$pull' = ['profilePicture.pictures': ['_id': pictureId]]
         col.update(_QUERY, _OPS, false, false, WriteConcern.SAFE)
 
     }
+
+
+    def makeDefaultProfilePicture(String url, ObjectId profileId) {
+        if (validateProfilePictureUrl(url, profileId)) {
+
+            DBCollection col = Profile.collection
+
+            def _QUERY = [_id: profileId]
+            def _OPS = [:]
+            _OPS.'$set' = ['profilePicture.url': url]
+            col.update(_QUERY, _OPS, false, false, WriteConcern.SAFE)
+        }
+
+    }
+
+    def validateProfilePictureUrl(String url, ObjectId profileId) {
+        String lcUrl = url.toLowerCase()
+        if (lcUrl.startsWith('http://graph.facebook.com/') || lcUrl.startsWith('http://graph.facebook.com/')) {
+            //database de facebook fotograflari saklanmiyor
+            return true
+        }
+
+        DBCollection col = Profile.collection
+
+        def _QUERY = [_id: profileId,
+                'profilePicture.pictures.url': url
+        ]
+
+        return 0 < col.count(_QUERY)
+    }
+
 
     def getProfilesByIds(def ids) {
         DBCollection col = Profile.collection
@@ -214,15 +253,7 @@ class ProfileService {
 
         def result = []
         col.find(_QUERY).each {
-
-            if (it.accounts?.facebook?.remoteId) {
-                it.profilePictureUrl = "http://graph.facebook.com/${it.accounts.facebook.remoteId}/picture?height=400".toString()
-            } else if (it.accounts?.linkedin?.remoteId) {
-                it.profilePictureUrl = it.accounts?.linkedin?.picture_url
-            }
-            it.profileUrl = '/kimlik/profile/' + (it.username ?: it._id)
-
-            result << it
+            result << postProcessProfile(it)
         }
 
         return result
@@ -253,9 +284,8 @@ class ProfileService {
 
         DBCursor cursor = col.find(_QUERY)
 
-        cursor.sort([_id:1]).skip(skip).limit(limit).each {
-            it.profileUrl = '/kimlik/profile/' + (it.username ?: it._id)
-            data << it
+        cursor.sort([_id: 1]).skip(skip).limit(limit).each {
+            data << postProcessProfile(it)
         }
 
         return [

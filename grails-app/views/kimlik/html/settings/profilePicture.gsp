@@ -1,4 +1,4 @@
-<h3>Profil fotoğrafı </h3>
+<h3>Profil fotoğrafı</h3>
 <!-- The file upload form used as target for the file upload widget -->
 <form id="fileupload"
       ng-controller="KimlikSettingsProfilePicCtrl" file-upload="options"
@@ -88,7 +88,7 @@
             </td>
         </tr>
 
-        <tr ng-repeat="picture in profilePictures">
+        <tr ng-repeat="picture in profilePicture.pictures">
             <td>
                 <div class="preview">
                     <a ng-href="{{picture.url}}" title="{{picture.name}}" download="{{picture.name}}" data-gallery><img
@@ -99,21 +99,21 @@
                 <p class="name">
                     <span>
                         <a ng-href="{{picture.url}}" title="{{picture.source}}" download="{{picture.path}}"
-                           data-gallery>{{picture.path}}</a>
+                           data-gallery>göster</a>
                     </span>
                 </p>
             </td>
             <td>
-                <p class="size"></p>
+                <p class="size">{{picture.source}}</p>
             </td>
             <td>
 
-                <button type="button" class="btn btn-primary"
-                        ng-click="deletePicture(picture)">
+                <button type="button" class="btn btn-primary" ng-hide="isThisDefaultPicture(picture)"
+                        ng-click="makeDefault(picture)">
 
                     <span>Profil fotoğrafım olarak kullan</span>
                 </button>
-                <button type="button" class="btn btn-danger destroy pull-right"
+                <button type="button" class="btn btn-danger destroy pull-right"   ng-show="canBeDeleted(picture)"
                         ng-click="deletePicture(picture)">
                     <i class="fa fa-trash-o"></i>
                     <span>Sil</span>
@@ -127,7 +127,7 @@
 
 
 <!-- The blueimp Gallery widget -->
-<div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls"  data-filter=":even">
+<div id="blueimp-gallery" class="blueimp-gallery blueimp-gallery-controls" data-filter=":even">
     <div class="slides"></div>
 
     <h3 class="title"></h3>

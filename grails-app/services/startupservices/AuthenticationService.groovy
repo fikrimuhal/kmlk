@@ -3,6 +3,9 @@ package startupservices
 import com.mongodb.DBCollection
 import org.bson.types.ObjectId
 import org.codehaus.groovy.grails.web.util.WebUtils
+import kimlik.ProfileUtils
+
+import static kimlik.ProfileUtils.postProcessProfile
 
 
 class AuthenticationService {
@@ -22,7 +25,7 @@ class AuthenticationService {
         def r = col.findOne([_id: authenticatedUserId])
 
         if (r) {
-            return fixDeprecatedProfileFields(r.toMap())
+            return postProcessProfile(fixDeprecatedProfileFields(r.toMap()))
         } else {
             return null
         }
@@ -30,6 +33,7 @@ class AuthenticationService {
 
     @Deprecated
     def getAuthenticatedUserWithGorm() {
+        log.warn "Deprecated method call getAuthenticatedUserWithGorm()"
         return Profile.findById(authenticatedUserId)
     }
 

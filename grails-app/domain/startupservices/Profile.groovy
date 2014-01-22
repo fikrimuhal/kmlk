@@ -70,8 +70,8 @@ class Profile {
     }
 
     String getProfilePictureUrl() {
-        if (profilePicture?.profilePictureUrl) {
-            return profilePicture?.profilePictureUrl
+        if (profilePicture?.url) {
+            return profilePicture?.url
         } else if (accounts.hasFacebook()) {
             return "http://graph.facebook.com/${accounts.facebook.remoteId}/picture?height=400"
         } else if (accounts.hasLinkedin()) {

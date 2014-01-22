@@ -32,8 +32,8 @@
     <!-- .sidebar -->
     <aside class="sidebar bg-lighter sidebar">
         <div class="text-center clearfix bg-white">
-            <a href="/kimlik/profile/sumnulu" target="_self">
-            <img ng-src="{{getProfilePictureUrl(loggedinUser)}}">
+            <a href="{{loggedinUser.profileUrl}}" target="_self">
+            <img ng-src="{{loggedinUser.profilePicture.url}}">
             </a>
         </div>
 
