@@ -23,6 +23,10 @@ class ProfileUtils {
     }
 
     static profilePicture(Map profile) {
+        //add missing fields if any
+        profile.profilePicture = profile.profilePicture ?: [url: '', pictures: []]
+        profile.profilePicture.pictures = profile.profilePicture.pictures ?: []
+
         //add Facebook picture to the list
         if (profile?.accounts?.facebook) {
 
@@ -45,7 +49,7 @@ class ProfileUtils {
          */
         if (!profile.profilePicture.url) {
             def firstPicture = profile.profilePicture.pictures[0]
-            profile.profilePicture.url = firstPicture.url
+            profile.profilePicture.url = firstPicture?.url
         }
 
 

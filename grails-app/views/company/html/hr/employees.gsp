@@ -75,8 +75,8 @@
             <tbody>
 
             <tr ng-repeat="req in employmentRequests">
-                <td><img ng-src="{{getProfile(req.profile).profilePictureUrl}}" style="height: 47px;"/></td>
-                <td><a href="{{getProfile(req.profile).profilUrl}}">{{getFullName(req.profile)}}</a>
+                <td><img ng-src="{{getProfile(req.profile).profilePicture.url}}" style="height: 47px;"/></td>
+                <td><a href="{{getProfile(req.profile).profileUrl}}" target="_self">{{getFullName(req.profile)}}</a>
 
                 </td>
                 <td>{{req.requestedByCompany?'Şirket':'Profil'}}</td>
