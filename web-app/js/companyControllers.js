@@ -20,10 +20,10 @@ function companyLoggedInUserMenuController($scope, userService, $resource) {
     };
     $scope.iWorkHere = function () {
         var toId = loggedInUser._id;
-        var fromId = _currentCompany._id
+        var fromId = _currentCompany._id;
 
-        console.log('user ', toId)
-        console.log('company ', fromId)
+        console.log('user ', toId);
+        console.log('company ', fromId);
 
         api.newRequest({}, {toId: toId, fromId: fromId, requestedByCompany: false}, function (d) {
             alert('Şirket yetkilisine bildirildi, teşekkürler!');
@@ -63,11 +63,11 @@ function companyWorkWithUsController($scope, $resource, userService) {
      */
     $scope.apply = function (model) {
         elm.modal('hide');
-        var model = $scope.model
+        var model = $scope.model;
 
         model.companyId = _currentCompany._id;
         api.apply({}, model, function success() {
-            alert('Başvuru gönderildi.')
+            alert('Başvuru gönderildi.');
             delete $scope.model
         });
     };
@@ -78,11 +78,11 @@ function companyWorkWithUsController($scope, $resource, userService) {
 function CompanySkillsCtrl($scope, $resource, profileService) {
     var api = $resource(_settings.baseUrl + 'company/skillUpdate');
 
-    $scope.skills = $scope.company.skills
+    $scope.skills = $scope.company.skills;
 
     profileService.prefetchProfilesByIds(_.chain($scope.skills).map('contributors').flatten().uniq().value());
 
-    console.log($scope.skills)
+    console.log($scope.skills);
 
     $scope.forceRecalculate = function () {
         api.save({companyId: $scope.company._id}, {op: 'RECALCULATE'});
@@ -101,11 +101,11 @@ function CompanySkillsCtrl($scope, $resource, profileService) {
 
     $scope.progressBarStyle = function (percent) {
         return 'width:' + percent + '%;';
-    }
+    };
 
     $scope.getFullName = function (id) {
 //        console.log($scope.$$phase)
-        var u = profileService.getProfileById(id)
+        var u = profileService.getProfileById(id);
         return u.first_name + ' ' + u.last_name;
 
     };
@@ -113,13 +113,13 @@ function CompanySkillsCtrl($scope, $resource, profileService) {
 }
 
 function CompanySettingsWwwCtrl($scope, $resource) {
-    console.log('company id = ', $scope.company._id)
+    console.log('company id = ', $scope.company._id);
 
     var api = $resource(_settings.baseUrl + 'company/domainSettings');
     var domain = api.get({companyId: $scope.company._id}, {});
-    console.debug(domain)
+    console.debug(domain);
     $scope.domain = domain;
-    console.log('domain : ', domain)
+    console.log('domain : ', domain);
 
     $scope.save = function (domain2Save) {
 
@@ -204,12 +204,12 @@ function CompanyServicesCtrl($scope) {
 function CompanyProjectsCtrl($scope, $routeSegment, $resource) {
     var api = $resource(_settings.baseUrl + 'company/products');
 
-    var pid = $routeSegment.$routeParams.pid
+    var pid = $routeSegment.$routeParams.pid;
     var products = _($scope.company.products);
 
     $scope.product = products.find({_id: pid});
 
-    console.log('product', $scope.product)
+    console.log('product', $scope.product);
     $scope.new = function () {
         console.log('new product');
         $scope.product = {};
@@ -230,7 +230,7 @@ function CompanyProjectsCtrl($scope, $routeSegment, $resource) {
     };
 
     $scope.getId = function (p) {
-        if (!p) return ''
+        if (!p) return '';
         else return p._id;
     };
 
@@ -314,7 +314,7 @@ function CompanyEmployeeCtrl($scope, profileService, $resource) {
 }
 
 function CompanyPositionCtrl($scope, $routeSegment) {
-    var pid = $routeSegment.$routeParams.pid
+    var pid = $routeSegment.$routeParams.pid;
     $scope.page = {};
     $scope.position = {};
     if (pid === "new") {
@@ -406,7 +406,7 @@ function CompanyApplicantsCtrl($scope, $routeSegment, $resource, profileService)
 
 
     $scope.getFullName = function (id) {
-        var u = profileService.getProfileById(id)
+        var u = profileService.getProfileById(id);
         return u.first_name + ' ' + u.last_name;
 
     };
@@ -452,12 +452,12 @@ kimlik
 
             $scope.officePictures = $scope.company.officePictures;
             $scope.deletePicture = function (file) {
-                console.log(file._id)
-                var result = api.delete({pictureId: file._id, companyId: $scope.company._id})
+                console.log(file._id);
+                var result = api.delete({pictureId: file._id, companyId: $scope.company._id});
 
                 //todo: api result i mi beklesek...
-                $scope.officePictures = _.reject($scope.officePictures, {_id: file._id})
-                console.log($scope.company.officePictures)
+                $scope.officePictures = _.reject($scope.officePictures, {_id: file._id});
+                console.log($scope.company.officePictures);
                 return result
             }
 
@@ -534,7 +534,7 @@ kimlik
         $scope.doDelete = function (entity) {
             console.log(entity);
             if (entity._id) {
-                console.debug({_id: entity._id})
+                console.debug({_id: entity._id});
                 var result = api.delete({companyId: $scope.company._id, entityId: entity._id});
 
                 $scope.entities = _($scope.entities).reject({_id: entity._id}).value();
@@ -574,8 +574,8 @@ kimlik
         var map;
         var geocoder;
         var marker;
-        var myLatlng = new google.maps.LatLng($scope.address.latLng.lat, $scope.address.latLng.lng)
-        var markerLocation = new google.maps.LatLng($scope.address.latLng.lat, $scope.address.latLng.lng)
+        var myLatlng = new google.maps.LatLng($scope.address.latLng.lat, $scope.address.latLng.lng);
+        var markerLocation = new google.maps.LatLng($scope.address.latLng.lat, $scope.address.latLng.lng);
         var zoomLevel = _.min([$scope.address.latLng.zoomLevel , 12]);
         $scope.markerIsJumping = !($scope.address && $scope.address.latLng && $scope.address.latLng.lat && $scope.address.latLng.lng);  //kozmetik
 
@@ -595,12 +595,12 @@ kimlik
                 lat: marker.getPosition().lat(),
                 lng: marker.getPosition().lng(),
                 zoomLevel: map.getZoom()
-            }
+            };
             /*Vodoo END!*/
         };
 
         var markerDragStartListener = function () {
-            console.log('.')
+            console.log('.');
             marker.setAnimation(google.maps.Animation.BOUNCE);
             $scope.$apply(function () {
                 $scope.markerIsJumping = true
@@ -610,7 +610,7 @@ kimlik
         };
 
         function initialize() {
-            console.log('google maps init')
+            console.log('google maps init');
 
 
             var mapOptions = {
@@ -652,7 +652,7 @@ kimlik
             if (!waitingGeocoder) {
                 waitingGeocoder = true;
                 var address = getPartialAddress($scope.address);
-                console.log(address)
+                console.log(address);
 
                 geocoder.geocode({ 'address': address}, function (results, status) {
                     try {
@@ -662,7 +662,7 @@ kimlik
                             console.log(results);
                             marker.setPosition(results[0].geometry.location);
                             markerDragStartListener();
-                            $scope.address.formatted_address = results[0].formatted_address
+                            $scope.address.formatted_address = results[0].formatted_address;
                             $scope.address.display_address = results[0].formatted_address
                         } else {
 //                        alert("Geocode was not successful for the following reason: " + status);
@@ -695,7 +695,7 @@ kimlik
         $scope.save = function (address) {
             var result = api.save({companyId: $scope.company._id}, address)
 
-        }
+        };
         console.log('Settings location Ready')
 
     }
