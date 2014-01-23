@@ -17,7 +17,18 @@ class ProfileUtils {
 
     static Map otherFields(def profile) {
 
+        //add profile url
         profile.profileUrl = '/kimlik/profile/' + (profile.username ?: profile._id)
+
+        //add full name
+        def r = profile.first_name
+        if (profile.middle_name)
+            r += ' ' + profile.middle_name
+        if (profile.last_name)
+            r += ' ' + profile.last_name
+
+        profile.full_name = r.toString()
+
 
         return profile
     }

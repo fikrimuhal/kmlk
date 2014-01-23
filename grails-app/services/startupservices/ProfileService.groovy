@@ -259,6 +259,10 @@ class ProfileService {
         return result
     }
 
+    def getProfilesById(ObjectId id) {
+        return getProfilesByIds([id]).first()
+    }
+
     def list(def params) {
         params.page = params.page ?: 1
         params.itemPerPage = params.itemPerPage ?: 20

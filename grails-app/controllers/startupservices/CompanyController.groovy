@@ -236,7 +236,8 @@ class CompanyController {
                 ObjectId toId = ObjectId.massageToObjectId(request.JSON.toId)
                 ObjectId fromId = ObjectId.massageToObjectId(request.JSON.fromId)
                 boolean requestedByCompany = request.JSON.requestedByCompany as boolean
-
+                assert toId, 'No to ID'
+                assert fromId, 'No from id'
                 //todo employeeRequest kaydi olustur
                 //todo kullaniciya notification yolla, eger daha once kayit yok ise
 

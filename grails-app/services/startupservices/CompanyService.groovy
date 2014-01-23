@@ -15,6 +15,7 @@ import java.util.regex.Pattern
 
 class CompanyService {
     def notificationService
+    def profileService
 
     //only alphanumeric chars. white space will not match
     final Pattern onlyAlphaNumericPattern = Pattern.compile("[\\p{Alnum},.']*");
@@ -58,6 +59,7 @@ class CompanyService {
      * @deprecated
      */
     def addDeprecatedFields = {
+        it.pageUrl = "http://kimlik.io/company/profile/${it.name.pageName}".toString()
         it.page_name = it.name.pageName
         it.short_name = it.name.oneWord
         it.full_name = it.name.fullLegal
@@ -104,9 +106,13 @@ class CompanyService {
         DBCollection col = Company.collection
         def _QUERY = ['name.pageName': pageName]
         def result = col.findOne(_QUERY)
-        result << mockExtraData
+        if (result) {
+            result << mockExtraData
+            return addDeprecatedFields(result)
+        }else{
+            return [:]
+        }
 
-        return addDeprecatedFields(result)
     }
 
 
@@ -397,13 +403,19 @@ class CompanyService {
             if (!existingReq.requestedByCompany && requestedByCompany) {
                 //kullanicida zaten request de bulunmus
                 //eski kayit i sil( verify etmis olduk aslinda)
-                //todo profil i update et
+
                 //todo notification lari yolla
                 log.info("request verified oldu  (sirket tarafindan), siliyorum eski kaydi")
+
+                def company = getCompany(fromId)
+                def data = [company_name: company.name.significantPart, company_url: company.pageUrl, type: "1001"]
                 notificationService.sendToProfile(new Notification(
-                        title: 'Y sirketi sizi calisan olarak ekledi',
+                        data: data,
+                        title: "${company.name.significantPart} sizi çalışan olarak ekledi" as String,
                         from: new DBRef(null, 'company', fromId)), toId)
+
                 addNewEmployee(fromId, toId)
+
                 col.remove([profile: toId, company: fromId, requestedByCompany: false], WriteConcern.SAFE)
 
 
@@ -413,8 +425,13 @@ class CompanyService {
                 //todo notification lari yolla
                 log.info("request verified oldu (kullanici tarafindan) , siliyorum eski kaydi")
                 addNewEmployee(fromId, toId)
+
+                def company = getCompany(fromId)
+                def profile = profileService.getProfilesById(toId)
+                def data = [company_name: company.name.significantPart, company_url: company.pageUrl, type: "1001"]
                 notificationService.sendToCompany(new Notification(
-                        title: 'X kisisi, Y sirketi icin calisan olarak eklendi',
+                        data: data,
+                        title: "${profile.full_name}, ${company.name.significantPart} şirketine çalışan olarak eklendi" as String,
                         from: new DBRef(null, 'profile', toId)), fromId)
 
                 col.remove([profile: toId, company: fromId, requestedByCompany: true], WriteConcern.SAFE)
@@ -426,16 +443,26 @@ class CompanyService {
         } else {
             //daha onceden bir request yok
             log.info("yeni employment request")
+
+
             if (requestedByCompany) {
+
+                def company = getCompany(fromId)
+                def data = [company_name: company.name.significantPart, company_url: company.pageUrl, type: "1002"]
                 //istek sirket tarafindan olusturuldu
                 notificationService.sendToProfile(new Notification(
-                        title: 'Sirket X, sizi calisan olarak eklemek istiyor',
+                        data: data,
+                        title: "${company.name.significantPart}, sizi çalışan olarak eklemek istiyor".toString(),
                         from: new DBRef(null, 'company', fromId)), toId)
 
             } else {
+                def company = getCompany(fromId)
+                def profile = profileService.getProfilesById(toId)
+                def data = [company_name: company.name.significantPart, company_url: company.pageUrl, type: "1003"]
                 //istek kullanici tarafindan olusturuldu
                 notificationService.sendToCompany(new Notification(
-                        title: 'X kisisi, Y sirketin calisan olarak eklenmek istiyor',
+                        data: data,
+                        title: "${profile.full_name}, ${company.name.significantPart} calisan olarak eklenmek istiyor" as String,
                         from: new DBRef(null, 'profile', toId)), fromId)
             }
             col.insert([profile: toId, company: fromId, requestedByCompany: requestedByCompany, date: new Date()], WriteConcern.SAFE)

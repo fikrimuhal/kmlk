@@ -31,6 +31,7 @@ function companyLoggedInUserMenuController($scope, userService, $resource) {
     };
 
 }
+
 function companyWorkWithUsController($scope, $resource, userService) {
     var elm = $('#workWithUsModal');
 

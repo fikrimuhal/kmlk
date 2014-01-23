@@ -319,6 +319,17 @@ function NotificationCtrl($scope, $resource, userService, companyService) {
 
     };
 
+    $scope.notificationBodyTemplate = function (notification) {
+        notification.data = notification.data || {};
+         console.error('data: ', notification.data )
+        switch (notification.data.type) {
+            case '1002':
+                return '/html/kimlik/notifications/items/type_employee_add_request.html';
+            default:
+                return '/html/kimlik/notifications/items/type_general.html';
+        }
+    };
+
     $scope.deleteNotifications = function () {
         var ids = _.collect($scope.items, '_id');
         api.deleteNotifications({}, {ids: ids});
@@ -327,6 +338,31 @@ function NotificationCtrl($scope, $resource, userService, companyService) {
     console.log('NotificationCtrl Ready');
 
 }
+/**
+ * @template /html/kimlik/notifications/items/type_employee_add_request.html
+ * @param $scope
+ * @param userService
+ * @param $resource
+ */
+function notificationEmployeeAddRequest($scope, userService, $resource) {
+    var loggedInUser = userService.getLoggedInUser();
+    var api = $resource('/api/company/:verb', {},
+        {'newRequest': {method: 'PUT', params: {verb: 'employeeRequest'}}});
+
+    $scope.iWorkHere = function (companyId) {
+        var toId = loggedInUser._id;
+        var fromId = companyId;
+
+        console.log('user ', toId)
+        console.log('company ', fromId)
+
+        api.newRequest({}, {toId: toId, fromId: fromId, requestedByCompany: false}, function (d) {
+            alert('Şirket yetkilisine bildirildi, teşekkürler!');
+        });
+    };
+
+}
+
 
 kimlik.factory('companyService', function ($resource) {
     var currentUserCompanyList;

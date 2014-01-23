@@ -12,7 +12,7 @@
 
                 </ul>
             </div>
-            <img ng-src="{{getProfile(id).profilePicture.defaultPicture.url}}" alt="" style="height: 200px;"/>
+            <img ng-src="{{getProfile(id).profilePicture.url}}" alt="" style="height: 200px;"/>
 
             <div class="caption">
                 <h4>{{getFullName(id)}}
