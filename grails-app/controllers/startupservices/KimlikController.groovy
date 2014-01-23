@@ -6,6 +6,9 @@ import grails.converters.JSON
 
 import org.bson.types.ObjectId
 
+import static kimlik.ProfileUtils.removePrivateProfileData
+
+
 class KimlikController {
     def profileService
     def authenticationService
@@ -219,7 +222,7 @@ class KimlikController {
     def getProfilesByIds() {
         def ids = []
         request.JSON.ids.each { ids << ObjectId.massageToObjectId(it) }
-        def result = profileService.getProfilesByIds(ids)
+        def result = profileService.getProfilesByIds(ids).collect { removePrivateProfileData(it) }
 
         render result as JSON
     }

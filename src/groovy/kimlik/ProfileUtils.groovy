@@ -12,6 +12,13 @@ class ProfileUtils {
 
         removeConfidentialData profile
 
+        removePrivateProfileData profile
+        return profile
+    }
+
+    static def removePrivateProfileData(Map profile) {
+        profile.remove('notificationInbox')
+        profile.remove('contactInfo')
         return profile
     }
 
@@ -72,6 +79,8 @@ class ProfileUtils {
         profile?.accounts?.linkedin?.remove('token')
         profile?.accounts?.linkedin?.remove('token_secret')
         profile?.accounts?.facebook?.remove('token')
+
+        return profile
     }
 
 }
