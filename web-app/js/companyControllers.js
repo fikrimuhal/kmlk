@@ -256,7 +256,9 @@ function CompanyEmployeeCtrl($scope, profileService, $resource) {
         });
 
     var employeeIds = $scope.company.employees;
+
     $scope.employeeIds = employeeIds;
+
     profileService.prefetchProfilesByIds(_.chain(employeeIds).flatten().uniq().value());
 
 
