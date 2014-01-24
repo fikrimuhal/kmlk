@@ -12,7 +12,7 @@ class ProfileUtils {
 
         removeConfidentialData profile
 
-        removePrivateProfileData profile
+
         return profile
     }
 

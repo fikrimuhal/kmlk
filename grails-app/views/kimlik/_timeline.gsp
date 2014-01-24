@@ -3,7 +3,7 @@
 <h3 class="font-thin"><i class="fa fa-calendar-o"></i> İş ve Eğitim
 
     <g:if test="${!profile.workHistory.history || !profile.educationHistory.history}">
-        <small ng-show="isLoggedIn()">
+        <small ng-show="isSelfProfile()">
 
         <a href="/kimlik/{{getLoggedInUser().username}}/settings/history">İs ve eğitim geçmişinizi ayarlardan düzenleye bilirsiniz.</a>
         </small>

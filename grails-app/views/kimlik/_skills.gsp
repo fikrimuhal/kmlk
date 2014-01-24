@@ -5,7 +5,7 @@
     <h3 class="font-thin"><i class="fa fa-tags"></i> Bilgi ve Yetkinlikler
 
         <g:if test="${!skills1}">
-            <small ng-show="isLoggedIn()">
+            <small ng-show="isSelfProfile()">
 
                 <a href="/kimlik/{{getLoggedInUser().username}}/settings/skills">Yetkinliklerinizi ayarlardan düzenleye bilirsiniz.</a>
             </small>

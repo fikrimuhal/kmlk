@@ -210,6 +210,7 @@ class KimlikController {
      * @return
      */
     def getProfileById() {
+        assert false
 //        def result = [x:params.id]
 //        sleep(1000)
         def id = ObjectId.massageToObjectId(params.id)

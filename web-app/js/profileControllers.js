@@ -27,6 +27,10 @@ function UserController($scope, userService) {
         return userService.isLoggedIn()
     };
 
+    /**
+     * user is Logged in viewing her profile
+     * @returns {Function|isSelfProfile|$scope.isSelfProfile}
+     */
     $scope.isSelfProfile = function () {
         return config.isSelfProfile
     };
