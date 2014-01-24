@@ -8,18 +8,19 @@ grails.project.source.level = 1.6
 //grails.project.war.file = "target/${appName}-${appVersion}.war"
 
 grails.project.fork = [
-        // configure settings for compilation JVM, note that if you alter the Groovy version forked compilation is required
-        //  compile: [maxMemory: 256, minMemory: 64, debug: false, maxPerm: 256, daemon:true],
+    // configure settings for compilation JVM, note that if you alter the Groovy version forked compilation is required
+    //  compile: [maxMemory: 256, minMemory: 64, debug: false, maxPerm: 256, daemon:true],
 
-        // configure settings for the test-app JVM, uses the daemon by default
-        test: [maxMemory: 768, minMemory: 64, debug: false, maxPerm: 256, daemon:true],
-        // configure settings for the run-app JVM
-        run: [maxMemory: 768, minMemory: 64, debug: false, maxPerm: 256, forkReserve:false],
-        // configure settings for the run-war JVM
-        war: [maxMemory: 768, minMemory: 64, debug: false, maxPerm: 256, forkReserve:false],
-        // configure settings for the Console UI JVM
-        console: [maxMemory: 768, minMemory: 64, debug: false, maxPerm: 256]
+    // configure settings for the test-app JVM, uses the daemon by default
+    test: [maxMemory: 768, minMemory: 64, debug: false, maxPerm: 256, daemon:true],
+    // configure settings for the run-app JVM
+    run: [maxMemory: 768, minMemory: 64, debug: false, maxPerm: 256, forkReserve:false],
+    // configure settings for the run-war JVM
+    war: [maxMemory: 768, minMemory: 64, debug: false, maxPerm: 256, forkReserve:false],
+    // configure settings for the Console UI JVM
+    console: [maxMemory: 768, minMemory: 64, debug: false, maxPerm: 256]
 ]
+
 grails.project.dependency.resolver = "maven" // or ivy
 grails.project.dependency.resolution = {
     // inherit Grails' default dependencies
@@ -43,63 +44,45 @@ grails.project.dependency.resolution = {
         //mavenRepo "http://repository.codehaus.org"
         //mavenRepo "http://download.java.net/maven/2/"
         //mavenRepo "http://repository.jboss.com/maven2/"
-        mavenRepo "http://twitter4j.org/maven2"
-
     }
 
     dependencies {
         // specify dependencies here under either 'build', 'compile', 'runtime', 'test' or 'provided' scopes e.g.
+        // runtime 'mysql:mysql-connector-java:5.1.27'
+        // runtime 'org.postgresql:postgresql:9.3-1100-jdbc41'
 
-        // runtime 'mysql:mysql-connector-java:5.1.22'
-        compile('org.codehaus.groovy.modules.http-builder:http-builder:0.5.2') {
-            excludes "commons-logging", "xml-apis", "groovy"
-        }
+        //FIX FOR: cache-headers:1.1.5 dependency problem
+        compile 'net.sf.ehcache:ehcache-core:2.6.6'
 
-       compile 'oauth.signpost:signpost-core:1.2.1.2'
-       compile 'oauth.signpost:signpost-commonshttp4:1.2.1.2'
-        compile "net.sf.ehcache:ehcache-core:2.4.6"
+        compile 'org.codehaus.groovy.modules.http-builder:http-builder:0.6'
 
-        // Workaround to resolve dependency issue with aws-java-sdk and http-builder (dependent on httpcore:4.0)
-        build 'org.apache.httpcomponents:httpcore:4.2'
-        build 'org.apache.httpcomponents:httpclient:4.2'
-        runtime 'org.apache.httpcomponents:httpcore:4.2'
-        runtime 'org.apache.httpcomponents:httpclient:4.2'
-
-
+        //Scribe
+        // compile 'oauth.signpost:signpost-core:1.2.1.2'
+        // compile 'oauth.signpost:signpost-commonshttp4:1.2.1.2'
 
     }
 
     plugins {
         // plugins for the build system only
-        build ":tomcat:7.0.42"
+        build ":tomcat:7.0.50"
 
         // plugins for the compile step
-        compile ":scaffolding:2.0.0"
+        compile ":scaffolding:2.0.1"
         compile ':cache:1.1.1'
 
         // plugins needed at runtime but not for compilation
-//        runtime ":hibernate:3.6.10.1" // or ":hibernate4:4.1.11.1"
-//        runtime ":database-migration:1.3.5"
-        runtime ":jquery:1.10.2"
-        runtime ":resources:1.2"
+        // runtime ":hibernate:3.6.10.7" // or ":hibernate4:4.1.11.6"
+        // runtime ":database-migration:1.3.8"
+        runtime ":jquery:1.10.2.2"
+        runtime ":resources:1.2.1"
         // Uncomment these (or add new ones) to enable additional resources capabilities
         //runtime ":zipped-resources:1.0.1"
-        //runtime ":cached-resources:1.1"
+        runtime ":cached-resources:1.1"
+        compile ":cache-headers:1.1.5"
         //runtime ":yui-minify-resources:0.1.5"
 
-        runtime ':oauth:2.0.1'
-
-        compile ":mongodb:1.3.0"
-        compile ":quartz2:2.1.6.2"
-
-//        compile ":mail:1.0.1"
-
-        runtime ":cached-resources:1.0"
-        compile ":cache-headers:1.1.5"
-
-     compile ":aws-sdk:1.6.0"
-
-
-//        compile ":grails-melody:1.47" // /monitoring todo: AA ekle filter olabilir simdilik
+        compile ":mongodb:1.3.3"
+        compile ":aws:1.6.7.5"
+        runtime ':oauth:2.4'
     }
 }
