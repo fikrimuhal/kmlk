@@ -76,7 +76,7 @@ class KimlikController {
         render result as JSON
     }
     /**
-     * @param value{delete | worst | same | better}*
+     * @param value {delete | worst | same | better}*
      * @return
      */
     def ajaxRateFriend() {
@@ -189,13 +189,13 @@ class KimlikController {
                 location.lng = profile.contactInfo?.address?.latLng?.lng
             case ADDRESS_PRIVACY_LEVELS.DISTRICT:
                 location.district = profile?.contactInfo?.address?.district
-                location.display_address += location.district + ', '
+                location.display_address += (location.district) ? location.district + ', ' : ''
             case ADDRESS_PRIVACY_LEVELS.CITY:
                 location.city = profile?.contactInfo?.address?.city
-                location.display_address += location.city + ', '
+                location.display_address += (location.city) ? location.city + ', ' : ''
             case ADDRESS_PRIVACY_LEVELS.COUNTRY:
                 location.country = profile?.contactInfo?.address?.country ?: 'Türkiye' //todo
-                location.display_address += location.country
+                location.display_address += (location.country) ? location.country : ''
         }
 
         if (location.privacyLevel == ADDRESS_PRIVACY_LEVELS.FULL_ADDRESS)

@@ -2,12 +2,20 @@
 
 
 <div class="heading-buttons">
-    <h2 class="font-thin"><i class="fa fa-tags"></i>Bilgi ve Yeterlilikler  <small><br/>Bu uzmanlıklar analatik olarak hesaplanmıştır.
-        Daha fazla bilgi için <a href="#">tıklayın</a>.</small></h2>
+    <h3 class="font-thin"><i class="fa fa-tags"></i> Bilgi ve Yetkinlikler
+
+        <g:if test="${!skills1}">
+            <small ng-show="isLoggedIn()">
+
+                <a href="/kimlik/{{getLoggedInUser().username}}/settings/skills">Yetkinliklerinizi ayarlardan düzenleye bilirsiniz.</a>
+            </small>
+        </g:if>
+        <small><br/>Bu uzmanlıklar analatik olarak hesaplanmıştır.
+        Daha fazla bilgi için <a href="#">tıklayın</a>.</small></h3>
 </div>
 
 <div class="row">
-
+    <g:if test="${skills1}">
     <div class="col-lg-4 col-sm-4">
         <section class="panel">
 
@@ -42,7 +50,7 @@
 
                             <div class="progress bg-light">
                                 <div class="progress-bar ${skill.cssClass}" style="width: ${skill.percent}%">
-                                   %{-- ${skill.contributors.size()}x--}%</div>
+                                    %{-- ${skill.contributors.size()}x--}%</div>
                             </div>
                         </div>
                     </g:each>
@@ -52,16 +60,18 @@
 
         </div>
     </g:if>
-    <div class="col-lg-4 col-sm-4">
-        <p class="text-center"><span class="btn btn-circle btn-lg btn-default"><i class="fa fa-refresh"></i>
-        </span></p>
 
-        <div>
-            <h3 class="text-center">Uzmanlıklar hakkında</h3>
+        <div class="col-lg-4 col-sm-4">
+            <p class="text-center"><span class="btn btn-circle btn-lg btn-default"><i class="fa fa-refresh"></i>
+            </span></p>
 
-            <p class="text-center">Bu uzmanlıklar analatik olarak hesaplanmıştır. <br/>
-                Daha fazla bilgi için <a href="#">tıklayın</a>.</p>
+            <div>
+                <h3 class="text-center">Uzmanlıklar hakkında</h3>
+
+                <p class="text-center">Bu uzmanlıklar analatik olarak hesaplanmıştır. <br/>
+                    Daha fazla bilgi için <a href="#">tıklayın</a>.</p>
+            </div>
         </div>
-    </div>
+    </g:if>
 </div> %{--row--}%
 %{--<div class="separator line"></div>--}%

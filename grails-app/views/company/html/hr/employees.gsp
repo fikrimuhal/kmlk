@@ -38,9 +38,9 @@
 <div class="page-header">
 
     <h4>Çalışan ekleme istekleri <small>Henüz onaylanmamış personel</small>
-        <small class="pull-right"><a href="#" ng-click="showAddNewEmployeePanel = !showAddNewEmployeePanel"><i
-                class="fa fa-plus-circle"></i>
-            Yeni kişi ekle</a></small>
+        %{--<small class="pull-right"><a href="#" ng-click="showAddNewEmployeePanel = !showAddNewEmployeePanel"><i--}%
+                %{--class="fa fa-plus-circle"></i>--}%
+            %{--Yeni kişi ekle</a></small>--}%
     </h4>
 </div>
 
