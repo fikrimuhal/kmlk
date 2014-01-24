@@ -40,12 +40,21 @@ class PersistentLoginService {
 
         def device = findDevice(ObjectId.massageToObjectId(cookie.device))
 
+
         if (device) {
-            log.debug('Device found')
+            log.debug("Device found, url ${request.requestURI}")
 
             if (device.token == cookie.token) {
                 log.debug('token valid')
-                sendCookie(upsertDeviceToken(ObjectId.massageToObjectId(cookie.device), null))
+
+                /**
+                 * send new token only if requestURI is "/grails/auth/ajaxAuth.dispatch" i.e controller= auth action=ajaxAuth
+                 * This ensures other authenticated yet and valid concurrent requests handled successfully.
+                 * Note that sendCookie method invalidates used cookies(tokens)
+                 */
+                if (request.requestURI == "/grails/auth/ajaxAuth.dispatch") {
+                    sendCookie(upsertDeviceToken(ObjectId.massageToObjectId(cookie.device), null))
+                }
 
                 profileId = device.profile
                 authenticationService.setAuthenticatedUserId(profileId)
