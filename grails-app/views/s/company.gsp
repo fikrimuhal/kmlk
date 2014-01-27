@@ -39,9 +39,9 @@
     Zin D iş mer. N.5/5
     34782 Istanbul, Turkey</address>
 
-    <script type="text/javascript"
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkrC_ONkbLtMeRKJ85Be62791uFpERjSI&sensor=true">
-    </script>
+    %{--<script type="text/javascript"--}%
+            %{--src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBzXlLCgeP354clUpEoZ5zaufpeDDJ5YQ4&sensor=true">--}%
+    %{--</script>--}%
     <script type="text/javascript">
         function initialize() {
             map_latlng = new google.maps.LatLng(41.0305073, 29.173157);

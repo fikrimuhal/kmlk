@@ -255,6 +255,7 @@ function KimlikCtrl($scope, $routeSegment) {
 
 kimlik.controller('KimlikSettingsLocationCtrl', ['$scope', '$resource', 'userService', function ($scope, $resource, userService) {
     //yeni google maps style, buton'lar flat
+
     google.maps.visualRefresh = true;
     $scope.user = userService.getLoggedInUser();
 
@@ -267,6 +268,12 @@ kimlik.controller('KimlikSettingsLocationCtrl', ['$scope', '$resource', 'userSer
 
 
     var api = $resource(_settings.baseUrl + 'api/kimlik/updateLocation');
+
+    /* If profile does not have map coordinates set it to turkey */
+    if (true||!$scope.address.latLng.lat) {
+        $scope.address.latLng.lat = 40;
+        $scope.address.latLng.lng = 35.3;
+    }
 
     var map;
     var geocoder;

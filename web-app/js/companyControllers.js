@@ -270,7 +270,7 @@ function CompanyEmployeeCtrl($scope, profileService, $resource) {
 
     $scope.removeEmployee = function (id) {
 
-        api.deleteEmployee({},{companyId: $scope.company._id, employeeId: id}, function (d) {
+        api.deleteEmployee({}, {companyId: $scope.company._id, employeeId: id}, function (d) {
             $scope.employeeIds = _.without($scope.employeeIds, id);
 
         });
@@ -574,10 +574,13 @@ kimlik
         var map;
         var geocoder;
         var marker;
-        var myLatlng = new google.maps.LatLng($scope.address.latLng.lat, $scope.address.latLng.lng);
-        var markerLocation = new google.maps.LatLng($scope.address.latLng.lat, $scope.address.latLng.lng);
-        var zoomLevel = _.min([$scope.address.latLng.zoomLevel , 12]);
-        $scope.markerIsJumping = !($scope.address && $scope.address.latLng && $scope.address.latLng.lat && $scope.address.latLng.lng);  //kozmetik
+        if ($scope.address.latLng.lat && $scope.address.latLng.lng) {
+
+            var myLatlng = new google.maps.LatLng($scope.address.latLng.lat, $scope.address.latLng.lng);
+            var markerLocation = new google.maps.LatLng($scope.address.latLng.lat, $scope.address.latLng.lng);
+            var zoomLevel = _.min([$scope.address.latLng.zoomLevel , 12]);
+            $scope.markerIsJumping = !($scope.address && $scope.address.latLng && $scope.address.latLng.lat && $scope.address.latLng.lng);  //kozmetik
+        }
 
         var markerDragListener = function () {
             console.log('dragend: ', marker.getPosition());
