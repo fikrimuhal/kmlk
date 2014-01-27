@@ -270,7 +270,7 @@ kimlik.controller('KimlikSettingsLocationCtrl', ['$scope', '$resource', 'userSer
     var api = $resource(_settings.baseUrl + 'api/kimlik/updateLocation');
 
     /* If profile does not have map coordinates set it to turkey */
-    if (true||!$scope.address.latLng.lat) {
+    if (!$scope.address.latLng.lat) {
         $scope.address.latLng.lat = 40;
         $scope.address.latLng.lng = 35.3;
     }
