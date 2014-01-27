@@ -13,6 +13,8 @@ import org.bson.types.ObjectId
 
 import java.util.regex.Pattern
 
+import static kimlik.CompanyUtils.postProcessCompany
+
 class CompanyService {
     def notificationService
     def profileService
@@ -41,8 +43,8 @@ class CompanyService {
 
         DBCursor cursor = col.find(_QUERY)
 
-        cursor.sort([_id: 1]).skip(skip).limit(limit).each {
-            data << addDeprecatedFields(it) + mockExtraData
+        cursor.sort([_id: 1]).skip(skip).limit(limit).each {Map c
+            data << postProcessCompany(c)
         }
 
         return [
@@ -55,23 +57,13 @@ class CompanyService {
 
     }
 
-    /**
-     * @deprecated
-     */
-    def addDeprecatedFields = {
-        it.pageUrl = "http://kimlik.io/company/profile/${it.name.pageName}".toString()
-        it.page_name = it.name.pageName
-        it.short_name = it.name.oneWord
-        it.full_name = it.name.fullLegal
-        return it
-    }
 
     def listByOwner(ObjectId owner) {
         def result = []
         DBCollection col = Company.collection
         def _QUERY = [owner: owner]
         col.find(_QUERY).each {
-            result << addDeprecatedFields(it) + mockExtraData
+            result << postProcessCompany(it)
         }
         return result
     }
@@ -94,9 +86,8 @@ class CompanyService {
         DBCollection col = Company.collection
         def _QUERY = [_id: id]
         def result = col.findOne(_QUERY)
-        result << mockExtraData
 
-        return addDeprecatedFields(result)
+        return postProcessCompany(result)
     }
 
 
@@ -107,8 +98,7 @@ class CompanyService {
         def _QUERY = ['name.pageName': pageName]
         def result = col.findOne(_QUERY)
         if (result) {
-            result << mockExtraData
-            return addDeprecatedFields(result)
+            postProcessCompany(result)
         }else{
             return [:]
         }
@@ -155,18 +145,6 @@ class CompanyService {
     }
 
 
-    private mockExtraData = [
-            founded: '1/4/2013',
-            totalInvesment: [
-                    value: 150000,
-                    currency: 'TL'
-            ],
-            employeeStats: [
-                    numberOfTotal: 3,
-                    numberOfTechnical: 2,
-                    numberOfManagment: 2
-            ]
-    ]
 
     def saveProduct(def product, ObjectId companyId) {
         log.debug(product)
@@ -219,13 +197,13 @@ class CompanyService {
         log.debug(location)
 
         def documentMap = [
-                country: location.country,
-                city: location.city,
+                country: location.country?:'',
+                city: location.city?:'',
                 district: location.district,
-                quarter: location.quarter,
-                avenue: location.avenue,
-                street: location.street,
-                display_address: location.display_address,
+                quarter: location.quarter?:'',
+                avenue: location.avenue?:'',
+                street: location.street?:'',
+                display_address: location.display_address?:'',
                 latLng: [
                         lat: location.latLng?.lat,
                         lng: location.latLng?.lng,
