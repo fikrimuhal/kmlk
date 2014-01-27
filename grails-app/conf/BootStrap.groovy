@@ -12,7 +12,7 @@ class BootStrap {
     def init = { servletContext ->
         configure()
 
-        //todo mock change me
+   /*     //todo mock change me
         if (!Skill.count) {
             [
                     new Skill(name: 'Java'),
@@ -94,7 +94,7 @@ class BootStrap {
                     domains: ['kimliklocal.fikrimuhal.com', 'fikrimuhal.com'],
                     enabled: true
             ).save()
-        }
+        }*/
         //
 //        def fikrimuhal = Company.findByPage_name('fikrimuhal')
 //        fikrimuhal.domainToPage = DomainToPage.findByPageNameAndIsCompany('fikrimuhal',true)
