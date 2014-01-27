@@ -28,7 +28,6 @@ class PictureService {
      * @param originalFileName
      */
     def upload2Aws(def file, String source, ObjectId owner) {
-
         def size, stream, contentType, extension
         if (file instanceof CommonsMultipartFile) {
             println 'type file'
@@ -68,6 +67,9 @@ class PictureService {
         //todo listener ekle
         //todo upload bitince database e yaz
         def por = new PutObjectRequest(BUCKET_NAME, path, stream, meta).withCannedAcl(CannedAccessControlList.PublicRead)
+
+        assert  amazonWebService
+
         Upload upload = amazonWebService.transferManager.upload(por)
 
 

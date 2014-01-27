@@ -104,6 +104,7 @@ class PictureController {
      * @return
      */
     def ajaxUploadProfile() {
+
         def result
         log.debug 'params: ' + params
         log.debug 'params.files: ' + params.files?.dump()
@@ -119,6 +120,7 @@ class PictureController {
         if (!file.empty) {
             println 'file var'
             def picture = pictureService.upload2Aws(file, 'upload', profileId)
+
             profileService.addProfilePicture(picture, profileId, true)
 
 

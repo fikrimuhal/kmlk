@@ -60,6 +60,13 @@ grails.project.dependency.resolution = {
         // compile 'oauth.signpost:signpost-core:1.2.1.2'
         // compile 'oauth.signpost:signpost-commonshttp4:1.2.1.2'
 
+        //ILGAZ: Seems like not necessary
+        // Workaround to resolve dependency issue with aws-java-sdk and http-builder (dependent on httpcore:4.0)
+//        build 'org.apache.httpcomponents:httpcore:4.2'
+//        build 'org.apache.httpcomponents:httpclient:4.2'
+//        runtime 'org.apache.httpcomponents:httpcore:4.2'
+//        runtime 'org.apache.httpcomponents:httpclient:4.2'
+
     }
 
     plugins {
@@ -82,7 +89,7 @@ grails.project.dependency.resolution = {
         //runtime ":yui-minify-resources:0.1.5"
 
         compile ":mongodb:1.3.3"
-        compile ":aws:1.6.7.5"
+        runtime ':aws-sdk:1.6.9'
         runtime ':oauth:2.4'
     }
 }
