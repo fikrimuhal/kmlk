@@ -154,8 +154,8 @@ class ProfileService {
             friend = friend.save(flush: true, failOnError: true)
 
             //save linkedin picture
-            if (accountType == 'linkedin') {
-                pictureService.upload2Aws(new URL((String) friendData.picture_url), 'linkedin', friend.id)
+            if (accountType == 'linkedin' && friendData.picture_url) {
+                pictureService.upload2Aws(new URL((String) friendData.picture_url), 'linkedin', friend.id, true)
             }
 
             //END --- CREATE NEW GLOBAL PROFILE

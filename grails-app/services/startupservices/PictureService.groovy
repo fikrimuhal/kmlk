@@ -27,7 +27,7 @@ class PictureService {
      *
      * @param originalFileName
      */
-    def upload2Aws(def file, String source, ObjectId owner) {
+    def upload2Aws(def file, String source, ObjectId owner, boolean doNotWaitUpload = false) {
         def size, stream, contentType, extension
         if (file instanceof CommonsMultipartFile) {
             println 'type file'
@@ -68,18 +68,19 @@ class PictureService {
         //todo upload bitince database e yaz
         def por = new PutObjectRequest(BUCKET_NAME, path, stream, meta).withCannedAcl(CannedAccessControlList.PublicRead)
 
-        assert  amazonWebService
+        assert amazonWebService
 
         Upload upload = amazonWebService.transferManager.upload(por)
 
 
-
-        while (!upload.done) {
-            println "Transfer: $upload.description"
-            println "  - State: $upload.state"
-            println "  - Progress: $upload.progress.bytesTransferred"
-            // Do work while we wait for our upload to complete…
-            Thread.sleep(500)
+        if (!doNotWaitUpload) {
+            while (!upload.done) {
+                println "Transfer: $upload.description"
+                println "  - State: $upload.state"
+                println "  - Progress: $upload.progress.bytesTransferred"
+                // Do work while we wait for our upload to complete…
+                Thread.sleep(500)
+            }
         }
         //ok now we create db entity
 
