@@ -22,7 +22,7 @@
                                 <div class="col-lg-2 col-md-3" ng-repeat="p in profiles">
                                     &nbsp;
                                     <a href="{{p.profileUrl}}" class="thumbnail" target="_self">
-                                        <img src="{{p.profilePictureUrl}}" title="{{p.first_name}}"/>
+                                        <img src="{{p.profilePicture.url}}" title="{{p.full_name}}"/>
                                     </a>
                                 </div>
                             %{--<g:if test="${s%4==3}"><div class="clearfix m-b-large visible-md"></div></g:if>--}%

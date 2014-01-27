@@ -1,7 +1,10 @@
 package startupservices
 
+import com.amazonaws.event.ProgressEvent
+import com.amazonaws.event.ProgressListener
 import com.amazonaws.services.s3.model.CannedAccessControlList
 import com.amazonaws.services.s3.model.ObjectMetadata
+
 import com.amazonaws.services.s3.model.PutObjectRequest
 import com.amazonaws.services.s3.transfer.Upload
 import org.bson.types.ObjectId
@@ -30,7 +33,7 @@ class PictureService {
     def upload2Aws(def file, String source, ObjectId owner, boolean doNotWaitUpload = false) {
         def size, stream, contentType, extension
         if (file instanceof CommonsMultipartFile) {
-            println 'type file'
+//            println 'type file'
             size = file.size
             stream = file.inputStream
             contentType = file.contentType
@@ -38,13 +41,13 @@ class PictureService {
 
         } else if (file instanceof URL) {
 
-            println 'type url'
+//            println 'type url'
             def connection = file.openConnection()
 
             size = connection.contentLength
             stream = connection.inputStream
             contentType = connection.contentType
-            extension = file.file.tokenize('.').last()
+//            extension = file.file.tokenize('.').last()
 
 
         } else {
@@ -69,19 +72,38 @@ class PictureService {
         def por = new PutObjectRequest(BUCKET_NAME, path, stream, meta).withCannedAcl(CannedAccessControlList.PublicRead)
 
         assert amazonWebService
+        Closure uploadWithReTry = null
 
-        Upload upload = amazonWebService.transferManager.upload(por)
-
-
-        if (!doNotWaitUpload) {
-            while (!upload.done) {
-                println "Transfer: $upload.description"
-                println "  - State: $upload.state"
-                println "  - Progress: $upload.progress.bytesTransferred"
-                // Do work while we wait for our upload to complete…
-                Thread.sleep(500)
+        def uploadRetryListener = new ProgressListener() {
+            @Override
+            void progressChanged(ProgressEvent progressEvent) {
+                switch (progressEvent.eventCode) {
+                    case ProgressEvent.FAILED_EVENT_CODE:
+                        2.times { log.error('UPLOAD FAILED WILL RETRY One more time') }
+                        uploadWithReTry(false)
+                        break
+                }
             }
         }
+
+        uploadWithReTry = {
+            Boolean reTry
+            Upload upload = amazonWebService.transferManager.upload(por)
+            if (reTry)
+                upload.addProgressListener(uploadRetryListener);
+        }
+
+        uploadWithReTry(true)
+
+//        if (!doNotWaitUpload) {
+//            while (!upload.done) {
+//                println "Transfer: $upload.description"
+//                println "  - State: $upload.state"
+//                println "  - Progress: $upload.progress.bytesTransferred"
+//                // Do work while we wait for our upload to complete…
+//                Thread.sleep(500)
+//            }
+//        }
         //ok now we create db entity
 
         return saveToDb(id, path, source, owner)

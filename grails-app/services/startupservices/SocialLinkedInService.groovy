@@ -44,7 +44,7 @@ class SocialLinkedInService {
         log.debug('updating updateFriends')
         profile
         data.connections.values.each {
-            println it
+           // println it
             def friendsData = [
                     id: it.id,
                     first_name: it.firstName,
@@ -52,6 +52,7 @@ class SocialLinkedInService {
                     picture_url: it.pictureUrls?.values?.getAt(0),
                     last_name: it.lastName
             ]
+
             profileService.addFriend(profile.id, friendsData, 'linkedin')
         }
     }

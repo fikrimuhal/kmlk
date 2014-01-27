@@ -105,7 +105,8 @@ class ProfileService {
 
     //TODO  buraya bir bakmak lazim....
     def addFriend(ObjectId profileId, def friendData, String accountType) {
-        log.debug("\n\n friend eklenecek profileId:${profileId}, friendData:${friendData}, accountType:${accountType}")
+
+        //log.debug("\n\n friend eklenecek profileId:${profileId}, friendData:${friendData}, accountType:${accountType}")
 
         // check if we know the user
         def QUERY = [:]
@@ -151,11 +152,13 @@ class ProfileService {
             } else if (accountType == 'twitter') {
 
             }
+
             friend = friend.save(flush: true, failOnError: true)
 
             //save linkedin picture
             if (accountType == 'linkedin' && friendData.picture_url) {
-                pictureService.upload2Aws(new URL((String) friendData.picture_url), 'linkedin', friend.id, true)
+                def picture = pictureService.upload2Aws(new URL((String) friendData.picture_url), 'linkedin', friend.id, false)
+                addProfilePicture(picture, friend.id, false)
             }
 
             //END --- CREATE NEW GLOBAL PROFILE
