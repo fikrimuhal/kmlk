@@ -153,8 +153,8 @@
                 {{markerIsJumping?'Zıplayan':'Zıplamayan'}} işaret hakkında!</h4>
 
             <p>
-                Lütfen sirketinizin yerini isaretleyiniz. Olabildigince dogru yere koymaya calisin: <br/>
-                (sirketinize yapilan iş basvurularinda adaylarin oturdugu evin sirketinize olan uzakligi hesaplanacaktir.)
+                Lütfen evinizin yerini işaretleyiniz. Olabildiğince doğru yere koymaya çalışın: <br/>
+                (Yaptığınız iş başvurularında, iş yerinin evinize olan uzaklığını hesaplamak için kullanılacaktır.)
             </p>
         </div>
 

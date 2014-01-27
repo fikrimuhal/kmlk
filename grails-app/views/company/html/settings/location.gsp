@@ -114,8 +114,8 @@
             <h4><i class="fa fa-map-marker icon-2x"></i>
                 {{markerIsJumping?'Zıplayan':'Zıplamayan'}} işaret hakkında!</h4>
             <p>
-                Lütfen sirketinizin yerini isaretleyiniz. Olabildigince dogru yere koymaya calisin: <br/>
-                (sirketinize yapilan iş basvurularinda adaylarin oturdugu evin sirketinize olan uzakligi hesaplanacaktir.)
+                Lütfen şirketinizin yerini işaretleyiniz. Olabildiğince doğru yere koymaya çalışın: <br/>
+                (şirketinize yapılan iş başvurularında adayların oturduğu evin şirketinize olan uzakliğını hesaplamak için kullanılacaktır.)
             </p>
         </div>
 
