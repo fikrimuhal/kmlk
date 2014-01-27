@@ -12,7 +12,8 @@ environments {
         println("Using production database!!!!!!")
         grails {
             mongo {
-                host = "zeus.fikrimuhal.com"
+//                host = "zeus.fikrimuhal.com"
+                host = "localhost"
                 port = 27017
                 databaseName = "kimlik"
             }
