@@ -75,7 +75,7 @@ class Profile {
         } else if (accounts.hasFacebook()) {
             return "http://graph.facebook.com/${accounts.facebook.remoteId}/picture?height=400"
         } else {
-            return profilePicture.pictures[0]
+            return profilePicture.pictures[0].url
         }
     }
 
