@@ -79,7 +79,7 @@
                 <tr>
                     <td>Merkez</td>
                     <td class="text-">
-                        İstanbul
+                        ${company.location.city}
                     </td>
                 </tr>
 
@@ -93,12 +93,12 @@
                 </tr>
 
 
-                <tr>
-                    <td>Toplam Yatırım</td>
-                    <td class="text-">
-                        ${company.totalInvesment.value + '' + company.totalInvesment.currency}
-                    </td>
-                </tr>
+                %{--<tr>--}%
+                    %{--<td>Toplam Yatırım</td>--}%
+                    %{--<td class="text-">--}%
+                        %{--${company.totalInvesment.value + '' + company.totalInvesment.currency}--}%
+                    %{--</td>--}%
+                %{--</tr>--}%
 
                 </tbody>
             </table>

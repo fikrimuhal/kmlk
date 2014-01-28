@@ -31,7 +31,7 @@
                 ]
             }
         ];
-         var location = new google.maps.LatLng(${company.location?.latLng?.lat}, ${company.location?.latLng?.lng})
+         var location = new google.maps.LatLng(${company.location?.latLng?.lat?:39.1667}, ${company.location?.latLng?.lng?:35.6667})
         // Create a new StyledMapType object, passing it the array of styles,
         // as well as the name to be displayed on the map type control.
         var styledMap = new google.maps.StyledMapType(styles,
@@ -39,8 +39,9 @@
 
         // Create a map object, and include the MapTypeId to add
         // to the map type control.
+        // if we have location data set zoom level to 11 otherwise 3
         var mapOptions = {
-            zoom: 11,
+            zoom: ${company.location?.latLng?.lat?11:3},
             center: location,
             scaleControl: false,
             draggable: false,

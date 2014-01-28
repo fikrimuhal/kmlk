@@ -314,6 +314,7 @@ class CompanyController {
         data.email = request.JSON.email
         data.www = request.JSON.www
         data.tel = request.JSON.tel
+        data.founded = request.JSON.founded
 
         companyService.updateFields(companyId, data)
 

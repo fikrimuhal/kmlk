@@ -559,7 +559,8 @@ kimlik
         $scope.other = {
             email: $scope.company.email,
             www: $scope.company.www,
-            tel: $scope.company.tel
+            tel: $scope.company.tel,
+            founded: $scope.company.founded
         };
         $scope.tags = $scope.company.tags;
 

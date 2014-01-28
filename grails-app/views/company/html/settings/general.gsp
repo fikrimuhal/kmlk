@@ -51,6 +51,15 @@
 
                 </div>
             </div>
+            <div class="form-group">
+                <label class="col-lg-3 control-label">Kuruluş tarihi</label>
+
+                <div class="col-lg-9">
+                    <input type="text" class="form-control" ng-model="other.founded">
+                    <span class="help-block">Şirketinizin kuruluş tarihi (gun/ay/yil)</span>
+
+                </div>
+            </div>
 
             <div class="form-group">
                 <label class="col-lg-3 control-label">Sayfa adi</label>

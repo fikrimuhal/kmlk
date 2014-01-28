@@ -9,21 +9,21 @@ class CompanyUtils {
         mockExtraData company
         addDeprecatedFields company
         fixNullFields company
-
+        addCompanyStats company
         return company
     }
 
     static def mockExtraData(Map company) {
+
+        return company
+    }
+
+    static def addCompanyStats(Map company) {
         company << [
-                founded: '1/4/2013',
-                totalInvesment: [
-                        value: 150000,
-                        currency: 'TL'
-                ],
                 employeeStats: [
-                        numberOfTotal: 3,
-                        numberOfTechnical: 2,
-                        numberOfManagment: 2
+                        numberOfTotal: company.employees?.size()?:1,
+                        numberOfTechnical: company.employees?.size()?:1,
+                        numberOfManagment: company.employees?.size()?:1
                 ]
         ]
         return company
