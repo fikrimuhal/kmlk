@@ -394,15 +394,7 @@ function CompanyApplicantsCtrl($scope, $routeSegment, $resource, profileService)
         return _.find($scope.applicants, {profile: pid});
     };
 
-    $scope.getProfilePicture = function (profile) {
-        var url;
-        try {
-            url = profile.profilePicture.defaultPicture.url
-        } catch (e) {
-            url = profile.profilePictureUrl
-        }
-        return url
-    };
+
 
 
     $scope.getFullName = function (id) {

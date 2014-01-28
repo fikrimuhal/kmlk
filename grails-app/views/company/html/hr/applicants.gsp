@@ -68,7 +68,7 @@
                     <div class="col-md-4">
                         <div class="thumbnail" onclick="document.location.href = '/kimlik/profile/sumnulu'"
                              style="cursor: hand;">
-                            <img src="{{getProfilePicture(getApplicant())}}" alt="100%x200 Image Holder"
+                            <img src="{{getApplicant().profilePicture.url}}"
                                  style="height: 150px;">
                         </div>
                         <br/>
@@ -82,7 +82,7 @@
                     </div>
 
                     <div class="col-md-8">
-                        <h4>Ilgaz Şumnulu</h4>
+                        <h4>getApplication().full_name</h4>
 
                         <hr/>
 
@@ -92,6 +92,7 @@
                         </div>
                         <hr/>
 
+%{--
                         <div class="pull-right">
                             <small>Ek göstergeler:</small>
                             <label class="checkbox-inline text-danger">
@@ -111,6 +112,7 @@
                                 </select>
                             </label>
                         </div>
+--}%
                         <br/>
                         <hr/>
 
@@ -119,10 +121,10 @@
 
                             <div class="progress">
                                 <div class="progress-bar progress-bar-success" style="width: {{skill.percent}}%"></div>
-
+%{--
                                 <div class="progress-bar progress-bar-none" style="width: 10%"></div>
 
-                                <div class="progress-bar progress-bar-danger" style="width: 0.7%"></div>
+                                <div class="progress-bar progress-bar-danger" style="width: 0.7%"></div>--}%
                             </div>
                         </div>
 
