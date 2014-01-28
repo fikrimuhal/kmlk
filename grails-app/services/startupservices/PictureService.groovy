@@ -92,19 +92,14 @@ class PictureService {
             Upload upload = amazonWebService.transferManager.upload(por)
             if (reTry)
                 upload.addProgressListener(uploadRetryListener);
+
+            if (!doNotWaitUpload)
+                upload.waitForUploadResult()
+
         }
 
         uploadWithReTry(true)
 
-//        if (!doNotWaitUpload) {
-//            while (!upload.done) {
-//                println "Transfer: $upload.description"
-//                println "  - State: $upload.state"
-//                println "  - Progress: $upload.progress.bytesTransferred"
-//                // Do work while we wait for our upload to complete…
-//                Thread.sleep(500)
-//            }
-//        }
         //ok now we create db entity
 
         return saveToDb(id, path, source, owner)

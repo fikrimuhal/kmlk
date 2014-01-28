@@ -157,7 +157,7 @@ class ProfileService {
 
             //save linkedin picture
             if (accountType == 'linkedin' && friendData.picture_url) {
-                def picture = pictureService.upload2Aws(new URL((String) friendData.picture_url), 'linkedin', friend.id, false)
+                def picture = pictureService.upload2Aws(new URL((String) friendData.picture_url), 'linkedin', friend.id, true)
                 addProfilePicture(picture, friend.id, false)
             }
 
