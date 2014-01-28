@@ -119,7 +119,7 @@ class PictureController {
 
         if (!file.empty) {
             println 'file var'
-            def picture = pictureService.upload2Aws(file, 'upload', profileId)
+            def picture = pictureService.upload2Aws(file, 'upload', profileId,false)
 
             profileService.addProfilePicture(picture, profileId, true)
 

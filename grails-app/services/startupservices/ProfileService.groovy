@@ -180,17 +180,21 @@ class ProfileService {
     }
 
     def addProfilePicture(Picture picture, ObjectId profileId, boolean isDefault) {
+        //first delete old linkedin Picture
+        DBCollection col = Profile.collection
 
         def pictureMap = [
                 _id: picture.id,
                 path: picture.path,
                 bucket: picture.bucket,
                 url: picture.url,
-//                owner: picture.owner.id,
                 broken: picture.broken,
                 source: picture.source
         ]
-        DBCollection col = Profile.collection
+
+
+
+
 
         def _QUERY = [_id: profileId]
         def _OPS = [:]
@@ -198,12 +202,28 @@ class ProfileService {
             _OPS.'$set' = ['profilePicture.url': picture.url]
         }
         _OPS.'$addToSet' = ['profilePicture.pictures': pictureMap]
-        col.update(_QUERY, _OPS, false, false, WriteConcern.SAFE)
+
+/*
+
+        if (picture.source == 'linkedin') {
+            //remove previous linkedin pictures if any
+            //todo remove from aws!
+            //todo remove from Pictures collection as well
+            col.update([
+                    _id: profileId,
+                    'profilePicture.pictures.source': 'linkedin'
+            ], ['$pull': ['profilePicture.pictures': [source: 'linkedin']]], false, false, WriteConcern.JOURNALED)
+        }
+*/
+
+         col.update(_QUERY, _OPS, false, false, WriteConcern.JOURNALED)
 
     }
 
-    def deleteProfilePicture(ObjectId pictureId, profileId) {
 
+    def deleteProfilePicture(ObjectId pictureId, profileId) {
+        //todo remove from aws!
+        //todo remove from Pictures collection as well
         DBCollection col = Profile.collection
 
 

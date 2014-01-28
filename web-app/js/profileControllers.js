@@ -50,7 +50,7 @@ function KimlikContactsCtrl($scope, userService, profileService) {
     var user = userService.getLoggedInUser();
     user.$promise.then(function (d) {
 //    console.debug('user friends',user.friends)
-//        console.log('cacheee ', profileService.prefetchProfilesByIds(user.friends));
+        console.log('cacheee ', profileService.prefetchProfilesByIds(user.friends));
         _.chain(user.friends).uniq().forEach(function (id) {
             $scope.profiles.push(profileService.getProfileById(id))
         });
@@ -491,3 +491,22 @@ kimlik
 
         }
     ]);
+
+
+kimlik.controller('KimlikSettingsSocialCtrl', ['$scope', function ($scope) {
+    $scope.linkedinInProgress = false;
+    $scope.linkedin = function () {
+        var preventClick = $scope.linkedinInProgress;
+        $scope.linkedinInProgress = true;
+        return preventClick
+    };
+
+    $scope.facebookInProgress = false;
+    $scope.facebook = function () {
+        var preventClick = $scope.facebookInProgress;
+        $scope.facebookInProgress = true;
+        return preventClick
+    };
+
+}
+]);

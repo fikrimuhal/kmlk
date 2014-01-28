@@ -6,6 +6,7 @@ import grails.converters.JSON
 
 import org.bson.types.ObjectId
 
+import static kimlik.ProfileUtils.postProcessProfile
 import static kimlik.ProfileUtils.removePrivateProfileData
 
 
@@ -159,6 +160,8 @@ class KimlikController {
 
         session._responseCommitedExceptionWorkAround = 'force to create new session with very this assignment'
         def profile = fetchProfile()
+
+        println profile.getProfilePictureUrl()
         def skills = profile.skills.sort { it.percent ? -1 * it.percent : 0 } //sirket yetkilisinin izin verdigi skiller
         //skilleri 2 ayri DIV icinde gosteriyoruz
         def skills1, skills2

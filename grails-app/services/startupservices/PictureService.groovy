@@ -48,6 +48,7 @@ class PictureService {
             stream = connection.inputStream
             contentType = connection.contentType
 //            extension = file.file.tokenize('.').last()
+            extension = 'raw'
 
 
         } else {

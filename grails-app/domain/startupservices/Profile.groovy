@@ -9,8 +9,8 @@ import org.bson.types.ObjectId
 class Profile {
     static embedded = ['accounts', 'contactInfo', 'workHistory', 'educationHistory', 'skills', 'profilePicture'/*,'notificationInbox'*/]
 
-    static transients = ['profilePictureUrl','name','profileUrl']
-            ObjectId id
+    static transients = ['profilePictureUrl', 'name', 'profileUrl']
+    ObjectId id
 
     /**
      * true ise kulanici kimli.io ya register olmus
@@ -43,7 +43,7 @@ class Profile {
 
     static hasMany = [
             friends: Profile,
-            skills:PersonalSkill,
+            skills: PersonalSkill,
             contactMerges: ProfileMerge
     ]
 
@@ -74,11 +74,10 @@ class Profile {
             return profilePicture?.url
         } else if (accounts.hasFacebook()) {
             return "http://graph.facebook.com/${accounts.facebook.remoteId}/picture?height=400"
-        } else if (accounts.hasLinkedin()) {
-            return accounts.linkedin.picture_url
+        } else {
+            return profilePicture.pictures[0]
         }
     }
-
 
 
     String getProfileUrl() {

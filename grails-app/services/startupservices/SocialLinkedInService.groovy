@@ -24,11 +24,20 @@ class SocialLinkedInService {
         updateAccounts(profile, token, data)
         updateEducation(profile, data)
         updateWork(profile, data)
-//        updateContactInfo(profile, data)
+////        updateContactInfo(profile, data)
         updateBasicInfo(profile, data)
         updateFriends(profile, data)
         updateSkills(profile, data)
 
+        //If we have linkedin return profile picture and we did not persisted any previous linkedin profile picture for this user
+        //Note that this is a workaround.
+        def hasLinkedInPictureAlready = profile.profilePicture?.pictures.find {
+            it.source == 'linkedin'
+        }
+        if (data.pictureUrls?.values?.getAt(0) && !hasLinkedInPictureAlready) {
+            def picture = pictureService.upload2Aws(new URL((String) data.pictureUrls?.values?.getAt(0)), 'linkedin', profile.id, true)
+            profileService.addProfilePicture(picture, profile.id, false)
+        }
 
     }
 
@@ -44,7 +53,7 @@ class SocialLinkedInService {
         log.debug('updating updateFriends')
         profile
         data.connections.values.each {
-           // println it
+            // println it
             def friendsData = [
                     id: it.id,
                     first_name: it.firstName,
@@ -125,11 +134,6 @@ class SocialLinkedInService {
 
         )
         profile = profile.save(failOnError: true)
-
-        //If we have linkedin profile picture fetch and save
-        if (data.pictureUrls?.values?.getAt(0)) {
-            pictureService.upload2Aws(new URL((String) data.pictureUrls?.values?.getAt(0)), 'linkedin', profile.id)
-        }
 
 
     }
