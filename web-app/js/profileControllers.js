@@ -183,7 +183,18 @@ function LeftMenuController($rootScope, $scope, userService, companyService) {
             console.debug('current user does not have any company hide showAddEmployeeModal')
             $scope.isVisible.showAddEmployeeModal = false;
         } else {
-            $scope.isVisible.showAddEmployeeModal = true;
+
+            /**
+             * todo: workaround , profil sayfasi  olup olmadigini anlamak icin kullandim. i.e.
+             */
+            if(_currentProfile/* Global Object*/){
+                //static sayfa
+                $scope.isVisible.showAddEmployeeModal = true;
+            }else{
+                //settings veya benzer bir sayfa
+                $scope.isVisible.showAddEmployeeModal = false;
+
+            }
         }
     });
 }
