@@ -272,6 +272,7 @@ function NavBarCtrl($scope, companyService, userService) {
         }
     }
 
+
     initialize();
     $scope.$on('userAuthenticated', initialize);
 
@@ -365,7 +366,7 @@ function notificationEmployeeAddRequest($scope, userService, $resource) {
 }
 
 
-kimlik.factory('companyService', function ($resource) {
+kimlik.factory('companyService', function ($resource, $rootScope) {
     var currentUserCompanyList;
 
     function todo() {
@@ -378,6 +379,7 @@ kimlik.factory('companyService', function ($resource) {
     function getUserCompanyList() {
         return api.query({}, {}, function (data) {
             currentUserCompanyList = data;
+            $rootScope.$broadcast("company_list_statusChange");
         });
     }
 
@@ -387,7 +389,8 @@ kimlik.factory('companyService', function ($resource) {
     }
 
     return{
-        getUserCompanyList: getUserCompanyListCached
+        getUserCompanyList: getUserCompanyListCached,
+        reloadCompanies: getUserCompanyList
     };
 });
 

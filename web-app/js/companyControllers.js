@@ -201,7 +201,7 @@ function CompanyServicesCtrl($scope) {
 }
 
 
-function CompanyProjectsCtrl($scope, $routeSegment, $resource) {
+function CompanyProjectsCtrl($scope, $routeSegment, $resource, companyService, $location) {
     var api = $resource(_settings.baseUrl + 'company/products');
 
     var pid = $routeSegment.$routeParams.pid;
@@ -218,15 +218,24 @@ function CompanyProjectsCtrl($scope, $routeSegment, $resource) {
     $scope.save = function (product) {
         console.log('save product', product);
         api.save({companyId: $scope.company._id}, product);
-        //todo company yi reload et
+        companyService.reloadCompanies();
+        $scope.$on('company_list_statusChange', function () {
+            var products = _($scope.company.products);
+            $scope.product = products.find({_id: pid});
+        })
+
 
     };
 
     $scope.delete = function (product) {
         console.log('delete product', product);
         api.delete({companyId: $scope.company._id, productId: product._id});
-        //todo company yi reload et
-        //todo bu urlye geri don  '/company/fikrimuhal/products'
+        companyService.reloadCompanies();
+        $scope.$on('company_list_statusChange', function () {
+            var products = _($scope.company.products);
+            $scope.product = products.find({_id: pid});
+            $location.path('/company/'+$scope.company.name.pageName+'/products')
+        });
     };
 
     $scope.getId = function (p) {
@@ -395,8 +404,6 @@ function CompanyApplicantsCtrl($scope, $routeSegment, $resource, profileService)
     };
 
 
-
-
     $scope.getFullName = function (id) {
         var u = profileService.getProfileById(id);
         return u.first_name + ' ' + u.last_name;
@@ -417,12 +424,18 @@ function CompanyCtrl($scope, companyService, $routeSegment, $rootScope) {
     $scope.companies = companyService.getUserCompanyList();
     $scope.$routeSegment = $routeSegment;
 
-    $scope.$on('routeSegmentChange', function () {
+    function init() {
+        $scope.companies = companyService.getUserCompanyList();
+
         //URL mapping de resolved ile yapila bilinir?
         //Sayfa render olmadan once resolved olsa daha iyi olur.
         $rootScope.company = _.find($scope.companies, {page_name: $scope.company_name })
 
-    });
+    }
+
+    $scope.$on('routeSegmentChange', init);
+    $scope.$on('company_list_statusChange', init);
+
 
     console.log('CompanyCtrl Ready')
 }
