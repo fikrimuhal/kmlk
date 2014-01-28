@@ -322,7 +322,7 @@ function NotificationCtrl($scope, $resource, userService, companyService) {
 
     $scope.notificationBodyTemplate = function (notification) {
         notification.data = notification.data || {};
-         console.error('data: ', notification.data )
+        console.error('data: ', notification.data)
         switch (notification.data.type) {
             case '1002':
                 return '/html/kimlik/notifications/items/type_employee_add_request.html';

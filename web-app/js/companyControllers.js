@@ -188,7 +188,7 @@ function CompanyNewCtrl($scope, userService, $resource) {
         var model = $scope.model;
         api.create({}, {name: model}, function (result) {
             console.warn(result);
-            document.location = '/company/new/success/' + result.pageName;
+            document.location = '/company/my/new/success/' + result.pageName;
 
         });
     }
