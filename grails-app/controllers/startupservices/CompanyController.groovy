@@ -280,8 +280,8 @@ class CompanyController {
 
                 ObjectId companyId = ObjectId.massageToObjectId(request.JSON.companyId)
                 ObjectId employeeId = ObjectId.massageToObjectId(request.JSON.employeeId)
-                 assert companyId
-                 assert employeeId
+                assert companyId
+                assert employeeId
                 companyService.deleteEmployee(companyId, employeeId, authenticationService.authenticatedUserId)
                 result = [status: 'success']
                 break
@@ -310,6 +310,10 @@ class CompanyController {
 //        data.'name.pageName' = request.JSON.name.pageName
         data.'name.significantPart' = request.JSON.name.significantPart
         data.'tags' = request.JSON.tags
+
+        data.email = request.JSON.email
+        data.www = request.JSON.www
+        data.tel = request.JSON.tel
 
         companyService.updateFields(companyId, data)
 

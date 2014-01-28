@@ -234,7 +234,7 @@ function CompanyProjectsCtrl($scope, $routeSegment, $resource, companyService, $
         $scope.$on('company_list_statusChange', function () {
             var products = _($scope.company.products);
             $scope.product = products.find({_id: pid});
-            $location.path('/company/'+$scope.company.name.pageName+'/products')
+            $location.path('/company/' + $scope.company.name.pageName + '/products')
         });
     };
 
@@ -556,14 +556,22 @@ kimlik
     .controller('CompanySettingsGeneralCtrl', ['$scope', '$resource', 'userService', function ($scope, $resource, userService) {
         console.debug('CompanySettingsGeneralCtrl ready');
         $scope.model = $scope.company.name;
+        $scope.other = {
+            email: $scope.company.email,
+            www: $scope.company.www,
+            tel: $scope.company.tel
+        };
         $scope.tags = $scope.company.tags;
 
 
         var api = $resource('/api/company/saveBasicInfo');
         $scope.owner = userService.getLoggedInUser(); //todo company.owner olmasi lazim bunun
         $scope.save = function () {
-            var model = $scope.model;
-            api.save({companyId: $scope.company._id}, {name: model, tags: $scope.tags}, function () {
+            var data = $scope.other
+            data.name = $scope.model
+            data.tags = $scope.tags
+
+            api.save({companyId: $scope.company._id}, data, function () {
                 console.warn('TODO: reload/update company');
             });
         }

@@ -11,12 +11,43 @@
                 </div>
             </div>
 
+
             <div class="form-group">
                 <label class="col-lg-3 control-label">Kisa ad</label>
 
                 <div class="col-lg-9">
                     <input type="text" class="form-control" ng-model="model.significantPart">
                     <span class="help-block">Yasal olarak kullanılabilecek en kısa adı. genelde 2 kelime sonuna LTD. ŞTİ eklemeyiniz. </span>
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-lg-3 control-label">Email</label>
+
+                <div class="col-lg-9">
+                    <input type="text" class="form-control" ng-model="other.email">
+                    <span class="help-block">Şirketinizin email adresi (Web sitenizde gösterilecek)</span>
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-lg-3 control-label">Telefon</label>
+
+                <div class="col-lg-9">
+                    <input type="text" class="form-control" ng-model="other.tel">
+                    <span class="help-block">Şirketinizin telefon numarası (Web sitenizde gösterilecek)</span>
+
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-lg-3 control-label">Www</label>
+
+                <div class="col-lg-9">
+                    <input type="text" class="form-control" ng-model="other.www">
+                    <span class="help-block">Web sitesiniz</span>
 
                 </div>
             </div>

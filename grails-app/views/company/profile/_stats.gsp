@@ -140,11 +140,11 @@
 
                 <address class="">
                     <strong>${company.name.fullLegal}</strong><br>
-                    ${company.location?.display_address}
+                    ${company.location?.display_address} <br/>
 
-                    <abbr title="Work email">e-mail:</abbr> <a href="mailto:#">info@fikrimuhal.com</a><br>
-                    <abbr title="Work Phone">phone:</abbr> (012) 345-678-901<br>
-                    <abbr title="Work Fax">fax:</abbr> (012) 678-132-901
+                    <abbr title="Work email">e-mail:</abbr> <a href="mailto:${company.email}">${company.email}</a><br>
+                    <abbr title="Work Phone">phone:</abbr> ${company.tel}<br>
+                    <abbr title="Work ">www:</abbr> ${company.www}
                 </address>
             </div>
 
