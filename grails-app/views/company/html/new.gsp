@@ -102,8 +102,6 @@
 
 
 </div>
-        <pre>
-            {{ model | json }}
-        </pre>
+
 </body>
 </html>
