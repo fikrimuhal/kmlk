@@ -187,10 +187,11 @@ function LeftMenuController($rootScope, $scope, userService, companyService) {
             /**
              * todo: workaround , profil sayfasi  olup olmadigini anlamak icin kullandim. i.e.
              */
-            if(_currentProfile/* Global Object*/){
+            var isDynamicPage = window._currentProfile;
+            if (isDynamicPage /* Global Object*/) {
                 //static sayfa
                 $scope.isVisible.showAddEmployeeModal = true;
-            }else{
+            } else {
                 //settings veya benzer bir sayfa
                 $scope.isVisible.showAddEmployeeModal = false;
 
