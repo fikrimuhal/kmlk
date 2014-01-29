@@ -486,7 +486,7 @@ kimlik
     ])
 
 
-    .controller('CompanyTimelineCtrl', [ '$scope', '$resource', function ($scope, $resource) {
+    .controller('CompanyTimelineCtrl', [ '$scope', '$resource','companyService', function ($scope, $resource,companyService) {
         console.log('CompanyTimelineCtrl start');
         var api = $resource('/api/company/:verb', {},
             {
@@ -547,7 +547,14 @@ kimlik
 
 
             }
-            var result = api.save({companyId: $scope.company._id}, entity);
+            var result = api.save({companyId: $scope.company._id}, entity,function(){
+
+                companyService.reloadCompanies();
+                $scope.$on('company_list_statusChange', function () {
+                    $scope.entities = $scope.company.timeline;
+                });
+
+            });
             $scope.selected = {};
 
         };
