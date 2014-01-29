@@ -124,17 +124,18 @@ function CompanySkillsCtrl($scope, $resource, profileService,companyService) {
 }
 
 function CompanySettingsWwwCtrl($scope, $resource) {
-    console.log('company id = ', $scope.company._id);
-
     var api = $resource(_settings.baseUrl + 'company/domainSettings');
     var domain = api.get({companyId: $scope.company._id}, {});
-    console.debug(domain);
+
     $scope.domain = domain;
-    console.log('domain : ', domain);
+
 
     $scope.save = function (domain2Save) {
 
-        var result = api.save({companyId: $scope.company._id}, domain2Save);
+        var result = api.save({companyId: $scope.company._id}, domain2Save,function(new_domain){
+            $scope.domain = new_domain;
+            alert('ayarlarınız kaydedildi');
+        });
     }
 }
 

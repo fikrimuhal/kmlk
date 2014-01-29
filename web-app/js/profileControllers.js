@@ -9,13 +9,16 @@ function ProfileSettingsWwwCtrl($scope, $resource) {
     console.log('ProfileSettingsWwwCtrl')
 
     var api = $resource('/kimlik/domainSettings');
+
     var domain = api.get();
+
     $scope.domain = domain;
-    console.log('domain : ', domain)
+
 
     $scope.save = function (domain2Save) {
-        var result = api.save({}, domain2Save, function () {
-            alert('Kaydedildi');
+        var result = api.save({}, domain2Save, function (new_domain) {
+            $scope.domain = new_domain;
+            alert('ayarlarınız kaydedildi');
         });
     }
 }
