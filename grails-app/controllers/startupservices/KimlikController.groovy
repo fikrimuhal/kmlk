@@ -156,7 +156,7 @@ class KimlikController {
     }
 
     def profile() {
-        cache("public_3600")
+        cache("public_60")
 
         session._responseCommitedExceptionWorkAround = 'force to create new session with very this assignment'
         def profile = fetchProfile()

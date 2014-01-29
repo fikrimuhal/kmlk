@@ -15,7 +15,7 @@ class CompanyController {
      * @return
      */
     def profile() {
-        cache("public_3600")
+        cache("public_60")
 
         boolean isCrawler = params.containsKey('_escaped_fragment_')
 
