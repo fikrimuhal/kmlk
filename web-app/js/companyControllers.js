@@ -75,7 +75,7 @@ function companyWorkWithUsController($scope, $resource, userService) {
 
 }
 
-function CompanySkillsCtrl($scope, $resource, profileService) {
+function CompanySkillsCtrl($scope, $resource, profileService,companyService) {
     var api = $resource(_settings.baseUrl + 'company/skillUpdate');
 
     $scope.skills = $scope.company.skills;
@@ -85,7 +85,15 @@ function CompanySkillsCtrl($scope, $resource, profileService) {
     console.log($scope.skills);
 
     $scope.forceRecalculate = function () {
-        api.save({companyId: $scope.company._id}, {op: 'RECALCULATE'});
+        api.save({companyId: $scope.company._id}, {op: 'RECALCULATE'},function(){
+
+            companyService.reloadCompanies();
+            $scope.$on('company_list_statusChange', function () {
+
+                $scope.skills = $scope.company.skills;
+            });
+
+        });
     };
 
     $scope.updateOrder = function (skill) {
@@ -109,6 +117,9 @@ function CompanySkillsCtrl($scope, $resource, profileService) {
         return u.first_name + ' ' + u.last_name;
 
     };
+
+    //bu sayfayi ilk actigin skilleri tekrar hesapla
+    $scope.forceRecalculate();
 
 }
 
@@ -217,24 +228,28 @@ function CompanyProjectsCtrl($scope, $routeSegment, $resource, companyService, $
 
     $scope.save = function (product) {
         console.log('save product', product);
-        api.save({companyId: $scope.company._id}, product);
-        companyService.reloadCompanies();
-        $scope.$on('company_list_statusChange', function () {
-            var products = _($scope.company.products);
-            $scope.product = products.find({_id: pid});
-        })
+        api.save({companyId: $scope.company._id}, product,function(){
 
+            companyService.reloadCompanies();
+            $scope.$on('company_list_statusChange', function () {
+                var products = _($scope.company.products);
+                $scope.product = products.find({_id: pid});
+            });
+
+        });
 
     };
 
     $scope.delete = function (product) {
         console.log('delete product', product);
-        api.delete({companyId: $scope.company._id, productId: product._id});
-        companyService.reloadCompanies();
-        $scope.$on('company_list_statusChange', function () {
-            var products = _($scope.company.products);
-            $scope.product = products.find({_id: pid});
-            $location.path('/company/' + $scope.company.name.pageName + '/products')
+        api.delete({companyId: $scope.company._id, productId: product._id},function(){
+
+            companyService.reloadCompanies();
+            $scope.$on('company_list_statusChange', function () {
+                var products = _($scope.company.products);
+                $scope.product = products.find({_id: pid});
+                $location.path('/company/' + $scope.company.name.pageName + '/products')
+            });
         });
     };
 

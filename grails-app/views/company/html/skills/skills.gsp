@@ -28,6 +28,7 @@
                                 <p>
                                     Yetenekler otomatik olarak 1 saat de bir tekrar hesaplanir. Tekrar hesaplamayi tetiklemek icin guncelle butonunu kullanabilirsiniz (gibi bir aciklama...)
                                 </p>
+
                             </div>
 
                             <div class=" col-md-9">
