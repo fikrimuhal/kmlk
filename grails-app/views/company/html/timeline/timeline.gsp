@@ -15,7 +15,7 @@
                 <div class="padder m-t m-b">
                     <button class="btn btn-sm btn-primary pull-right" ng-click="new()">Yeni</button>
 
-                    <div class="timeline ">
+                    <div ng-if="entities" class="timeline ">
 
                         <article  class=" timeline-item" ng-repeat="e in entities %{--| orderBy:'1':false--}%"
                                  ng-class-even="'alt'">
