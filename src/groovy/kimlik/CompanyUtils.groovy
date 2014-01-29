@@ -6,9 +6,12 @@ class CompanyUtils {
     static postProcessCompany(Map company) {
         if (company == null) return null
 
+
         mockExtraData company
         addDeprecatedFields company
         fixNullFields company
+
+
         addCompanyStats company
         return company
     }

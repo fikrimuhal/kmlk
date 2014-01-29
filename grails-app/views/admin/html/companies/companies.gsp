@@ -55,7 +55,7 @@
                     <tr ng-repeat="company in companies" title="{{company.name.fullLegal}}">
                         <td><input type="checkbox" name="post[]" value="2"></td>
                         <td><a target="_self" href="/company/profile/{{company.name.pageName}}">{{company.name.significantPart}} {{company.last_name}}</a></td>
-                        <td>{{company.owner}}</td>
+                        <td><a href="/kimlik/profile/{{company.owner}}">{{company.owner}}</a></td>
                         <td>{{company.email}}</td>
                         <td>{{company.www}}</td>
                         <td>

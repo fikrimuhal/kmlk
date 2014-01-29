@@ -42,8 +42,9 @@ class CompanyService {
         def data = []
 
         DBCursor cursor = col.find(_QUERY)
-
-        cursor.sort([_id: 1]).skip(skip).limit(limit).each {Map c
+        cursor.sort([_id: 1]).skip(skip).limit(limit).each { Map c ->
+            println "skip: $skip"
+            println c
             data << postProcessCompany(c)
         }
 
@@ -99,7 +100,7 @@ class CompanyService {
         def result = col.findOne(_QUERY)
         if (result) {
             postProcessCompany(result)
-        }else{
+        } else {
             return [:]
         }
 
@@ -143,7 +144,6 @@ class CompanyService {
         col.update(_QUERY, _OPS, false, false, WriteConcern.SAFE)
 
     }
-
 
 
     def saveProduct(def product, ObjectId companyId) {
@@ -197,13 +197,13 @@ class CompanyService {
         log.debug(location)
 
         def documentMap = [
-                country: location.country?:'',
-                city: location.city?:'',
+                country: location.country ?: '',
+                city: location.city ?: '',
                 district: location.district,
-                quarter: location.quarter?:'',
-                avenue: location.avenue?:'',
-                street: location.street?:'',
-                display_address: location.display_address?:'',
+                quarter: location.quarter ?: '',
+                avenue: location.avenue ?: '',
+                street: location.street ?: '',
+                display_address: location.display_address ?: '',
                 latLng: [
                         lat: location.latLng?.lat,
                         lng: location.latLng?.lng,
