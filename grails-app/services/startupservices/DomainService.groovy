@@ -23,6 +23,7 @@ class DomainService {
         existing.enabled = obj.enabled
 //        existing.pageName = obj.pageName
         existing.domains = obj.domains
+        existing.googleAnalytics = obj.googleAnalytics?:''
 
         existing.save(failOnError: true, flush: true)
         return existing
@@ -40,6 +41,8 @@ class DomainService {
 
         existing.pageName = company.name.pageName
         existing.domains = obj.domains
+
+        existing.googleAnalytics = obj.googleAnalytics?:''
 
         existing = existing.save(failOnError: true, flush: true)
 
@@ -61,6 +64,8 @@ class DomainService {
 
         existing.pageName = profile.username
         existing.domains = obj.domains
+
+        existing.googleAnalytics = obj.googleAnalytics?:''
 
         existing = existing.save(failOnError: true, flush: true)
 

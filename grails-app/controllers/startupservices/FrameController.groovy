@@ -16,7 +16,8 @@ class FrameController {
             render status: 523, text: domainNotFoundTemplate
         } else {
             String url = getProfileUrl(page)
-            return [url: url]
+            def ga_domain = page.domains[0] ?: page.domains[1]
+            return [url: url, googleAnalytics: page.googleAnalytics, ga_domain:ga_domain]
         }
     }
 

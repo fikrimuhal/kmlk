@@ -11,7 +11,9 @@ class DomainToPage {
     boolean isCompany
     boolean isProfile
     boolean enabled
+    String googleAnalytics
 
     static constraints = {
+        googleAnalytics nullable: true
     }
 }
