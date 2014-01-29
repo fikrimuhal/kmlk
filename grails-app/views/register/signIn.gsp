@@ -18,7 +18,7 @@
     <a class="navbar-brand" href="/">kimlik</a>
 </header>
 <!-- / header -->
-<section id="content">
+<section id="content" ng-controller="SignInController">
     <div class="main padder">
         <div class="row">
             <div class="col-lg-4 col-lg-offset-4 m-t-large">
@@ -28,9 +28,10 @@
                     </header>
 
                     <form action="" class="panel-body">
-                        <div class="line line-dashed"></div>
+                        <p class="text-center text-info" ng-if="inProgress"><b>Lütfen bekleyiniz...</b></p>
 
-                        <oauth:connect provider="facebook" id="facebook-connect-link"
+                        <div class="line line-dashed"></div>
+                        <oauth:connect provider="facebook" id="facebook-connect-link" ng-class="{disabled: inProgress}" ng-click="login()"
                                        class="btn btn-facebook btn-block m-b-small"><i
                                 class="fa fa-facebook pull-left"></i>Facebook ile giriş yap</oauth:connect>
 
@@ -42,7 +43,7 @@
                                        %{--class="btn btn-gplus btn-block"><i--}%
                                 %{--class="fa fa-google-plus pull-left"></i>Google ile giriş yap</oauth:connect>--}%
 
-                        <oauth:connect provider="linkedin" id="linkedin-connect-link"
+                        <oauth:connect provider="linkedin" id="linkedin-connect-link"  ng-class="{disabled: inProgress}" ng-click="login()"
                                        class="btn btn-linkedin btn-block"><i
                                 class="fa fa-linkedin pull-left"></i>Linkedin ile giriş yap</oauth:connect>
 
@@ -57,6 +58,18 @@
         </div>
     </div>
 </section>
+<script type="text/javascript">
+
+    function SignInController($scope, $resource) {
+        $scope.inProgress = false;
+        $scope.login = function () {
+            var preventClick = $scope.inProgress;
+            $scope.inProgress = true;
+            return preventClick
+        };
+
+    }
+</script>
 <g:render template="/shared/footer"/>
 
 </body>
