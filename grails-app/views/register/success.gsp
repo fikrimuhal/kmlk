@@ -31,6 +31,7 @@
                                    name="checkUsername(username)"
                                    placeholder="" class="form-control">
                             <span class="help-block">Kullanıcı adınız <em>AdSoyad</em> tarzında yazmanızı öneririz</span>
+                            <span class="help-block">Eğer daha önceden kayıt olduysanız bir önceki sayfaya geri dönüp daha önce kullandığınız yöntem ile kayıt olunuz.</span>
                             <span ng-show='username' class="help-block">http://kimlik.io/{{username}}</span>
                         </div>
 
