@@ -257,7 +257,7 @@ kimlik.run(function ($rootScope, $routeSegment) {
 });
 
 
-function NavBarCtrl($scope, companyService, userService) {
+function NavBarCtrl($scope, companyService, userService, $location) {
     $scope.companies = $scope.companies || companyService.getUserCompanyList(); //bir onceki scope da yuklenmis olabilir
     $scope.companies.$promise.then(function () {
         $scope.showPrivateNavBarCompanies = true; //flicker i onlemek icin showPrivateNavBar burada true olmali eger true olacak ise
@@ -276,7 +276,9 @@ function NavBarCtrl($scope, companyService, userService) {
     initialize();
     $scope.$on('userAuthenticated', initialize);
 
-
+    $scope.logout = function () {
+        userService.logout();
+    };
     console.log('NAV_BAR Ready');
 
 }

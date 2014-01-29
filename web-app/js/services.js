@@ -114,6 +114,15 @@ kimlik.factory('userService', function ($resource, $rootScope) {
     var _cacheKey = 'loggedInProfile';
     var user;
 
+    function clearAllCache() {
+        localStorage.removeItem(_cacheKey);
+    }
+
+    function logout() {
+        clearAllCache();
+        window.location = '/auth/logout';
+    }
+
     function getCachedProfile() {
         var p;
         try {
@@ -165,6 +174,7 @@ kimlik.factory('userService', function ($resource, $rootScope) {
     return {
         isLoggedIn: isLoggedIn,
         auth: auth,
+        logout: logout,
         getLoggedInUser: getLoggedInUser
     }
 });
@@ -198,7 +208,7 @@ kimlik.factory('profileService', function ($resource) {
             _(result).each(function (it) {
                 var names = [it.first_name, it.middle_name, it.last_name]
                 it.name = _.reduce(names, function (ac, n) {
-                    return ac + (n?n+' ':'')
+                    return ac + (n ? n + ' ' : '')
                 }, '');
                 angular.extend(_profileCache[it._id], it)
             });

@@ -24,7 +24,7 @@
                 <li><a href="/kimlik/{{user_name}}/settings/profilePicture">Profil Resmim</a></li>
                 <li class="divider"></li>
                 <li><a href="/kimlik/{{user_name}}/settings">Profilimi düzenle</a></li>
-                <li><g:link controller="auth" action="logout" target="_self">Oturumu kapat</g:link></li>
+                <li><a href="#" target="_self" ng-click="logout()">Oturumu kapat</a></li>
 
                 %{--<li><a href="/kimlik/{{user_name}}/notifications"><span--}%
                         %{--class="badge bg-danger pull-right">3</span>Bildirimler</a></li>--}%

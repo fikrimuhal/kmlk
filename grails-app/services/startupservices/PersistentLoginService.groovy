@@ -106,7 +106,7 @@ class PersistentLoginService {
     }
 
     def sendCancelCookie(ObjectId deviceId) {
-        deleteDevice(deviceId ?: ObjectId.massageToObjectId(currentPersistentLoginCookie.device))
+        deleteDevice(deviceId ?: ObjectId.massageToObjectId(currentPersistentLoginCookie?.device))
         [COOKIE_DEVICE, COOKIE_TOKEN].each {
             def cookie = new Cookie(it, '')
             cookie.path = '/'

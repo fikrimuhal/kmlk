@@ -25,7 +25,7 @@ class AuthController {
     def logout() {
         persistentLoginService.sendCancelCookie()
         authenticationService.logout()
-        //todo put cancel cookie
+
         redirect(url: '/')
     }
 
