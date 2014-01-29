@@ -25,7 +25,7 @@ CTRL.controller('ProfileCtrl', ['$scope', '$resource', 'ProfileService', '$state
 
 
         } else {
-            $scope.profile = ProfileService.showProfile($state.params.id)
+            $scope.profile = ProfileService.showProfile($state.params.id);
             console.error('GGG::::',$scope.profile )
         }
 

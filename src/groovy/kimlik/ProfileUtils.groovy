@@ -66,6 +66,7 @@ class ProfileUtils {
          * If no picture exists or default picture url set it
          */
         if (!profile.profilePicture.url) {
+            //noinspection GroovyAssignabilityCheck
             def firstPicture = profile.profilePicture.pictures[0]
             profile.profilePicture.url = firstPicture?.url
         }

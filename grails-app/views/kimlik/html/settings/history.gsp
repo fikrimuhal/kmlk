@@ -3,7 +3,7 @@
     <section class="main">
         <div class="padder m-t m-b">
             <div class="pull-right">
-                <button class="btn btn-sm btn-primary" ng-click="new()">Yeni</button>
+                <button class="btn btn-sm btn-primary" ng-click="new_entity()">Yeni</button>
 
             </div>
             <div class="pull-left">

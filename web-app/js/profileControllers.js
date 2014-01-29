@@ -6,13 +6,12 @@ var kimlik = angular.module('kimlik');
 
 
 function ProfileSettingsWwwCtrl($scope, $resource) {
-    console.log('ProfileSettingsWwwCtrl')
+    console.log('ProfileSettingsWwwCtrl');
 
     var api = $resource('/kimlik/domainSettings');
 
-    var domain = api.get();
 
-    $scope.domain = domain;
+    $scope.domain = api.get();
 
 
     $scope.save = function (domain2Save) {
@@ -83,7 +82,7 @@ kimlik.controller('KimlikTimelineCtrl', [ '$scope', '$resource', 'userService', 
     $scope.entities = userService.getLoggedInUser().timeline;
     console.log(' $scope ', $scope.entities);
 
-    $scope.new = function () {
+    $scope.new_entity = function () {
         $scope.selected = {}
     };
 
@@ -148,7 +147,7 @@ kimlik.controller('KimlikTimelineCtrl', [ '$scope', '$resource', 'userService', 
     }
 
 
-}])
+}]);
 
 
 function KimlikSkillsCtrl($scope, skillService) {
@@ -183,7 +182,7 @@ function LeftMenuController($rootScope, $scope, userService, companyService) {
     /* */
     companyService.getUserCompanyList().$promise.then(function (companies) {
         if (!companies.length) {
-            console.debug('current user does not have any company hide showAddEmployeeModal')
+            console.debug('current user does not have any company hide showAddEmployeeModal');
             $scope.isVisible.showAddEmployeeModal = false;
         } else {
 
@@ -191,6 +190,7 @@ function LeftMenuController($rootScope, $scope, userService, companyService) {
              * todo: workaround , profil sayfasi  olup olmadigini anlamak icin kullandim. i.e.
              */
             var isDynamicPage = window._currentProfile;
+            //noinspection RedundantIfStatementJS
             if (isDynamicPage /* Global Object*/) {
                 //static sayfa
                 $scope.isVisible.showAddEmployeeModal = true;
@@ -371,7 +371,7 @@ kimlik.controller('KimlikSettingsLocationCtrl', ['$scope', '$resource', 'userSer
         if (!waitingGeocoder) {
             waitingGeocoder = true;
             var address = getPartialAddress($scope.address);
-            console.log(address)
+            console.log(address);
 
             geocoder.geocode({ 'address': address}, function (results, status) {
                 try {
@@ -381,7 +381,7 @@ kimlik.controller('KimlikSettingsLocationCtrl', ['$scope', '$resource', 'userSer
                         console.log(results);
                         marker.setPosition(results[0].geometry.location);
                         markerDragStartListener();
-                        $scope.address.formatted_address = results[0].formatted_address
+                        $scope.address.formatted_address = results[0].formatted_address;
                         $scope.address.display_address = results[0].formatted_address
                     } else {
 //                        alert("Geocode was not successful for the following reason: " + status);
@@ -414,7 +414,7 @@ kimlik.controller('KimlikSettingsLocationCtrl', ['$scope', '$resource', 'userSer
     $scope.save = function (address) {
         var result = api.save({}, address);
 
-    }
+    };
     console.log('Settings location Ready');
 
 }]);
@@ -423,7 +423,7 @@ kimlik.controller('KimlikSettingsLocationCtrl', ['$scope', '$resource', 'userSer
 function KimlikSettingsGeneralCtrl($scope, userService, $resource) {
     console.log('Settings general Ready');
 
-    $scope.model = {}
+    $scope.model = {};
     if (userService.isLoggedIn()) {
         populateForm();
     } else {
@@ -490,14 +490,14 @@ kimlik
             };
 
             $scope.makeDefault = function (file) {
-                console.log(file._id)
+                console.log(file._id);
                 var result = api.makeDefault({}, {url: file.url});
                 $scope.profilePicture.url = file.url
-            }
+            };
 
             $scope.isThisDefaultPicture = function (picture) {
                 return picture.url == $scope.profilePicture.url
-            }
+            };
 
 
             $scope.canBeDeleted = function (picture) {

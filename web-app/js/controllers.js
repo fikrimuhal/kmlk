@@ -33,7 +33,7 @@ function TypeaheadCtrl($scope, $http, filterFilter, $resource, skillService, pro
         var api = $resource('/api/kimlik/ajaxRateSelf');
         api.get({skillName: skillName, value: value})
 
-    }
+    };
 
     /**
      *
@@ -52,18 +52,18 @@ function TypeaheadCtrl($scope, $http, filterFilter, $resource, skillService, pro
         var bucket = skill.profiles[value];
         for (var idx in skill.profiles) {
             var _bucket = skill.profiles[idx];
-            var profileIDX = jQuery.inArray(friendId, _bucket)
+            var profileIDX = jQuery.inArray(friendId, _bucket);
             if (profileIDX !== -1) {
                 _bucket.splice(profileIDX, 1)
             }
         }
 
         if (jQuery.inArray(friendId, bucket) === -1) {
-            bucket.push(friendId)
-            var api = $resource('/api/kimlik/ajaxRateFriend')
+            bucket.push(friendId);
+            var api = $resource('/api/kimlik/ajaxRateFriend');
             api.get({skillName: skillName, value: value, friendId: friendId});
         }
-        console.debug('thiss: ', this.skill.selected)
+        console.debug('thiss: ', this.skill.selected);
         this.skill.selected = {name: ''};
 //        model.name = ''
 
@@ -84,13 +84,13 @@ function TypeaheadCtrl($scope, $http, filterFilter, $resource, skillService, pro
         var api = $resource('/api/kimlik/ajaxRateFriend')
         api.get({skillName: skillName, value: 'delete', friendId: friendId});
 
-    }
+    };
 
 //    $scope.skills = [];
 
     $scope.profile = function (id) {
         return profileService.getProfileById(id);
-    }
+    };
 
 
     $scope.removeSkill = function (skill) {
@@ -104,11 +104,11 @@ function TypeaheadCtrl($scope, $http, filterFilter, $resource, skillService, pro
 
 function NewSkillCtrl($scope, skillService) {
 
-    $scope.selected = undefined
+    $scope.selected = undefined;
 
     $scope.getSkillNames = function (value) {
         return skillService.allSkills(value)
-    }
+    };
 
     $scope.addSkill = function ($item) {
 
@@ -117,7 +117,7 @@ function NewSkillCtrl($scope, skillService) {
 
         skillService.addSkill($scope.selected)
         $scope.selected = '';
-    }
+    };
 
     /**
      * @deprecated
@@ -141,7 +141,7 @@ function NewSkillCtrl($scope, skillService) {
 
 function RegisterController($scope, $resource) {
 
-    $scope.username
+    $scope.username;
     var USERNAME_NOT_AVAILABLE = "Boyle bir kullanici adi var, başka bir tane deneyiniz..";
     var USERNAME_AVAILABLE = "Kullanıcı adı UYGUN, devam edebilirsiniz...";
     $scope.userNameMessage = '';
@@ -151,8 +151,8 @@ function RegisterController($scope, $resource) {
         checkAgain = false;
 
     // REST JSON API
-    var apiCheckUsername = $resource('/register/ajaxCheckUsername')
-    var apiCreate = $resource('/register/ajaxCreate')
+    var apiCheckUsername = $resource('/register/ajaxCheckUsername');
+    var apiCreate = $resource('/register/ajaxCreate');
 
 
     $scope.checkUsername = function (username) {
@@ -177,24 +177,24 @@ function RegisterController($scope, $resource) {
         } else {
             checkAgain = true;  //because the model changed and we did not checked the new value just yet.
         }
-    }
+    };
 
     $scope.submitButtonIsDisabled = function () {
         return checkInProgress || !userNameValid || submitInProgress || !$scope.username
-    }
+    };
 
     $scope.createProfile = function () {
         submitInProgress = true;
-        $scope.submitInProgress = submitInProgress
+        $scope.submitInProgress = submitInProgress;
 
         function onSuccess(result) {
-            var username = result.username
+            var username = result.username;
             document.location = '/kimlik/profile/' + username;
         }
 
         function onError(result) {
             submitInProgress = false;
-            $scope.submitInProgress = submitInProgress
+            $scope.submitInProgress = submitInProgress;
             alert('Bir hata olustu tekrar deneyin');
         }
 
@@ -217,29 +217,29 @@ function RegisterController($scope, $resource) {
  * @param $log
  */
 function positionInboxController($rootScope, $scope, userService, $resource, $modal, $log) {
-    $scope.model = 'selassm'
-    var api = $resource('/position/inbox')
-    var visibleDetailsMap = {}
+    $scope.model = 'selassm';
+    var api = $resource('/position/inbox');
+    var visibleDetailsMap = {};
     $scope.inbox = api.query({}, {}, function () {
         console.log($scope.inbox)
     });
 
     $scope.toggleDetails = function (it) {
         var id = it._id;
-        console.log('details', id)
-        console.log('details1', visibleDetailsMap[id])
+        console.log('details', id);
+        console.log('details1', visibleDetailsMap[id]);
         visibleDetailsMap[id] = !visibleDetailsMap[id]
     };
 
     $scope.isDetailsVisible = function (it) {
         var id = it._id;
         return visibleDetailsMap[id]
-    }
+    };
 
     $scope.testX = function () {
         console.log('testing testing X')
         return 'yeppp'
-    }
+    };
 
 
     $scope.items = ['item1', 'item2', 'item3d'];

@@ -7,7 +7,7 @@
 var kimlik = angular.module('kimlik', ['ui.bootstrap', 'ngResource', 'ngRoute', 'route-segment', 'view-segment', 'blueimp.fileupload', 'fm.analytics']);
 kimlik.config(['$routeSegmentProvider', '$locationProvider',
     function ($routeSegmentProvider, $locationProvider) {
-        console.debug('_settings :', _settings)
+        console.debug('_settings :', _settings);
 
         $locationProvider.html5Mode(!_settings.staticMode);
         $routeSegmentProvider.options.autoLoadTemplates = true;
@@ -109,7 +109,7 @@ kimlik.config(['$routeSegmentProvider', '$locationProvider',
                 templateUrl: '/html/company/new.html',
                 controller: CompanyNewCtrl}).
             segment('newSuccess', {
-                templateUrl: '/html/company/newSuccess.html'})
+                templateUrl: '/html/company/newSuccess.html'});
 
 
         $routeSegmentProvider.
@@ -232,7 +232,7 @@ kimlik.run(function ($rootScope, $routeSegment) {
         console.log('* route change event')
 
     });
-    console.log('App run block finished')
+    console.log('App run block finished');
 
     //todo refactor
     $rootScope.getProfilePictureUrl = function (loggedinUser) {
@@ -284,7 +284,7 @@ function NavBarCtrl($scope, companyService, userService, $location) {
 }
 
 function NotificationCtrl($scope, $resource, userService, companyService) {
-    $scope.items = []
+    $scope.items = [];
     var api = $resource('/api/notification/:verb', {}, {
         'query': {method: 'POST', params: {verb: 'getInbox'}/*, isArray: true*/},
         'markAsRead': {method: 'POST', params: {verb: 'markAsRead'}/*, isArray: true*/},
@@ -325,7 +325,7 @@ function NotificationCtrl($scope, $resource, userService, companyService) {
 
     $scope.notificationBodyTemplate = function (notification) {
         notification.data = notification.data || {};
-        console.error('data: ', notification.data)
+        console.error('data: ', notification.data);
         switch (notification.data.type) {
             case '1002':
                 return '/html/kimlik/notifications/items/type_employee_add_request.html';
@@ -357,8 +357,8 @@ function notificationEmployeeAddRequest($scope, userService, $resource) {
         var toId = loggedInUser._id;
         var fromId = companyId;
 
-        console.log('user ', toId)
-        console.log('company ', fromId)
+        console.log('user ', toId);
+        console.log('company ', fromId);
 
         api.newRequest({}, {toId: toId, fromId: fromId, requestedByCompany: false}, function (d) {
             alert('Şirket yetkilisine bildirildi, teşekkürler!');
@@ -425,7 +425,7 @@ kimlik.
                 $scope.clear(file);
             };
         }
-    }])
+    }]);
 
 
 //end

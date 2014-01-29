@@ -591,9 +591,9 @@ kimlik
         var api = $resource('/api/company/saveBasicInfo');
         $scope.owner = userService.getLoggedInUser(); //todo company.owner olmasi lazim bunun
         $scope.save = function () {
-            var data = $scope.other
-            data.name = $scope.model
-            data.tags = $scope.tags
+            var data = $scope.other;
+            data.name = $scope.model;
+            data.tags = $scope.tags;
 
             api.save({companyId: $scope.company._id}, data, function () {
                 console.warn('TODO: reload/update company');
