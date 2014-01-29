@@ -94,7 +94,7 @@ environments {
     development {
         grails.logging.jul.usebridge = true
         //ipfw add 10 fwd 127.0.0.1,8080 tcp from any to me 80
-        grails.serverURL = "http://localhost.kimlik.io"
+        grails.serverURL = "http://kimlik.io"
         grails.app.context = "/"
 
         /* http://stackoverflow.com/questions/19103255/grails-2-3-0-cannot-access-session-in-the-view-if-session-is-not-accessed-before/19103256#19103256

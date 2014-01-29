@@ -24,6 +24,14 @@ environments {
     }
 
     development {
+        grails {
+            mongo {
+//                host = "zeus.fikrimuhal.com"
+                host = "localhost"
+                port = 27017
+                databaseName = "kimlik"
+            }
+        }
     }
 
     staging {
