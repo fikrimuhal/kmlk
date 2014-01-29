@@ -26,7 +26,10 @@
                     type="submit"
                     class="btn btn-primary"> <i class="fa fa-plus"></i> Ekle</button>
         </form>
-
+          <p>
+              Linkedin hesabınızı ekliyerek yeteneklerinizi otomatik olarak linkedin den çekebilirsiniz. <br/> <br/>
+              <a href="/kimlik/{{user_name}}/settings/social"><i class="fa fa-chain text-default"></i> Sosyal Hesaplarım</a>'dan LinkedIn hesabınızı bağlaya bilirsiniz.
+          </p>
     </div>
     <div class=" col-md-8">
         <table class="table">

@@ -11,7 +11,7 @@
             </small>
         </g:if>
         <small><br/>Bu uzmanlıklar analatik olarak hesaplanmıştır.
-        Daha fazla bilgi için <a href="#">tıklayın</a>.</small></h3>
+       %{-- Daha fazla bilgi için <a href="#">tıklayın</a>.--}%</small></h3>
 </div>
 
 <div class="row">
@@ -69,7 +69,7 @@
                 <h3 class="text-center">Uzmanlıklar hakkında</h3>
 
                 <p class="text-center">Bu uzmanlıklar analatik olarak hesaplanmıştır. <br/>
-                    Daha fazla bilgi için <a href="#">tıklayın</a>.</p>
+                    %{--Daha fazla bilgi için <a href="#">tıklayın</a>.--}%</p>
             </div>
         </div>
     </g:if>

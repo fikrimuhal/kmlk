@@ -60,7 +60,7 @@
 
                     <p class="text-center">Bu uzmanlıklar analatik olarak hesaplanmıştır. <br/>
                         Barların üzerinde ki, ilgili uzmanlığın, "x" işareti şirketteki kişi sayısını göstermektedir.
-                        Daha fazla bilgi için <a href="#">tıklayın</a>.</p>
+                        %{--Daha fazla bilgi için <a href="#">tıklayın</a>.--}%</p>
                 </div>
             </div>
         </div>
