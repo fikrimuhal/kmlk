@@ -142,28 +142,28 @@ modules = {
         resource url: 'js/directives.js'
     }
 
-    /**
-     * @Deprecated
-     */
-    freshServices {
-        defaultBundle 'fresh'
-        dependsOn(['fresh', 'lodash'])
-        getFilesForPath('/js/services').each {
-            resource url: it
-        }
-    }
+//    /**
+//     * @Deprecated
+//     */
+//    freshServices {
+//        defaultBundle 'fresh'
+//        dependsOn(['fresh', 'lodash'])
+//        getFilesForPath('/js/services').each {
+//            resource url: it
+//        }
+//    }
 
-    /**
-     * @Deprecated
-     */
-    freshControllers {
-        defaultBundle 'fresh'
-        dependsOn(['fresh', 'lodash'])
-
-        getFilesForPath('/js/controllers').each {
-            resource url: it
-        }
-    }
+//    /**
+//     * @Deprecated
+//     */
+//    freshControllers {
+//        defaultBundle 'fresh'
+//        dependsOn(['fresh', 'lodash'])
+//
+//        getFilesForPath('/js/controllers').each {
+//            resource url: it
+//        }
+//    }
 
 
     angularUiRoute {
