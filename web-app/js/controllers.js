@@ -156,6 +156,7 @@ function RegisterController($scope, $resource) {
 
 
     $scope.checkUsername = function (username) {
+
         if (!checkInProgress) {
             checkInProgress = true;
             apiCheckUsername.get({username: username}, function success(result) {
@@ -179,11 +180,12 @@ function RegisterController($scope, $resource) {
     }
 
     $scope.submitButtonIsDisabled = function () {
-        return checkInProgress || !userNameValid || submitInProgress
+        return checkInProgress || !userNameValid || submitInProgress || !$scope.username
     }
 
     $scope.createProfile = function () {
         submitInProgress = true;
+        $scope.submitInProgress = submitInProgress
 
         function onSuccess(result) {
             var username = result.username
@@ -192,6 +194,7 @@ function RegisterController($scope, $resource) {
 
         function onError(result) {
             submitInProgress = false;
+            $scope.submitInProgress = submitInProgress
             alert('Bir hata olustu tekrar deneyin');
         }
 

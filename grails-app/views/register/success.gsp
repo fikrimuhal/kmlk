@@ -16,7 +16,7 @@
     <a class="navbar-brand" href="#">kimlik</a>
 </header>
 <!-- / header -->
-<section id="content" ng-controller="RegisterController">
+<section id="content" ng-controller="RegisterController" ng-cloak>
     <div class="main padder">
         <div class="row">
             <div class="col-lg-4 col-lg-offset-4 m-t-large">
@@ -40,8 +40,10 @@
                             <div class="col-sm-12 text-center" ng-switch on="submitButtonIsDisabled()">
 
                                 <h4 ng-hide='username' class=" text-info">Kişisel hesabınız için lütfen kullanıcı adı seçiniz...</h4>
-                                <h4 ng-switch-when="true" class=" text-danger">{{userNameMessage}}</h4>
-                                <h4 ng-switch-when="false" class="text-success">{{userNameMessage}}</h4>
+                                <h4 ng-show='submitInProgress' class="text-info">Profiliniz oluşturuluyor lütfen bekleyiniz...</h4>
+
+                                <h4 ng-switch-when="true"  ng-show='username && !submitInProgress' class=" text-danger">{{userNameMessage}}</h4>
+                                <h4 ng-switch-when="false" ng-show='username' class="text-success">{{userNameMessage}}</h4>
                             </div>
                         </div>
                         <div class="line line-dashed"></div>
