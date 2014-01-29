@@ -34,7 +34,7 @@ class PersistentLoginService {
         getDomain()
         def cookie = currentPersistentLoginCookie
         if (!cookie) {
-            log.debug('No persistent login cookie found in the request')
+            //log.debug('No persistent login cookie found in the request')
             return null
         }
 

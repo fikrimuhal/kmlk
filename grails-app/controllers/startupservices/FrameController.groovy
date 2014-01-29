@@ -7,7 +7,7 @@ class FrameController {
 
     def index() {
         cache("public_3600")
-        println '############################## Frame ###################################'
+//        println '############################## Frame ###################################'
 
         String requestedDomain = request.getHeader('Host').toLowerCase()
         def page = domainService.domain2Page(requestedDomain)

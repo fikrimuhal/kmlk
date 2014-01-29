@@ -67,8 +67,8 @@ class AuthenticationFilters {
 
                 } else {
                     // hello human!
-                    log.debug(' hello human!')
-
+//                    log.debug(' hello human!')
+//
                     request._alreadyForwarded = true
                     forward controller: 'frame', action: 'index'
 
