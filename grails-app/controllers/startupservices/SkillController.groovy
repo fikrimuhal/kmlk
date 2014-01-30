@@ -11,6 +11,8 @@ class SkillController {
     def authenticationService
 
     def getAll() {
+        cache("public_10")
+
         def data = []
         def skills = skillService.list()
         skills.each {
@@ -27,6 +29,8 @@ class SkillController {
      * @return
      */
     def addSkill() {
+        cache("private_nostore")
+
         assert authenticationService.loggedIn
         def currentUsersId = authenticationService.authenticatedUserId
 
@@ -39,6 +43,8 @@ class SkillController {
     }
 
     def removeSkill() {
+        cache("private_nostore")
+
         assert authenticationService.loggedIn
         def currentUsersId = authenticationService.authenticatedUserId
         String skillName = params.skillName

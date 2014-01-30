@@ -10,6 +10,8 @@ class HrController {
     def authenticationService
 
     def listApplicantsForCompany() {
+        cache("private_nostore")
+
         println params.companyId
         ObjectId companyId = ObjectId.massageToObjectId(params.companyId)
 
@@ -19,6 +21,8 @@ class HrController {
     }
 
     def apply() {
+        cache("private_nostore")
+
         ObjectId companyId = ObjectId.massageToObjectId(request.JSON.companyId)
 
         if (authenticationService.isLoggedIn() && companyId) {

@@ -199,12 +199,18 @@ oauth {
 
 cache.headers.presets = [
         nocache: false,
-        static_html_template: [shared: true, validFor: 60 * 60 * 24],
+//        static_html_template: [shared: true, validFor: 60 * 60 * 24],
+        static_html_template: [shared: true, validFor: 60 * 60 * 1], //simdilik 1 saat olsun
+        static_landing_page: [shared: true, validFor: 60 * 60 * 1], //simdilik 1 saat olsun
+        public_1day: [shared: true, validFor: 60 * 60 * 24], // pagename ve username kontrolunde name valid degilse cachle
         public_3600: [shared: true, validFor: 3600],
         public_60: [shared: true, validFor: 60],
         public_10: [shared: true, validFor: 10],
+        public_5: [shared: true, validFor: 10],
         private_300: [shared: false, validFor: 300],
-        private_5: [shared: false, validFor: 5]
+        private_1day: [shared: false, validFor:  60 * 60 * 24],
+        private_5: [shared: false, validFor: 5],
+        private_nostore: [shared: false, store:false]
 ]
 
 

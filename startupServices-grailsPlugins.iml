@@ -5,9 +5,9 @@
       <configuration>
         <webroots>
           <root url="file://$MODULE_DIR$/target/work/plugins/resources-1.2.1/web-app" relative="/" />
+          <root url="file://$MODULE_DIR$/target/work/plugins/cached-resources-1.1/grails-app/views" relative="/" />
           <root url="file://$MODULE_DIR$/target/work/plugins/cache-headers-1.1.5/web-app" relative="/" />
           <root url="file://$MODULE_DIR$/target/work/plugins/jquery-1.10.2.2/web-app" relative="/" />
-          <root url="file://$MODULE_DIR$/target/work/plugins/cached-resources-1.1/grails-app/views" relative="/" />
         </webroots>
         <sourceRoots />
       </configuration>

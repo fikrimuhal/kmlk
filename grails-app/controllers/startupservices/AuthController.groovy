@@ -11,6 +11,7 @@ class AuthController {
 
 
     def ajaxAuth() {
+        cache("private_nostore")
 
         def data = authenticationService.authenticatedUser
         if (data) {
@@ -23,6 +24,8 @@ class AuthController {
 
 
     def logout() {
+        cache("private_nostore")
+
         persistentLoginService.sendCancelCookie()
         authenticationService.logout()
 

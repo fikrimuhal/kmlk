@@ -15,6 +15,7 @@ class PictureController {
     def index() {}
 
     def upload() {
+        cache("private_nostore")
 
         assert params.redirectTo
 
@@ -49,6 +50,8 @@ class PictureController {
      * @return
      */
     def ajaxUpload() {
+        cache("private_nostore")
+
         def result
         log.debug 'params: ' + params
         log.debug 'params.files: ' + params.files?.dump()
@@ -104,6 +107,8 @@ class PictureController {
      * @return
      */
     def ajaxUploadProfile() {
+        cache("private_nostore")
+
 
         def result
         log.debug 'params: ' + params
@@ -158,6 +163,8 @@ class PictureController {
      * company ofice picture silmek icin sadece suanda
      */
     def ajaxDelete() {
+        cache("private_nostore")
+
         def result = [
                 result: 'ok',
                 pictureId: params.pictureId
@@ -182,6 +189,8 @@ class PictureController {
      * profile picture silmek icin sadece suanda
      */
     def ajaxDeleteProfile() {
+        cache("private_nostore")
+
         def result = [
                 result: 'ok',
                 pictureId: params.pictureId
@@ -203,6 +212,8 @@ class PictureController {
      * profile picture silmek icin sadece suanda
      */
     def makeDefaultProfilePicture() {
+        cache("private_nostore")
+
         def result = [
                 result: 'ok'
         ]

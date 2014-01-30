@@ -11,6 +11,8 @@ class NotificationController {
 
 
     def deleteNotifications() {
+        cache("private_nostore")
+
         notificationService.deleteNotifications(request.JSON.ids.collect({ObjectId.massageToObjectId(it)}))
 
         def result = [status: 'ok']
@@ -18,6 +20,7 @@ class NotificationController {
     }
 
     def markAsRead() {
+        cache("private_nostore")
         //todo AA needed
         notificationService.markAsRead(request.JSON.ids.collect({ObjectId.massageToObjectId(it)}))
         def result = [status: 'ok']
@@ -29,6 +32,7 @@ class NotificationController {
      * @return
      */
     def getAuthorizedInbox() {
+        cache("private_nostore")
 
         def result = [status: 'ok']
         render result as JSON

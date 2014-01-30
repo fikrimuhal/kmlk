@@ -17,12 +17,16 @@ class KimlikController {
     def domainService
 
     def ajaxFriends() {
+        cache("private_nostore")
+
         def data = shallowUser(authenticationService.authenticatedUser.friends)
         render(data as JSON)
 //        render 'ok'
     }
 
     def updateLocation() {
+        cache("private_nostore")
+
         org.codehaus.groovy.grails.web.json.JSONObject data = request.JSON
         data.remove('id')
         println '____'
@@ -33,6 +37,8 @@ class KimlikController {
     }
 
     def ajaxSkills() {
+        cache("private_nostore")
+
         def data = []
         def EMPTY_ARRAY = []
         println authenticationService.authenticatedUserId
@@ -64,6 +70,8 @@ class KimlikController {
     }
 
     def ajaxRateSelf() {
+        cache("private_nostore")
+
         assert authenticationService.loggedIn
         assert params.skillName
         assert params.value  //1,2,3,4
@@ -81,6 +89,8 @@ class KimlikController {
      * @return
      */
     def ajaxRateFriend() {
+        cache("private_nostore")
+
         assert authenticationService.loggedIn
         assert params.friendId
         assert params.skillName
@@ -133,6 +143,8 @@ class KimlikController {
     }
 
     def ajaxSaveBasicInfo() {
+        cache("private_nostore")
+
         if (!authenticationService.loggedIn) {
             render status: 401
             return
@@ -156,7 +168,7 @@ class KimlikController {
     }
 
     def profile() {
-        cache("public_60")
+        cache("public_5")
 
         session._responseCommitedExceptionWorkAround = 'force to create new session with very this assignment'
         def profile = fetchProfile()
@@ -213,6 +225,7 @@ class KimlikController {
      * @return
      */
     def getProfileById() {
+
         assert false
 //        def result = [x:params.id]
 //        sleep(1000)
@@ -224,6 +237,8 @@ class KimlikController {
     }
 
     def getProfilesByIds() {
+        cache("private_nostore")
+
         def ids = []
         request.JSON.ids.each { ids << ObjectId.massageToObjectId(it) }
         def result = profileService.getProfilesByIds(ids).collect { removePrivateProfileData(it) }
@@ -233,6 +248,8 @@ class KimlikController {
 
 
     def domainSettings() {
+        cache("private_nostore")
+
         def result = [:]
         def profile = authenticationService.authenticatedUser
         def domainId = profile.domainToPage

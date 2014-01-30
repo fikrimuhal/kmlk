@@ -18,6 +18,8 @@ class EmploymentController {
      * @return
      */
     def addNew() {
+        cache("private_nostore")
+
         def p = fetchProfile()
         Date startDate
         Date endDate
@@ -47,6 +49,7 @@ class EmploymentController {
 
 
     def save() {
+        cache("private_nostore")
 
         ObjectId profileId = authenticationService.authenticatedUserId
         log.debug(request.JSON)
@@ -68,6 +71,7 @@ class EmploymentController {
     }
 
     private saveEntity(def data, ObjectId profileId) {
+
         def entity = data.data
         def fieldToUpdate
         if (data.typeKey == 'work') {
@@ -141,6 +145,8 @@ class EmploymentController {
     }
 
     def list() {
+        cache("private_nostore")
+
         def data = fetchProfile().workHistory.history
         JSON.use('deep')
 
