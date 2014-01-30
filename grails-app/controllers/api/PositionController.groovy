@@ -11,7 +11,12 @@ class PositionController {
         render ' ok'
     }
 
+    /**
+     * @Deprecated
+     * @return
+     */
     def inbox() {
+        cache("private_nostore")
         def profileId = 'dsadasds'//authenticationService.authenticatedUserId
 
         def result = [

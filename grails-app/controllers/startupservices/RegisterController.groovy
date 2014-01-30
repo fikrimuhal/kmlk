@@ -17,12 +17,17 @@ class RegisterController {
     boolean forceUpdate = true
 
     def index() {
+        cache("static_landing_page")
     }
 
     def signIn() {
+        cache("static_landing_page")
+
     }
 
     def signUp() {
+        cache("static_landing_page")
+
     }
 
     def failure() {
@@ -31,6 +36,8 @@ class RegisterController {
 
     //social callback
     def success() {
+        cache("private_nostore")
+
         if (authenticationService.loggedIn) {
             def profile = authenticationService.authenticatedUserWithGorm
             log.debug 'session da kullanıcı var, hesaba yeni account ekleyelim'
@@ -152,6 +159,8 @@ class RegisterController {
      * @return
      */
     def ajaxCreate() {
+        cache("private_nostore")
+
         Boolean userNameExists = Profile.countByUsername(params.username) != 0
         if (userNameExists) {
             render(code: 404)
@@ -200,6 +209,13 @@ class RegisterController {
         boolean valid = normalizedName.matches(onlyAlphaNumericPattern);
         if (valid) {
             valid = Profile.countByUsername(normalizedName) == 0
+            cache("private_nostore")
+        } else {
+            /**
+             * bu cachlene bilinir; buyuk ihtimalle hep invalid olarak kalacak cunku
+             */
+            cache("public_1day")
+
         }
         def data = [
                 available: valid,

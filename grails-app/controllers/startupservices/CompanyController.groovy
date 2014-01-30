@@ -15,7 +15,7 @@ class CompanyController {
      * @return
      */
     def profile() {
-        cache("public_60")
+        cache("public_5")
 
         boolean isCrawler = params.containsKey('_escaped_fragment_')
 
@@ -72,6 +72,8 @@ class CompanyController {
 //REST - API
 
     def userCompanyList() {
+        cache("private_nostore")
+
         ObjectId loggedInUser = ObjectId.massageToObjectId(authenticationService.authenticatedUserId)
         if (!loggedInUser) {
             render status: 401
@@ -90,6 +92,8 @@ class CompanyController {
 
 
     def domainSettings() {
+        cache("private_nostore")
+
         //todo get de show
         //todo post da save/update
         //todo AA
@@ -129,6 +133,8 @@ class CompanyController {
     }
 
     def products() {
+        cache("private_nostore")
+
         //todo AA
 
         switch (request.method) {
@@ -151,11 +157,15 @@ class CompanyController {
     }
 
     def updateLocation() {
+        cache("private_nostore")
+
         def result = [status: companyService.updateLocation(request.JSON, ObjectId.massageToObjectId(params.companyId))]
         render result as JSON
     }
 
     def skillUpdate() {
+        cache("private_nostore")
+
         ObjectId companyId = ObjectId.massageToObjectId(params.companyId)
         log.debug(request.JSON)
         log.debug(params)  //operation
@@ -189,6 +199,8 @@ class CompanyController {
 
 
     def timeline() {
+        cache("private_nostore")
+
         //todo AA
 
         ObjectId companyId = ObjectId.massageToObjectId(params.companyId)
@@ -215,6 +227,8 @@ class CompanyController {
     }
 
     def employeeRequest() {
+        cache("private_nostore")
+
         def result
         if (!authenticationService.loggedIn) {
             render status: 401
@@ -267,6 +281,8 @@ class CompanyController {
     }
 
     def employeeDelete() {
+        cache("private_nostore")
+
         def result
         if (!authenticationService.loggedIn) {
             render status: 401
@@ -295,6 +311,8 @@ class CompanyController {
 
 
     def saveBasicInfo() {
+        cache("private_nostore")
+
         if (!authenticationService.loggedIn) {
             render status: 401
             return
@@ -324,6 +342,7 @@ class CompanyController {
 
 
     def isPageNameAvailable() {
+
         Boolean pageNameValid = companyService.isPageNameValid(params.pageName)
         log.debug(params.pageName)
 
@@ -331,11 +350,21 @@ class CompanyController {
                 available: pageNameValid,
                 username: params.username
         ]
+        if(pageNameValid){
+            cache("private_nostore")
+        } else{
+            /**
+             * bu cachlene bilinir; buyuk ihtimalle hep invalid olarak kalacak cunku
+             */
+            cache("public_1day")
+        }
         render(data as JSON)
     }
 
 
     def createNewCompany() {
+        cache("private_nostore")
+
         if (!authenticationService.loggedIn) {
             render status: 401
             return

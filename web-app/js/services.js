@@ -1,3 +1,22 @@
+/**
+ *
+ * @param name
+ * @returns {*} cookie with the given name
+ * @param value
+ */
+function hasCookie(name,value) {
+    var found = false;
+    var cookies = document.cookie.split(";")
+    for (var i = 0, ilen = cookies.length; i < ilen; i++) {
+        var cookie = cookies[i].split("=")
+        if (name == cookie[0] && (!value || value == cookie[1])) {
+            return found = true
+        }
+    }
+    return found
+}
+
+
 kimlik.factory('skillService', function ($resource, $rootScope) {
     $rootScope.skills = [];    //users skills
     $rootScope.allSkills = undefined  //all skills
@@ -153,20 +172,29 @@ kimlik.factory('userService', function ($resource, $rootScope) {
     }
 
 
+    function hasAuthenticationCookie() {
+        return true == hasCookie('remember.device');
+    }
+
     function auth() {
-        user = getCachedProfile();
+        /**
+         * If no remember me token exists do not try to authenticate
+         */
+        if (hasAuthenticationCookie()) {
+            console.log('auth begin');
+            user = getCachedProfile();
 
-        console.log('auth begin');
-        var api = $resource('/auth/ajaxAuth')
+            var api = $resource('/auth/ajaxAuth')
 
-        api.get({}, {}, function (d) {
-            console.log('server authenticated the user');
-            setCachedProfile(d);
-            user = d;
-            $rootScope.loggedinUser = d; //deprecate
+            api.get({}, {}, function (d) {
+                console.log('server authenticated the user');
+                setCachedProfile(d);
+                user = d;
+                $rootScope.loggedinUser = d; //deprecate
 
-            $rootScope.$broadcast('userAuthenticated');  //kullanici authenticated ise broadcast
-        });
+                $rootScope.$broadcast('userAuthenticated');  //kullanici authenticated ise broadcast
+            });
+        }
     }
 
     auth(); //try authentication  on service init
@@ -175,7 +203,8 @@ kimlik.factory('userService', function ($resource, $rootScope) {
         isLoggedIn: isLoggedIn,
         auth: auth,
         logout: logout,
-        getLoggedInUser: getLoggedInUser
+        getLoggedInUser: getLoggedInUser,
+        hasAuthenticationCookie: hasAuthenticationCookie
     }
 });
 

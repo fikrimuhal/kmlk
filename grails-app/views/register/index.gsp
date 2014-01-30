@@ -65,7 +65,7 @@
             </div>
 
             <div class="text-center">
-                <g:img dir="images" file="kimlikapple2.png"/>
+                <g:img dir="images/frontpage" file="kimlikapple2_1140_580.png"/>
             </div>
 
             <div class="row m-large">
@@ -322,18 +322,18 @@
 
 
                 <div class="col-lg-3 col-md-3">
-                    <a href="${resource(dir: 'images', file: '2.png')}" class="thumbnail"
-                       target="_blank"><g:img uri="/images/2.png"/></a>
+                    <a href="${resource(dir: 'images/frontpage', file: 'screenshot_2.png')}" class="thumbnail"
+                       target="_blank"><g:img uri="/images/frontpage/screenshot_2_241_197.png"/></a>
                 </div>
 
                 <div class="col-lg-3 col-md-3">
-                    <a href="${resource(dir: 'images', file: '5.png')}" class="thumbnail"
-                       target="_blank"><g:img uri="/images/5.png"/></a>
+                    <a href="${resource(dir: 'images/frontpage', file: 'screenshot_5.png')}" class="thumbnail"
+                       target="_blank"><g:img uri="/images/frontpage/screenshot_5_241_197.png"/></a>
                 </div>
 
                 <div class="col-lg-3 col-md-3">
-                    <a href="${resource(dir: 'images', file: '4.png')}" class="thumbnail"
-                       target="_blank"><g:img uri="/images/4.png"/></a>
+                    <a href="${resource(dir: 'images/frontpage', file: 'screenshot_4.png')}" class="thumbnail"
+                       target="_blank"><g:img uri="/images/frontpage/screenshot_4_241_197.png"/></a>
                 </div>
 
             </div>

@@ -6,7 +6,7 @@ class FrameController {
 
 
     def index() {
-        cache("public_3600")
+        cache("private_1day")
 //        println '############################## Frame ###################################'
 
         String requestedDomain = request.getHeader('Host').toLowerCase()

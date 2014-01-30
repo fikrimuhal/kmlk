@@ -9,6 +9,7 @@ class AdminController {
     def authenticationService
 
     def allProfiles(int currentPage, int itemsPerPage, String filterBy) {
+        cache("private_nostore")
 
         if (isAdmin()) {
             def result = profileService.list(filterBy: filterBy, page: currentPage, itemPerPage: itemsPerPage)
@@ -21,6 +22,7 @@ class AdminController {
     }
 
     def allCompanies(int currentPage, int itemsPerPage, String filterBy) {
+        cache("private_nostore")
 
         if (isAdmin()) {
             def result = companyService.list(filterBy: filterBy, page: currentPage, itemPerPage: itemsPerPage)
