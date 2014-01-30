@@ -368,7 +368,7 @@ function notificationEmployeeAddRequest($scope, userService, $resource) {
 }
 
 
-kimlik.factory('companyService', function ($resource, $rootScope) {
+kimlik.factory('companyService', function ($resource, $rootScope, userService,$q) {
     var currentUserCompanyList;
 
     function todo() {
@@ -379,10 +379,26 @@ kimlik.factory('companyService', function ($resource, $rootScope) {
     var api = $resource('/api/company/userCompanyList');
 
     function getUserCompanyList() {
-        return api.query({}, {}, function (data) {
-            currentUserCompanyList = data;
-            $rootScope.$broadcast("company_list_statusChange");
-        });
+        var result;
+        /**
+         * If no remember me token exists do not try to authenticate
+         */
+        if (userService.hasAuthenticationCookie()) {
+            result = api.query({}, {}, function (data) {
+                currentUserCompanyList = data;
+                $rootScope.$broadcast("company_list_statusChange");
+            });
+
+        }else{
+            /**
+             * mocks http api call result
+             * @type {*}
+             */
+            var NOOP = $q.defer();
+            NOOP.reject();
+            result = {$promise: NOOP.promise }
+        }
+        return result
     }
 
 
