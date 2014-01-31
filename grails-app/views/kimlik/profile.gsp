@@ -2,13 +2,18 @@
 <html>
 <head>
     <meta name="layout" content="first"/>
+
+    %{--https://developers.google.com/webmasters/ajax-crawling/docs/specification?csw=1--}%
+    <meta name="fragment" content="!">
+
     <script type="text/javascript">
         _settings.staticMode = true; // i.e. locationProvider should not use html5Mode
+        _settings.isCrawler = ${isCrawler};
     </script>
 </head>
 
 <body>
-<g:render template="/shared/header"></g:render>
+<g:if test="${!isCrawler}"><g:render template="/shared/header"></g:render></g:if>
 
 <section id="content" class="content-sidebar bg-white" ng-controller="UserController">
 
@@ -22,18 +27,18 @@
             <span class="h4">${profile.name}</span>
             <small class="block m-t-mini">${profile.workHistory?.lastEntity?.position}</small>
             %{--<button class="btn btn-primary btn-sm active" data-toggle="button">--}%
-                %{--<span class="text">--}%
-                    %{--<i class="fa fa-eye"></i> ODOT--}%
-                %{--</span>--}%
-                %{--<span class="text-active">--}%
-                    %{--<i class="fa fa-eye"></i> NOT IMP. YET--}%
-                %{--</span>--}%
+            %{--<span class="text">--}%
+            %{--<i class="fa fa-eye"></i> ODOT--}%
+            %{--</span>--}%
+            %{--<span class="text-active">--}%
+            %{--<i class="fa fa-eye"></i> NOT IMP. YET--}%
+            %{--</span>--}%
             %{--</button>--}%
         </div>
 
-    <g:render template="leftNav"/>
+        <g:render template="leftNav"/>
 
-</aside>
+    </aside>
     <!-- /.sidebar -->
 
     <!-- .sidebar -->
@@ -58,17 +63,17 @@
         %{--</div>--}%
 
 
-            <div class="panel-body bg-white" id="all">
-                <g:render template="/kimlik/personalInfo" model="[profile: profile]"/>
-                <g:render template="/kimlik/followMe" model="[profile: profile]"/>
-                <g:render template="/kimlik/timeline" model="[profile: profile]"/>
-                <g:render template="/kimlik/skills" model="[profile: profile]"/>
-                %{--<g:render template="/kimlik/testimonials"></g:render>--}%
-                %{--<g:render template="/kimlik/portfolio"></g:render>--}%
-                %{--<g:render template="/kimlik/contact" model="[profile: profile]"/>--}%
-                %{--<g:render template="/kimlik/other"></g:render>--}%
+        <div class="panel-body bg-white" id="all">
+            <g:render template="/kimlik/personalInfo" model="[profile: profile]"/>
+            <g:render template="/kimlik/followMe" model="[profile: profile]"/>
+            <g:render template="/kimlik/timeline" model="[profile: profile]"/>
+            <g:render template="/kimlik/skills" model="[profile: profile]"/>
+            %{--<g:render template="/kimlik/testimonials"></g:render>--}%
+            %{--<g:render template="/kimlik/portfolio"></g:render>--}%
+            %{--<g:render template="/kimlik/contact" model="[profile: profile]"/>--}%
+            %{--<g:render template="/kimlik/other"></g:render>--}%
 
-            </div>
+        </div>
 
     </section>
     <!-- /.sidebar -->
@@ -77,7 +82,7 @@
 <script>
     var config = {
         username: '${profile.username}',
-        isSelfProfile: ${g.isSelfProfile([profile:profile])}
+        isSelfProfile: ${g.isSelfProfile([profile:profile])},
     };
 
     var _currentProfile = {

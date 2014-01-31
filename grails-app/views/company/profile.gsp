@@ -11,8 +11,8 @@
 
 
     <script type="text/javascript">
-        _settings.staticMode = true // i.e. locationProvider should not use html5Mode
-
+        _settings.staticMode = true; // i.e. locationProvider should not use html5Mode
+        _settings.isCrawler = ${isCrawler};
 
         var _currentCompany = {
             _id: '${company._id}'
@@ -24,7 +24,7 @@
 <body data-spy="scroll" data-target="#header" class="landing" id="body">
 
 <g:render template="profile/headerPublic" model="[company: company]"></g:render>
-<g:if test="!isCrawler"><g:render template="/shared/header"></g:render></g:if>
+<g:if test="${!isCrawler}"><g:render template="/shared/header"></g:render></g:if>
 
 <section id="content">
     <g:render template="profile/banner" model="[company: company]"></g:render>

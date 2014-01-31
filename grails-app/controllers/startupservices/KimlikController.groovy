@@ -177,6 +177,10 @@ class KimlikController {
             response.sendError(404)
             return
         }
+        boolean isCrawler = params.containsKey('_escaped_fragment_')
+
+        if(isCrawler) log.debug('=======HELLOOO GOOGLE CRAWLER=======')
+
 
         def skills = profile.skills.sort { it.percent ? -1 * it.percent : 0 } //sirket yetkilisinin izin verdigi skiller
         //skilleri 2 ayri DIV icinde gosteriyoruz
@@ -221,7 +225,7 @@ class KimlikController {
             location.display_address = profile?.contactInfo?.address?.display_address
 
 
-        [profile: profile, skills1: skills1, skills2: skills2, location: location]
+        [profile: profile, skills1: skills1, skills2: skills2, location: location,isCrawler:isCrawler]
 
     }
     /**
