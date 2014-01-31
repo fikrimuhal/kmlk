@@ -173,7 +173,11 @@ class KimlikController {
         session._responseCommitedExceptionWorkAround = 'force to create new session with very this assignment'
         def profile = fetchProfile()
 
-        println profile.getProfilePictureUrl()
+        if (!profile) {
+            response.sendError(500)
+            return
+        }
+
         def skills = profile.skills.sort { it.percent ? -1 * it.percent : 0 } //sirket yetkilisinin izin verdigi skiller
         //skilleri 2 ayri DIV icinde gosteriyoruz
         def skills1, skills2
