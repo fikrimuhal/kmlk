@@ -26,15 +26,18 @@ kimlik.config(['$routeSegmentProvider', '$locationProvider',
 
             segment('company', {
                 templateUrl: '_template/company.inline',
+//                dependencies: ['company_name'],
                 controller: CompanyCtrl
             });
 
         $routeSegmentProvider.within('company').
             segment('settings', {
                 templateUrl: '/html/company/settings/settings.html',
+                dependencies: ['company_name'],
                 controller: CompanySettingsCtrl}).
             within().
             segment('general', {templateUrl: '/html/company/settings/general.html',
+                dependencies: ['company_name'],
                 controller: 'CompanySettingsGeneralCtrl'}).
             segment('location', {templateUrl: '/html/company/settings/location.html',
                 controller: 'CompanySettingsLocationCtrl'}).
@@ -145,9 +148,11 @@ kimlik.config(['$routeSegmentProvider', '$locationProvider',
 
         $routeSegmentProvider.within('kimlik').
             segment('settings', {
+                dependencies: ['user_name'],
                 templateUrl: '/html/kimlik/settings/settings.html'}).
             within().
             segment('general', {templateUrl: '/html/kimlik/settings/general.html',
+                dependencies: ['user_name'],
                 controller: 'KimlikSettingsGeneralCtrl'}).
             segment('profilePicture', {templateUrl: '/html/kimlik/settings/profilePicture.html'}).
             segment('location', {templateUrl: '/html/kimlik/settings/location.html',
