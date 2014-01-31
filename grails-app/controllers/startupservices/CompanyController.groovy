@@ -19,6 +19,8 @@ class CompanyController {
 
         boolean isCrawler = params.containsKey('_escaped_fragment_')
 
+        if(isCrawler) log.debug('=======HELLOOO GOOGLE CRAWLER=======')
+
         def company = companyService.findByPageName(params.id)
 
         if (!company) return (redirect(uri: '/'))

@@ -37,10 +37,11 @@ class AuthenticationFilters {
 
                 //this is external request ( maybe requested inside iframe)
 
-                boolean isCrawler = webRequest.params._escaped_fragment_ != null
+                boolean isCrawler = webRequest.params.containsKey('_escaped_fragment_')
                 if (isCrawler) {
                     //hello google crawler!
-                    log.debug('hello google crawler!')
+                    //suanda frame render etmek yerine sayfayi render edecegiz
+                    log.debug('=======HELLOOO GOOGLE CRAWLER=======')
 
 
 
@@ -57,6 +58,8 @@ class AuthenticationFilters {
 
                         } else if (_page.isProfile) {
                             //this is a person page
+                            forward controller: 'kimlik', action: 'profile', params: webRequest.params
+
                             //todo forward controller: 'personTODO', action: 'profile', params: webRequest.params
 
                         }
