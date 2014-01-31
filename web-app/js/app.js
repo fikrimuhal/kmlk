@@ -9,6 +9,17 @@ kimlik.config(['$routeSegmentProvider', '$locationProvider',
     function ($routeSegmentProvider, $locationProvider) {
         console.debug('_settings :', _settings);
 
+        /**
+         * Used for deferring template rendering until company list is available
+         *
+         * @type {{companyList: companyList}}
+         */
+        var companyListResolver = {
+            companyList: function (companyService) {
+                return companyService.getUserCompanyList().$promise
+            }
+        };
+
         $locationProvider.html5Mode(!_settings.staticMode);
         $routeSegmentProvider.options.autoLoadTemplates = true;
         $routeSegmentProvider.options.strictMode = true;
@@ -26,18 +37,17 @@ kimlik.config(['$routeSegmentProvider', '$locationProvider',
 
             segment('company', {
                 templateUrl: '_template/company.inline',
-//                dependencies: ['company_name'],
                 controller: CompanyCtrl
             });
 
         $routeSegmentProvider.within('company').
             segment('settings', {
                 templateUrl: '/html/company/settings/settings.html',
-                dependencies: ['company_name'],
-                controller: CompanySettingsCtrl}).
+                controller: CompanySettingsCtrl,
+                resolve:companyListResolver}).
+
             within().
             segment('general', {templateUrl: '/html/company/settings/general.html',
-                dependencies: ['company_name'],
                 controller: 'CompanySettingsGeneralCtrl'}).
             segment('location', {templateUrl: '/html/company/settings/location.html',
                 controller: 'CompanySettingsLocationCtrl'}).
@@ -57,7 +67,8 @@ kimlik.config(['$routeSegmentProvider', '$locationProvider',
             when('/company/:company_name/hr/applicants/:pid', 'company.hr.applicants').
             when('/company/:company_name/hr/notifications', 'company.hr.notifications').
 
-            within('company').segment('hr', {templateUrl: '/html/company/hr/hr.html'}).
+            within('company').segment('hr', {templateUrl: '/html/company/hr/hr.html',
+                resolve:companyListResolver}).
             within().
             segment('employees', {templateUrl: '/html/company/hr/employees.html',
                 controller: CompanyEmployeeCtrl}).
@@ -75,7 +86,8 @@ kimlik.config(['$routeSegmentProvider', '$locationProvider',
             when('/company/:company_name/skills', 'company.skills').
             within('company').segment('skills', {
                 templateUrl: '/html/company/skills/skills.html',
-                controller: CompanySkillsCtrl});
+                controller: CompanySkillsCtrl,
+                resolve:companyListResolver});
 
         $routeSegmentProvider.
             when('/company/:company_name/products', 'company.products').
@@ -83,7 +95,8 @@ kimlik.config(['$routeSegmentProvider', '$locationProvider',
             within('company').segment('products', {
                 templateUrl: '/html/company/products/products.html',
                 dependencies: ['pid'],
-                controller: CompanyProjectsCtrl});
+                controller: CompanyProjectsCtrl,
+                resolve:companyListResolver});
 
         $routeSegmentProvider.
             when('/company/:company_name/services', 'company.services').
@@ -125,7 +138,8 @@ kimlik.config(['$routeSegmentProvider', '$locationProvider',
             when('/company/:company_name/timeline', 'company.timeline').
             within('company').segment('timeline', {
                 templateUrl: '/html/company/timeline/timeline.html',
-                controller: 'CompanyTimelineCtrl'});
+                controller: 'CompanyTimelineCtrl',
+                resolve:companyListResolver});
 
 
         /*                   #########  Personal profiles start   ###########                                */
@@ -148,11 +162,9 @@ kimlik.config(['$routeSegmentProvider', '$locationProvider',
 
         $routeSegmentProvider.within('kimlik').
             segment('settings', {
-                dependencies: ['user_name'],
                 templateUrl: '/html/kimlik/settings/settings.html'}).
             within().
             segment('general', {templateUrl: '/html/kimlik/settings/general.html',
-                dependencies: ['user_name'],
                 controller: 'KimlikSettingsGeneralCtrl'}).
             segment('profilePicture', {templateUrl: '/html/kimlik/settings/profilePicture.html'}).
             segment('location', {templateUrl: '/html/kimlik/settings/location.html',
@@ -373,7 +385,7 @@ function notificationEmployeeAddRequest($scope, userService, $resource) {
 }
 
 
-kimlik.factory('companyService', function ($resource, $rootScope, userService,$q) {
+kimlik.factory('companyService', function ($resource, $rootScope, userService, $q) {
     var currentUserCompanyList;
 
     function todo() {
@@ -394,7 +406,7 @@ kimlik.factory('companyService', function ($resource, $rootScope, userService,$q
                 $rootScope.$broadcast("company_list_statusChange");
             });
 
-        }else{
+        } else {
             /**
              * mocks http api call result
              * @type {*}
@@ -413,7 +425,8 @@ kimlik.factory('companyService', function ($resource, $rootScope, userService,$q
 
     return{
         getUserCompanyList: getUserCompanyListCached,
-        reloadCompanies: getUserCompanyList
+        reloadCompanies: getUserCompanyList,
+        todo: todo
     };
 });
 
