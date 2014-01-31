@@ -6,10 +6,10 @@
  */
 function hasCookie(name,value) {
     var found = false;
-    var cookies = document.cookie.split(";")
+    var cookies = document.cookie.split(";");
     for (var i = 0, ilen = cookies.length; i < ilen; i++) {
-        var cookie = cookies[i].split("=")
-        if (name == cookie[0] && (!value || value == cookie[1])) {
+        var cookie = cookies[i].split("=");
+        if (name == cookie[0].trim() && (!value || value == cookie[1])) {
             return found = true
         }
     }

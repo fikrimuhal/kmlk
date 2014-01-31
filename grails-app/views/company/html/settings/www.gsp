@@ -45,12 +45,13 @@
 
                 <div class="col-lg-9">
                     <p class="form-control-static">
-                        Yukarıda girdiğiniz adresleri için DNS sunucunuza <i>CNAME</i> kaydı girmeniz gerekmektedir. <br/>
+                        Yukarıda girdiğiniz adresleri için DNS sunucunuza <i>A</i> kaydı girmeniz gerekmektedir.
+                        Yönlendirme yapmanız gereken IP <em>107.20.242.215</em> <br/>
                         <br/> <b>Eklemeniz gereken kayıt:</b>
 
                     <div class="well">
-                        CNAME {{domain.domains[0]||'www.sirketim.com'}} = KIMLIK.IO <br/>
-                        CNAME {{domain.domains[1]||'sirketim.com'}} = KIMLIK.IO
+                        A {{domain.domains[0]||'www.sirketim.com'}} = 107.20.242.215 <br/>
+                        A {{domain.domains[1]||'sirketim.com'}} = 107.20.242.215
                     </div>
                 </p>
 

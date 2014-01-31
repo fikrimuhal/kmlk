@@ -45,6 +45,9 @@ function companyWorkWithUsController($scope, $resource, userService) {
      * @type {boolean}
      */
     $scope.userIsLoggedIn = userService.isLoggedIn();
+    if($scope.userIsLoggedIn){
+        $scope.me = userService.getLoggedInUser();
+    }
 
     elm.on('show.bs.modal', function () {
         //re-initialize

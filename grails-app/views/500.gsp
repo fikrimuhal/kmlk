@@ -16,7 +16,7 @@
         <div class="row">
             <div class="col-lg-4 col-lg-offset-4">
                 <div class="text-center m-b-large">
-                    <h1 class="h text-white">404</h1>
+                    <h1 class="h text-white">500</h1>
                 </div>
                 <div class="list-group m-b-small">
                     <a href="/" target="_self" class="list-group-item">
