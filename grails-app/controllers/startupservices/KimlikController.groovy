@@ -174,7 +174,7 @@ class KimlikController {
         def profile = fetchProfile()
 
         if (!profile) {
-            response.sendError(500)
+            response.sendError(404)
             return
         }
 
