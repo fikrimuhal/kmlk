@@ -54,7 +54,7 @@
 
             <div class="modal-body" ng-show="userIsLoggedIn">
                 <p>
-                    Başvuru yapmadan önce <a target="_blank" href="{{me.profileUrl}}">profilinizin</a> güncel olduğundan emin olun.
+                    Başvuru yapmadan önce <a target="_blank" href="{{me.profileUrl}}" >profilinizin</a> güncel olduğundan emin olun.
                 </p>
                 <h4>Ön yazı <small>opsiyonel</small></h4>
                 <form role="form">

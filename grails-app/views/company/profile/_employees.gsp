@@ -15,10 +15,10 @@
                         <div class="caption">
                             <h4>${e.first_name} ${e.last_name}
                                 <div class="pull-right">
-                                    <a href="${e.profileUrl}" class="btn btn-circle btn-xs btn-twitter"
+                                    <a href="http://kimlik.io${e.profileUrl}" class="btn btn-circle btn-xs btn-twitter"
                                        title="Profile git"><i class="fa fa-twitter"></i></a>
                                     %{--<a href="/kimlik/profile/sumnulu" class="btn btn-circle btn-xs btn-facebook" title="Profile git"><i class="fa fa-facebook"></i></a>--}%
-                                    <a href="${e.profileUrl}" class="btn btn-circle btn-xs"
+                                    <a href="http://kimlik.io${e.profileUrl}" class="btn btn-circle btn-xs"
                                        title="Profile git"><i class="fa fa-male"></i></a>
                                 </div>
                             </h4>
@@ -38,12 +38,12 @@
                                 <div class="pull-right">
 
                                     %{--<a href="/kimlik/profile/sumnulu" class="btn btn-circle btn-xs btn-facebook" title="Profile git"><i class="fa fa-facebook"></i></a>--}%
-                                    <a href="/register/signIn" class="btn btn-circle btn-xs"
+                                    <a href="http://kimlik.io/register/signIn" class="btn btn-circle btn-xs"
                                        title="Profile git"><i class="fa fa-male"></i></a>
                                 </div>
                             </h4>
 
-                            <p><a href="/register/signIn">Bizim ile çalışmak istermisin?</a></p>
+                            <p><a href="http://kimlik.io/register/signIn">Bizim ile çalışmak istermisin?</a></p>
                         <br/>
                         <br class="hidden-lg"/>
                         <br class="visible-sm"/>
