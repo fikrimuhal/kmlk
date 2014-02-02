@@ -6,7 +6,6 @@
         <ul class="nav navbar-nav pull-right hidden-xs">
             <li class="hide"><a target="_self" href="#header">Ev</a></li>
             <li><a target="_self" href="#employees">Biz</a></li>
-            <li><a target="_self" href="#ofis">Ofis</a></li>
             <li><a target="_self" href="#2column">Şirket Tarihi</a></li>
             <li><a target="_self" href="#skills">Uzmanlıklar</a></li>
             <li><a target="_self" href="#products">Projeler</a></li>

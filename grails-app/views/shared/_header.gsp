@@ -38,7 +38,7 @@
 
 
 
-    <a class="navbar-brand" href="/" target="_self">kimlik</a>
+    <a class="navbar-brand" href="http://kimlik.io" target="_top">kimlik</a>
     <button type="button" class="btn btn-link pull-left nav-toggle visible-xs"
             data-toggle="class:slide-nav slide-nav-left" data-target="body">
         <i class="fa fa-reorder icon-xlarge text-default"></i>
