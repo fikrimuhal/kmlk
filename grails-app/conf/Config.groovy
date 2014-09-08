@@ -159,16 +159,16 @@ oauth {
     providers {
         twitter { //todo Bu sental yeni app kaydet
             api = org.scribe.builder.api.TwitterApi
-            key = '***REMOVED***'
-            secret = '***REMOVED***'
+            key = ''
+            secret = ''
             callback = "${grails.serverURL}/oauth/twitter/callback"
             successUri = '/register/success/twitter'
             failureUri = '/register/failure/twitter'
         }
         facebook {
             api = org.scribe.builder.api.FacebookApi
-            key = '***REMOVED***'
-            secret = '***REMOVED***'
+            key = ''
+            secret = ''
             callback = "${grails.serverURL}/oauth/facebook/callback"
             successUri = '/register/success/facebook'
             failureUri = '/register/failure/facebook'
@@ -176,16 +176,16 @@ oauth {
         }
         linkedin {//todo bu partical app yeni app kaydet
             api = org.scribe.builder.api.LinkedInApi
-            key = '***REMOVED***'
-            secret = '***REMOVED***'
+            key = ''
+            secret = ''
             callback = "${grails.serverURL}/oauth/linkedin/callback"
             successUri = '/register/success/linkedin'
             failureUri = '/register/failure/linkedin'
         }
         google {//todo bu partical app yeni app kaydet
             api = org.scribe.builder.api.GoogleApi
-            key = '***REMOVED***'
-            secret = '***REMOVED***'
+            key = ''
+            secret = ''
             callback = "${grails.serverURL}/oauth/google/callback"
             successUri = '/register/success/google'
             failureUri = '/register/failure/google'
@@ -216,8 +216,8 @@ cache.headers.presets = [
 
 grails.mail.host = "email-smtp.us-east-1.amazonaws.com"
 grails.mail.port = "587"
-grails.mail.username = "***REMOVED***"
-grails.mail.password = "***REMOVED***"
+grails.mail.username = ""
+grails.mail.password = ""
 grails.mail.props = ["mail.smtp.auth": "true",
         "mail.smtp.socketFactory.port": "465",
         "mail.smtp.socketFactory.class": "javax.net.ssl.SSLSocketFactory",
@@ -226,8 +226,8 @@ grails.mail.props = ["mail.smtp.auth": "true",
 
 
 
-tomcat.deploy.username = "bamboo"
-tomcat.deploy.password = "***REMOVED***"
+tomcat.deploy.username = ""
+tomcat.deploy.password = ""
 tomcat.deploy.url = "http://localhost:8080/manager"
 
 
@@ -265,8 +265,8 @@ grails {
 }
 remove this line */
 
-grails.plugin.awssdk.accessKey = '***REMOVED***'
-grails.plugin.awssdk.secretKey = '***REMOVED***'
+grails.plugin.awssdk.accessKey = ''
+grails.plugin.awssdk.secretKey = ''
 grails.plugin.awssdk.region = 'us-east-1'
 
 
